@@ -1,0 +1,99 @@
+{
+  "slug": "lf6130",
+  "name": "LF6130 Hydraulic Mobile Lighting Tower",
+  "category": "Diesel Mobile Light Tower",
+  "hero": {
+    "title": "LF6130 Hydraulic Mobile Lighting Tower",
+    "subtitle": "Industrial 9m hydraulic mobile light tower with Kubota diesel engine, 4x400W LED lighting, IP65 outdoor protection and long-runtime performance for construction, mining, emergency and rental projects.",
+    "primaryCta": "Get Quote",
+    "secondaryCta": "Contact Us"
+  },
+  "specs": {
+    "engine": "Kubota Z482 diesel engine",
+    "power": "6.4 kW rated power, 220V, 50Hz / 60Hz",
+    "mast": "9 m hydraulic mast with 360 degree rotation",
+    "lights": "4x400W LED lamps with IP65 outdoor protection",
+    "runtime": "48 hours"
+  },
+  "features": [
+    {
+      "title": "Hydraulic Mast System",
+      "description": "9m hydraulic mast supports fast deployment and elevated jobsite illumination."
+    },
+    {
+      "title": "4x400W LED Lighting",
+      "description": "High-output LED lighting supports wide-area visibility for construction and mining work."
+    },
+    {
+      "title": "Kubota Diesel Engine",
+      "description": "Kubota Z482 diesel power provides stable operation for remote outdoor applications."
+    },
+    {
+      "title": "Trailer Mounted Design",
+      "description": "Mobile trailer structure makes transport, positioning and rental fleet operation easier."
+    },
+    {
+      "title": "IP65 Outdoor Protection",
+      "description": "Weather-resistant lamp protection supports demanding industrial environments."
+    },
+    {
+      "title": "Long Runtime Performance",
+      "description": "Designed for long-duration night work, emergency response and temporary lighting projects."
+    }
+  ],
+  "applications": [
+    {
+      "title": "Construction Sites",
+      "description": "Temporary mobile lighting for road work, building projects, concrete work and night construction."
+    },
+    {
+      "title": "Mining Operations",
+      "description": "Diesel-powered illumination for remote mine roads, equipment yards and maintenance areas."
+    },
+    {
+      "title": "Emergency Rescue",
+      "description": "Rapid lighting deployment for repair, disaster recovery and public safety response."
+    },
+    {
+      "title": "Rental Fleets",
+      "description": "Trailer-mounted mobile light tower platform for contractors and equipment rental companies."
+    }
+  ],
+  "trust": {
+    "manufacturer": "LFADJ is an industrial mobile light tower manufacturer for B2B buyers and project contractors.",
+    "oem": "OEM / ODM options are available for lighting power, mast configuration, branding and project requirements.",
+    "supply": "Built for global supply, construction projects, mining operations, emergency response and rental fleets."
+  },
+  "cta": {
+    "title": "Get a Professional Quote",
+    "description": "Contact LFADJ for LF6130 specifications, OEM options, pricing and project support.",
+    "button": "Send Inquiry"
+  },
+  "seo": {
+    "description": "LF6130 industrial mobile light tower for construction, mining and emergency lighting tower projects. Diesel light tower with Kubota engine, 9m hydraulic mast, OEM support and manufacturer direct supply.",
+    "keywords": [
+      "mobile light tower",
+      "diesel light tower",
+      "lighting tower manufacturer",
+      "manufacturer",
+      "OEM",
+      "OEM manufacturer",
+      "construction lighting tower",
+      "mining lighting tower",
+      "emergency lighting tower"
+    ]
+  },
+  "keywords": [
+    "mobile light tower",
+    "diesel light tower",
+    "manufacturer",
+    "OEM",
+    "LED light tower",
+    "hydraulic mobile light tower",
+    "construction lighting tower"
+  ],
+  "image": {
+    "src": "/images/products/lf6130.png",
+    "alt": "LF6130 hydraulic mobile light tower"
+  }
+}
