@@ -89,6 +89,17 @@ const articles = [
   },
 ];
 
+const growthArticles = [
+  { title: "What Is a Mobile Light Tower?", href: "/en/blog/what-is-mobile-light-tower" },
+  { title: "Diesel vs Solar Light Tower", href: "/en/blog/diesel-vs-solar-light-tower" },
+  { title: "How to Choose Light Tower for Construction", href: "/en/blog/how-to-choose-light-tower-for-construction" },
+  { title: "Mining Site Lighting Solution Guide", href: "/en/blog/mining-site-lighting-solution-guide" },
+  { title: "Portable Light Tower Buying Guide", href: "/en/blog/portable-light-tower-buying-guide" },
+  { title: "Light Tower Rental vs Buying", href: "/en/blog/light-tower-rental-vs-buying" },
+  { title: "Emergency Lighting Solution Guide", href: "/en/blog/emergency-lighting-solution-guide" },
+  { title: "Top Light Tower Manufacturers Comparison", href: "/en/blog/top-light-tower-manufacturers-comparison" },
+];
+
 export default function EnglishBlogPage() {
   return (
     <main className='max-w-7xl mx-auto'>
@@ -112,10 +123,30 @@ export default function EnglishBlogPage() {
             giving purchasing teams useful information before they contact sales.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/en/products/lf6130" className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white">LF6130 Hub</a>
-            <a href="/en/applications" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Applications</a>
+            <a href="/products/lf955" className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white">LF955 Hub</a>
+            <a href="/applications" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Applications</a>
+            <a href="/light-towers" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Light Towers</a>
             <a href="/en/case-studies" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Case Studies</a>
             <a href="/en/faq" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">FAQ</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gray-50 px-6 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <h2 className="text-3xl font-bold tracking-tight text-black">
+            V5.3 SEO Growth Blog Cluster
+          </h2>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {growthArticles.map((article) => (
+              <a
+                key={article.href}
+                href={article.href}
+                className="rounded-2xl border border-gray-200 bg-white p-5 text-sm font-bold text-gray-900 shadow-sm hover:border-blue-500 hover:text-blue-700"
+              >
+                {article.title}
+              </a>
+            ))}
           </div>
         </div>
       </section>
@@ -133,12 +164,13 @@ export default function EnglishBlogPage() {
                   <p><strong className="text-gray-900">Introduction:</strong> Build a 150-200 word opening around the search intent and connect the topic to real project buying decisions.</p>
                   <p><strong className="text-gray-900">Problem:</strong> {article.problem}</p>
                   <p><strong className="text-gray-900">Solution:</strong> {article.solution}</p>
-                  <p><strong className="text-gray-900">LF6130 reference:</strong> Link back to LF6130 as the industrial diesel mobile light tower for construction, mining, emergency and rental demand.</p>
+                  <p><strong className="text-gray-900">LF955 reference:</strong> Link back to LF955 as the industrial diesel mobile light tower for construction, mining, emergency and rental demand.</p>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <a href="/en/products/lf6130" className="text-sm font-bold text-blue-600">LF6130</a>
-                  <a href="/en/applications" className="text-sm font-bold text-blue-600">Applications</a>
-                  <a href="/en/contact" className="text-sm font-bold text-blue-600">Contact</a>
+                  <a href="/products/lf955" className="text-sm font-bold text-blue-600">LF955</a>
+                  <a href="/applications" className="text-sm font-bold text-blue-600">Applications</a>
+                  <a href="/light-towers" className="text-sm font-bold text-blue-600">Light Towers</a>
+                  <a href="/contact" className="text-sm font-bold text-blue-600">Contact</a>
                 </div>
               </article>
             ))}
@@ -179,8 +211,8 @@ export default function EnglishBlogPage() {
         <div className="mx-auto max-w-[1200px] text-center">
           <h2 className="text-3xl font-bold">Need a Mobile Light Tower Quote?</h2>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <a href="/en/contact" className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white">Contact Us</a>
-            <a href="/en/products/lf6130" className="rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white">View LF6130</a>
+            <a href="/contact" className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white">Contact Us</a>
+            <a href="/products/lf955" className="rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white">View LF955</a>
           </div>
         </div>
       </section>

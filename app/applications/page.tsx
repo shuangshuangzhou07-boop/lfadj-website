@@ -1,79 +1,60 @@
 import type { Metadata } from "next";
-import { ConversionFlow } from "../conversion-flow";
-import { SiteNav } from "../site-nav";
+
+import { IndustrialSeoPage } from "@/components/seo/IndustrialSeoPage";
 
 export const metadata: Metadata = {
-  title: "Construction / Mining / Emergency Light Tower Applications | LFADJ",
+  title: "Industrial Lighting Applications | Mining, Construction, Emergency & Rental | LFADJ",
   description:
-    "Application hub for construction, mining and emergency light tower use cases from LFADJ.",
-  alternates: {
-    canonical: "https://lfadj.com/applications",
-  },
-  openGraph: {
-    title: "Construction / Mining / Emergency Light Tower Applications | LFADJ",
-    description:
-      "Industrial lighting solutions for global construction and mining projects.",
-    url: "https://lfadj.com/applications",
-    type: "website",
-  },
+    "Industrial use-case hub for mining lighting, construction lighting, emergency lighting and rental fleet lighting projects.",
+  alternates: { canonical: "https://lfadj.com/applications" },
 };
 
-const clusters = [
-  { label: "Construction lighting tower", href: "/applications/construction" },
-  { label: "Mining lighting tower", href: "/applications/mining" },
-  { label: "Emergency lighting tower", href: "/applications/emergency" },
-  { label: "Road infrastructure lighting", href: "/applications/road-infrastructure" },
-  { label: "Events and rental lighting", href: "/applications/events-rental" },
-];
-
-export default function ApplicationsPage() {
+export default function ApplicationsHubPage() {
   return (
-    <>
-      <SiteNav />
-      <main className="bg-white">
-      <section className="px-6 py-20 lg:py-24">
-        <div className="mx-auto max-w-[1200px]">
-          <p className="text-sm font-bold uppercase tracking-[0.24em] text-gray-500">
-            Applications
-          </p>
-          <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-black sm:text-5xl">
-            Construction / Mining / Emergency Light Tower Applications
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-600">
-            LFADJ mobile light tower products support temporary illumination for
-            construction sites, mining roads, emergency response and rental
-            projects. This application hub helps buyers compare field scenarios
-            before choosing a diesel light tower or portable lighting solution.
-          </p>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {clusters.map((cluster) => (
-              <a key={cluster.href} href={cluster.href} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-                <h2 className="text-lg font-bold text-black">{cluster.label}</h2>
-                <p className="mt-4 text-sm leading-6 text-gray-600">
-                  Field lighting scenario for industrial projects that need safe
-                  visibility, mobility and stable outdoor operation.
-                </p>
-              </a>
-            ))}
-          </div>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a href="/products" className="inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-700">
-              Mobile Light Tower
-            </a>
-            <a href="/products/lf6130" className="inline-flex h-12 items-center justify-center rounded-lg border border-gray-300 bg-white px-6 text-sm font-semibold text-black hover:bg-gray-50">
-              Diesel Light Tower
-            </a>
-            <a href="/oem" className="inline-flex h-12 items-center justify-center rounded-lg border border-gray-300 bg-white px-6 text-sm font-semibold text-black hover:bg-gray-50">
-              Lighting Tower Manufacturer
-            </a>
-            <a href="/case-studies" className="inline-flex h-12 items-center justify-center rounded-lg border border-gray-300 bg-white px-6 text-sm font-semibold text-black hover:bg-gray-50">
-              Case Studies
-            </a>
-          </div>
-        </div>
-      </section>
-      <ConversionFlow />
-      </main>
-    </>
+    <IndustrialSeoPage
+      eyebrow="Use-Case Layer"
+      title="Industrial Lighting Applications for Buyers and Project Teams"
+      subtitle="This layer captures commercial use-case intent and routes buyers into LF955 after they choose the right application."
+      summary="Designed to rank for mining lighting, construction lighting, emergency lighting and rental fleet lighting searches."
+      keywords={["mining lighting", "construction lighting", "emergency lighting", "rental lighting"]}
+      primaryCta="View LF955"
+      primaryHref="/products/lf955"
+      secondaryCta="Light Tower Categories"
+      secondaryHref="/light-towers"
+      cards={[
+        {
+          title: "Mining lighting",
+          description: "Night operations, haul roads and off-grid industrial sites.",
+          href: "/applications/mining-lighting",
+          tag: "Mining SEO",
+        },
+        {
+          title: "Construction lighting",
+          description: "Civil works, infrastructure projects and highway maintenance.",
+          href: "/applications/construction-lighting",
+          tag: "Construction SEO",
+        },
+        {
+          title: "Emergency lighting",
+          description: "Power outage response, rescue support and recovery lighting.",
+          href: "/applications/emergency-lighting",
+          tag: "Emergency SEO",
+        },
+        {
+          title: "Rental lighting",
+          description: "Fleet utilization, short-term deployment and customer-ready uptime.",
+          href: "/applications/rental-lighting",
+          tag: "Rental SEO",
+        },
+      ]}
+      stats={[
+        { value: "4", label: "use-case pages" },
+        { value: "1", label: "LF955 conversion page" },
+        { value: "South Africa", label: "mining focus" },
+      ]}
+      note="Use-case pages sit between blog education and product conversion."
+      bottomTitle="Use-Case Intent Should Feed the LF955 Conversion Page"
+      bottomText="The application layer captures commercial and operational intent, then routes qualified traffic into the product inquiry system."
+    />
   );
 }

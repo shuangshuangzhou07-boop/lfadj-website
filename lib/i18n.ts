@@ -1,0 +1,171 @@
+export type Locale = "en" | "zh";
+
+export const locales = ["en", "zh"] as const;
+
+const storageKey = "lfadj-locale";
+
+export function getInitialLocale(): Locale {
+  if (typeof window === "undefined") {
+    return "en";
+  }
+
+  const saved = window.localStorage.getItem(storageKey);
+  return saved === "zh" ? "zh" : "en";
+}
+
+export function setLocale(locale: Locale) {
+  if (typeof window !== "undefined") {
+    window.localStorage.setItem(storageKey, locale);
+  }
+}
+
+export function getLocaleLabel(locale: Locale) {
+  return locale === "zh" ? "中文" : "EN";
+}
+
+export const i18n = {
+  en: {
+    appTitle: "LFADJ Sales OS V5",
+    pageSubtitle: "Select the product, configuration, and destination country to generate Economy, Standard, and Premium quotations.",
+    product: "Product",
+    solar: "Solar",
+    diesel: "Diesel",
+    solarDescription: "Solar lighting tower",
+    dieselDescription: "Diesel lighting tower",
+    configuration: "Configuration",
+    mastHeight: "Mast height",
+    lights: "Lights",
+    battery: "Battery",
+    country: "Country",
+    submit: "Generate 3-Tier Quote",
+    economy: "Economy",
+    standard: "Standard",
+    premium: "Premium",
+    recommended: "Recommended",
+    exw: "EXW",
+    fob: "FOB",
+    cif: "CIF",
+    configurationTitle: "Configuration",
+    selectProduct: "Step 1 - Product",
+    selectConfig: "Step 2 - Base configuration",
+    selectCountry: "Step 3 - Country",
+    quoteResults: "3-Tier Quotation Result",
+    quoteResultsTitle: "Commercial Quotation System",
+    quoteResultsSubtitle: "A polished quotation experience designed for fast B2B follow-up across global projects.",
+    quoteSummary: "Quote Summary",
+    configurationLabel: "Configuration",
+    destinationLabel: "Destination",
+    salesActions: "Sales Actions",
+    salesAssistant: "Sales Assistant",
+    copyText: "Copy Text",
+    downloadPdf: "Download PDF",
+    email: "Email",
+    englishMessage: "English message",
+    chineseMessage: "Chinese message",
+    copyButton: "Copy",
+    selectButton: "Select",
+    quoteBreakdown: "CIF Breakdown",
+    quoteBreakdownHint: "Transparent split",
+    itemLabel: "Item",
+    amountLabel: "Amount",
+    deliveryLabel: "Delivery",
+    adminTitle: "LFADJ Admin Pricing Control V6.2",
+    adminSubtitle: "Safe rendering mode for the admin pricing page.",
+    solarBaseCost: "Solar Base Cost",
+    dieselBaseCost: "Diesel Base Cost",
+    freight: "Freight",
+    exchangeRate: "Exchange Rate",
+    savePricing: "Save Pricing",
+    copyEnglish: "Copy English quote text",
+    copyChinese: "Copy Chinese quote text",
+    translate: "One-click translation",
+    whatsapp: "WhatsApp-ready message",
+    export: "Export bilingual summary",
+    loading: "Loading quote results...",
+    contactBlock: "Contact block",
+    productSpec: "Product spec",
+    shippingTerms: "Shipping terms",
+    tierPricing: "3-tier pricing",
+    quoteSummaryHeading: "Bilingual quote summary",
+    quoteText: "Quote text",
+    translationTool: "Business Translation Tool",
+    translationInput: "Enter English or Chinese text",
+    translationOutput: "Translated output",
+    switchToCn: "EN → CN",
+    switchToEn: "CN → EN",
+  },
+  zh: {
+    appTitle: "LFADJ Sales OS V5",
+    pageSubtitle: "选择产品、配置和目标国家，以生成经济型、标准型和高配型报价。",
+    product: "产品",
+    solar: "太阳能",
+    diesel: "柴油",
+    solarDescription: "太阳能照明塔",
+    dieselDescription: "柴油照明塔",
+    configuration: "配置",
+    mastHeight: "灯杆高度",
+    lights: "灯数量",
+    battery: "电池数量",
+    country: "国家",
+    submit: "生成三档报价",
+    economy: "经济型",
+    standard: "标准型",
+    premium: "高配型",
+    recommended: "推荐",
+    exw: "EXW",
+    fob: "FOB",
+    cif: "CIF",
+    configurationTitle: "配置",
+    selectProduct: "步骤 1 - 产品",
+    selectConfig: "步骤 2 - 基础配置",
+    selectCountry: "步骤 3 - 国家",
+    quoteResults: "三档报价结果",
+    quoteResultsTitle: "商业报价系统",
+    quoteResultsSubtitle: "为海外项目提供清晰、专业、可快速分享的多档报价体验。",
+    quoteSummary: "报价摘要",
+    configurationLabel: "配置",
+    destinationLabel: "交付区域",
+    salesActions: "销售动作",
+    salesAssistant: "销售助手",
+    copyText: "复制正文",
+    downloadPdf: "下载 PDF",
+    email: "邮件",
+    englishMessage: "英文消息",
+    chineseMessage: "中文消息",
+    copyButton: "复制",
+    selectButton: "选择",
+    quoteBreakdown: "CIF 明细",
+    quoteBreakdownHint: "透明拆分",
+    itemLabel: "项目",
+    amountLabel: "金额",
+    deliveryLabel: "交货时间",
+    adminTitle: "后台定价控制系统 V6.2",
+    adminSubtitle: "后台定价页面的安全渲染模式。",
+    solarBaseCost: "太阳能基础成本",
+    dieselBaseCost: "柴油基础成本",
+    freight: "海运费用",
+    exchangeRate: "汇率",
+    savePricing: "保存价格",
+    copyEnglish: "复制英文报价文本",
+    copyChinese: "复制中文报价文本",
+    translate: "一键翻译",
+    whatsapp: "WhatsApp 消息格式",
+    export: "导出双语摘要",
+    loading: "正在加载报价结果...",
+    contactBlock: "联系信息",
+    productSpec: "产品规格",
+    shippingTerms: "运输条款",
+    tierPricing: "三档价格",
+    quoteSummaryHeading: "双语报价摘要",
+    quoteText: "报价文本",
+    translationTool: "商务翻译工具",
+    translationInput: "请输入英文或中文文本",
+    translationOutput: "翻译结果",
+    switchToCn: "EN → CN",
+    switchToEn: "CN → EN",
+  },
+};
+
+export function t(locale: Locale, key: keyof typeof i18n.en) {
+  return i18n[locale][key];
+}

@@ -1,0 +1,27 @@
+{
+  "name": "ai-usage-status-bar",
+  "displayName": "AI Usage Status Bar",
+  "description": "Shows static AI usage metrics in the VS Code status bar.",
+  "version": "0.0.1",
+  "publisher": "lfadj",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.9.3",
+    "vscode": "^1.1.37"
+  }
+}

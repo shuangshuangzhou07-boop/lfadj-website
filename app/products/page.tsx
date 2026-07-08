@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { ConversionFlow } from "../conversion-flow";
 import { SiteNav } from "../site-nav";
+import { allProducts } from "@/src/product-data";
 
 export const metadata: Metadata = {
   title: "Lighting Tower | LFADJ",
   description:
-    "Lighting tower product hub for diesel, LED, portable, solar and battery mobile light tower categories.",
+    "Industrial light tower product hub for diesel, portable and mining application categories.",
   alternates: {
     canonical: "https://lfadj.com/products",
   },
@@ -17,14 +18,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
-const categories = [
-  { label: "Diesel Light Tower", href: "/products/diesel-light-tower" },
-  { label: "LED Light Tower", href: "/products/led-light-tower" },
-  { label: "Portable Light Tower", href: "/products/portable-light-tower" },
-  { label: "Solar Light Tower", href: "/products/solar-light-tower" },
-  { label: "Battery Light Tower", href: "/products/battery-light-tower" },
-];
 
 export default function ProductsPage() {
   return (
@@ -47,11 +40,14 @@ export default function ProductsPage() {
             <a href="/products/lf6130" className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-bold text-blue-700">
               Diesel Light Tower
             </a>
-            <a href="/products/lf6130" className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-bold text-blue-700">
-              LED Light Tower
+            <a href="/light-towers/portable-light-tower" className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-bold text-blue-700">
+              Portable Light Tower
             </a>
             <a href="/applications" className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-gray-700">
               Mobile Light Tower
+            </a>
+            <a href="/products/lf955" className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-gray-700">
+              LF955 Conversion Page
             </a>
             <a href="/oem" className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-gray-700">
               Lighting Tower Manufacturer
@@ -71,45 +67,21 @@ export default function ProductsPage() {
 
       <section className="border-y border-gray-100 bg-gray-50 px-6 py-20">
         <div className="mx-auto max-w-[1200px]">
-          <article className="grid overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:grid-cols-[0.9fr_1.1fr]">
-            <div className="aspect-square overflow-hidden rounded-2xl border border-gray-200 bg-white p-6">
-              <img
-                src="/images/products/lf6130.png"
-                alt="LED mobile lighting tower"
-                className="h-full w-full object-contain drop-shadow-sm"
-              />
-            </div>
-            <div className="flex flex-col justify-center p-0 pt-6 md:p-8">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
-                LF6130
-              </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-black">
-                LF6130 Hydraulic Mobile Light Tower
-              </h2>
-              <p className="mt-5 text-base leading-7 text-gray-600">
-                A diesel and LED mobile lighting tower for construction sites,
-                mining operations, emergency rescue and equipment rental use.
-              </p>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {allProducts.map((product) => (
               <a
-                href="/products/lf6130"
-                className="mt-8 inline-flex h-12 w-full items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-700 sm:w-44"
-              >
-                Diesel Light Tower
-              </a>
-            </div>
-          </article>
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {categories.map((category) => (
-              <a
-                key={category.href}
-                href={category.href}
+                key={product.slug}
+                href={`/products/${product.slug}`}
                 className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
               >
-                <h2 className="text-lg font-bold text-black">{category.label}</h2>
+                <p className="text-xs font-bold uppercase tracking-wide text-blue-600">
+                  {product.category}
+                </p>
+                <h2 className="mt-3 text-lg font-bold text-black">
+                  {product.name}
+                </h2>
                 <p className="mt-4 text-sm leading-6 text-gray-600">
-                  Industrial lighting category for temporary worksite visibility,
-                  mobile deployment and project support.
+                  {product.subtitle}
                 </p>
               </a>
             ))}

@@ -1,0 +1,43 @@
+const http = require("http");
+
+const routes = [
+  "http://localhost:3000/",
+  "http://localhost:3000/en",
+  "http://localhost:3000/products",
+];
+
+function check(url) {
+  return new Promise((resolve) => {
+    http.get(url, (res) => {
+      resolve({
+        url,
+        status: res.statusCode,
+        ok: res.statusCode === 200,
+      });
+    }).on("error", () => {
+      resolve({
+        url,
+        status: "ERROR",
+        ok: false,
+      });
+    });
+  });
+}
+
+async function run() {
+  console.log("\nLFADJ V4.2 HEALTH CHECK\n");
+
+  for (let r of routes) {
+    const result = await check(r);
+
+    if (result.ok) {
+      console.log("🟢 OK   ", result.url);
+    } else {
+      console.log("🔴 FAIL ", result.url);
+    }
+  }
+
+  console.log("\nDONE\n");
+}
+
+run();

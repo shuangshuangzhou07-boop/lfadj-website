@@ -1,0 +1,58 @@
+const toBeConfirmed = "To be confirmed";
+
+export const productTemplate = {
+  slug: toBeConfirmed,
+  model: toBeConfirmed,
+  productName: toBeConfirmed,
+  category: toBeConfirmed,
+  seo: {
+    title: toBeConfirmed,
+    description: toBeConfirmed,
+    keywords: [toBeConfirmed],
+  },
+  hero: {
+    title: toBeConfirmed,
+    subtitle: toBeConfirmed,
+    image: toBeConfirmed,
+  },
+  coreSpecs: {
+    model: toBeConfirmed,
+    productType: toBeConfirmed,
+    lamp: toBeConfirmed,
+    engine: toBeConfirmed,
+    mastHeight: toBeConfirmed,
+    mastType: toBeConfirmed,
+    protection: toBeConfirmed,
+    runtime: toBeConfirmed,
+    voltage: toBeConfirmed,
+  },
+  technicalSpecs: [
+    { label: "Model", value: toBeConfirmed },
+    { label: "Product type", value: toBeConfirmed },
+    { label: "Lamp", value: toBeConfirmed },
+    { label: "Engine", value: toBeConfirmed },
+    { label: "Mast height", value: toBeConfirmed },
+    { label: "Mast type", value: toBeConfirmed },
+    { label: "Protection", value: toBeConfirmed },
+    { label: "Runtime", value: toBeConfirmed },
+    { label: "Voltage", value: toBeConfirmed },
+  ],
+  features: [toBeConfirmed],
+  applications: [toBeConfirmed],
+  images: {
+    hero: toBeConfirmed,
+    gallery: [toBeConfirmed],
+  },
+  documents: {
+    catalog: toBeConfirmed,
+    datasheet: toBeConfirmed,
+  },
+  sourcePath: toBeConfirmed,
+  dataStatus: {
+    source: "SSOT referenced by website read layer",
+    status: toBeConfirmed,
+    missingValueRule: toBeConfirmed,
+  },
+} as const;
+
+export default productTemplate;

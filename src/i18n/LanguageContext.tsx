@@ -22,6 +22,14 @@ const pathMap: Record<string, { en: string; zh: string }> = {
     en: "/en/products/lf6130",
     zh: "/zh/products/lf6130",
   },
+  "/en/products/lf955": {
+    en: "/en/products/lf955",
+    zh: "/zh/products/lf955",
+  },
+  "/products/lf955": {
+    en: "/en/products/lf955",
+    zh: "/zh/products/lf955",
+  },
   "/en/applications": { en: "/en/applications", zh: "/zh/应用场景" },
   "/en/solutions": { en: "/en/solutions", zh: "/zh/解决方案" },
   "/en/oem": { en: "/en/oem", zh: "/zh/oem制造" },
@@ -34,6 +42,10 @@ const pathMap: Record<string, { en: string; zh: string }> = {
   "/zh/products/lf6130": {
     en: "/en/products/lf6130",
     zh: "/zh/products/lf6130",
+  },
+  "/zh/products/lf955": {
+    en: "/en/products/lf955",
+    zh: "/zh/products/lf955",
   },
   "/zh/应用场景": { en: "/en/applications", zh: "/zh/应用场景" },
   "/zh/解决方案": { en: "/en/solutions", zh: "/zh/解决方案" },

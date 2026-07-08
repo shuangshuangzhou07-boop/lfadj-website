@@ -1,6 +1,8 @@
-import { getProduct } from "@/src/os/product-engine/product.loader";
-import { ProductTemplate } from "@/src/os/product-engine/template/ProductTemplate";
-import { generateSEO } from "@/src/os/seo-engine/seo.generator";
+import {
+  LFProductTemplate,
+  generateProductMetadata,
+} from "@/src/product-template/LFProductTemplate";
+import { loadProductData } from "@/src/product-data/productLoader";
 
 export const dynamicParams = true;
 
@@ -10,8 +12,8 @@ type ProductRouteProps = {
   };
 };
 
-export function generateMetadata({ params }: ProductRouteProps) {
-  const product = getProduct(params.slug);
+export async function generateMetadata({ params }: ProductRouteProps) {
+  const product = await loadProductData(params.slug);
 
   if (!product) {
     return {
@@ -20,22 +22,23 @@ export function generateMetadata({ params }: ProductRouteProps) {
     };
   }
 
-  return generateSEO(product);
+  return generateProductMetadata(product);
 }
 
-export default function OSProductBridgePage({ params }: ProductRouteProps) {
-  const product = getProduct(params.slug);
+export default async function ProductFactoryPage({ params }: ProductRouteProps) {
+  const product = await loadProductData(params.slug);
 
   if (!product) {
     return (
       <main className="bg-white px-6 py-24">
         <div className="mx-auto max-w-[1200px] rounded-2xl border border-gray-200 bg-gray-50 p-8">
           <h1 className="text-3xl font-bold text-black">
-            Product Not Found - LFADJ Lighting Solutions
+            Product Not Found
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600">
-            The requested product is not available. Please contact LFADJ for
-            mobile light tower specifications, OEM support and quotation help.
+            Product Not Found - LFADJ Lighting Solutions. Please contact LFADJ
+            for mobile light tower specifications, OEM support and quotation
+            help.
           </p>
           <a
             href="/contact"
@@ -48,5 +51,5 @@ export default function OSProductBridgePage({ params }: ProductRouteProps) {
     );
   }
 
-  return <ProductTemplate product={product} />;
+  return <LFProductTemplate product={product} />;
 }
