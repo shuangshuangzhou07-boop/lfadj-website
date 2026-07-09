@@ -1,8 +1,8 @@
 {
   "name": "ai-usage-status-bar",
   "displayName": "AI Usage Status Bar",
-  "description": "Shows static AI usage metrics in the VS Code status bar.",
-  "version": "0.0.1",
+  "description": "Shows AI usage data-source status in the VS Code status bar.",
+  "version": "0.0.2",
   "publisher": "lfadj",
   "engines": {
     "vscode": "^1.90.0"

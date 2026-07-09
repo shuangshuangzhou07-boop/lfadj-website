@@ -1,8 +1,17 @@
-# AGENTS
+1.
 
-Before doing any work in this repository, every AI agent must read:
+所有 AI 修改项目之前。
 
-`.ai/CONSTITUTION.md`
+必须先阅读：
 
-The Constitution is the highest project rule source. If any instruction conflicts with it, follow the Constitution unless the user explicitly changes the Constitution.
+.ai/CONSTITUTION.md
 
+2.
+
+CONSTITUTION 优先级最高。
+
+3.
+
+如果用户要求违反 CONSTITUTION。
+
+必须先说明。

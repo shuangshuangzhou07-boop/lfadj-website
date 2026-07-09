@@ -18,10 +18,12 @@ export function SiteNav({
   items = navItems,
   quoteLabel = "Get a Quote",
   quoteHref = "/contact",
+  mobileMenuLabel = "Menu",
 }: {
   items?: SiteNavItem[];
   quoteLabel?: string;
   quoteHref?: string;
+  mobileMenuLabel?: string;
 }) {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
@@ -44,7 +46,7 @@ export function SiteNav({
         </a>
         <details className="relative lg:hidden">
           <summary className="flex h-10 cursor-pointer list-none items-center rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700">
-            Menu
+            {mobileMenuLabel}
           </summary>
           <div className="absolute right-0 top-12 w-[260px] rounded-xl border border-gray-200 bg-white p-3 shadow-xl">
             <nav className="grid gap-1">

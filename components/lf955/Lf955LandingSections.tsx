@@ -1,12 +1,13 @@
 type HeroSectionProps = {
   eyebrow?: string;
   title: string;
+  headlineSupport?: string;
   productName?: string;
   subtitle: string;
-  summary: string;
+  summary?: string;
   primaryCta: string;
   primaryHref?: string;
-  secondaryCta: string;
+  secondaryCta?: string;
   secondaryHref?: string;
   tertiaryCta?: string;
   tertiaryHref?: string;
@@ -16,6 +17,7 @@ type HeroSectionProps = {
   trustLogos?: string[];
   imageSrc: string;
   imageAlt: string;
+  featuredMedia?: boolean;
 };
 
 type ProblemCard = {
@@ -27,7 +29,19 @@ type ProblemCard = {
 
 type CostLossCard = {
   title: string;
-  items: string[];
+  problem: string;
+  solution: string;
+};
+
+type CoreConfigurationItem = {
+  label: string;
+  value: string;
+};
+
+type ManufacturingProcessStep = {
+  title: string;
+  image: string;
+  imageAlt: string;
 };
 
 type SolutionModule = {
@@ -131,6 +145,7 @@ type FinalCtaProps = {
 export function HeroSection({
   eyebrow = "Mobile Lighting Solutions",
   title,
+  headlineSupport,
   productName,
   subtitle,
   summary,
@@ -144,25 +159,27 @@ export function HeroSection({
   trustLogos,
   imageSrc,
   imageAlt,
+  featuredMedia = false,
 }: HeroSectionProps) {
   const badges = valueBadges ?? trustBadges ?? [];
   const logos = trustLogos ?? ["ISO9001", "ISO14001", "ISO45001", "CE", "Export to 60+ Countries"];
 
   return (
     <section className="relative isolate overflow-hidden bg-[linear-gradient(115deg,_#0B1220_0%,_#111A29_48%,_#1B2432_100%)]">
-      <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1440px] flex-col px-6 pt-16 sm:px-8 lg:min-h-[880px] lg:px-12 lg:pt-20">
-        <div className="grid flex-1 gap-12 lg:grid-cols-[42%_58%] lg:items-center lg:gap-12">
-          <div className="max-w-[640px] lg:pb-10">
+      <div className={`relative z-10 mx-auto flex min-h-[760px] flex-col px-6 pt-16 sm:px-8 lg:px-12 lg:pt-20 ${featuredMedia ? "max-w-[1540px] lg:min-h-[900px]" : "max-w-[1440px] lg:min-h-[880px]"}`}>
+        <div className={`grid flex-1 gap-12 lg:items-center ${featuredMedia ? "lg:grid-cols-[38%_62%] lg:gap-12" : "lg:grid-cols-[42%_58%] lg:gap-12"}`}>
+          <div className={`lg:pb-10 ${featuredMedia ? "max-w-[570px]" : "max-w-[640px]"}`}>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-300">{eyebrow}</p>
             <h1 className="mt-7 max-w-3xl whitespace-pre-line text-4xl font-bold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-[56px]">
               {title}
             </h1>
+            {headlineSupport ? <p className="mt-5 text-lg font-semibold leading-8 text-white sm:text-xl">{headlineSupport}</p> : null}
             {productName ? <p className="mt-7 text-xl font-semibold leading-8 text-amber-300 sm:text-2xl">{productName}</p> : null}
             <p className="mt-8 max-w-2xl whitespace-pre-line text-base font-medium leading-8 text-slate-200 sm:text-lg">{subtitle}</p>
-            <p className="mt-5 max-w-2xl text-base font-medium leading-8 text-slate-300">{summary}</p>
+            {summary ? <p className="mt-4 max-w-2xl text-base font-medium leading-8 text-slate-300">{summary}</p> : null}
 
             {badges.length ? (
-              <div className="mt-10 flex flex-wrap gap-3">
+              <div className="mt-9 flex flex-wrap gap-3">
                 {badges.map((badge) => (
                   <div key={badge} className="flex items-center gap-2 rounded-md border border-white/15 bg-white/[0.04] px-4 py-2.5 text-sm font-semibold text-slate-200">
                     <span className="text-xs text-slate-300">✓</span>
@@ -172,20 +189,25 @@ export function HeroSection({
               </div>
             ) : null}
 
-            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <div className="mt-11 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <a href={primaryHref} className="inline-flex h-[56px] min-h-[56px] items-center justify-center rounded-md bg-amber-500 px-9 text-base font-semibold text-slate-950 shadow-[0_16px_34px_rgba(245,158,11,0.24)] transition duration-300 hover:bg-amber-400">
                 {primaryCta}
               </a>
-              <a href={secondaryHref} className="inline-flex h-[56px] min-h-[56px] items-center justify-center rounded-md border border-white/25 bg-white/[0.02] px-9 text-base font-semibold text-slate-200 transition duration-300 hover:border-white/45 hover:bg-white/[0.055] hover:text-white">
-                {secondaryCta}
-              </a>
+              {secondaryCta ? (
+                <a href={secondaryHref} className="inline-flex h-[56px] min-h-[56px] items-center justify-center rounded-md border border-white/25 bg-white/[0.02] px-9 text-base font-semibold text-slate-200 transition duration-300 hover:border-white/45 hover:bg-white/[0.055] hover:text-white">
+                  {secondaryCta}
+                </a>
+              ) : null}
             </div>
           </div>
 
-          <div className="relative min-h-[360px] overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-[0_28px_70px_rgba(0,0,0,0.36)] sm:min-h-[480px] lg:min-h-[620px]">
+          <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900 ${featuredMedia ? "min-h-[420px] shadow-[0_34px_90px_rgba(0,0,0,0.48)] sm:min-h-[540px] lg:min-h-[720px] lg:translate-y-2" : "min-h-[360px] shadow-[0_28px_70px_rgba(0,0,0,0.36)] sm:min-h-[480px] lg:min-h-[620px]"}`}>
             <img src={imageSrc} alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/35 to-slate-950/10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/20 to-transparent" />
+            <div className={`absolute inset-0 ${featuredMedia ? "bg-gradient-to-r from-slate-950/58 via-slate-950/22 to-slate-950/5" : "bg-gradient-to-r from-slate-950/65 via-slate-950/35 to-slate-950/10"}`} />
+            <div className={`absolute inset-0 ${featuredMedia ? "bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-slate-950/25" : "bg-gradient-to-t from-slate-950/60 via-slate-950/20 to-transparent"}`} />
+            {featuredMedia ? (
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_24%,rgba(251,191,36,0.20),transparent_26%),radial-gradient(circle_at_82%_68%,rgba(255,255,255,0.10),transparent_22%),radial-gradient(ellipse_at_center,transparent_44%,rgba(2,6,23,0.34)_100%)]" />
+            ) : null}
           </div>
         </div>
         <div className="border-t border-slate-900/[0.08] py-8">
@@ -207,26 +229,22 @@ export function ProjectCostLossSection({
   title,
   subtitle,
   cards,
-  closingText,
-  transitionText,
-  ctaLabel,
-  ctaHref,
+  problemLabel,
+  solutionLabel,
+  emphasisText,
 }: {
   title: string;
   subtitle: string;
   cards: CostLossCard[];
-  closingText: string;
-  transitionText: string;
-  ctaLabel: string;
-  ctaHref: string;
+  problemLabel: string;
+  solutionLabel: string;
+  emphasisText: string;
 }) {
   return (
     <section className="bg-slate-50 px-6 py-20 text-slate-950 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
-          <div className="max-w-3xl">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
-          </div>
+          <h2 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
           <p className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg lg:justify-self-end">{subtitle}</p>
         </div>
 
@@ -239,30 +257,204 @@ export function ProjectCostLossSection({
                 </span>
                 <h3 className="pt-1 text-xl font-semibold tracking-tight text-slate-950">{card.title}</h3>
               </div>
-              <ul className="mt-6 space-y-3 text-sm leading-6 text-slate-600">
-                {card.items.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{problemLabel}</p>
+                <p className="mt-2 text-sm leading-7 text-slate-600">{card.problem}</p>
+              </div>
+              <div className="mt-6 border-t border-slate-200 pt-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">{solutionLabel}</p>
+                <p className="mt-2 text-sm font-medium leading-7 text-slate-800">
+                  {card.solution}
+                </p>
+              </div>
             </article>
           ))}
         </div>
 
-        <p className="mt-10 max-w-4xl border-l-4 border-amber-500 bg-white px-6 py-5 text-base font-medium leading-8 text-slate-700 shadow-sm">
-          {closingText}
+        <p className="mt-10 border-l-4 border-amber-500 bg-white px-6 py-5 text-base font-semibold leading-8 text-slate-800 shadow-sm sm:text-lg">
+          {emphasisText}
         </p>
+      </div>
+    </section>
+  );
+}
 
-        <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white px-6 py-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-3xl text-base leading-7 text-slate-700">{transitionText}</p>
-          <a
-            href={ctaHref}
-            className="inline-flex shrink-0 items-center justify-center rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-900"
-          >
-            {ctaLabel}
-          </a>
+export function LF955ConfigurationManufacturingSection({
+  title,
+  subtitle,
+  configurationTitle,
+  configuration,
+  videoTitle,
+  videoLabel,
+  videoSrc,
+  processTitle,
+  processSteps,
+}: {
+  title: string;
+  subtitle: string;
+  configurationTitle: string;
+  configuration: CoreConfigurationItem[];
+  videoTitle: string;
+  videoLabel: string;
+  videoSrc: string;
+  processTitle: string;
+  processSteps: ManufacturingProcessStep[];
+}) {
+  return (
+    <section className="bg-white px-6 py-20 text-slate-950 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
+          <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">{subtitle}</p>
+        </div>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm sm:p-8">
+            <h3 className="text-2xl font-semibold tracking-tight">{configurationTitle}</h3>
+            <dl className="mt-6 divide-y divide-slate-200">
+              {configuration.map((item) => (
+                <div key={item.label} className="grid gap-1 py-4 sm:grid-cols-[140px_1fr] sm:gap-5">
+                  <dt className="text-sm font-semibold text-slate-950">{item.label}</dt>
+                  <dd className="text-sm leading-6 text-slate-600">{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-sm">
+            <div className="px-6 py-5 sm:px-8">
+              <h3 className="text-2xl font-semibold tracking-tight text-white">{videoTitle}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-300">{videoLabel}</p>
+            </div>
+            <video controls preload="metadata" className="aspect-video w-full bg-black" aria-label={videoLabel}>
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <div className="mt-14">
+          <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">{processTitle}</h3>
+          <ol className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((step, index) => (
+              <li key={step.title} className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
+                <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
+                  <img src={step.image} alt={step.imageAlt} loading="lazy" className="h-full w-full object-cover" />
+                  <span className="absolute left-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-xs font-semibold text-white">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <div className="px-5 py-4">
+                  <p className="font-semibold text-slate-950">{step.title}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function LF955ProjectInquirySection({
+  title,
+  subtitle,
+  fieldLabels,
+  environmentOptions,
+  submitLabel,
+  contactTitle,
+  contactText,
+  contactItems,
+  trustText,
+}: {
+  title: string;
+  subtitle: string;
+  fieldLabels: {
+    name: string;
+    contact: string;
+    country: string;
+    industry: string;
+    environment: string;
+    quantity: string;
+    message: string;
+  };
+  environmentOptions: string[];
+  submitLabel: string;
+  contactTitle: string;
+  contactText: string;
+  contactItems: string[];
+  trustText: string;
+}) {
+  const inputClassName =
+    "mt-2 h-12 w-full rounded-xl border border-slate-300 bg-white px-4 text-sm text-slate-950 outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-500/15";
+
+  return (
+    <section id="project-environment-inquiry" className="bg-slate-50 px-6 py-20 text-slate-950 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
+          <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">{subtitle}</p>
+        </div>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+          <form className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="block">
+                <span className="text-sm font-semibold text-slate-800">{fieldLabels.name}</span>
+                <input required name="name" autoComplete="name" className={inputClassName} />
+              </label>
+              <label className="block">
+                <span className="text-sm font-semibold text-slate-800">{fieldLabels.contact}</span>
+                <input required name="contact" autoComplete="email" className={inputClassName} />
+              </label>
+              <label className="block">
+                <span className="text-sm font-semibold text-slate-800">{fieldLabels.country}</span>
+                <input required name="country" autoComplete="country-name" className={inputClassName} />
+              </label>
+              <label className="block">
+                <span className="text-sm font-semibold text-slate-800">{fieldLabels.industry}</span>
+                <input required name="industry" className={inputClassName} />
+              </label>
+              <label className="block">
+                <span className="text-sm font-semibold text-slate-800">{fieldLabels.environment}</span>
+                <select required name="workingEnvironment" defaultValue="" className={inputClassName}>
+                  <option value="" disabled>
+                    {fieldLabels.environment}
+                  </option>
+                  {environmentOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="block">
+                <span className="text-sm font-semibold text-slate-800">{fieldLabels.quantity}</span>
+                <input required name="quantity" type="number" min="1" inputMode="numeric" className={inputClassName} />
+              </label>
+              <label className="block sm:col-span-2">
+                <span className="text-sm font-semibold text-slate-800">{fieldLabels.message}</span>
+                <textarea required name="message" rows={5} className={`${inputClassName} h-auto py-3`} />
+              </label>
+            </div>
+            <button type="submit" className="mt-6 inline-flex h-12 items-center justify-center rounded-full bg-amber-500 px-7 text-sm font-semibold text-slate-950 transition hover:bg-amber-400">
+              {submitLabel}
+            </button>
+          </form>
+
+          <aside className="rounded-2xl bg-slate-950 p-6 text-white shadow-sm sm:p-8">
+            <h3 className="text-2xl font-semibold tracking-tight">{contactTitle}</h3>
+            <p className="mt-4 text-base leading-8 text-slate-300">{contactText}</p>
+            <ul className="mt-8 space-y-3">
+              {contactItems.map((item) => (
+                <li key={item} className="rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-slate-100">
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 border-l-4 border-amber-400 bg-white/[0.05] px-4 py-4 text-sm font-semibold leading-7 text-amber-200">
+              {trustText}
+            </p>
+          </aside>
         </div>
       </div>
     </section>

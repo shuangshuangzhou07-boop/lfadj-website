@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import {
-  ApplicationEngineeringSection,
-  FinalConversionCTA,
   HeroSection,
-  IndustryComparisonSection,
-  ManufacturingProofSection,
-  ProblemEngineeringSection,
-  ProductConfigurationSection,
+  LF955ConfigurationManufacturingSection,
+  LF955ProjectInquirySection,
   ProjectCostLossSection,
-  ProjectRoiEngineeringSection,
 } from "@/components/lf955/Lf955LandingSections";
 import { SiteNav } from "../../../site-nav";
 
@@ -72,131 +66,134 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
   const lang = params.lang;
   const zh = lang === "zh";
 
-  const hero = zh
-    ? {
-        title: "7.5米液压柴油移动照明灯塔",
-        subtitle: "适用于施工、矿山、租赁和应急项目的工业级移动照明解决方案，支持 OEM 定制、FOB/CIF 报价和出口项目配置。",
-        summary: "LF955 配置 Kubota 柴油发动机、120L 大油箱、4×400W LED 灯组和液压升降灯杆，适合高温、粉尘和离网工况。",
-        primary: "获取报价",
-        secondary: "下载技术参数",
-        tertiary: "WhatsApp 联系工程师",
-      }
-    : {
-        title: "LF955 Mobile Light Tower for High-Risk Construction Sites",
-        subtitle: "99.9% uptime reliability. Extreme environment ready for 45C+, dust and mining sites. Built for rental and industrial projects.",
-        summary: "Built for contractors, rental companies, and industrial operators who cannot afford downtime.",
-        primary: "Get Quote in 2 Hours",
-        secondary: "WhatsApp Engineer",
-        tertiary: "Download Technical Sheet",
-      };
-
   const heroV7 = zh
     ? {
         eyebrow: "移动照明工程解决方案",
-        title: "为您的项目环境，定制真正合适的移动照明解决方案",
+        title: "LF955 7.5米液压柴油移动照明灯塔",
+        headlineSupport: "围绕您的真实项目环境打造",
         productName: undefined,
-        subtitle: "不同项目，有不同施工环境。\n不同工况，需要不同照明方案。",
-        summary: "LFADJ 根据施工环境、工作时间和供电需求，推荐更适合的移动照明配置方案，帮助减少停机、降低维护并提升连续施工能力。",
-        primary: "获取项目配置建议",
-        secondary: "下载产品资料",
-        valueBadges: ["复杂工况", "减少停机", "降低维护"],
+        subtitle: "我们不是只卖标准灯塔，而是根据您的真实项目使用环境，定制适合的柴油移动照明灯塔方案。",
+        summary: undefined,
+        primary: "获取我的项目方案",
+        secondary: undefined,
+        valueBadges: ["高光效 LED 照明", "7–9米升降灯杆", "国际品牌动力", "项目定制配置"],
         trustedLabel: "工程支持",
         trustLogos: ["施工现场", "矿山项目", "油气工程"],
       }
     : {
         eyebrow: "Mobile Lighting Engineering Solution",
-        title: "Built Around Your Project Environment",
-        productName: "LF955 Mobile Light Tower Configuration Support",
-        subtitle: "Every country, project and operating condition is different. We recommend the right mobile lighting configuration based on your site environment, climate, working hours and power requirements — helping reduce downtime, lower maintenance costs and improve project continuity.",
-        summary: "Built for mobile light tower selection, construction site lighting, mining light tower projects, diesel light tower fleets, temporary lighting solution planning and harsh environment lighting.",
-        primary: "Request Engineering Recommendation",
-        secondary: "View LF955 Configuration",
-        valueBadges: ["Harsh Environment", "Reduce Downtime", "Lower Maintenance"],
+        title: "LF955 7.5m Hydraulic Diesel Mobile Light Tower",
+        headlineSupport: "Built Around Your Real Project Environment",
+        productName: undefined,
+        subtitle: "We recommend the right diesel mobile light tower solution based on your real project environment — not just a standard product.",
+        summary: undefined,
+        primary: "Get My Project Solution",
+        secondary: undefined,
+        valueBadges: ["High-efficiency LED lighting", "7–9m lifting mast", "International brand engine", "Project-based configuration"],
         trustedLabel: "Engineering Support",
         trustLogos: ["Construction Sites", "Mining Projects", "Oil & Gas"],
       };
 
-  const roiCards = [
-    {
-      icon: "01",
-      title: zh ? "每日节省成本" : "Daily Cost Saved",
-      metricValue: "$2,100/day",
-      metricLabel: zh ? "避免的典型夜班延误损失" : "typical night delay exposure avoided",
-      comparisonLabel: zh ? "停机损失对比" : "Downtime Loss Comparison",
-      comparisonValue: zh ? "一个夜班停工造成的损失，往往高于一周照明运行成本。" : "One stopped night shift can cost more than a week of lighting operation.",
-      lines: zh
-        ? [
-            "保护摊铺、吊装、道路施工和设备进场窗口",
-            "减少人工等待、起重机待命和租赁设备浪费",
-            "在工期不能调整时，仍保持高风险作业可视化",
-          ]
-        : [
-            "Protect paving, lifting, roadwork and equipment staging windows",
-            "Reduce idle labor, crane standby and rented equipment waste",
-            "Keep high-risk work visible when the schedule cannot move",
-          ],
-      results: zh
-        ? ["LF955通常可在30-90天内回本，适用于典型施工项目。"]
-        : ["LF955 pays back within 30-90 days in typical construction projects."],
-    },
-  ];
-
   const costLossSection = zh
     ? {
-        title: "为什么项目会增加成本？",
-        subtitle: "很多项目的照明成本，并不是来自设备采购价，而是来自停机、维护、配置错误和恶劣工况带来的持续损耗。",
-        closingText: "如果这些问题没有在配置阶段解决，后续往往会变成更高的维护成本和停机风险。",
-        transitionText: "真正合适的移动照明方案，应该从项目环境开始设计，而不是从产品参数开始选择。",
-        ctaLabel: "了解我们的配置流程",
+        title: "为什么标准灯塔在真实项目中容易出问题？",
+        subtitle: "很多故障不是因为客户使用不当，而是因为配置没有匹配真实工作环境。",
+        emphasisText: "不同项目环境，需要不同的移动照明灯塔配置。",
         cards: [
           {
-            title: "设备停机",
-            items: ["工程停工", "工人等待", "机械闲置", "项目进度延误"],
+            title: "高温环境",
+            problem: "发动机过热、零部件寿命缩短、运行不稳定。",
+            solution: "加强散热设计，并根据负载重新匹配发动机功率，让移动照明方案在高温工况下保持稳定。",
           },
           {
-            title: "维护频繁",
-            items: ["空气滤芯堵塞", "散热器积灰", "维修次数增加", "人工维护成本上升"],
+            title: "沙漠与风沙环境",
+            problem: "滤芯堵塞、通风变差、维护频率增加。",
+            solution: "增加防尘保护、优化进气结构，并提供过滤配置。",
           },
           {
-            title: "配置选择错误",
-            items: ["机组功率不足", "发动机长期高负载", "油耗增加", "设备寿命缩短"],
+            title: "沿海与腐蚀环境",
+            problem: "车架腐蚀、螺栓生锈、电气系统故障。",
+            solution: "加厚镀锌、防腐喷塑，并加强电气密封。",
           },
           {
-            title: "恶劣工况影响",
-            items: ["高温", "风沙", "盐雾", "高海拔", "连续夜间施工"],
+            title: "高海拔环境",
+            problem: "动力下降、启动困难、照明性能不足。",
+            solution: "根据海拔和负载重新匹配发动机与发电机，形成适合现场的移动照明灯塔配置。",
           },
         ],
       }
     : {
-        title: "Why Projects Lose Money",
-        subtitle: "Many lighting costs do not come from the purchase price, but from downtime, frequent maintenance, wrong configuration and harsh operating environments.",
-        closingText: "If these issues are not solved during configuration, they often become higher maintenance costs and greater downtime risks later.",
-        transitionText: "The right mobile lighting solution should start from your project environment, not just from product specifications.",
-        ctaLabel: "See Our Configuration Process",
+        title: "Why Standard Light Towers Fail in Real Projects",
+        subtitle: "Most failures come from the wrong configuration for the working environment.",
+        emphasisText: "Different project environments need different light tower configurations.",
         cards: [
           {
-            title: "Equipment Downtime",
-            items: ["Work stoppage", "Workers waiting", "Idle machinery", "Project delay"],
+            title: "High Temperature",
+            problem: "Engine overheating, shorter component life, unstable performance.",
+            solution: "Improved cooling design and engine-load matching support a more reliable mobile lighting solution in high temperatures.",
           },
           {
-            title: "Frequent Maintenance",
-            items: ["Clogged air filters", "Dust on radiator", "More service visits", "Higher labor cost"],
+            title: "Desert & Dust",
+            problem: "Blocked filters, poor ventilation, frequent maintenance.",
+            solution: "Dust protection, better air intake, and filtration options.",
           },
           {
-            title: "Wrong Configuration",
-            items: [
-              "Insufficient generator capacity",
-              "Long-term high engine load",
-              "Higher fuel consumption",
-              "Shorter service life",
-            ],
+            title: "Coastal & Corrosive Areas",
+            problem: "Frame corrosion, rusty bolts, electrical failure.",
+            solution: "Thicker galvanizing, anti-corrosion coating, and sealed electrical parts.",
           },
           {
-            title: "Harsh Environment",
-            items: ["High temperature", "Heavy dust", "Salt mist", "High altitude", "Continuous night operation"],
+            title: "High Altitude",
+            problem: "Power drop, difficult starting, insufficient lighting performance.",
+            solution: "Engine and generator matching based on altitude and load creates the right light tower configuration for the site.",
           },
         ],
       };
+
+  const coreConfiguration = zh
+    ? [
+        { label: "灯杆高度", value: "7.5米液压升降灯杆" },
+        { label: "照明系统", value: "4 盏 LED 投光灯" },
+        { label: "动力系统", value: "国际品牌柴油发动机" },
+        { label: "发电系统", value: "匹配式发电机输出" },
+        { label: "拖车结构", value: "可移动拖挂式底盘" },
+        { label: "应用场景", value: "施工、矿山、租赁、应急照明" },
+      ]
+    : [
+        { label: "Mast height", value: "7.5m hydraulic lifting mast" },
+        { label: "Lighting", value: "4 × LED floodlights" },
+        { label: "Engine", value: "International brand diesel engine" },
+        { label: "Generator", value: "Matched generator output" },
+        { label: "Trailer", value: "Towable mobile trailer" },
+        { label: "Application", value: "Construction, mining, rental, emergency lighting" },
+      ];
+
+  const manufacturingProcess = (zh
+    ? [
+        ["切割", "/images/products/lf955/manufacturing/02-laser-cutting.png"],
+        ["折弯", "/images/products/lf955/manufacturing/03-bending.jpg"],
+        ["焊接", "/images/products/lf955/manufacturing/04-welding.jpg"],
+        ["打磨", "/images/products/lf955/manufacturing/05-打磨处理.jpg"],
+        ["喷塑", "/images/products/lf955/manufacturing/06-anti-corrosion-coating.jpg"],
+        ["接线", "/images/products/lf955/manufacturing/07-assembly.jpg"],
+        ["检测", "/images/products/lf955/manufacturing/08-testing.jpg"],
+        ["出货", "/images/products/lf955/manufacturing/10-shipping.jpg"],
+      ]
+    : [
+        ["Cutting", "/images/products/lf955/manufacturing/02-laser-cutting.png"],
+        ["Bending", "/images/products/lf955/manufacturing/03-bending.jpg"],
+        ["Welding", "/images/products/lf955/manufacturing/04-welding.jpg"],
+        ["Grinding", "/images/products/lf955/manufacturing/05-打磨处理.jpg"],
+        ["Powder coating", "/images/products/lf955/manufacturing/06-anti-corrosion-coating.jpg"],
+        ["Wiring", "/images/products/lf955/manufacturing/07-assembly.jpg"],
+        ["Testing", "/images/products/lf955/manufacturing/08-testing.jpg"],
+        ["Delivery", "/images/products/lf955/manufacturing/10-shipping.jpg"],
+      ]
+  ).map(([title, image]) => ({
+    title,
+    image,
+    imageAlt: zh ? `LF955 移动照明灯塔${title}生产工艺` : `LF955 mobile light tower ${title.toLowerCase()} process`,
+  }));
 
   const riskCards = zh
     ? [
@@ -210,7 +207,7 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
           title: "夜间施工安全风险",
           problem: "光束控制不足会在设备、物料流转和人员交叉点形成盲区。",
           impact: "商业影响：一次事故就可能停工、引发索赔并损害承包商信誉。",
-          solution: "大面积 LED 输出有助于提升夜间作业区的可视性和决策速度。",
+          solution: "大面积发光二极管照明有助于提升夜间作业区的可视性和决策速度。",
         },
         {
           title: "燃油效率风险",
@@ -220,7 +217,7 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
         },
         {
           title: "高温粉尘停机风险",
-          problem: "45°C+ 高温、矿区粉尘和偏远油田会快速暴露散热和过滤问题。",
+          problem: "超过45摄氏度的高温、矿区粉尘和偏远油田会快速暴露散热和过滤问题。",
           impact: "商业影响：非计划停机会中断高价值班次。",
           solution: "针对严苛环境的配置可帮助维持持续稳定运行。",
         },
@@ -330,10 +327,10 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
 
   const configGroups = zh
     ? [
-        { title: "发动机", options: "Kubota / Yanmar / Perkins", recommendation: "推荐用于重载矿山、租赁车队和需要持续稳定运行的偏远工业项目。" },
-        { title: "灯杆高度", options: "6m / 7.5m / 9m", recommendation: "推荐用于施工现场、运输道路和更大作业区，覆盖距离直接影响效率。" },
-        { title: "照明功率", options: "300W-1000W LED / Metal Halide", recommendation: "推荐给需要平衡油耗、亮度和现场安全的买家。" },
-        { title: "升降系统", options: "Manual / Hydraulic / Electric", recommendation: "推荐给需要更快展开和更少人工接触点的租赁车队与承包商。" },
+        { title: "发动机", options: "久保田 / 洋马 / 珀金斯", recommendation: "推荐用于重载矿山、租赁车队和需要持续稳定运行的偏远工业项目。" },
+        { title: "灯杆高度", options: "6米 / 7.5米 / 9米", recommendation: "推荐用于施工现场、运输道路和更大作业区，覆盖距离直接影响效率。" },
+        { title: "照明功率", options: "300瓦至1000瓦发光二极管灯 / 金属卤化物灯", recommendation: "推荐给需要平衡油耗、亮度和现场安全的买家。" },
+        { title: "升降系统", options: "手动 / 液压 / 电动", recommendation: "推荐给需要更快展开和更少人工接触点的租赁车队与承包商。" },
       ]
     : [
         { title: "Engine", options: "Kubota / Yanmar / Perkins", recommendation: "Recommended for heavy-duty mining operations, rental fleets and remote industrial projects that need predictable uptime." },
@@ -382,16 +379,10 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
 
   const faqItems = zh
     ? [
-        { q: "MOQ是多少？", a: "LF955 支持小批量试单，常规建议从 1 台样机或小批量订单开始，具体根据配置和目的港确认。" },
-        { q: "交货期多久？", a: "标准配置通常约 25-45 天，具体取决于发动机、灯具、液压系统和订单数量。" },
-        { q: "LF955 是否支持 OEM 定制？", a: "支持。可以根据客户需求定制颜色、品牌标识、灯具功率、灯杆高度、发动机品牌和包装方式。" },
-        { q: "可以出口到中东、澳大利亚和非洲吗？", a: "可以。LF955 适用于高温、粉尘、矿山、施工和租赁等场景，可根据不同国家项目要求调整配置。" },
-        { q: "是否提供技术资料和参数表？", a: "提供。客户可下载 LF955 参数表、产品手册、维护指南和 OEM 配置资料。" },
-        { q: "质保多久？", a: "常规质保期根据订单和配置确认，核心部件可提供备件支持和维护建议。" },
-        { q: "可以选择哪些发动机？", a: "可根据项目需求选择 Kubota、Yanmar、Perkins 或其他同等级发动机方案。" },
-        { q: "适合哪些使用场景？", a: "适用于道路施工、建筑工地、矿山、油气项目、租赁公司、应急抢修和夜间作业。" },
-        { q: "是否支持 FOB / CIF 报价？", a: "支持。可以根据客户目的港提供 FOB 或 CIF 报价方案。" },
-        { q: "如何获取报价？", a: "提交项目国家、数量、使用场景和配置需求后，LFADJ 工程师会整理方案并尽快回复。" },
+        { q: "起订量是多少？", a: "标准起订量为 1 台，并支持项目试单。" },
+        { q: "交货期多久？", a: "根据配置和目的国家不同，交货期为 15 至 30 天。" },
+        { q: "是否支持代工生产？", a: "支持品牌代工和项目定制。" },
+        { q: "LF955 是否适合高温和多尘环境？", a: "LF955 针对超过 45 摄氏度的高温和重度粉尘环境进行了优化。" },
       ]
     : [
         { q: "What is the MOQ?", a: "Standard MOQ is 1 unit, with project trial orders supported." },
@@ -399,44 +390,6 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
         { q: "Do you support OEM?", a: "OEM branding and project customization are supported." },
         { q: "Is LF955 suitable for hot and dusty environments?", a: "LF955 is optimized for 45C+ heat and dust-heavy environments." },
       ];
-
-  const technicalDocuments = [
-    {
-      title: "LF955 技术参数表",
-      description: "包含尺寸、功率、灯杆高度、油箱容量、重量和核心配置。",
-      button: "下载参数表",
-      href: "#lead-form",
-    },
-    {
-      title: "LF955 产品手册",
-      description: "适合采购和工程团队了解产品结构、应用场景和配置选择。",
-      button: "下载产品手册",
-      href: "#lead-form",
-    },
-    {
-      title: "维护与备件指南",
-      description: "帮助租赁公司和项目团队提前规划易损件、维护周期和现场服务。",
-      button: "下载维护指南",
-      href: "#lead-form",
-    },
-    {
-      title: "OEM 定制配置表",
-      description: "用于确认颜色、LOGO、灯具功率、发动机品牌、包装和运输需求。",
-      button: "获取OEM配置表",
-      href: "#lead-form",
-    },
-  ];
-
-  const trustPoints = [
-    "ISO9001 质量管理体系",
-    "ISO14001 环境管理体系",
-    "ISO45001 职业健康安全管理体系",
-    "支持 OEM / ODM 定制",
-    "支持 FOB / CIF 出口报价",
-    "适用于高温、粉尘、矿山和施工现场",
-    "提供技术参数、维护建议和备件支持",
-    "24小时内响应项目询盘",
-  ];
 
   return (
     <>
@@ -457,258 +410,97 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
         }
         quoteLabel={zh ? "获取报价" : "Get a Quote"}
         quoteHref={zh ? "/zh/联系我们" : "/contact"}
+        mobileMenuLabel={zh ? "菜单" : undefined}
       />
       <main className="bg-white text-slate-950">
         <HeroSection
           eyebrow={heroV7.eyebrow}
           title={heroV7.title}
+          headlineSupport={heroV7.headlineSupport}
           productName={heroV7.productName}
           subtitle={heroV7.subtitle}
           summary={heroV7.summary}
           primaryCta={heroV7.primary}
-          primaryHref="#lead-form"
+          primaryHref="#project-environment-inquiry"
           secondaryCta={heroV7.secondary}
           secondaryHref="#configuration"
           valueBadges={heroV7.valueBadges}
           trustedLabel={heroV7.trustedLabel}
           trustLogos={heroV7.trustLogos}
           imageSrc="/images/products/lf955/applications/road-construction.jpg"
-          imageAlt={zh ? "LF955 移动照明灯塔用于夜间施工现场照明" : "LF955 mobile light tower for night construction site lighting"}
+          imageAlt={zh ? "LF955 移动照明灯塔用于夜间施工现场照明" : "LF955 hydraulic diesel mobile light tower working at construction site"}
+          featuredMedia={false}
         />
 
         <ProjectCostLossSection
           title={costLossSection.title}
           subtitle={costLossSection.subtitle}
           cards={costLossSection.cards}
-          closingText={costLossSection.closingText}
-          transitionText={costLossSection.transitionText}
-          ctaLabel={costLossSection.ctaLabel}
-          ctaHref="#engineering-process"
+          problemLabel={zh ? "问题" : "Problem"}
+          solutionLabel={zh ? "LFADJ 方案" : "LFADJ Solution"}
+          emphasisText={costLossSection.emphasisText}
         />
 
-        <ProjectRoiEngineeringSection
-          eyebrow={zh ? "投资回报优先" : "ROI First"}
-          title={zh ? "先看回本，再决定是否采购" : "Know the Payback Before You Buy the Tower"}
-          subtitle={zh ? "LF955通常可在30-90天内回本，因为它能减少延误成本、保护租赁收入并提升夜班效率。" : "LF955 pays back within 30-90 days in typical construction projects by reducing delay cost, protecting rental revenue and improving night-shift productivity."}
-          comparisonHeader={zh ? "把节省、停机损失、租赁收益和效率放在同一层做决策" : "Daily savings, downtime loss comparison, rental yield and worksite efficiency in one decision layer"}
-          cards={roiCards}
-          primaryCta={hero.primary}
-          secondaryCta={zh ? undefined : hero.tertiary}
-          primaryHref="#final-cta"
-          secondaryHref="/downloads/LF955-Diesel-Light-Tower-Datasheet.pdf"
-          resultLabel={zh ? "结果" : "Result"}
-        />
-
-        <section className="bg-[#0B1220] px-6 py-20 text-white sm:px-8 lg:px-10">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="mb-6 text-3xl font-bold">{zh ? "停机成本" : "Cost of Failure"}</h2>
-            <p className="mb-10 text-gray-300">
-              {zh
-                ? "夜间施工照明失败带来的损失，远高于设备本身成本。LF955 设计目标：避免每一次停机事故。"
-                : "Night construction lighting failure causes losses far beyond the equipment cost. LF955 is designed to avoid every downtime incident."}
-            </p>
-            <div className="grid gap-6 md:grid-cols-3">
-              {failureCostCards.map((item) => (
-                <div key={item.title} className="rounded-xl bg-[#111A2E] p-6">
-                  <h3 className="text-xl font-semibold text-yellow-400">{item.title}</h3>
-                  <p className="mt-2 text-gray-400">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <ProblemEngineeringSection
-          eyebrow={zh ? "风险降低" : "Risk Reduction"}
-          title={zh ? "先处理会把照明变成业务损失的风险" : "Reduce the Four Risks That Turn Lighting Into a Business Loss"}
-          subtitle={zh ? "" : "This page is a decision system for buyers who need to prevent downtime, unsafe night work and uncontrolled operating cost."}
-          cards={riskCards}
-          labels={zh ? { problem: "问题", impact: "影响", solution: "LF955解决方案" } : undefined}
-          ctaLabel={zh ? null : "WhatsApp Engineer"}
-          ctaHref="https://wa.me/"
-        />
-
-        <ApplicationEngineeringSection
-          eyebrow={zh ? "行业场景" : "Industry Scenarios"}
-          title={zh ? "对应真实采购场景" : "Matched to the Four Buying Situations That Create Real Demand"}
-          subtitle={zh ? "每个场景都给出数量、运行时长和投资回报方向，方便采购按项目价值评估LF955。" : "Each scenario shows expected unit count, operating hours and ROI direction so procurement can evaluate LF955 by project value."}
-          cards={scenarioCards}
-          labels={{ problem: zh ? "使用数量" : "Use Quantity", impact: zh ? "运行时长" : "Operating Hours", solution: zh ? "投资回报提升" : "ROI Improvement" }}
-          ctaLabel={zh ? null : "Get Quote in 2 Hours"}
-          ctaHref="#final-cta"
-        />
-
-        <section className="bg-white px-6 py-24 text-slate-950 sm:px-8 lg:px-10">
-          <div className="mx-auto max-w-7xl">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-600">{zh ? "南非市场" : "South Africa Market"}</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{zh ? "专为南非矿山与工程项目打造" : "Designed for South Africa Mining & Construction Projects"}</h2>
-              <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">{zh ? "适用于粉尘、长工时和复杂地形场景，真正影响采购决策的是持续稳定运行与维护成本。" : "Built for sites where dust, long shifts and rough ground make uptime and maintenance cost the real buying criteria."}</p>
-            </div>
-            <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {(zh ? ["矿山夜间作业照明", "工程基础设施施工照明", "道路维护与高速公路照明", "停电应急照明"] : ["Mining sites night operations", "Construction infrastructure projects", "Road maintenance & highway lighting", "Emergency power outage lighting"]).map((item) => (
-                <article key={item} className="rounded-[24px] border border-slate-200 bg-slate-50 p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold tracking-tight text-slate-950">{item}</h3>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-white px-6 py-20 text-black sm:px-8 lg:px-10">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="mb-10 text-3xl font-bold">{zh ? "真实项目案例" : "Real Project Cases"}</h2>
-            <div className="grid gap-6 md:grid-cols-3">
-              {cases.map((item) => (
-                <article key={item.title} className="rounded-xl border border-slate-200 p-6">
-                  <h3 className="font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm">{item.body}</p>
-                  <p className="mt-2 text-sm text-gray-500">{item.roi}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        <ManufacturingProofSection
-          eyebrow={zh ? "信任与工厂证明" : "Trust & Factory Proof"}
-          title={zh ? "工厂直供，生产过程可见可控" : "Factory-Direct Manufacturer With Visible Production Control"}
-          subtitle={zh ? "从钢材切割到最终测试，整条生产链都由工厂直接控制。" : "Factory-direct manufacturer with full production control from steel cutting to final testing."}
-          proofPoints={
+        <LF955ConfigurationManufacturingSection
+          title={zh ? "LF955 配置、视频与生产工艺" : "LF955 Configuration, Video & Manufacturing Process"}
+          subtitle={
             zh
-              ? ["制造能力：切割、焊接、装配、测试和出口包装", "出口经验：中东 / 非洲 / 澳大利亚工业项目", "ISO认证：采购阶段可供买家核验"]
-              : [
-                  "Manufacturing capability: steel cutting, welding, assembly, testing and export packing",
-                  "Export experience: Middle East / Africa / Australia industrial projects",
-                  "ISO certifications: available for buyer verification during procurement",
-                ]
+              ? "一款通过完整生产流程制造的 7.5米液压柴油移动照明灯塔，由具备完整生产能力的移动照明灯塔厂家制造。"
+              : "A 7.5m hydraulic diesel mobile light tower built through a complete in-house production process by an experienced light tower manufacturer."
           }
-          steps={manufacturingSteps}
-          ctaLabel={zh ? null : "Request Factory Proof"}
-          ctaHref="#final-cta"
+          configurationTitle={zh ? "核心配置" : "Core Configuration"}
+          configuration={coreConfiguration}
+          videoTitle={zh ? "产品视频" : "Product Video"}
+          videoLabel={zh ? "LF955 液压升降与照明测试视频" : "LF955 hydraulic mast lifting and lighting test"}
+          videoSrc="/videos/products/lf955/factory-testing.mp4"
+          processTitle={zh ? "生产工艺流程" : "Manufacturing Process"}
+          processSteps={manufacturingProcess}
         />
 
-        <ProductConfigurationSection
-          eyebrow={zh ? "产品配置" : "Product Configuration"}
-          title={zh ? "选择方案，不只是看参数" : "Choose a Project System, Not a Static Spec Sheet"}
-          subtitle={zh ? "LF955围绕高风险工地、租赁车队、长工时和夜间作业来配置。" : "LF955 is configured around where the tower earns money: harsh sites, rental fleets, long shifts and high-risk night work."}
-          groups={configGroups}
-          ctaLabel={zh ? null : "Request Custom Configuration"}
-          ctaHref="#final-cta"
-          optionLabel={zh ? "选择" : "Select"}
-        />
-
-        <IndustryComparisonSection
-          eyebrow={zh ? "对比模块" : "Comparison Block"}
-          title={zh ? "LF955 对比标准照明灯塔" : "LF955 vs Standard Light Tower"}
-          subtitle={zh ? "用这个对比表对齐工程、采购和商业决策方对持续稳定运行与投资回报的判断。" : "Use this comparison to align engineering, procurement and commercial decision makers around uptime and ROI."}
-          columns={zh ? ["特性", "标准照明灯塔", "LF955", "商业结果"] : ["Feature", "Standard Light Tower", "LF955", "Business Result"]}
-          rows={comparisonRows as string[][]}
-        />
-        <section className="bg-[#0B1220] px-6 py-20 text-white sm:px-8 lg:px-10">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="mb-10 text-3xl font-bold">{zh ? "常见问题" : "Frequently Asked Questions"}</h2>
-            <div className="space-y-6">
-              {faqItems.map((item) => (
-                <div key={item.q}>
-                  <h3 className="font-semibold">{item.q}</h3>
-                  <p className="text-gray-400">{item.a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {zh ? (
-          <section className="bg-white px-6 py-20 text-slate-950 sm:px-8 lg:px-10">
-            <div className="mx-auto max-w-7xl">
-              <div className="max-w-3xl">
-                <h2 className="text-3xl font-bold">技术资料下载中心</h2>
-                <p className="mt-4 text-base leading-8 text-slate-600">
-                  获取 LF955 参数表、产品手册、维护指南和 OEM 配置资料，方便采购、工程和租赁团队快速评估。
-                </p>
-              </div>
-
-              <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-                {technicalDocuments.map((doc) => (
-                  <article key={doc.title} className="flex min-h-[260px] flex-col rounded-[24px] border border-slate-200 bg-slate-50 p-6 shadow-sm">
-                    <h3 className="text-xl font-semibold tracking-tight text-slate-950">{doc.title}</h3>
-                    <p className="mt-4 flex-1 text-sm leading-7 text-slate-600">{doc.description}</p>
-                    <Link href={doc.href} className="mt-6 inline-flex h-11 items-center justify-center rounded-full bg-slate-950 px-5 text-sm font-semibold text-white transition hover:bg-amber-500 hover:text-slate-950">
-                      {doc.button}
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-        ) : null}
-
-        <section className="bg-gray-50 px-6 py-20 text-black sm:px-8 lg:px-10">
-          <div className="mx-auto max-w-6xl">
-            <div className="max-w-3xl">
-              <h2 className="text-3xl font-bold">{zh ? "下载资料中心" : "Download Technical Resources"}</h2>
-              <p className="mt-4 text-gray-600">
-                {zh ? "获取 LF955 资料、工程沟通和报价支持。" : "Get the complete LF955 datasheet, configuration sheet and project proposal support."}
-              </p>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/pdf-catalog-generator" className="rounded-lg bg-black px-6 py-3 font-semibold text-white transition hover:bg-black/90">
-                {zh ? "下载PDF资料" : "Download Datasheet PDF"}
-              </Link>
-              <Link href="https://wa.me/" className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700">
-                {zh ? "WhatsApp联系工程师" : "WhatsApp Engineer"}
-              </Link>
-              <Link href="#lead-form" className="rounded-lg border border-slate-300 px-6 py-3 font-semibold text-slate-950 transition hover:border-slate-400 hover:bg-white">
-                {zh ? "获取报价" : "Request Full Proposal"}
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {zh ? (
-          <section className="bg-[#0B1220] px-6 py-20 text-white sm:px-8 lg:px-10">
-            <div className="mx-auto max-w-7xl">
-              <div className="max-w-3xl">
-                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">为什么全球客户选择 LFADJ</h2>
-                <p className="mt-4 text-base leading-8 text-slate-300">
-                  我们不只提供设备，更提供适合不同国家项目环境的移动照明解决方案。
-                </p>
-              </div>
-              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {trustPoints.map((point) => (
-                  <div key={point} className="rounded-2xl border border-white/10 bg-white/[0.045] px-5 py-5 text-sm font-semibold leading-7 text-slate-100">
-                    {point}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        ) : null}
-
-        <FinalConversionCTA
-          title={zh ? "获取完整项目方案" : "Get Full Project Solution"}
-          subtitle={zh ? "发送国家、项目类型和工况，我们会推荐最适合保护持续稳定运行、回本周期和现场效率的 LF955 配置。" : "Send your country, project type and working conditions. We will recommend the LF955 configuration that best protects uptime, payback and site productivity."}
-          primaryCta={zh ? "提交需求" : "Get Full Project Solution"}
-          secondaryCta={zh ? undefined : "Request Custom Configuration"}
-          tertiaryCta={zh ? undefined : "Talk to Engineer (WhatsApp)"}
-          href="#lead-form"
-          secondaryHref="#lead-form"
-          tertiaryHref="https://wa.me/"
-          trustTitle={zh ? undefined : "Urgency & Proof"}
-          trustBullets={
+        <LF955ProjectInquirySection
+          title={zh ? "告诉我们您的项目使用环境" : "Tell Us About Your Project Environment"}
+          subtitle={
             zh
-              ? undefined
-              : ["Typical payback: 30-90 days", "Factory proof available before order", "Configuration support for Middle East, Africa and Australia projects"]
+              ? "请提供国家、工况和照明需求，我们将为您推荐合适的 LF955 配置方案和移动照明方案。"
+              : "Share your country, working conditions, and lighting requirements. We will recommend a suitable LF955 configuration and mobile lighting solution."
           }
-          urgencyLine={zh ? undefined : "High-risk sites should not wait for lighting failure before choosing the right system."}
-          showActionButtons={!zh}
-          formLabels={zh ? { name: "姓名", country: "国家", projectType: "项目类型", message: "需求说明" } : undefined}
-          formOptions={zh ? ["施工现场", "矿山", "租赁公司", "应急照明"] : undefined}
-          submitLabel={zh ? "提交需求" : "Request Custom Configuration"}
+          fieldLabels={
+            zh
+              ? {
+                  name: "姓名",
+                  contact: "邮箱 / WhatsApp",
+                  country: "国家",
+                  industry: "行业 / 应用场景",
+                  environment: "工作环境",
+                  quantity: "需求数量",
+                  message: "留言",
+                }
+              : {
+                  name: "Name",
+                  contact: "Email / WhatsApp",
+                  country: "Country",
+                  industry: "Industry / Application",
+                  environment: "Working environment",
+                  quantity: "Required quantity",
+                  message: "Message",
+                }
+          }
+          environmentOptions={
+            zh
+              ? ["高温环境", "沙漠 / 风沙环境", "沿海 / 腐蚀环境", "高海拔环境", "普通施工现场", "其他"]
+              : ["High temperature", "Desert / dusty area", "Coastal / corrosive area", "High altitude", "General construction site", "Other"]
+          }
+          submitLabel={zh ? "提交我的项目需求" : "Submit My Project Requirement"}
+          contactTitle={zh ? "需要更快回复？" : "Need a faster response?"}
+          contactText={
+            zh
+              ? "请发送您的项目地点、工作时长、需求数量和现场环境。"
+              : "Send us your project location, working hours, quantity, and environment conditions."
+          }
+          contactItems={zh ? ["WhatsApp", "电子邮箱", "工厂 / 代工支持"] : ["WhatsApp", "Email", "Factory / OEM support"]}
+          trustText={zh ? "24小时内提供免费项目配置建议。" : "Free project recommendation within 24 hours."}
         />
+
       </main>
     </>
   );
