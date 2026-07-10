@@ -24,38 +24,112 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
   const lang: Lang = isLang(params.lang) ? params.lang : "en";
   const zh = lang === "zh";
   const title = zh
-    ? "LF955移动照明灯塔｜7.5米液压柴油灯塔｜施工/矿山/租赁照明"
-    : "LF955 Mobile Light Tower | 7.5m Hydraulic Diesel Light Tower for Construction & Mining";
+    ? "LF955 \u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854\u5236\u9020\u5546 | LFADJ"
+    : "LF955 Diesel Mobile Light Tower Manufacturer | LFADJ";
   const description = zh
-    ? "LF955移动照明灯塔适用于施工、矿山、租赁与工业项目，适合高粉尘、高温和离网环境，帮助提升夜间作业效率与回报。"
-    : "LF955 mobile light tower for construction, mining, rental and industrial projects. Built for harsh environments, faster deployment and stronger payback.";
+    ? "LFADJ\u751f\u4ea7LF955\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854\uff0c\u9002\u7528\u4e8e\u65bd\u5de5\u3001\u77ff\u5c71\u3001\u6cb9\u6c14\u3001\u79df\u8d41\u548c\u5e94\u6025\u9879\u76ee\uff0c\u5e76\u53ef\u6839\u636e\u9ad8\u6e29\u3001\u98ce\u6c99\u3001\u6cbf\u6d77\u8150\u8680\u53ca\u9ad8\u6d77\u62d4\u73af\u5883\u5b9a\u5236\u914d\u7f6e\u3002"
+    : "LFADJ manufactures LF955 diesel mobile light towers for construction, mining, oil and gas, rental and emergency projects, with custom configurations for high temperature, dust, coastal and high-altitude environments.";
   const url = zh ? "https://lfadj.com/zh/products/lf955" : "https://lfadj.com/en/products/lf955";
   const image = "https://lfadj.com/images/products/lf955/applications/road-construction.jpg";
+  const imageAlt = zh
+    ? "LF955\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854\u7528\u4e8e\u591c\u95f4\u5de5\u7a0b\u9879\u76ee\u7167\u660e"
+    : "LF955 diesel mobile light tower for night construction site lighting";
 
   return {
     title,
     description,
+    keywords: zh
+      ? undefined
+      : [
+          "diesel mobile light tower",
+          "diesel light tower manufacturer",
+          "hydraulic light tower",
+          "construction light tower",
+          "mining light tower",
+          "mobile lighting tower",
+          "LF955 light tower",
+        ],
     alternates: {
       canonical: url,
       languages: {
         en: "https://lfadj.com/en/products/lf955",
-        zh: "https://lfadj.com/zh/products/lf955",
+        "zh-CN": "https://lfadj.com/zh/products/lf955",
         "x-default": "https://lfadj.com/en/products/lf955",
       },
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
     openGraph: {
       title,
       description,
       url,
       type: "website",
-      images: [{ url: image, alt: zh ? "LF955 移动照明灯塔用于夜间施工现场照明" : "LF955 mobile light tower for night construction site lighting" }],
+      siteName: "LFADJ",
+      locale: zh ? "zh_CN" : "en_US",
+      images: [{ url: image, alt: imageAlt }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [{ url: image, alt: imageAlt }],
     },
+  };
+}
+
+function getLf955ProductSchema(zh: boolean) {
+  const image = "https://lfadj.com/images/products/lf955/applications/road-construction.jpg";
+  const brand = {
+    "@type": "Brand",
+    name: "LFADJ",
+  };
+  const manufacturer = {
+    "@type": "Organization",
+    name: "LFADJ",
+    legalName: "Longfa Lighting Equipment Co., Ltd.",
+    url: "https://lfadj.com",
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: zh ? "LF955 \u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854" : "LF955 Diesel Mobile Light Tower",
+    alternateName: zh
+      ? "LF955 \u6db2\u538b\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854"
+      : "LF955 Hydraulic Diesel Mobile Lighting Tower",
+    description: zh
+      ? "LF955\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854\uff0c\u9002\u7528\u4e8e\u65bd\u5de5\u3001\u77ff\u5c71\u3001\u6cb9\u6c14\u3001\u79df\u8d41\u548c\u5e94\u6025\u9879\u76ee\uff0c\u5e76\u652f\u6301\u9ad8\u6e29\u3001\u98ce\u6c99\u3001\u6cbf\u6d77\u8150\u8680\u53ca\u9ad8\u6d77\u62d4\u73af\u5883\u914d\u7f6e\u3002"
+      : "LF955 diesel mobile light tower for construction, mining, oil and gas, rental and emergency projects, with project-specific configurations for high temperature, dust, coastal and high-altitude environments.",
+    sku: "LF955",
+    mpn: "LF955",
+    url: zh ? "https://lfadj.com/zh/products/lf955" : "https://lfadj.com/en/products/lf955",
+    category: zh ? "\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854" : "Diesel Mobile Light Tower",
+    brand,
+    manufacturer,
+    image,
+    additionalProperty: zh
+      ? [
+          { "@type": "PropertyValue", name: "\u706f\u6746\u9ad8\u5ea6", value: "7.5\u7c73\u6db2\u538b\u5347\u964d\u706f\u6746" },
+          { "@type": "PropertyValue", name: "\u706f\u6746\u65cb\u8f6c", value: "0\u2013350\u00b0" },
+          { "@type": "PropertyValue", name: "\u7167\u660e\u7cfb\u7edf", value: "4 \u00d7 400 W LED\u6295\u5149\u706f" },
+          { "@type": "PropertyValue", name: "\u603b\u5149\u901a\u91cf", value: "\u7ea6230,000\u6d41\u660e" },
+          { "@type": "PropertyValue", name: "\u53d1\u7535\u673a", value: "5 kVA\u5355\u76f8\u53d1\u7535\u673a" },
+          { "@type": "PropertyValue", name: "\u6cb9\u7bb1\u5bb9\u91cf", value: "120 L" },
+          { "@type": "PropertyValue", name: "\u5e94\u7528", value: "\u65bd\u5de5\u3001\u77ff\u5c71\u3001\u79df\u8d41\u548c\u5e94\u6025\u7167\u660e" },
+          { "@type": "PropertyValue", name: "\u73af\u5883\u914d\u7f6e", value: "\u9ad8\u6e29\u3001\u98ce\u6c99\u3001\u6cbf\u6d77\u548c\u9ad8\u6d77\u62d4\u914d\u7f6e" },
+        ]
+      : [
+          { "@type": "PropertyValue", name: "Mast Height", value: "7.5 m hydraulic lifting mast" },
+          { "@type": "PropertyValue", name: "Mast Rotation", value: "0\u2013350\u00b0" },
+          { "@type": "PropertyValue", name: "Lighting System", value: "4 \u00d7 400 W LED floodlights" },
+          { "@type": "PropertyValue", name: "Total Luminous Flux", value: "Approx. 230,000 lumens" },
+          { "@type": "PropertyValue", name: "Generator", value: "5 kVA single-phase generator" },
+          { "@type": "PropertyValue", name: "Fuel Tank Capacity", value: "120 L" },
+          { "@type": "PropertyValue", name: "Application", value: "Construction, mining, rental and emergency lighting" },
+          { "@type": "PropertyValue", name: "Environment Options", value: "High temperature, dust, coastal and high-altitude configurations" },
+        ],
   };
 }
 
@@ -66,6 +140,7 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
 
   const lang = params.lang;
   const zh = lang === "zh";
+  const productSchema = getLf955ProductSchema(zh);
 
   const heroV7 = zh
     ? {
@@ -439,6 +514,12 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
         quoteLabel={zh ? "获取报价" : "Get a Quote"}
         quoteHref={zh ? "/zh/联系我们" : "/contact"}
         mobileMenuLabel={zh ? "菜单" : undefined}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+        }}
       />
       <main className="bg-white text-slate-950">
         <HeroSection
