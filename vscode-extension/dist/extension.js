@@ -50,6 +50,21 @@ function setUnavailable() {
         statusBarItem.tooltip = "Codex usage data is unavailable";
     }
 }
+function readLeftPercent(window) {
+    const value = window?.remaining ??
+        window?.remainingPercent ??
+        window?.remainingPercentage ??
+        window?.percentRemaining ??
+        window?.leftPercent ??
+        window?.leftPercentage;
+    if (typeof value !== "number") {
+        return undefined;
+    }
+    return Math.round(value <= 1 ? value * 100 : value);
+}
+function formatLeftPercent(value) {
+    return typeof value === "number" ? `${value}% left` : "unavailable";
+}
 function send(message) {
     if (!codexProcess?.stdin.writable) {
         throw new Error("Codex app-server is not running");
@@ -122,38 +137,46 @@ function readContextPercent(threadId) {
     });
 }
 async function refreshUsage() {
+    const cwd = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    if (!cwd) {
+        setUnavailable();
+        return;
+    }
+    let fiveHourLeft;
+    let weeklyLeft;
+    let contextLeft;
     try {
-        const cwd = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
-        if (!cwd) {
-            throw new Error("No workspace is open");
-        }
-        const [rateLimitResult, threadListResult] = await Promise.all([
-            request("account/rateLimits/read"),
-            request("thread/list", {
-                cwd,
-                limit: 1,
-                sortKey: "updated_at",
-                sortDirection: "desc",
-            }),
-        ]);
-        const rateLimits = rateLimitResult;
-        const threads = threadListResult;
-        const fiveHour = rateLimits.rateLimits?.primary?.usedPercent;
-        const weekly = rateLimits.rateLimits?.secondary?.usedPercent;
-        const threadId = threads.data?.[0]?.id;
-        if (typeof fiveHour !== "number" ||
-            typeof weekly !== "number" ||
-            !threadId) {
-            throw new Error("Codex usage response is incomplete");
-        }
-        const context = await readContextPercent(threadId);
-        if (statusBarItem) {
-            statusBarItem.text = `AI 5h ${fiveHour}% | 7d ${weekly}% | ctx ${context}%`;
-            statusBarItem.tooltip = "Live Codex usage from the Codex app-server";
+        const rateLimitResult = (await request("account/rateLimits/read"));
+        fiveHourLeft = readLeftPercent(rateLimitResult.rateLimits?.primary_window ??
+            rateLimitResult.rateLimits?.primaryWindow ??
+            rateLimitResult.rateLimits?.primary);
+        weeklyLeft = readLeftPercent(rateLimitResult.rateLimits?.secondary_window ??
+            rateLimitResult.rateLimits?.secondaryWindow ??
+            rateLimitResult.rateLimits?.secondary);
+    }
+    catch {
+        fiveHourLeft = undefined;
+        weeklyLeft = undefined;
+    }
+    try {
+        const threadListResult = (await request("thread/list", {
+            cwd,
+            limit: 1,
+            sortKey: "updated_at",
+            sortDirection: "desc",
+        }));
+        const threadId = threadListResult.data?.[0]?.id;
+        if (threadId) {
+            const contextUsed = await readContextPercent(threadId);
+            contextLeft = Math.max(0, 100 - contextUsed);
         }
     }
     catch {
-        setUnavailable();
+        contextLeft = undefined;
+    }
+    if (statusBarItem) {
+        statusBarItem.text = `AI 5h ${formatLeftPercent(fiveHourLeft)} | 7d ${formatLeftPercent(weeklyLeft)} | ctx ${formatLeftPercent(contextLeft)}`;
+        statusBarItem.tooltip = "Live Codex usage from the Codex app-server";
     }
 }
 async function connectToCodex() {
@@ -172,7 +195,7 @@ async function connectToCodex() {
         clientInfo: {
             name: "ai_usage_status_bar",
             title: "AI Usage Status Bar",
-            version: "0.0.2",
+            version: "0.0.3",
         },
         capabilities: { experimentalApi: true },
     });

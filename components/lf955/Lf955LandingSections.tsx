@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type HeroSectionProps = {
   eyebrow?: string;
   title: string;
@@ -13,10 +15,15 @@ type HeroSectionProps = {
   tertiaryHref?: string;
   trustBadges?: string[];
   valueBadges?: string[];
+  applicationLabel?: string;
+  applications?: string[];
+  advantageLabel?: string;
+  advantages?: string[];
   trustedLabel?: string;
   trustLogos?: string[];
   imageSrc: string;
   imageAlt: string;
+  imageObjectPosition?: string;
   featuredMedia?: boolean;
 };
 
@@ -30,7 +37,7 @@ type ProblemCard = {
 type CostLossCard = {
   title: string;
   problem: string;
-  solution: string;
+  solution: string | string[];
 };
 
 type CoreConfigurationItem = {
@@ -39,6 +46,7 @@ type CoreConfigurationItem = {
 };
 
 type ManufacturingProcessStep = {
+  step: string;
   title: string;
   image: string;
   imageAlt: string;
@@ -151,75 +159,101 @@ export function HeroSection({
   summary,
   primaryCta,
   primaryHref = "#final-cta",
-  secondaryCta,
-  secondaryHref = "/downloads/LF955-Diesel-Light-Tower-Datasheet.pdf",
   trustBadges,
   valueBadges,
-  trustedLabel = "Trusted Worldwide",
+  applicationLabel = "Applications",
+  applications,
+  advantageLabel = "Core Advantages",
+  advantages,
   trustLogos,
   imageSrc,
   imageAlt,
+  imageObjectPosition = "center center",
   featuredMedia = false,
 }: HeroSectionProps) {
-  const badges = valueBadges ?? trustBadges ?? [];
-  const logos = trustLogos ?? ["ISO9001", "ISO14001", "ISO45001", "CE", "Export to 60+ Countries"];
+  const applicationItems = applications ?? trustLogos ?? [];
+  const advantageItems = advantages ?? valueBadges ?? trustBadges ?? [];
 
   return (
     <section className="relative isolate overflow-hidden bg-[linear-gradient(115deg,_#0B1220_0%,_#111A29_48%,_#1B2432_100%)]">
-      <div className={`relative z-10 mx-auto flex min-h-[760px] flex-col px-6 pt-16 sm:px-8 lg:px-12 lg:pt-20 ${featuredMedia ? "max-w-[1540px] lg:min-h-[900px]" : "max-w-[1440px] lg:min-h-[880px]"}`}>
-        <div className={`grid flex-1 gap-12 lg:items-center ${featuredMedia ? "lg:grid-cols-[38%_62%] lg:gap-12" : "lg:grid-cols-[42%_58%] lg:gap-12"}`}>
-          <div className={`lg:pb-10 ${featuredMedia ? "max-w-[570px]" : "max-w-[640px]"}`}>
+      <div className={`relative z-10 mx-auto flex min-h-[680px] flex-col px-6 py-14 sm:px-8 lg:px-12 lg:py-16 ${featuredMedia ? "max-w-[1540px] lg:min-h-[820px]" : "max-w-[1440px] lg:min-h-[760px]"}`}>
+        <div className={`grid flex-1 gap-10 lg:items-center ${featuredMedia ? "lg:grid-cols-[38%_62%] lg:gap-12" : "lg:grid-cols-[42%_58%] lg:gap-12"}`}>
+          <div className={featuredMedia ? "max-w-[570px]" : "max-w-[640px]"}>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-300">{eyebrow}</p>
-            <h1 className="mt-7 max-w-3xl whitespace-pre-line text-4xl font-bold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-[56px]">
+            <h1 className="mt-6 max-w-3xl whitespace-pre-line text-4xl font-bold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-[54px]">
               {title}
             </h1>
-            {headlineSupport ? <p className="mt-5 text-lg font-semibold leading-8 text-white sm:text-xl">{headlineSupport}</p> : null}
+            {headlineSupport ? <p className="mt-5 text-lg font-semibold leading-8 text-amber-300 sm:text-xl">{headlineSupport}</p> : null}
             {productName ? <p className="mt-7 text-xl font-semibold leading-8 text-amber-300 sm:text-2xl">{productName}</p> : null}
-            <p className="mt-8 max-w-2xl whitespace-pre-line text-base font-medium leading-8 text-slate-200 sm:text-lg">{subtitle}</p>
+            <p className="mt-5 max-w-2xl text-base font-medium leading-8 text-slate-200 sm:text-lg">{subtitle}</p>
             {summary ? <p className="mt-4 max-w-2xl text-base font-medium leading-8 text-slate-300">{summary}</p> : null}
 
-            {badges.length ? (
-              <div className="mt-9 flex flex-wrap gap-3">
-                {badges.map((badge) => (
-                  <div key={badge} className="flex items-center gap-2 rounded-md border border-white/15 bg-white/[0.04] px-4 py-2.5 text-sm font-semibold text-slate-200">
-                    <span className="text-xs text-slate-300">✓</span>
-                    <span>{badge}</span>
+            <div className="mt-8 space-y-6">
+              {applicationItems.length ? (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">{applicationLabel}</p>
+                  <div className="mt-3 flex flex-wrap gap-3">
+                    {applicationItems.map((item) => (
+                      <span key={item} className="inline-flex min-h-10 items-center rounded-md border border-white/15 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-slate-200">
+                        {item}
+                      </span>
+                    ))}
                   </div>
-                ))}
-              </div>
-            ) : null}
+                </div>
+              ) : null}
 
-            <div className="mt-11 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <a href={primaryHref} className="inline-flex h-[56px] min-h-[56px] items-center justify-center rounded-md bg-amber-500 px-9 text-base font-semibold text-slate-950 shadow-[0_16px_34px_rgba(245,158,11,0.24)] transition duration-300 hover:bg-amber-400">
+              {advantageItems.length ? (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">{advantageLabel}</p>
+                  <div className="mt-3 flex flex-wrap gap-3">
+                    {advantageItems.map((item) => (
+                      <span key={item} className="inline-flex min-h-10 items-center rounded-md border border-white/15 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-slate-200">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <a href={primaryHref} className="inline-flex h-[56px] min-h-[56px] items-center justify-center rounded-md bg-amber-500 px-9 text-base font-semibold text-slate-950 shadow-[0_16px_34px_rgba(245,158,11,0.24)] transition duration-300 hover:bg-amber-400 sm:w-auto">
                 {primaryCta}
               </a>
-              {secondaryCta ? (
-                <a href={secondaryHref} className="inline-flex h-[56px] min-h-[56px] items-center justify-center rounded-md border border-white/25 bg-white/[0.02] px-9 text-base font-semibold text-slate-200 transition duration-300 hover:border-white/45 hover:bg-white/[0.055] hover:text-white">
-                  {secondaryCta}
-                </a>
-              ) : null}
             </div>
           </div>
 
-          <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900 ${featuredMedia ? "min-h-[420px] shadow-[0_34px_90px_rgba(0,0,0,0.48)] sm:min-h-[540px] lg:min-h-[720px] lg:translate-y-2" : "min-h-[360px] shadow-[0_28px_70px_rgba(0,0,0,0.36)] sm:min-h-[480px] lg:min-h-[620px]"}`}>
-            <img src={imageSrc} alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" />
-            <div className={`absolute inset-0 ${featuredMedia ? "bg-gradient-to-r from-slate-950/58 via-slate-950/22 to-slate-950/5" : "bg-gradient-to-r from-slate-950/65 via-slate-950/35 to-slate-950/10"}`} />
-            <div className={`absolute inset-0 ${featuredMedia ? "bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-slate-950/25" : "bg-gradient-to-t from-slate-950/60 via-slate-950/20 to-transparent"}`} />
+          <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900 ${featuredMedia ? "min-h-[420px] shadow-[0_34px_90px_rgba(0,0,0,0.48)] sm:min-h-[540px] lg:min-h-[680px] lg:translate-y-2" : "min-h-[300px] shadow-[0_28px_70px_rgba(0,0,0,0.36)] sm:min-h-[430px] lg:min-h-[560px]"}`}>
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              priority
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              className="object-cover"
+              style={{ objectPosition: imageObjectPosition }}
+            />
+            <div className={`absolute inset-0 ${featuredMedia ? "bg-gradient-to-r from-slate-950/58 via-slate-950/22 to-slate-950/5" : "bg-gradient-to-r from-slate-950/50 via-slate-950/20 to-slate-950/5"}`} />
+            <div className={`absolute inset-0 ${featuredMedia ? "bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-slate-950/25" : "bg-gradient-to-t from-slate-950/48 via-slate-950/10 to-transparent"}`} />
             {featuredMedia ? (
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_24%,rgba(251,191,36,0.20),transparent_26%),radial-gradient(circle_at_82%_68%,rgba(255,255,255,0.10),transparent_22%),radial-gradient(ellipse_at_center,transparent_44%,rgba(2,6,23,0.34)_100%)]" />
             ) : null}
           </div>
         </div>
-        <div className="border-t border-slate-900/[0.08] py-8">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">{trustedLabel}</p>
-            <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold uppercase tracking-[0.16em] text-slate-400">
-              {logos.map((logo) => (
-                <span key={logo}>{logo}</span>
-              ))}
-            </div>
-          </div>
-        </div>
+      </div>
+    </section>
+  );
+}
+
+export function TrustStrip({ items }: { items: string[] }) {
+  return (
+    <section className="border-y border-slate-200 bg-white px-6 py-4 text-slate-800 sm:px-8 lg:px-10">
+      <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600 lg:px-2">
+        {items.map((item) => (
+          <span key={item} className="whitespace-nowrap">
+            {item}
+          </span>
+        ))}
       </div>
     </section>
   );
@@ -242,10 +276,10 @@ export function ProjectCostLossSection({
 }) {
   return (
     <section className="bg-slate-50 px-6 py-20 text-slate-950 sm:px-8 lg:px-10">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
-          <h2 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
-          <p className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg lg:justify-self-end">{subtitle}</p>
+      <div className="mx-auto max-w-[1440px] lg:px-2">
+        <div className="max-w-4xl text-left">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
+          <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">{subtitle}</p>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -262,10 +296,24 @@ export function ProjectCostLossSection({
                 <p className="mt-2 text-sm leading-7 text-slate-600">{card.problem}</p>
               </div>
               <div className="mt-6 border-t border-slate-200 pt-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">{solutionLabel}</p>
-                <p className="mt-2 text-sm font-medium leading-7 text-slate-800">
-                  {card.solution}
-                </p>
+                <p className="text-xs font-bold tracking-[0.08em] text-amber-700">{solutionLabel}</p>
+                <ul className="mt-3 space-y-2 text-sm font-medium leading-7 text-slate-800">
+                  {(Array.isArray(card.solution) ? card.solution : [card.solution]).map((item) => {
+                    const splitIndex = item.indexOf(":");
+                    const label = splitIndex > 0 ? item.slice(0, splitIndex) : "";
+                    const detail = splitIndex > 0 ? item.slice(splitIndex + 1).trim() : item;
+
+                    return (
+                      <li key={item} className="flex gap-2">
+                        <span className="mt-[0.72em] h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+                        <span>
+                          {label ? <strong className="font-semibold text-slate-950">{label}: </strong> : null}
+                          {detail}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </article>
           ))}
@@ -287,6 +335,8 @@ export function LF955ConfigurationManufacturingSection({
   videoTitle,
   videoLabel,
   videoSrc,
+  videoPoster,
+  videoFallback,
   processTitle,
   processSteps,
 }: {
@@ -297,6 +347,8 @@ export function LF955ConfigurationManufacturingSection({
   videoTitle: string;
   videoLabel: string;
   videoSrc: string;
+  videoPoster: string;
+  videoFallback: string;
   processTitle: string;
   processSteps: ManufacturingProcessStep[];
 }) {
@@ -321,13 +373,14 @@ export function LF955ConfigurationManufacturingSection({
             </dl>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-sm">
+          <div className="flex min-h-[420px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-sm">
             <div className="px-6 py-5 sm:px-8">
               <h3 className="text-2xl font-semibold tracking-tight text-white">{videoTitle}</h3>
               <p className="mt-2 text-sm leading-6 text-slate-300">{videoLabel}</p>
             </div>
-            <video controls preload="metadata" className="aspect-video w-full bg-black" aria-label={videoLabel}>
+            <video controls preload="metadata" poster={videoPoster} className="min-h-[260px] w-full flex-1 bg-black object-cover" aria-label={videoLabel}>
               <source src={videoSrc} type="video/mp4" />
+              {videoFallback}
             </video>
           </div>
         </div>
@@ -335,15 +388,15 @@ export function LF955ConfigurationManufacturingSection({
         <div className="mt-14">
           <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">{processTitle}</h3>
           <ol className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {processSteps.map((step, index) => (
-              <li key={step.title} className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
+            {processSteps.map((step) => (
+              <li key={step.step} className="flex h-full min-h-[292px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
                 <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
                   <img src={step.image} alt={step.imageAlt} loading="lazy" className="h-full w-full object-cover" />
                   <span className="absolute left-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-xs font-semibold text-white">
-                    {String(index + 1).padStart(2, "0")}
+                    {step.step}
                   </span>
                 </div>
-                <div className="px-5 py-4">
+                <div className="flex min-h-[76px] flex-1 items-center px-5 py-4">
                   <p className="font-semibold text-slate-950">{step.title}</p>
                 </div>
               </li>

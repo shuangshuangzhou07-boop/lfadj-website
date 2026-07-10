@@ -24,11 +24,20 @@ const pendingContextRequests = new Map<
 >();
 
 interface RateLimitWindow {
-  usedPercent?: number;
+  remaining?: number;
+  remainingPercent?: number;
+  remainingPercentage?: number;
+  percentRemaining?: number;
+  leftPercent?: number;
+  leftPercentage?: number;
 }
 
 interface RateLimitResponse {
   rateLimits?: {
+    primary_window?: RateLimitWindow | null;
+    secondary_window?: RateLimitWindow | null;
+    primaryWindow?: RateLimitWindow | null;
+    secondaryWindow?: RateLimitWindow | null;
     primary?: RateLimitWindow | null;
     secondary?: RateLimitWindow | null;
   };
@@ -51,6 +60,26 @@ function setUnavailable() {
     statusBarItem.text = "AI usage: unavailable";
     statusBarItem.tooltip = "Codex usage data is unavailable";
   }
+}
+
+function readLeftPercent(window?: RateLimitWindow | null): number | undefined {
+  const value =
+    window?.remaining ??
+    window?.remainingPercent ??
+    window?.remainingPercentage ??
+    window?.percentRemaining ??
+    window?.leftPercent ??
+    window?.leftPercentage;
+
+  if (typeof value !== "number") {
+    return undefined;
+  }
+
+  return Math.round(value <= 1 ? value * 100 : value);
+}
+
+function formatLeftPercent(value: number | undefined): string {
+  return typeof value === "number" ? `${value}% left` : "unavailable";
 }
 
 function send(message: object) {
@@ -143,43 +172,60 @@ function readContextPercent(threadId: string): Promise<number> {
 }
 
 async function refreshUsage() {
+  const cwd = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+  if (!cwd) {
+    setUnavailable();
+    return;
+  }
+
+  let fiveHourLeft: number | undefined;
+  let weeklyLeft: number | undefined;
+  let contextLeft: number | undefined;
+
   try {
-    const cwd = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
-    if (!cwd) {
-      throw new Error("No workspace is open");
-    }
+    const rateLimitResult = (await request(
+      "account/rateLimits/read"
+    )) as RateLimitResponse;
 
-    const [rateLimitResult, threadListResult] = await Promise.all([
-      request("account/rateLimits/read"),
-      request("thread/list", {
-        cwd,
-        limit: 1,
-        sortKey: "updated_at",
-        sortDirection: "desc",
-      }),
-    ]);
+    fiveHourLeft = readLeftPercent(
+      rateLimitResult.rateLimits?.primary_window ??
+        rateLimitResult.rateLimits?.primaryWindow ??
+        rateLimitResult.rateLimits?.primary
+    );
+    weeklyLeft = readLeftPercent(
+      rateLimitResult.rateLimits?.secondary_window ??
+        rateLimitResult.rateLimits?.secondaryWindow ??
+        rateLimitResult.rateLimits?.secondary
+    );
+  } catch {
+    fiveHourLeft = undefined;
+    weeklyLeft = undefined;
+  }
 
-    const rateLimits = rateLimitResult as RateLimitResponse;
-    const threads = threadListResult as ThreadListResponse;
-    const fiveHour = rateLimits.rateLimits?.primary?.usedPercent;
-    const weekly = rateLimits.rateLimits?.secondary?.usedPercent;
-    const threadId = threads.data?.[0]?.id;
+  try {
+    const threadListResult = (await request("thread/list", {
+      cwd,
+      limit: 1,
+      sortKey: "updated_at",
+      sortDirection: "desc",
+    })) as ThreadListResponse;
+    const threadId = threadListResult.data?.[0]?.id;
 
-    if (
-      typeof fiveHour !== "number" ||
-      typeof weekly !== "number" ||
-      !threadId
-    ) {
-      throw new Error("Codex usage response is incomplete");
-    }
-
-    const context = await readContextPercent(threadId);
-    if (statusBarItem) {
-      statusBarItem.text = `AI 5h ${fiveHour}% | 7d ${weekly}% | ctx ${context}%`;
-      statusBarItem.tooltip = "Live Codex usage from the Codex app-server";
+    if (threadId) {
+      const contextUsed = await readContextPercent(threadId);
+      contextLeft = Math.max(0, 100 - contextUsed);
     }
   } catch {
-    setUnavailable();
+    contextLeft = undefined;
+  }
+
+  if (statusBarItem) {
+    statusBarItem.text = `AI 5h ${formatLeftPercent(
+      fiveHourLeft
+    )} | 7d ${formatLeftPercent(weeklyLeft)} | ctx ${formatLeftPercent(
+      contextLeft
+    )}`;
+    statusBarItem.tooltip = "Live Codex usage from the Codex app-server";
   }
 }
 
@@ -203,7 +249,7 @@ async function connectToCodex() {
     clientInfo: {
       name: "ai_usage_status_bar",
       title: "AI Usage Status Bar",
-      version: "0.0.2",
+      version: "0.0.3",
     },
     capabilities: { experimentalApi: true },
   });

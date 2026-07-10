@@ -4,9 +4,10 @@ import { redirect } from "next/navigation";
 import {
   HeroSection,
   LF955ConfigurationManufacturingSection,
-  LF955ProjectInquirySection,
   ProjectCostLossSection,
+  TrustStrip,
 } from "@/components/lf955/Lf955LandingSections";
+import { LF955ProjectInquirySection } from "@/components/lf955/LF955ProjectInquirySection";
 import { SiteNav } from "../../../site-nav";
 
 type Lang = "en" | "zh";
@@ -68,30 +69,32 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
 
   const heroV7 = zh
     ? {
-        eyebrow: "移动照明工程解决方案",
-        title: "LF955 7.5米液压柴油移动照明灯塔",
-        headlineSupport: "围绕您的真实项目环境打造",
+        eyebrow: "移动照明项目解决方案提供商",
+        title: "柴油移动照明灯塔 LF955",
+        headlineSupport: "围绕真实项目需求配置照明方案",
         productName: undefined,
-        subtitle: "我们不是只卖标准灯塔，而是根据您的真实项目使用环境，定制适合的柴油移动照明灯塔方案。",
+        subtitle: "不只是提供标准灯塔，我们根据不同项目环境和使用需求，为客户匹配更可靠、更适合长期运行的移动照明解决方案。",
         summary: undefined,
-        primary: "获取我的项目方案",
+        primary: "获取我的项目配置方案",
         secondary: undefined,
-        valueBadges: ["高光效 LED 照明", "7–9米升降灯杆", "国际品牌动力", "项目定制配置"],
-        trustedLabel: "工程支持",
-        trustLogos: ["施工现场", "矿山项目", "油气工程"],
+        applicationLabel: "适用行业",
+        applications: ["基建施工", "矿山作业", "油气项目", "应急救援"],
+        advantageLabel: "核心优势",
+        advantages: ["复杂环境适配", "多种升降配置", "项目定制方案"],
       }
     : {
-        eyebrow: "Mobile Lighting Engineering Solution",
-        title: "LF955 7.5m Hydraulic Diesel Mobile Light Tower",
-        headlineSupport: "Built Around Your Real Project Environment",
+        eyebrow: "Mobile Lighting Solution Provider",
+        title: "LF955 Diesel Mobile Light Tower\nfor Construction, Mining & Rental Projects",
+        headlineSupport: "Lighting Configured Around Real Project Needs",
         productName: undefined,
-        subtitle: "We recommend the right diesel mobile light tower solution based on your real project environment — not just a standard product.",
+        subtitle: "More than a standard light tower, we configure reliable mobile lighting solutions around real project conditions and operating requirements for long-term project operation.",
         summary: undefined,
-        primary: "Get My Project Solution",
+        primary: "Get My Project Configuration",
         secondary: undefined,
-        valueBadges: ["High-efficiency LED lighting", "7–9m lifting mast", "International brand engine", "Project-based configuration"],
-        trustedLabel: "Engineering Support",
-        trustLogos: ["Construction Sites", "Mining Projects", "Oil & Gas"],
+        applicationLabel: "Applications",
+        applications: ["Infrastructure", "Mining", "Oil & Gas", "Emergency Response"],
+        advantageLabel: "Core Advantages",
+        advantages: ["Harsh Environment Ready", "Multiple Mast Options", "Project-Specific Configuration"],
       };
 
   const costLossSection = zh
@@ -130,22 +133,38 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
           {
             title: "High Temperature",
             problem: "Engine overheating, shorter component life, unstable performance.",
-            solution: "Improved cooling design and engine-load matching support a more reliable mobile lighting solution in high temperatures.",
+            solution: [
+              "Enhanced Cooling: Improve airflow for long-shift runtime in hot climates.",
+              "Load Matching: Match engine power with lighting load to reduce thermal stress.",
+              "Stable Output: Configure LF955 for consistent mobile lighting under high-temperature duty cycles.",
+            ],
           },
           {
             title: "Desert & Dust",
             problem: "Blocked filters, poor ventilation, frequent maintenance.",
-            solution: "Dust protection, better air intake, and filtration options.",
+            solution: [
+              "Dust Protection: Add protection around key intake and service points.",
+              "Airflow Optimization: Improve intake and ventilation paths for dusty jobsites.",
+              "Service Control: Specify filtration options to reduce maintenance frequency.",
+            ],
           },
           {
             title: "Coastal & Corrosive Areas",
             problem: "Frame corrosion, rusty bolts, electrical failure.",
-            solution: "Thicker galvanizing, anti-corrosion coating, and sealed electrical parts.",
+            solution: [
+              "Corrosion Resistance: Use thicker galvanizing and anti-corrosion coating for exposed structures.",
+              "Hardware Protection: Protect bolts, frame areas and trailer components against coastal corrosion.",
+              "Electrical Sealing: Seal electrical parts to reduce moisture and salt-air failure risk.",
+            ],
           },
           {
             title: "High Altitude",
             problem: "Power drop, difficult starting, insufficient lighting performance.",
-            solution: "Engine and generator matching based on altitude and load creates the right light tower configuration for the site.",
+            solution: [
+              "Power Matching: Match engine and generator capacity to altitude and site load.",
+              "Startup Review: Check starting performance and lighting output before configuration.",
+              "Project Fit: Build the LF955 package around actual elevation and duty cycle.",
+            ],
           },
         ],
       };
@@ -153,46 +172,55 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
   const coreConfiguration = zh
     ? [
         { label: "灯杆高度", value: "7.5米液压升降灯杆" },
-        { label: "照明系统", value: "4 盏 LED 投光灯" },
-        { label: "动力系统", value: "国际品牌柴油发动机" },
-        { label: "发电系统", value: "匹配式发电机输出" },
-        { label: "拖车结构", value: "可移动拖挂式底盘" },
+        { label: "灯杆控制", value: "0–350°旋转，灯具角度可调" },
+        { label: "照明系统", value: "4×400W LED投光灯" },
+        { label: "总光通量", value: "约230,000流明" },
+        { label: "发动机", value: "国际品牌柴油发动机" },
+        { label: "发电系统", value: "5kVA单相发电机" },
+        { label: "油箱容量", value: "120L独立油箱" },
+        { label: "拖车结构", value: "两轮移动拖车，四个支撑腿" },
         { label: "应用场景", value: "施工、矿山、租赁、应急照明" },
+        { label: "定制能力", value: "支持高温、风沙、沿海及高海拔配置" },
       ]
     : [
-        { label: "Mast height", value: "7.5m hydraulic lifting mast" },
-        { label: "Lighting", value: "4 × LED floodlights" },
-        { label: "Engine", value: "International brand diesel engine" },
-        { label: "Generator", value: "Matched generator output" },
-        { label: "Trailer", value: "Towable mobile trailer" },
-        { label: "Application", value: "Construction, mining, rental, emergency lighting" },
+        { label: "Mast Height", value: "7.5 m hydraulic lifting mast" },
+        { label: "Mast Control", value: "0–350° rotation, adjustable lamp angle" },
+        { label: "Lighting System", value: "4×400W LED floodlights" },
+        { label: "Total Luminous Flux", value: "Approx. 230,000 lumens" },
+        { label: "Engine", value: "Kubota / Yanmar diesel engine options" },
+        { label: "Generator System", value: "5kVA single-phase generator" },
+        { label: "Fuel Tank Capacity", value: "120L independent fuel tank" },
+        { label: "Trailer Structure", value: "Two-wheel mobile trailer, four support legs" },
+        { label: "Application Scenarios", value: "Construction, mining, rental, emergency lighting" },
+        { label: "Customization Capability", value: "Supports high temperature, dust, coastal and high-altitude configurations" },
       ];
 
   const manufacturingProcess = (zh
     ? [
-        ["切割", "/images/products/lf955/manufacturing/02-laser-cutting.png"],
-        ["折弯", "/images/products/lf955/manufacturing/03-bending.jpg"],
-        ["焊接", "/images/products/lf955/manufacturing/04-welding.jpg"],
-        ["打磨", "/images/products/lf955/manufacturing/05-打磨处理.jpg"],
-        ["喷塑", "/images/products/lf955/manufacturing/06-anti-corrosion-coating.jpg"],
-        ["接线", "/images/products/lf955/manufacturing/07-assembly.jpg"],
-        ["检测", "/images/products/lf955/manufacturing/08-testing.jpg"],
-        ["出货", "/images/products/lf955/manufacturing/10-shipping.jpg"],
+        ["01", "切割", "/images/products/lf955/manufacturing/02-laser-cutting.png", "LFADJ移动照明灯塔激光切割工艺"],
+        ["02", "折弯", "/images/products/lf955/manufacturing/03-bending.jpg", "LFADJ移动照明灯塔钣金折弯工艺"],
+        ["03", "焊接", "/images/products/lf955/manufacturing/04-welding.jpg", "LFADJ移动照明灯塔焊接工艺"],
+        ["04", "打磨", "/images/products/lf955/manufacturing/05-打磨处理.jpg", "LFADJ移动照明灯塔打磨处理工艺"],
+        ["05", "喷塑", "/images/products/lf955/manufacturing/06-anti-corrosion-coating.jpg", "LFADJ移动照明灯塔喷塑防腐工艺"],
+        ["06", "接线", "/images/products/lf955/manufacturing/07-assembly.jpg", "LFADJ移动照明灯塔电气接线工艺"],
+        ["07", "检测", "/images/products/lf955/manufacturing/08-testing.jpg", "LFADJ移动照明灯塔整机检测工艺"],
+        ["08", "出货", "/images/products/lf955/manufacturing/10-shipping.jpg", "LFADJ移动照明灯塔装车出货流程"],
       ]
     : [
-        ["Cutting", "/images/products/lf955/manufacturing/02-laser-cutting.png"],
-        ["Bending", "/images/products/lf955/manufacturing/03-bending.jpg"],
-        ["Welding", "/images/products/lf955/manufacturing/04-welding.jpg"],
-        ["Grinding", "/images/products/lf955/manufacturing/05-打磨处理.jpg"],
-        ["Powder coating", "/images/products/lf955/manufacturing/06-anti-corrosion-coating.jpg"],
-        ["Wiring", "/images/products/lf955/manufacturing/07-assembly.jpg"],
-        ["Testing", "/images/products/lf955/manufacturing/08-testing.jpg"],
-        ["Delivery", "/images/products/lf955/manufacturing/10-shipping.jpg"],
+        ["01", "Cutting", "/images/products/lf955/manufacturing/02-laser-cutting.png", "LFADJ mobile light tower laser cutting process"],
+        ["02", "Bending", "/images/products/lf955/manufacturing/03-bending.jpg", "LFADJ mobile light tower sheet metal bending process"],
+        ["03", "Welding", "/images/products/lf955/manufacturing/04-welding.jpg", "LFADJ mobile light tower welding process"],
+        ["04", "Grinding", "/images/products/lf955/manufacturing/05-打磨处理.jpg", "LFADJ mobile light tower grinding process"],
+        ["05", "Powder Coating", "/images/products/lf955/manufacturing/06-anti-corrosion-coating.jpg", "LFADJ mobile light tower powder coating process"],
+        ["06", "Wiring", "/images/products/lf955/manufacturing/07-assembly.jpg", "LFADJ mobile light tower electrical wiring process"],
+        ["07", "Testing", "/images/products/lf955/manufacturing/08-testing.jpg", "LFADJ mobile light tower final testing process"],
+        ["08", "Delivery", "/images/products/lf955/manufacturing/10-shipping.jpg", "LFADJ mobile light tower delivery loading process"],
       ]
-  ).map(([title, image]) => ({
+  ).map(([step, title, image, imageAlt]) => ({
+    step,
     title,
     image,
-    imageAlt: zh ? `LF955 移动照明灯塔${title}生产工艺` : `LF955 mobile light tower ${title.toLowerCase()} process`,
+    imageAlt,
   }));
 
   const riskCards = zh
@@ -422,84 +450,55 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
           summary={heroV7.summary}
           primaryCta={heroV7.primary}
           primaryHref="#project-environment-inquiry"
-          secondaryCta={heroV7.secondary}
-          secondaryHref="#configuration"
-          valueBadges={heroV7.valueBadges}
-          trustedLabel={heroV7.trustedLabel}
-          trustLogos={heroV7.trustLogos}
+          applicationLabel={heroV7.applicationLabel}
+          applications={heroV7.applications}
+          advantageLabel={heroV7.advantageLabel}
+          advantages={heroV7.advantages}
           imageSrc="/images/products/lf955/applications/road-construction.jpg"
-          imageAlt={zh ? "LF955 移动照明灯塔用于夜间施工现场照明" : "LF955 hydraulic diesel mobile light tower working at construction site"}
+          imageAlt={zh ? "LF955柴油移动照明灯塔用于夜间工程项目照明" : "LF955 diesel mobile light tower illuminating a night project site"}
+          imageObjectPosition="center 58%"
           featuredMedia={false}
         />
+
+        {!zh ? (
+          <TrustStrip
+            items={[
+              "ISO Certified Manufacturer",
+              "OEM / ODM Available",
+              "Export Project Support",
+              "Factory Direct Supply",
+            ]}
+          />
+        ) : null}
 
         <ProjectCostLossSection
           title={costLossSection.title}
           subtitle={costLossSection.subtitle}
           cards={costLossSection.cards}
-          problemLabel={zh ? "问题" : "Problem"}
-          solutionLabel={zh ? "LFADJ 方案" : "LFADJ Solution"}
+          problemLabel={zh ? "项目挑战" : "Project Challenge"}
+          solutionLabel="LFADJ Solution"
           emphasisText={costLossSection.emphasisText}
         />
 
         <LF955ConfigurationManufacturingSection
-          title={zh ? "LF955 配置、视频与生产工艺" : "LF955 Configuration, Video & Manufacturing Process"}
+          title={zh ? "LF955 核心配置、产品视频与制造流程" : "LF955 Key Specifications, Product Video and Manufacturing Process"}
           subtitle={
             zh
-              ? "一款通过完整生产流程制造的 7.5米液压柴油移动照明灯塔，由具备完整生产能力的移动照明灯塔厂家制造。"
-              : "A 7.5m hydraulic diesel mobile light tower built through a complete in-house production process by an experienced light tower manufacturer."
+              ? "从核心配置、实际运行到完整生产流程，帮助您判断这款移动照明灯塔是否适合您的项目。"
+              : "Review the key configuration, real product operation and complete manufacturing process before selecting your project solution."
           }
           configurationTitle={zh ? "核心配置" : "Core Configuration"}
           configuration={coreConfiguration}
-          videoTitle={zh ? "产品视频" : "Product Video"}
+          videoTitle={zh ? "LF955 产品运行与功能演示" : "LF955 Operation and Function Demonstration"}
           videoLabel={zh ? "LF955 液压升降与照明测试视频" : "LF955 hydraulic mast lifting and lighting test"}
           videoSrc="/videos/products/lf955/factory-testing.mp4"
-          processTitle={zh ? "生产工艺流程" : "Manufacturing Process"}
+          videoPoster="/images/products/lf955/hero/hero.png"
+          videoFallback={zh ? "视频暂时无法加载，请稍后重试。" : "The video could not be loaded. Please try again later."}
+          processTitle={zh ? "从原材料到整机交付的制造流程" : "Manufacturing Process from Raw Material to Final Delivery"}
           processSteps={manufacturingProcess}
         />
 
-        <LF955ProjectInquirySection
-          title={zh ? "告诉我们您的项目使用环境" : "Tell Us About Your Project Environment"}
-          subtitle={
-            zh
-              ? "请提供国家、工况和照明需求，我们将为您推荐合适的 LF955 配置方案和移动照明方案。"
-              : "Share your country, working conditions, and lighting requirements. We will recommend a suitable LF955 configuration and mobile lighting solution."
-          }
-          fieldLabels={
-            zh
-              ? {
-                  name: "姓名",
-                  contact: "邮箱 / WhatsApp",
-                  country: "国家",
-                  industry: "行业 / 应用场景",
-                  environment: "工作环境",
-                  quantity: "需求数量",
-                  message: "留言",
-                }
-              : {
-                  name: "Name",
-                  contact: "Email / WhatsApp",
-                  country: "Country",
-                  industry: "Industry / Application",
-                  environment: "Working environment",
-                  quantity: "Required quantity",
-                  message: "Message",
-                }
-          }
-          environmentOptions={
-            zh
-              ? ["高温环境", "沙漠 / 风沙环境", "沿海 / 腐蚀环境", "高海拔环境", "普通施工现场", "其他"]
-              : ["High temperature", "Desert / dusty area", "Coastal / corrosive area", "High altitude", "General construction site", "Other"]
-          }
-          submitLabel={zh ? "提交我的项目需求" : "Submit My Project Requirement"}
-          contactTitle={zh ? "需要更快回复？" : "Need a faster response?"}
-          contactText={
-            zh
-              ? "请发送您的项目地点、工作时长、需求数量和现场环境。"
-              : "Send us your project location, working hours, quantity, and environment conditions."
-          }
-          contactItems={zh ? ["WhatsApp", "电子邮箱", "工厂 / 代工支持"] : ["WhatsApp", "Email", "Factory / OEM support"]}
-          trustText={zh ? "24小时内提供免费项目配置建议。" : "Free project recommendation within 24 hours."}
-        />
+        <LF955ProjectInquirySection language={zh ? "zh" : "en"} />
 
       </main>
     </>
