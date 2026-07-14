@@ -67,6 +67,11 @@ type SpecGroup = {
   rows: SpecRow[];
 };
 
+type FaqItem = {
+  q: string;
+  a: string;
+};
+
 type ApplicationCard = {
   title: string;
   problem: string;
@@ -223,18 +228,18 @@ export function HeroSection({
             </div>
           </div>
 
-          <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900 ${featuredMedia ? "min-h-[420px] shadow-[0_34px_90px_rgba(0,0,0,0.48)] sm:min-h-[540px] lg:min-h-[680px] lg:translate-y-2" : "min-h-[300px] shadow-[0_28px_70px_rgba(0,0,0,0.36)] sm:min-h-[430px] lg:min-h-[560px]"}`}>
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              fill
-              priority
-              sizes="(min-width: 1024px) 58vw, 100vw"
-              className="object-cover"
-              style={{ objectPosition: imageObjectPosition }}
-            />
-            <div className={`absolute inset-0 ${featuredMedia ? "bg-gradient-to-r from-slate-950/58 via-slate-950/22 to-slate-950/5" : "bg-gradient-to-r from-slate-950/50 via-slate-950/20 to-slate-950/5"}`} />
-            <div className={`absolute inset-0 ${featuredMedia ? "bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-slate-950/25" : "bg-gradient-to-t from-slate-950/48 via-slate-950/10 to-transparent"}`} />
+          <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-slate-100 ${featuredMedia ? "min-h-[420px] shadow-[0_34px_90px_rgba(0,0,0,0.48)] sm:min-h-[540px] lg:min-h-[680px] lg:translate-y-2" : "min-h-[300px] shadow-[0_28px_70px_rgba(0,0,0,0.36)] sm:min-h-[430px] lg:min-h-[560px]"}`}>
+            <div className="absolute left-1/2 top-1/2 h-[90%] w-[90%] -translate-x-1/2 -translate-y-1/2 lg:w-[80%]">
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                fill
+                priority
+                sizes="(min-width: 1024px) 46vw, 90vw"
+                className="object-contain"
+                style={{ objectPosition: "center" }}
+              />
+            </div>
             {featuredMedia ? (
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_24%,rgba(251,191,36,0.20),transparent_26%),radial-gradient(circle_at_82%_68%,rgba(255,255,255,0.10),transparent_22%),radial-gradient(ellipse_at_center,transparent_44%,rgba(2,6,23,0.34)_100%)]" />
             ) : null}
@@ -254,6 +259,77 @@ export function TrustStrip({ items }: { items: string[] }) {
             {item}
           </span>
         ))}
+      </div>
+    </section>
+  );
+}
+
+type LF955Advantage = {
+  title: string;
+  description: string;
+};
+
+type ProductApplicationItem = {
+  title: string;
+  description: string;
+};
+
+export function WhyLf955Section({
+  title,
+  description,
+  items,
+}: {
+  title: string;
+  description: string;
+  items: LF955Advantage[];
+}) {
+  return (
+    <section className="bg-white px-6 py-20 text-slate-950 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-[1440px] lg:px-2">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
+          <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">{description}</p>
+        </div>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          {items.map((item, index) => (
+            <article key={item.title} className="h-full rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-sm font-semibold text-white">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-5 text-xl font-semibold tracking-tight text-slate-950">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ProductApplicationsSection({
+  title,
+  items,
+}: {
+  title: string;
+  items: ProductApplicationItem[];
+}) {
+  return (
+    <section id="applications" aria-labelledby="lf955-applications-title" className="bg-slate-50 px-6 py-20 text-slate-950 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-[1440px] lg:px-2">
+        <h2 id="lf955-applications-title" className="max-w-4xl text-3xl font-semibold tracking-tight sm:text-4xl">
+          {title}
+        </h2>
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {items.map((item, index) => (
+            <article key={item.title} className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <span className="text-sm font-semibold text-amber-600">{String(index + 1).padStart(2, "0")}</span>
+              <h3 className="mt-4 text-xl font-semibold tracking-tight text-slate-950">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -332,6 +408,10 @@ export function LF955ConfigurationManufacturingSection({
   subtitle,
   configurationTitle,
   configuration,
+  configurationOptionsTitle,
+  configurationOptionsDescription,
+  configurationOptions,
+  configurationOptionLabel,
   videoTitle,
   videoLabel,
   videoSrc,
@@ -342,16 +422,22 @@ export function LF955ConfigurationManufacturingSection({
 }: {
   title: string;
   subtitle: string;
-  configurationTitle: string;
-  configuration: CoreConfigurationItem[];
+  configurationTitle?: string;
+  configuration?: CoreConfigurationItem[];
+  configurationOptionsTitle?: string;
+  configurationOptionsDescription?: string;
+  configurationOptions?: ConfigurationGroup[];
+  configurationOptionLabel?: string;
   videoTitle: string;
   videoLabel: string;
   videoSrc: string;
-  videoPoster: string;
+  videoPoster?: string;
   videoFallback: string;
   processTitle: string;
   processSteps: ManufacturingProcessStep[];
 }) {
+  const hasCoreConfiguration = Boolean(configurationTitle && configuration?.length);
+
   return (
     <section className="bg-white px-6 py-20 text-slate-950 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-7xl">
@@ -360,30 +446,56 @@ export function LF955ConfigurationManufacturingSection({
           <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">{subtitle}</p>
         </div>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm sm:p-8">
-            <h3 className="text-2xl font-semibold tracking-tight">{configurationTitle}</h3>
-            <dl className="mt-6 divide-y divide-slate-200">
-              {configuration.map((item) => (
-                <div key={item.label} className="grid gap-1 py-4 sm:grid-cols-[140px_1fr] sm:gap-5">
-                  <dt className="text-sm font-semibold text-slate-950">{item.label}</dt>
-                  <dd className="text-sm leading-6 text-slate-600">{item.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+        <div className={`mt-12 grid gap-8 ${hasCoreConfiguration ? "lg:grid-cols-[0.9fr_1.1fr]" : ""}`}>
+          {hasCoreConfiguration ? (
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm sm:p-8">
+              <h3 className="text-2xl font-semibold tracking-tight">{configurationTitle}</h3>
+              <dl className="mt-6 divide-y divide-slate-200">
+                {configuration?.map((item) => (
+                  <div key={item.label} className="grid gap-1 py-4 sm:grid-cols-[140px_1fr] sm:gap-5">
+                    <dt className="text-sm font-semibold text-slate-950">{item.label}</dt>
+                    <dd className="text-sm leading-6 text-slate-600">{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ) : null}
 
           <div className="flex min-h-[420px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-sm">
             <div className="px-6 py-5 sm:px-8">
               <h3 className="text-2xl font-semibold tracking-tight text-white">{videoTitle}</h3>
               <p className="mt-2 text-sm leading-6 text-slate-300">{videoLabel}</p>
             </div>
-            <video controls preload="metadata" poster={videoPoster} className="min-h-[260px] w-full flex-1 bg-black object-cover" aria-label={videoLabel}>
+            <video controls preload="metadata" poster={videoPoster || undefined} className="min-h-[260px] w-full flex-1 bg-black object-cover" aria-label={videoLabel}>
               <source src={videoSrc} type="video/mp4" />
               {videoFallback}
             </video>
           </div>
         </div>
+
+        {configurationOptionsTitle && configurationOptionsDescription && configurationOptions?.length ? (
+          <section id="configuration" aria-labelledby="lf955-configuration-options-title" className="mt-14 border-t border-slate-200 pt-14">
+            <div className="max-w-4xl">
+              <h2 id="lf955-configuration-options-title" className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                {configurationOptionsTitle}
+              </h2>
+              <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">{configurationOptionsDescription}</p>
+            </div>
+
+            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {configurationOptions.map((group) => (
+                <article key={group.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+                  {configurationOptionLabel ? (
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-600">{configurationOptionLabel}</p>
+                  ) : null}
+                  <h3 className="mt-3 text-xl font-semibold tracking-tight text-slate-950">{group.title}</h3>
+                  <p className="mt-4 text-sm font-semibold leading-7 text-slate-800">{group.options}</p>
+                  <p className="mt-5 border-t border-slate-200 pt-4 text-sm leading-7 text-slate-600">{group.recommendation}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <div className="mt-14">
           <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">{processTitle}</h3>
@@ -391,7 +503,7 @@ export function LF955ConfigurationManufacturingSection({
             {processSteps.map((step) => (
               <li key={step.step} className="flex h-full min-h-[292px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
                 <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
-                  <img src={step.image} alt={step.imageAlt} loading="lazy" className="h-full w-full object-cover" />
+                  <Image src={step.image} alt={step.imageAlt} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
                   <span className="absolute left-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-xs font-semibold text-white">
                     {step.step}
                   </span>
@@ -642,7 +754,7 @@ export function TechnicalSpecsSection({
           <div className="grid gap-5 md:grid-cols-2">
             {groups.map((group) => (
               <div key={group.title} className="rounded-2xl border border-white/10 bg-white/[0.045] p-5">
-                <h4 className="text-lg font-semibold tracking-tight text-white">{group.title}</h4>
+                <h3 className="text-lg font-semibold tracking-tight text-white">{group.title}</h3>
                 <dl className="mt-5 space-y-4">
                   {group.rows.map((row) => (
                     <div key={row.label} className="border-t border-white/10 pt-4">
@@ -654,6 +766,38 @@ export function TechnicalSpecsSection({
               </div>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ProductFaqSection({
+  title,
+  items,
+}: {
+  title: string;
+  items: FaqItem[];
+}) {
+  return (
+    <section id="faq" aria-labelledby="lf955-faq-title" className="bg-slate-50 px-6 py-20 text-slate-950 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-5xl">
+        <h2 id="lf955-faq-title" className="max-w-4xl text-3xl font-semibold tracking-tight sm:text-4xl">
+          {title}
+        </h2>
+
+        <div className="mt-10 space-y-4">
+          {items.map((item) => (
+            <details key={item.q} className="group rounded-2xl border border-slate-200 bg-white px-6 py-5 shadow-sm open:border-amber-300 sm:px-7">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-semibold leading-7 text-slate-950">
+                <span>{item.q}</span>
+                <span aria-hidden="true" className="text-2xl font-light text-amber-600 transition-transform group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 border-t border-slate-200 pt-4 text-sm leading-7 text-slate-600 sm:text-base">{item.a}</p>
+            </details>
+          ))}
         </div>
       </div>
     </section>
@@ -840,7 +984,14 @@ export function ApplicationEngineeringSection({
         <div className={`mt-10 grid gap-6 md:grid-cols-2 ${cards.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {cards.map((item) => (
             <article key={item.title} className="group relative min-h-[430px] overflow-hidden rounded-[22px] bg-slate-200 shadow-[0_20px_54px_rgba(15,23,42,0.14)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_74px_rgba(15,23,42,0.2)]">
-              <img src={item.image} alt={item.title} className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" style={{ objectPosition: item.objectPosition ?? "center" }} />
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                sizes={cards.length === 4 ? "(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"}
+                className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                style={{ objectPosition: item.objectPosition ?? "center" }}
+              />
               <div className="absolute inset-0 bg-slate-950/18" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/86 via-slate-950/38 to-slate-950/8" />
               <div className="relative z-10 flex min-h-[430px] flex-col justify-end p-6">
@@ -910,7 +1061,9 @@ export function ManufacturingProofSection({
         <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {steps.map((item) => (
             <article key={item.step} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-amber-300 hover:shadow-md">
-              <img src={item.image} alt={`${item.step} ${item.title}`} className="h-40 w-full object-cover" />
+              <div className="relative h-40 w-full overflow-hidden">
+                <Image src={item.image} alt={`${item.step} ${item.title}`} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
+              </div>
               <div className="p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-600">{item.step}</p>
                 <h4 className="mt-2 text-base font-semibold tracking-tight text-slate-900">{item.title}</h4>

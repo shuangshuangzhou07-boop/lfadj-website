@@ -6,7 +6,7 @@ export default function ChineseResourcesPage() {
         <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-600">
           即将上线：移动照明灯塔参数表、产品手册、配置指南和项目资料。
         </p>
-        <a href="/zh/联系我们" className="mt-10 inline-flex rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white">
+        <a href="/zh/contact" className="mt-10 inline-flex rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white">
           获取报价
         </a>
       </section>

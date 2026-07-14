@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import type { ReactElement } from "react";
 import { notFound } from "next/navigation";
 
-import ApplicationsPage, {
-  metadata as applicationsMetadata,
-} from "../应用场景/page";
 import SolutionsPage, { metadata as solutionsMetadata } from "../解决方案/page";
 import OemPage, { metadata as oemMetadata } from "../oem制造/page";
 import CaseStudiesPage, { metadata as caseStudiesMetadata } from "../案例/page";
@@ -13,10 +10,6 @@ import BlogPage, { metadata as blogMetadata } from "../博客/page";
 import ContactPage, { metadata as contactMetadata } from "../联系我们/page";
 
 const pageMap = {
-  应用场景: {
-    Component: ApplicationsPage,
-    metadata: applicationsMetadata,
-  },
   解决方案: {
     Component: SolutionsPage,
     metadata: solutionsMetadata,

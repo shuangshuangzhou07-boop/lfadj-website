@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "LFADJ Mobile Light Tower Manufacturer",
+  title: "Mobile Light Tower Applications for Mining, Construction & Oil Gas | LFADJ",
   description:
-    "LFADJ is a professional manufacturer of mobile light towers for construction, mining, and emergency applications. OEM/ODM available.",
+    "Explore LFADJ mobile light tower applications for construction, mining, oil & gas, rental and emergency projects. Learn how reliable lighting supports different industrial environments.",
   alternates: {
     canonical: "https://lfadj.com/en/applications",
   },
@@ -16,119 +17,70 @@ export const metadata: Metadata = {
   },
 };
 
-const applicationCards = [
+const applications = [
   {
+    name: "Construction",
     title: "Construction Lighting",
-    text: "Mobile light towers support night work, concrete pouring, road construction and temporary outdoor operations where stable illumination is required.",
+    description:
+      "Construction light towers support nighttime construction, road building and infrastructure projects that require dependable mobile illumination across changing work areas.",
   },
   {
+    name: "Mining",
     title: "Mining Lighting",
-    text: "Diesel light towers help mining teams illuminate remote yards, access roads and maintenance zones with dependable runtime.",
+    description:
+      "Mine light towers provide mobile lighting for mining areas where high dust levels, remote locations and long operating hours place additional demands on equipment.",
   },
   {
-    title: "Emergency Lighting",
-    text: "Fast-deployment light towers provide temporary site visibility for rescue, recovery, public safety and disaster relief.",
+    name: "Oil & Gas",
+    title: "Oil Field Lighting",
+    description:
+      "Oil and gas lighting equipment supports remote oil field projects and work areas that need reliable illumination during continuous operations.",
   },
   {
-    title: "Rental Fleet Lighting",
-    text: "Trailer-mounted lighting towers are practical assets for rental companies serving construction, municipal and industrial clients.",
+    name: "Rental",
+    title: "Light Tower Rental",
+    description:
+      "Rental companies evaluate mobile light towers around reliability, maintenance costs and service life across repeated deployments for different customers.",
+  },
+  {
+    name: "Emergency",
+    title: "Emergency Lighting Equipment",
+    description:
+      "Emergency lighting equipment supports disaster response, temporary power situations and projects that require rapid deployment of mobile illumination.",
   },
 ];
 
 export default function EnglishApplicationsPage() {
   return (
-    <main className='max-w-7xl mx-auto'>
-      <section className="px-6 py-20 lg:py-28">
-        <div className="mx-auto max-w-[1200px]">
-          <p className="text-sm font-bold uppercase tracking-[0.24em] text-gray-500">
-            Applications
-          </p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-black sm:text-5xl lg:text-6xl">
-            Mobile Light Tower Applications for Outdoor Worksites
+    <main className="w-full bg-white">
+      <section className="w-full bg-gradient-to-br from-slate-50 to-blue-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-[1280px]">
+          <h1 className="max-w-5xl text-4xl font-bold leading-tight tracking-tight text-gray-950 sm:text-5xl lg:text-6xl">
+            Mobile Light Tower Applications for Construction, Mining and Industrial Projects
           </h1>
-          <p className="mt-6 max-w-4xl text-lg leading-8 text-gray-600">
-            LFADJ mobile light towers are designed for demanding B2B worksites
-            where reliable temporary lighting is essential. Construction
-            contractors, mining operators, emergency teams and rental fleets
-            need equipment that can be transported quickly, deployed safely and
-            operated for long shifts. A professional mobile light tower combines
-            high-brightness LED lamps, a stable hydraulic mast, durable trailer
-            structure and weather protection for outdoor operation. For buyers
-            comparing a mobile light tower manufacturer, diesel light tower
-            supplier or portable lighting tower OEM partner, application fit is
-            often the first decision point. LF6130 gives project teams a
-            practical lighting platform for construction sites, mining areas,
-            municipal maintenance, road work, rescue scenes and temporary event
-            support.
+          <p className="mt-6 max-w-4xl text-lg leading-8 text-gray-700 sm:text-xl">
+            LFADJ provides reliable mobile lighting solutions for construction, mining, oil &amp; gas, rental and emergency applications.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/en/products/lf6130" className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white">LF6130 Product</a>
-            <a href="/en/products" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Products</a>
-            <a href="/en/case-studies" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Case Studies</a>
-            <a href="/en/blog" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Blog</a>
-          </div>
+          <Link href="/en/products" className="mt-8 inline-flex h-12 items-center justify-center rounded-lg bg-blue-700 px-6 text-sm font-bold text-white hover:bg-blue-800">
+            View Products
+          </Link>
         </div>
       </section>
 
-      <section className="border-y border-gray-100 bg-gray-50 px-6 py-20">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight text-black">
-            Application Scenarios
-          </h2>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {applicationCards.map((item) => (
-              <article key={item.title} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-bold text-black">{item.title}</h3>
-                <p className="mt-4 text-sm leading-6 text-gray-600">{item.text}</p>
+      <section className="w-full px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div className="mx-auto max-w-[1280px]">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-950 sm:text-4xl">Industry Applications</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {applications.map((application) => (
+              <article key={application.name} className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-700">{application.name}</p>
+                <h3 className="mt-4 text-2xl font-bold text-gray-950">{application.title}</h3>
+                <p className="mt-4 flex-1 text-base leading-7 text-gray-600">{application.description}</p>
+                <Link href="/en/products" className="mt-7 self-start text-sm font-bold text-blue-700 underline-offset-4 hover:underline">
+                  View Products →
+                </Link>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight text-black">
-            Choosing Lighting by Project Type
-          </h2>
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {[
-              "Select diesel-powered lighting for long runtime and remote areas.",
-              "Choose hydraulic mast systems when fast setup and height control matter.",
-              "Work with LFADJ for OEM configuration, branding and export-ready support.",
-            ].map((item) => (
-              <p key={item} className="rounded-2xl border border-gray-200 p-6 text-sm leading-6 text-gray-700">
-                {item}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight text-black">
-            LFADJ Application Support Trust
-          </h2>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {["LF6130 product hub", "Construction and mining use cases", "OEM project support", "Global B2B communication"].map((item) => (
-              <article key={item} className="rounded-2xl border border-gray-200 bg-white p-6 text-sm font-bold text-gray-800 shadow-sm">
-                {item}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-black px-6 py-16 text-white">
-        <div className="mx-auto max-w-[1200px] text-center">
-          <h2 className="text-3xl font-bold">Need Lighting for Your Worksite?</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-gray-300">
-            Contact LFADJ for mobile light tower specifications, pricing and application support.
-          </p>
-          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <a href="/en/contact" className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white">Contact Us</a>
-            <a href="/en/products/lf6130" className="rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white">View LF6130</a>
           </div>
         </div>
       </section>

@@ -74,8 +74,8 @@ const copyByLanguage: Record<InquiryLanguage, InquiryCopy> = {
     submitting: "正在提交...",
     success: "您的项目需求已提交，请等待我们的配置建议。",
     error: "提交失败，请检查网络后重试，或通过 WhatsApp / 电子邮箱联系我们。",
-    contactRequired: "请至少填写邮箱或 WhatsApp / 电话中的一项。",
-    requiredHint: "标 * 为必填项。邮箱或 WhatsApp / 电话至少填写一项。",
+    contactRequired: "请填写有效邮箱。",
+    requiredHint: "标 * 为必填项。邮箱用于接收项目回复，WhatsApp / 电话为选填。",
     contactTitle: "需要更快回复？",
     contactText:
       "请发送项目地点、工作时长、需求数量和现场环境，我们将尽快提供配置建议。",
@@ -125,8 +125,8 @@ const copyByLanguage: Record<InquiryLanguage, InquiryCopy> = {
     submitting: "Submitting...",
     success: "Your project request has been submitted. We will review it and recommend a suitable configuration.",
     error: "Submission failed. Please check your connection and try again, or contact us by WhatsApp / email.",
-    contactRequired: "Please provide at least an email or WhatsApp / phone number.",
-    requiredHint: "Fields marked * are required. Email or WhatsApp / phone is required.",
+    contactRequired: "Please provide a valid email address.",
+    requiredHint: "Fields marked * are required. Email is required for project replies; WhatsApp / phone is optional.",
     contactTitle: "Need a Faster Response?",
     contactText:
       "Send your project location, operating hours, required quantity and site conditions for a faster configuration recommendation.",
@@ -139,13 +139,12 @@ export function LF955ProjectInquirySection({ language }: { language: InquiryLang
   const copy = copyByLanguage[language];
   const formId = useId();
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
-  const [contactError, setContactError] = useState("");
 
   function fieldId(name: string) {
     return `${formId}-${name}`;
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (submitState === "submitting") {
@@ -153,30 +152,50 @@ export function LF955ProjectInquirySection({ language }: { language: InquiryLang
     }
 
     const form = event.currentTarget;
-    const data = new FormData(form);
-    const email = String(data.get("email") ?? "").trim();
-    const whatsapp = String(data.get("whatsapp") ?? "").trim();
-
     setSubmitState("idle");
-    setContactError("");
 
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
-    if (!email && !whatsapp) {
-      setContactError(copy.contactRequired);
-      setSubmitState("error");
-      return;
-    }
+    const data = new FormData(form);
+    const requirements = [
+      `WhatsApp / Phone: ${String(data.get("whatsapp") ?? "").trim() || "Not provided"}`,
+      `Working environment: ${String(data.get("workingEnvironment") ?? "").trim() || "Not provided"}`,
+      `Daily operating hours: ${String(data.get("dailyOperatingHours") ?? "").trim() || "Not provided"}`,
+      `Expected purchase time: ${String(data.get("expectedPurchaseTime") ?? "").trim() || "Not provided"}`,
+      "",
+      String(data.get("projectDetails") ?? "").trim(),
+    ].join("\n");
 
     setSubmitState("submitting");
 
-    window.setTimeout(() => {
+    try {
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: String(data.get("name") ?? "").trim(),
+          company: String(data.get("company") ?? "").trim(),
+          email: String(data.get("email") ?? "").trim(),
+          country: String(data.get("country") ?? "").trim(),
+          projectType: String(data.get("industry") ?? "").trim(),
+          quantity: String(data.get("quantity") ?? "").trim(),
+          requirements,
+          product: "LF955 Diesel Mobile Light Tower",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Inquiry request failed with status ${response.status}`);
+      }
+
       setSubmitState("success");
       form.reset();
-    }, 600);
+    } catch {
+      setSubmitState("error");
+    }
   }
 
   const inputClassName =
@@ -206,8 +225,8 @@ export function LF955ProjectInquirySection({ language }: { language: InquiryLang
               </label>
 
               <label htmlFor={fieldId("email")} className="block">
-                <span className={labelClassName}>{copy.fields.email}</span>
-                <input id={fieldId("email")} name="email" type="email" autoComplete="email" className={inputClassName} />
+                <span className={labelClassName}>{copy.fields.email} *</span>
+                <input id={fieldId("email")} required name="email" type="email" autoComplete="email" className={inputClassName} />
               </label>
               <label htmlFor={fieldId("whatsapp")} className="block">
                 <span className={labelClassName}>{copy.fields.whatsapp}</span>
@@ -219,8 +238,8 @@ export function LF955ProjectInquirySection({ language }: { language: InquiryLang
                 <input id={fieldId("country")} required name="country" autoComplete="country-name" className={inputClassName} />
               </label>
               <label htmlFor={fieldId("industry")} className="block">
-                <span className={labelClassName}>{copy.fields.industry}</span>
-                <select id={fieldId("industry")} name="industry" defaultValue="" className={inputClassName}>
+                <span className={labelClassName}>{copy.fields.industry} *</span>
+                <select id={fieldId("industry")} required name="industry" defaultValue="" className={inputClassName}>
                   <option value="" disabled>
                     {copy.placeholders.select}
                   </option>
@@ -260,16 +279,10 @@ export function LF955ProjectInquirySection({ language }: { language: InquiryLang
               </label>
 
               <label htmlFor={fieldId("details")} className="block sm:col-span-2">
-                <span className={labelClassName}>{copy.fields.details}</span>
-                <textarea id={fieldId("details")} name="projectDetails" rows={5} placeholder={copy.placeholders.details} className={`${inputClassName} h-auto py-3`} />
+                <span className={labelClassName}>{copy.fields.details} *</span>
+                <textarea id={fieldId("details")} required name="projectDetails" rows={5} placeholder={copy.placeholders.details} className={`${inputClassName} h-auto py-3`} />
               </label>
             </div>
-
-            {contactError ? (
-              <p className="mt-4 text-sm font-semibold text-red-600" role="alert">
-                {contactError}
-              </p>
-            ) : null}
 
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
               <button
@@ -281,7 +294,7 @@ export function LF955ProjectInquirySection({ language }: { language: InquiryLang
               </button>
               <p className="text-sm font-medium text-slate-600" aria-live="polite">
                 {submitState === "success" ? copy.success : null}
-                {submitState === "error" && !contactError ? copy.error : null}
+                {submitState === "error" ? copy.error : null}
               </p>
             </div>
           </form>

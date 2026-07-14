@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { headers } from "next/headers";
 import { LanguageProvider } from "@/src/i18n/LanguageContext";
 import "./globals.css";
 
@@ -38,8 +39,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const htmlLang = headers().get("x-lfadj-locale") === "zh" ? "zh-CN" : "en";
+
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang={htmlLang} className="h-full antialiased">
       <body className={`${inter.className} min-h-full flex flex-col`}>
         <LanguageProvider>{children}</LanguageProvider>
       </body>

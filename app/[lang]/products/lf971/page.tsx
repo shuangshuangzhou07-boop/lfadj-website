@@ -2,43 +2,116 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import {
-  HeroSection,
   LF955ConfigurationManufacturingSection,
-  ProductApplicationsSection,
-  ProductConfigurationSection,
-  ProductFaqSection,
   ProjectCostLossSection,
-  TechnicalSpecsSection,
   TrustStrip,
-  WhyLf955Section,
 } from "@/components/lf955/Lf955LandingSections";
 import { LF955ProjectInquirySection } from "@/components/lf955/LF955ProjectInquirySection";
 import { SiteNav } from "../../../site-nav";
 
+/**
+ * TODO(LF971): Structural scaffold copied from LF955.
+ * Except for the LF971 product name and route, all detailed copy, specifications,
+ * images, video, application data, CTA destinations, and shared LF955 section
+ * implementations remain LF955 placeholders pending verified LF971 materials.
+ */
+
 type Lang = "en" | "zh";
+
+type LF971HeroContent = {
+  productLabel: string;
+  title: string;
+  body: string;
+  advantages: string[];
+  advantageLabel: string;
+  primaryCta: string;
+  secondaryCta: string;
+  placeholderLabel: string;
+};
 
 function isLang(value: string): value is Lang {
   return value === "en" || value === "zh";
+}
+
+function LF971Hero({ content }: { content: LF971HeroContent }) {
+  return (
+    <section className="relative isolate overflow-hidden bg-[linear-gradient(115deg,_#0B1220_0%,_#111A29_48%,_#1B2432_100%)]">
+      <div className="relative z-10 mx-auto flex min-h-[680px] max-w-[1440px] flex-col px-6 py-14 sm:px-8 lg:min-h-[760px] lg:px-12 lg:py-16">
+        <div className="grid flex-1 gap-10 lg:grid-cols-[42%_58%] lg:items-center lg:gap-12">
+          <div className="max-w-[640px]">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-300">
+              {content.productLabel}
+            </p>
+            <h1 className="mt-6 max-w-3xl text-4xl font-bold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-[54px]">
+              {content.title}
+            </h1>
+            <p className="mt-5 max-w-2xl text-base font-medium leading-8 text-slate-200 sm:text-lg">
+              {content.body}
+            </p>
+
+            <div className="mt-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+                {content.advantageLabel}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                {content.advantages.map((advantage) => (
+                  <span
+                    key={advantage}
+                    className="inline-flex min-h-10 items-center rounded-md border border-white/15 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-slate-200"
+                  >
+                    {advantage}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <a
+                href="#project-environment-inquiry"
+                className="inline-flex h-[56px] min-h-[56px] items-center justify-center rounded-md bg-amber-500 px-9 text-base font-semibold text-slate-950 shadow-[0_16px_34px_rgba(245,158,11,0.24)] transition duration-300 hover:bg-amber-400 sm:w-auto"
+              >
+                {content.primaryCta}
+              </a>
+              <a
+                href="#lf971-details"
+                className="inline-flex h-[56px] min-h-[56px] items-center justify-center rounded-md border border-white/25 bg-white/[0.04] px-9 text-base font-semibold text-white transition duration-300 hover:border-amber-400 hover:text-amber-300 sm:w-auto"
+              >
+                {content.secondaryCta}
+              </a>
+            </div>
+          </div>
+
+          {/* TODO(LF971): Replace this placeholder with a verified LF971 solar light tower image. */}
+          <div className="relative flex min-h-[300px] items-center justify-center overflow-hidden rounded-2xl border border-dashed border-white/25 bg-slate-900/45 px-8 text-center shadow-[0_28px_70px_rgba(0,0,0,0.36)] sm:min-h-[430px] lg:min-h-[560px]">
+            <p className="max-w-sm text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+              {content.placeholderLabel}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export function generateStaticParams() {
   return [{ lang: "en" }, { lang: "zh" }];
 }
 
+// TODO(LF971): Replace LF955-derived SEO copy, keywords, and social images.
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata {
   const lang: Lang = isLang(params.lang) ? params.lang : "en";
   const zh = lang === "zh";
   const title = zh
-    ? "LF955柴油移动照明灯塔 | LFADJ"
-    : "LF955 Diesel Mobile Light Tower | LFADJ";
+    ? "LF971 太阳能移动照明灯塔 | LFADJ"
+    : "LF971 Solar Mobile Light Tower | LFADJ";
   const description = zh
-    ? "了解LF955柴油移动照明灯塔，采用液压升降灯杆，适用于建筑施工、矿山及工业项目，并支持项目配置定制。"
-    : "Explore LF955 diesel mobile light tower with hydraulic mast, reliable LED lighting and customizable configurations for construction and industrial projects.";
-  const url = zh ? "https://lfadj.com/zh/products/lf955" : "https://lfadj.com/en/products/lf955";
+    ? "LFADJ\u751f\u4ea7LF971\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854\uff0c\u9002\u7528\u4e8e\u65bd\u5de5\u3001\u77ff\u5c71\u3001\u6cb9\u6c14\u3001\u79df\u8d41\u548c\u5e94\u6025\u9879\u76ee\uff0c\u5e76\u53ef\u6839\u636e\u9ad8\u6e29\u3001\u98ce\u6c99\u3001\u6cbf\u6d77\u8150\u8680\u53ca\u9ad8\u6d77\u62d4\u73af\u5883\u5b9a\u5236\u914d\u7f6e\u3002"
+    : "LFADJ manufactures LF971 diesel mobile light towers for construction, mining, oil and gas, rental and emergency projects, with custom configurations for high temperature, dust, coastal and high-altitude environments.";
+  const url = zh ? "https://lfadj.com/zh/products/lf971" : "https://lfadj.com/en/products/lf971";
   const image = "https://lfadj.com/images/products/lf955/applications/road-construction.jpg";
   const imageAlt = zh
-    ? "LF955\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854\u7528\u4e8e\u591c\u95f4\u5de5\u7a0b\u9879\u76ee\u7167\u660e"
-    : "LF955 diesel mobile light tower for night construction site lighting";
+    ? "LF971\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854\u7528\u4e8e\u591c\u95f4\u5de5\u7a0b\u9879\u76ee\u7167\u660e"
+    : "LF971 diesel mobile light tower for night construction site lighting";
 
   return {
     title,
@@ -52,14 +125,14 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
           "construction light tower",
           "mining light tower",
           "mobile lighting tower",
-          "LF955 light tower",
+          "LF971 light tower",
         ],
     alternates: {
       canonical: url,
       languages: {
-        en: "https://lfadj.com/en/products/lf955",
-        "zh-CN": "https://lfadj.com/zh/products/lf955",
-        "x-default": "https://lfadj.com/en/products/lf955",
+        en: "https://lfadj.com/en/products/lf971",
+        "zh-CN": "https://lfadj.com/zh/products/lf971",
+        "x-default": "https://lfadj.com/en/products/lf971",
       },
     },
     robots: {
@@ -84,7 +157,8 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
   };
 }
 
-function getLf955ProductSchema(zh: boolean) {
+// TODO(LF971): Replace LF955-derived JSON-LD copy, category, parameters, and image.
+function getLf971ProductSchema(zh: boolean) {
   const image = "https://lfadj.com/images/products/lf955/applications/road-construction.jpg";
   const brand = {
     "@type": "Brand",
@@ -100,16 +174,16 @@ function getLf955ProductSchema(zh: boolean) {
   return {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: zh ? "LF955 \u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854" : "LF955 Diesel Mobile Light Tower",
+    name: zh ? "LF971 太阳能移动照明灯塔" : "LF971 Solar Mobile Light Tower",
     alternateName: zh
-      ? "LF955 \u6db2\u538b\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854"
-      : "LF955 Hydraulic Diesel Mobile Lighting Tower",
+      ? "LF971 \u6db2\u538b\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854"
+      : "LF971 Hydraulic Diesel Mobile Lighting Tower",
     description: zh
-      ? "LF955\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854\uff0c\u9002\u7528\u4e8e\u65bd\u5de5\u3001\u77ff\u5c71\u3001\u6cb9\u6c14\u3001\u79df\u8d41\u548c\u5e94\u6025\u9879\u76ee\uff0c\u5e76\u652f\u6301\u9ad8\u6e29\u3001\u98ce\u6c99\u3001\u6cbf\u6d77\u8150\u8680\u53ca\u9ad8\u6d77\u62d4\u73af\u5883\u914d\u7f6e\u3002"
-      : "LF955 diesel mobile light tower for construction, mining, oil and gas, rental and emergency projects, with project-specific configurations for high temperature, dust, coastal and high-altitude environments.",
-    sku: "LF955",
-    mpn: "LF955",
-    url: zh ? "https://lfadj.com/zh/products/lf955" : "https://lfadj.com/en/products/lf955",
+      ? "LF971\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854\uff0c\u9002\u7528\u4e8e\u65bd\u5de5\u3001\u77ff\u5c71\u3001\u6cb9\u6c14\u3001\u79df\u8d41\u548c\u5e94\u6025\u9879\u76ee\uff0c\u5e76\u652f\u6301\u9ad8\u6e29\u3001\u98ce\u6c99\u3001\u6cbf\u6d77\u8150\u8680\u53ca\u9ad8\u6d77\u62d4\u73af\u5883\u914d\u7f6e\u3002"
+      : "LF971 diesel mobile light tower for construction, mining, oil and gas, rental and emergency projects, with project-specific configurations for high temperature, dust, coastal and high-altitude environments.",
+    sku: "LF971",
+    mpn: "LF971",
+    url: zh ? "https://lfadj.com/zh/products/lf971" : "https://lfadj.com/en/products/lf971",
     category: zh ? "\u67f4\u6cb9\u79fb\u52a8\u7167\u660e\u706f\u5854" : "Diesel Mobile Light Tower",
     brand,
     manufacturer,
@@ -138,113 +212,36 @@ function getLf955ProductSchema(zh: boolean) {
   };
 }
 
-export default function LF955Page({ params }: { params: { lang: string } }) {
+export default function LF971Page({ params }: { params: { lang: string } }) {
   if (!isLang(params.lang)) {
-    redirect("/en/products/lf955");
+    redirect("/en/products/lf971");
   }
 
   const lang = params.lang;
   const zh = lang === "zh";
-  const productSchema = getLf955ProductSchema(zh);
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: zh ? "首页" : "Home",
-        item: zh ? "https://lfadj.com/zh" : "https://lfadj.com/en",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: zh ? "产品中心" : "Products",
-        item: zh ? "https://lfadj.com/zh/products" : "https://lfadj.com/en/products",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: zh ? "LF955柴油移动照明灯塔" : "LF955 Diesel Mobile Light Tower",
-        item: zh ? "https://lfadj.com/zh/products/lf955" : "https://lfadj.com/en/products/lf955",
-      },
-    ],
-  };
+  const productSchema = getLf971ProductSchema(zh);
 
-  const heroV7 = zh
+  // TODO(LF971): The four-screen detailed copy, parameters, claims, and media below are LF955 placeholders.
+  const heroV7: LF971HeroContent = zh
     ? {
-        eyebrow: "移动照明项目解决方案提供商",
-        title: "LF955柴油移动照明灯塔",
-        headlineSupport: "围绕真实项目需求配置照明方案",
-        productName: undefined,
-        subtitle: "不只是提供标准灯塔，我们根据不同项目环境和使用需求，为客户匹配更可靠、更适合长期运行的移动照明解决方案。",
-        summary: undefined,
-        primary: "获取我的项目配置方案",
-        secondary: undefined,
-        applicationLabel: "适用行业",
-        applications: ["基建施工", "矿山作业", "油气项目", "应急救援"],
+        productLabel: "LF971 太阳能移动照明灯塔",
+        title: "根据日照条件和使用成本配置太阳能移动照明方案",
+        body: "如果项目所在地日照充足、柴油成本较高，或现场加油和维护不方便，太阳能灯塔更适合长期使用。我们会根据当地日照时间、每日照明时长、连续阴雨天数和项目周期，匹配太阳能板、电池容量和照明系统。",
         advantageLabel: "核心优势",
-        advantages: ["复杂环境适配", "多种升降配置", "项目定制方案"],
+        advantages: ["适合日照充足地区", "降低长期燃油成本", "根据项目需求配置"],
+        primaryCta: "获取太阳能照明配置",
+        secondaryCta: "查看 LF971 详情",
+        placeholderLabel: "LF971 太阳能灯塔图片待补充",
       }
     : {
-        eyebrow: "Mobile Lighting Solution Provider",
-        title: "LF955 Diesel Mobile Light Tower",
-        headlineSupport: "Lighting Configured Around Real Project Needs",
-        productName: undefined,
-        subtitle: "More than a standard light tower, we configure reliable mobile lighting solutions around real project conditions and operating requirements for long-term project operation.",
-        summary: undefined,
-        primary: "Get My Project Configuration",
-        secondary: undefined,
-        applicationLabel: "Applications",
-        applications: ["Infrastructure", "Mining", "Oil & Gas", "Emergency Response"],
+        productLabel: "LF971 SOLAR MOBILE LIGHT TOWER",
+        title: "Solar Mobile Lighting Configured Around Sunlight and Operating Cost",
+        body: "For projects with strong sunlight, high diesel costs, or limited access to refueling and maintenance, a solar light tower can be more economical for long-term use. We configure the solar panels, battery capacity and lighting system according to local sunlight, required operating hours, expected cloudy days and project duration.",
         advantageLabel: "Core Advantages",
-        advantages: ["Harsh Environment Ready", "Multiple Mast Options", "Project-Specific Configuration"],
-      };
-
-  const whyLf955 = zh
-    ? {
-        title: "为什么选择 LF955 柴油移动照明灯塔？",
-        description: "LF955柴油移动照明灯塔集成液压升降灯杆、LED照明系统、柴油动力系统和项目配置能力。",
-        items: [
-          {
-            title: "可靠的液压升降系统",
-            description: "液压升降系统提供稳定的升降性能，满足工程项目长期户外照明需求。",
-          },
-          {
-            title: "高亮度 LED 照明系统",
-            description: "高输出 LED 照明系统为大型户外作业区域提供高效照明。",
-          },
-          {
-            title: "可靠柴油动力系统",
-            description: "柴油动力系统满足复杂工程环境下稳定运行需求。",
-          },
-          {
-            title: "项目化配置能力",
-            description: "LFADJ根据项目需求和使用条件提供配置调整。",
-          },
-        ],
-      }
-    : {
-        title: "Why Choose LF955 Diesel Mobile Light Tower?",
-        description: "The LF955 diesel mobile light tower combines a hydraulic mast, LED lighting system, diesel power system and customized configuration support in one project-ready product.",
-        items: [
-          {
-            title: "Reliable Hydraulic Mast System",
-            description: "The hydraulic mast system provides stable lifting performance and efficient operation for professional outdoor lighting projects.",
-          },
-          {
-            title: "High Output LED Lighting",
-            description: "High output LED lighting provides effective illumination for large outdoor working areas.",
-          },
-          {
-            title: "Reliable Diesel Power System",
-            description: "The diesel power system is designed for dependable operation in demanding project environments.",
-          },
-          {
-            title: "Project-Based Configuration",
-            description: "LFADJ supports customized configurations based on project requirements and operating conditions.",
-          },
-        ],
+        advantages: ["Built for Sunny Regions", "Lower Long-Term Fuel Cost", "Project-Based Configuration"],
+        primaryCta: "Get a Solar Lighting Configuration",
+        secondaryCta: "View LF971 Details",
+        placeholderLabel: "LF971 solar light tower image pending",
       };
 
   const costLossSection = zh
@@ -286,7 +283,7 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
             solution: [
               "Enhanced Cooling: Improve airflow for long-shift runtime in hot climates.",
               "Load Matching: Match engine power with lighting load to reduce thermal stress.",
-              "Stable Output: Configure LF955 for consistent mobile lighting under high-temperature duty cycles.",
+              "Stable Output: Configure LF971 for consistent mobile lighting under high-temperature duty cycles.",
             ],
           },
           {
@@ -313,94 +310,36 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
             solution: [
               "Power Matching: Match engine and generator capacity to altitude and site load.",
               "Startup Review: Check starting performance and lighting output before configuration.",
-              "Project Fit: Build the LF955 package around actual elevation and duty cycle.",
+              "Project Fit: Build the LF971 package around actual elevation and duty cycle.",
             ],
           },
         ],
       };
 
-  const specificationGroups = zh
+  const coreConfiguration = zh
     ? [
-        {
-          title: "灯光系统",
-          rows: [
-            { label: "灯光类型", value: "LED" },
-            { label: "灯具配置", value: "4×400W LED投光灯" },
-            { label: "照明输出", value: "约230,000流明" },
-          ],
-        },
-        {
-          title: "灯杆系统",
-          rows: [
-            { label: "灯杆类型", value: "液压升降灯杆" },
-            { label: "升降高度", value: "7.5米" },
-            { label: "旋转范围", value: "0–350°，灯具角度可调" },
-          ],
-        },
-        {
-          title: "动力系统",
-          rows: [
-            { label: "发动机", value: "Kubota / Yanmar柴油发动机选项" },
-            { label: "发电机", value: "5kVA单相发电机" },
-            { label: "油箱容量", value: "120L独立油箱" },
-          ],
-        },
-        {
-          title: "拖车结构",
-          rows: [
-            { label: "拖车类型", value: "两轮移动拖车" },
-            { label: "支撑系统", value: "四个支撑腿" },
-          ],
-        },
-        {
-          title: "尺寸与重量",
-          rows: [
-            { label: "展开尺寸", value: "当前已确认资料未公布" },
-            { label: "运输尺寸", value: "当前已确认资料未公布" },
-            { label: "重量", value: "当前已确认资料未公布" },
-          ],
-        },
+        { label: "灯杆高度", value: "7.5米液压升降灯杆" },
+        { label: "灯杆控制", value: "0–350°旋转，灯具角度可调" },
+        { label: "照明系统", value: "4×400W LED投光灯" },
+        { label: "总光通量", value: "约230,000流明" },
+        { label: "发动机", value: "国际品牌柴油发动机" },
+        { label: "发电系统", value: "5kVA单相发电机" },
+        { label: "油箱容量", value: "120L独立油箱" },
+        { label: "拖车结构", value: "两轮移动拖车，四个支撑腿" },
+        { label: "应用场景", value: "施工、矿山、租赁、应急照明" },
+        { label: "定制能力", value: "支持高温、风沙、沿海及高海拔配置" },
       ]
     : [
-        {
-          title: "Lighting System",
-          rows: [
-            { label: "Lighting Type", value: "LED" },
-            { label: "Lamp Configuration", value: "4×400W LED floodlights" },
-            { label: "Lighting Output", value: "Approx. 230,000 lumens" },
-          ],
-        },
-        {
-          title: "Mast System",
-          rows: [
-            { label: "Mast Type", value: "Hydraulic lifting mast" },
-            { label: "Mast Height", value: "7.5 m" },
-            { label: "Rotation", value: "0–350°, adjustable lamp angle" },
-          ],
-        },
-        {
-          title: "Power System",
-          rows: [
-            { label: "Engine", value: "Kubota / Yanmar diesel engine options" },
-            { label: "Generator", value: "5kVA single-phase generator" },
-            { label: "Fuel Tank Capacity", value: "120L independent fuel tank" },
-          ],
-        },
-        {
-          title: "Trailer Structure",
-          rows: [
-            { label: "Trailer Type", value: "Two-wheel mobile trailer" },
-            { label: "Support System", value: "Four support legs" },
-          ],
-        },
-        {
-          title: "Dimensions & Weight",
-          rows: [
-            { label: "Operating Dimensions", value: "Not published in the currently verified data" },
-            { label: "Transport Dimensions", value: "Not published in the currently verified data" },
-            { label: "Net Weight", value: "Not published in the currently verified data" },
-          ],
-        },
+        { label: "Mast Height", value: "7.5 m hydraulic lifting mast" },
+        { label: "Mast Control", value: "0–350° rotation, adjustable lamp angle" },
+        { label: "Lighting System", value: "4×400W LED floodlights" },
+        { label: "Total Luminous Flux", value: "Approx. 230,000 lumens" },
+        { label: "Engine", value: "Kubota / Yanmar diesel engine options" },
+        { label: "Generator System", value: "5kVA single-phase generator" },
+        { label: "Fuel Tank Capacity", value: "120L independent fuel tank" },
+        { label: "Trailer Structure", value: "Two-wheel mobile trailer, four support legs" },
+        { label: "Application Scenarios", value: "Construction, mining, rental, emergency lighting" },
+        { label: "Customization Capability", value: "Supports high temperature, dust, coastal and high-altitude configurations" },
       ];
 
   const manufacturingProcess = (zh
@@ -437,7 +376,7 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
           title: "设备故障风险",
           problem: "低端灯塔常常按采购价选型，但在真实项目工况下容易失效。",
           impact: "商业影响：上门维修、替换运输和紧急租赁成本会吃掉原本的节省。",
-          solution: "LF955面向重视持续稳定运行的买家，目标是在现场熄灯前保持可预测运行。",
+          solution: "LF971面向重视持续稳定运行的买家，目标是在现场熄灯前保持可预测运行。",
         },
         {
           title: "夜间施工安全风险",
@@ -463,7 +402,7 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
           title: "Equipment Failure Risk",
           problem: "Low-grade towers are often selected by purchase price, then fail under real project duty cycles.",
           impact: "Business Impact: service calls, replacement transport and emergency rental costs can erase the original saving.",
-          solution: "LF955 is configured for uptime-focused buyers who need predictable operation before the site goes dark.",
+          solution: "LF971 is configured for uptime-focused buyers who need predictable operation before the site goes dark.",
         },
         {
           title: "Night Work Safety Risk",
@@ -488,46 +427,62 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
   const scenarioCards = zh
     ? [
         {
-          title: "建筑施工项目",
-          description: "为施工现场和户外作业区域提供可靠移动照明。",
+          title: "施工夜间作业",
+          problem: "桥梁、道路和市政工程通常配置4-12台。",
+          impact: "夜间浇筑和封路场景通常每天运行8-14小时。",
+          solution: "投资回报提升：夜间延误成本最高可降低35%。",
+          image: "/images/products/lf955/applications/night-construction.jpg",
         },
         {
-          title: "矿山作业",
-          description: "适用于需要稳定照明支持的矿山作业场景。",
+          title: "矿山与油田",
+          problem: "运输道路、料堆和服务区通常配置5-20台。",
+          impact: "在高粉尘离网环境中，常常每天运行10-16小时。",
+          solution: "投资回报提升：非计划停机风险最高可降低70%。",
+          image: "/images/products/lf955/applications/heavy-construction.jpg",
         },
         {
-          title: "油气项目",
-          description: "为户外工业作业提供移动照明支持。",
+          title: "租赁车队",
+          problem: "按客户类型、灯杆高度和功率配置5-20台。",
+          impact: "施工、市政和活动租赁常常每天运行8-16小时。",
+          solution: "投资回报提升：租赁收入最高可提升25%。",
+          image: "/images/products/lf955/applications/rental-project.png",
         },
         {
-          title: "设备租赁",
-          description: "适用于需要可靠、灵活设备配置的租赁公司。",
-        },
-        {
-          title: "应急照明",
-          description: "为应急场景提供快速部署照明支持。",
+          title: "应急救援",
+          problem: "用于临时抢修、救援和市政应急的5-15台配置。",
+          impact: "时间敏感型恢复作业常常每天运行10-24小时。",
+          solution: "投资回报提升：部署更快，响应延误成本更低。",
+          image: "/images/products/lf955/applications/lifting-operation.jpg",
         },
       ]
     : [
         {
-          title: "Construction Projects",
-          description: "Reliable mobile lighting for construction sites and outdoor working areas.",
+          title: "Construction Night Work",
+          problem: "4-12 units around bridges, roads and utility projects.",
+          impact: "8-14 hours/day with night pours and lane closures.",
+          solution: "ROI lift: reduce night delay cost by up to 35%.",
+          image: "/images/products/lf955/applications/night-construction.jpg",
         },
         {
-          title: "Mining Operations",
-          description: "Suitable for mining sites requiring dependable lighting support.",
+          title: "Mining & Oilfield",
+          problem: "5-20 units for haul roads, stockpiles and service yards.",
+          impact: "10-16 hours/day in dust-heavy off-grid conditions.",
+          solution: "ROI lift: reduce unplanned downtime exposure by up to 70%.",
+          image: "/images/products/lf955/applications/heavy-construction.jpg",
         },
         {
-          title: "Oil & Gas Projects",
-          description: "Provides mobile lighting support for outdoor industrial operations.",
+          title: "Rental Company Fleet",
+          problem: "5-20 units configured by customer segment and mast height.",
+          impact: "8-16 hours/day across construction, municipal and event demand.",
+          solution: "ROI lift: increase revenue utilization by up to 25%.",
+          image: "/images/products/lf955/applications/rental-project.png",
         },
         {
-          title: "Rental Fleets",
-          description: "Designed for rental companies requiring durable and flexible lighting equipment.",
-        },
-        {
-          title: "Emergency Response",
-          description: "Provides fast-deployable lighting support for emergency situations.",
+          title: "Emergency & Disaster Response",
+          problem: "5-15 units for temporary repair, rescue and utility response zones.",
+          impact: "10-24 hours/day during time-critical recovery work.",
+          solution: "ROI lift: improve deployment speed and reduce response delay cost.",
+          image: "/images/products/lf955/applications/lifting-operation.jpg",
         },
       ];
 
@@ -547,16 +502,16 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
 
   const configGroups = zh
     ? [
-        { title: "发动机选项", options: "Kubota / Yanmar / Perkins", recommendation: "可根据项目需求选择不同发动机配置。" },
-        { title: "灯具配置选项", options: "LED 功率选项 / 灯具数量选项", recommendation: "根据不同照明需求提供不同LED灯具配置。" },
-        { title: "灯杆配置选项", options: "手动灯杆 / 电动灯杆 / 液压灯杆", recommendation: "根据使用需求选择合适的灯杆系统。" },
-        { title: "项目定制配置", options: "根据确认的项目需求进行配置调整", recommendation: "LFADJ支持根据项目需求进行配置调整。" },
+        { title: "发动机", options: "久保田 / 洋马 / 珀金斯", recommendation: "推荐用于重载矿山、租赁车队和需要持续稳定运行的偏远工业项目。" },
+        { title: "灯杆高度", options: "6米 / 7.5米 / 9米", recommendation: "推荐用于施工现场、运输道路和更大作业区，覆盖距离直接影响效率。" },
+        { title: "照明功率", options: "300瓦至1000瓦发光二极管灯 / 金属卤化物灯", recommendation: "推荐给需要平衡油耗、亮度和现场安全的买家。" },
+        { title: "升降系统", options: "手动 / 液压 / 电动", recommendation: "推荐给需要更快展开和更少人工接触点的租赁车队与承包商。" },
       ]
     : [
-        { title: "Engine Options", options: "Kubota / Yanmar / Perkins", recommendation: "Available engine options can be selected according to project requirements." },
-        { title: "Lighting Options", options: "LED power options / Lighting quantity options", recommendation: "Different LED lighting configurations are available for different lighting requirements." },
-        { title: "Mast Options", options: "Manual mast / Electric mast / Hydraulic mast", recommendation: "Select suitable mast systems according to operation requirements." },
-        { title: "Custom Project Configuration", options: "Custom configuration based on confirmed project requirements", recommendation: "LFADJ supports customized configurations based on project requirements." },
+        { title: "Engine", options: "Kubota / Yanmar / Perkins", recommendation: "Recommended for heavy-duty mining operations, rental fleets and remote industrial projects that need predictable uptime." },
+        { title: "Mast Height", options: "6m / 7.5m / 9m", recommendation: "Recommended for construction sites, haul roads and wider work zones where coverage distance affects productivity." },
+        { title: "Lighting Power", options: "300W-1000W LED / Metal Halide", recommendation: "Recommended for buyers balancing fuel cost, light output and site safety requirements." },
+        { title: "Lift System", options: "Manual / Hydraulic / Electric", recommendation: "Recommended for rental fleets and contractors that need faster setup with fewer crew touchpoints." },
       ];
 
   const comparisonRows = zh
@@ -582,7 +537,7 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
   const cases = [
     {
       title: zh ? "沙特阿拉伯施工现场" : "Saudi Arabia Construction Site",
-      body: zh ? "8台 LF955，用于夜间道路施工与桥梁工程" : "8 LF955 units for night roadworks and bridge projects",
+      body: zh ? "8台 LF971，用于夜间道路施工与桥梁工程" : "8 LF971 units for night roadworks and bridge projects",
       roi: zh ? "投资回报：减少 35% 夜间延误" : "ROI: reduce 35% night delay",
     },
     {
@@ -599,62 +554,17 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
 
   const faqItems = zh
     ? [
-        {
-          q: "LF955柴油移动照明灯塔主要用于哪些场景？",
-          a: "LF955适用于需要可靠移动照明的户外项目，包括建筑施工、矿山、工业项目和应急照明场景。",
-        },
-        {
-          q: "LF955有哪些发动机配置选择？",
-          a: "LF955可根据项目需求选择合适的柴油发动机配置。",
-        },
-        {
-          q: "LF955柴油移动照明灯塔可以定制吗？",
-          a: "可以。LFADJ支持根据项目需求调整灯具、灯杆和动力等配置。",
-        },
-        {
-          q: "LF955灯杆高度是多少？",
-          a: "LF955采用液压升降灯杆，工作高度以产品确认参数为准。",
-        },
-        {
-          q: "如何选择合适的LF955配置？",
-          a: "LFADJ根据项目需求、使用条件和照明要求，推荐合适的配置方案。",
-        },
+        { q: "起订量是多少？", a: "标准起订量为 1 台，并支持项目试单。" },
+        { q: "交货期多久？", a: "根据配置和目的国家不同，交货期为 15 至 30 天。" },
+        { q: "是否支持代工生产？", a: "支持品牌代工和项目定制。" },
+        { q: "LF971 是否适合高温和多尘环境？", a: "LF971 针对超过 45 摄氏度的高温和重度粉尘环境进行了优化。" },
       ]
     : [
-        {
-          q: "What is LF955 diesel mobile light tower used for?",
-          a: "LF955 is designed for outdoor projects requiring reliable mobile lighting, including construction, mining, industrial and emergency applications.",
-        },
-        {
-          q: "What engine options are available for LF955?",
-          a: "LF955 can be configured with suitable diesel engine options according to project requirements.",
-        },
-        {
-          q: "Can LF955 diesel mobile light tower be customized?",
-          a: "Yes. LFADJ supports customized configurations including lighting, mast and power options based on project requirements.",
-        },
-        {
-          q: "What is the mast height of LF955?",
-          a: "LF955 uses a hydraulic mast system with a working height based on the confirmed product specification.",
-        },
-        {
-          q: "How can I select the right LF955 configuration?",
-          a: "LFADJ evaluates project requirements and recommends suitable configurations based on operating conditions and lighting needs.",
-        },
+        { q: "What is the MOQ?", a: "Standard MOQ is 1 unit, with project trial orders supported." },
+        { q: "What is the lead time?", a: "15-30 days depending on configuration and destination country." },
+        { q: "Do you support OEM?", a: "OEM branding and project customization are supported." },
+        { q: "Is LF971 suitable for hot and dusty environments?", a: "LF971 is optimized for 45C+ heat and dust-heavy environments." },
       ];
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.a,
-      },
-    })),
-  };
 
   return (
     <>
@@ -683,37 +593,9 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
           __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
-        }}
-      />
       <main className="bg-white text-slate-950">
-        <HeroSection
-          eyebrow={heroV7.eyebrow}
-          title={heroV7.title}
-          headlineSupport={heroV7.headlineSupport}
-          productName={heroV7.productName}
-          subtitle={heroV7.subtitle}
-          summary={heroV7.summary}
-          primaryCta={heroV7.primary}
-          primaryHref="#project-environment-inquiry"
-          applicationLabel={heroV7.applicationLabel}
-          applications={heroV7.applications}
-          advantageLabel={heroV7.advantageLabel}
-          advantages={heroV7.advantages}
-          imageSrc="/images/products/lf955/hero/lf955-hero.jpg"
-          imageAlt={zh ? "LF955柴油移动照明灯塔用于夜间工程项目照明" : "LF955 diesel mobile light tower illuminating a night project site"}
-          imageObjectPosition="center 58%"
-          featuredMedia={false}
-        />
+        <LF971Hero content={heroV7} />
+        <div id="lf971-details" />
 
         {!zh ? (
           <TrustStrip
@@ -726,17 +608,6 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
           />
         ) : null}
 
-        <WhyLf955Section
-          title={whyLf955.title}
-          description={whyLf955.description}
-          items={whyLf955.items}
-        />
-
-        <ProductApplicationsSection
-          title={zh ? "LF955柴油移动照明灯塔应用场景" : "Applications of LF955 Diesel Mobile Light Tower"}
-          items={scenarioCards}
-        />
-
         <ProjectCostLossSection
           title={costLossSection.title}
           subtitle={costLossSection.subtitle}
@@ -746,49 +617,21 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
           emphasisText={costLossSection.emphasisText}
         />
 
-        <TechnicalSpecsSection
-          eyebrow={zh ? "技术参数" : "Technical Specifications"}
-          title={zh ? "LF955柴油移动照明灯塔技术参数" : "Technical Specifications of LF955 Diesel Mobile Light Tower"}
-          subtitle={
-            zh
-              ? "查看LF955柴油移动照明灯塔已确认的LED照明、液压灯杆、柴油发电系统和拖车结构参数。"
-              : "Review the verified LED lighting, hydraulic mast, diesel generator and trailer structure specifications for the LF955 diesel mobile light tower."
-          }
-          groups={specificationGroups}
-        />
-
-        <ProductConfigurationSection
-          eyebrow={zh ? "产品配置" : "Product Configuration"}
-          title={zh ? "LF955 配置选项" : "Configuration Options for LF955"}
-          subtitle={
-            zh
-              ? "根据项目需求，LF955柴油移动照明灯塔支持不同动力、灯杆和照明配置选择。"
-              : "Configure LF955 diesel mobile light tower based on project requirements with different power, mast and lighting options."
-          }
-          groups={configGroups}
-          ctaLabel={null}
-          optionLabel={zh ? "配置选择" : "Configuration Option"}
-        />
-
         <LF955ConfigurationManufacturingSection
-          title={zh ? "LF955 产品演示与制造流程" : "LF955 Product Demonstration and Manufacturing Process"}
+          title={zh ? "LF971 核心配置、产品视频与制造流程" : "LF971 Key Specifications, Product Video and Manufacturing Process"}
           subtitle={
             zh
-              ? "查看LF955实际运行演示和完整生产流程。"
-              : "Review the LF955 in operation and its complete manufacturing process."
+              ? "从核心配置、实际运行到完整生产流程，帮助您判断这款移动照明灯塔是否适合您的项目。"
+              : "Review the key configuration, real product operation and complete manufacturing process before selecting your project solution."
           }
-          videoTitle={zh ? "LF955 产品运行与功能演示" : "LF955 Operation and Function Demonstration"}
-          videoLabel={zh ? "LF955 液压升降与照明测试视频" : "LF955 hydraulic mast lifting and lighting test"}
+          configurationTitle={zh ? "核心配置" : "Core Configuration"}
+          configuration={coreConfiguration}
+          videoTitle={zh ? "LF971 产品运行与功能演示" : "LF971 Operation and Function Demonstration"}
+          videoLabel={zh ? "LF971 液压升降与照明测试视频" : "LF971 hydraulic mast lifting and lighting test"}
           videoSrc="/videos/products/lf955/factory-testing.mp4"
-          videoPoster="/images/products/lf955/hero/lf955-hero.jpg"
           videoFallback={zh ? "视频暂时无法加载，请稍后重试。" : "The video could not be loaded. Please try again later."}
           processTitle={zh ? "从原材料到整机交付的制造流程" : "Manufacturing Process from Raw Material to Final Delivery"}
           processSteps={manufacturingProcess}
-        />
-
-        <ProductFaqSection
-          title={zh ? "LF955柴油移动照明灯塔常见问题" : "Frequently Asked Questions About LF955 Diesel Mobile Light Tower"}
-          items={faqItems}
         />
 
         <LF955ProjectInquirySection language={zh ? "zh" : "en"} />

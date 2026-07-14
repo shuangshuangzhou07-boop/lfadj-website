@@ -14,7 +14,7 @@ export default function ChineseAboutPage() {
         <div className="mt-10 flex flex-wrap gap-3">
           <a href="/zh/products" className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white">产品中心</a>
           <a href="/zh/oem制造" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">OEM 制造</a>
-          <a href="/zh/联系我们" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">联系我们</a>
+          <a href="/zh/contact" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">联系我们</a>
         </div>
       </section>
     </main>
