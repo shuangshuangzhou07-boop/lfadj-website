@@ -68,34 +68,41 @@ type HomeDictionary = {
     ctaLabel: string;
     ctaHref: string;
   };
-  productShowcase: {
+  selectionGuide: {
     title: string;
-    items: Array<{
+    subtitle: string;
+    cards: Array<{
       title: string;
-      description: string;
-      image: string;
-      imageAlt: string;
+      items: string[];
+      linkLabel?: string;
+      href?: string;
+    }>;
+    solutionsLabel: string;
+    solutionsHref: string;
+    ctaText: string;
+    ctaLabel: string;
+    ctaHref: string;
+  };
+  solutionsResources: {
+    title: string;
+    cards: Array<{
+      title: string;
+      items: string[];
       linkLabel: string;
       href: string;
     }>;
   };
-  trustSignals: {
-    eyebrow: string;
+  productShowcase: {
     title: string;
-    description: string;
-    processHeading: string;
-    process: string[];
-    videoTitle: string;
-    videoDescription: string;
-    videoFallback: string;
-    qualityHeading: string;
-    qualityItems: Array<{
+    items: Array<{
       title: string;
+      models: string;
       description: string;
+      image?: string;
+      imageAlt: string;
+      linkLabel: string;
+      href: string;
     }>;
-    statement: string;
-    ctaLabel: string;
-    ctaHref: string;
   };
   productCategories: {
     title: string;
@@ -157,19 +164,19 @@ export const homepageDictionary: Record<HomeLanguage, HomeDictionary> = {
     },
     hero: {
       eyebrow: "MOBILE LIGHT TOWER MANUFACTURER",
-      title: "Mobile Light Tower Manufacturer\nfor Construction, Mining and Industrial Projects",
+      title: "Mobile Light Tower Solutions for Construction, Mining and Emergency Projects",
       subtitle:
-        "Whether you are purchasing for a new project or replacing equipment with frequent failures and high maintenance requirements, LFADJ evaluates the real operating conditions and helps you identify a more reliable mobile lighting solution.",
+        "We provide diesel and solar mobile light towers with project-based configuration recommendations according to operating environment and lighting requirements.",
       description:
-        "Diesel, solar, battery and hybrid mobile lighting solutions for construction, mining, oil & gas, rental, emergency and urban projects.",
-      primaryCta: "Discuss My Project",
-      secondaryCta: "Explore Light Towers",
-      primaryHref: "/en/contact/request-a-quote",
-      secondaryHref: "/en/products",
-      heroImageAlt: "Mobile light tower providing reliable lighting at a nighttime construction project",
+        "Diesel and solar mobile lighting solutions for construction, mining, oil & gas, rental, emergency and urban projects.",
+      primaryCta: "Request a Quote",
+      secondaryCta: "View Products",
+      primaryHref: "/contact",
+      secondaryHref: "/products",
+      heroImageAlt: "Construction mobile light tower for project site lighting",
       trustItems: [
         "Project-Based Configuration",
-        "Diesel, Solar & Battery Solutions",
+        "Diesel & Solar Solutions",
         "OEM / ODM Manufacturing",
       ],
     },
@@ -295,85 +302,95 @@ export const homepageDictionary: Record<HomeLanguage, HomeDictionary> = {
       ctaLabel: "View All Mobile Lighting Products",
       ctaHref: "/en/products",
     },
-    productShowcase: {
-      title: "Mobile Lighting Solutions",
-      items: [
+    selectionGuide: {
+      title: "How to Choose the Right Mobile Light Tower?",
+      subtitle:
+        "Different project conditions, operating hours and lighting requirements require different mobile lighting solutions. LFADJ provides suitable light tower configuration recommendations.",
+      cards: [
         {
-          title: "Diesel Mobile Light Tower",
-          description: "Dependable mobile lighting for demanding worksites and long operating schedules.",
-          image: "/images/products/lf955/hero/lf955-hero.jpg",
-          imageAlt: "LF955 diesel mobile light tower on a white background",
-          linkLabel: "View Product",
-          href: "/en/products/lf955",
+          title: "Application Type",
+          items: ["Construction Projects", "Mining Operations", "Oil & Gas Projects", "Emergency Lighting"],
+          linkLabel: "Explore Applications",
+          href: "/applications",
         },
         {
-          title: "Solar Light Tower",
-          description: "Low-noise mobile lighting for suitable sunny and long-term project deployments.",
-          image: "/images/products/lf6130.png",
-          imageAlt: "Yellow LFADJ mobile light tower on a white background",
-          linkLabel: "View Product",
-          href: "/en/products/lf971",
+          title: "Operating Environment",
+          items: ["Remote or Off-grid Areas", "Hot and Desert Conditions", "Urban Construction Sites", "Harsh Outdoor Environments"],
         },
         {
-          title: "Hybrid Light Tower",
-          description: "Flexible power options for projects that need extended runtime and backup reliability.",
-          image: "/images/products/lf6130.png",
-          imageAlt: "Yellow LFADJ mobile light tower on a white background",
-          linkLabel: "View Products",
-          href: "/en/products/hybrid-energy-solutions",
+          title: "Operating Requirements",
+          items: ["Long Operating Hours", "Frequent Relocation", "Temporary Night Lighting", "External Power Requirements"],
         },
         {
-          title: "Solar Monitoring Trailer",
-          description: "Mobile site lighting and surveillance options for remote and unattended projects.",
-          image: "/images/products/lf6130.png",
-          imageAlt: "Yellow LFADJ mobile light tower on a white background",
-          linkLabel: "View Products",
-          href: "/en/products/solar-surveillance-trailers",
+          title: "Power System Selection",
+          items: [
+            "Diesel Solution: High power output for long-duration operation",
+            "Solar Solution: Low maintenance solution for off-grid and quiet operation environments",
+            "Project Configuration Solution: Select the right configuration based on lighting requirements, operating hours and project conditions",
+          ],
+        },
+      ],
+      solutionsLabel: "View Solutions",
+      solutionsHref: "/solutions",
+      ctaText: "Not sure which light tower fits your project?",
+      ctaLabel: "Get Project Configuration",
+      ctaHref: "/contact",
+    },
+    solutionsResources: {
+      title: "Explore LFADJ Solutions & Resources",
+      cards: [
+        {
+          title: "Lighting Solutions",
+          items: [
+            "How to Choose a Mobile Light Tower",
+            "Diesel vs Solar Light Tower",
+            "Light Tower Power Configuration Guide",
+          ],
+          linkLabel: "View Solutions",
+          href: "/solutions",
+        },
+        {
+          title: "Resources",
+          items: ["Product Catalog", "Technical Documents", "FAQ", "Video Resources"],
+          linkLabel: "Visit Resources",
+          href: "/resources",
+        },
+        {
+          title: "Project Configuration",
+          items: ["Project Type", "Operating Environment", "Lighting Requirements", "Operating Hours"],
+          linkLabel: "Request a Quote",
+          href: "/contact",
+        },
+        {
+          title: "About LFADJ",
+          items: ["Mobile lighting industry experience, OEM/ODM project support, project configuration capability and quality management system."],
+          linkLabel: "Learn More",
+          href: "/about",
         },
       ],
     },
-    trustSignals: {
-      eyebrow: "MANUFACTURING & QUALITY",
-      title: "From Project Configuration to Reliable Manufacturing",
-      description:
-        "As a mobile light tower manufacturer and OEM supplier, LFADJ turns each confirmed custom configuration into controlled manufacturing and quality management processes.",
-      processHeading: "Mobile Light Tower Production Process",
-      process: [
-        "Cutting",
-        "Bending",
-        "Welding",
-        "Grinding",
-        "Powder Coating",
-        "Wiring",
-        "Assembly",
-        "Testing",
-        "Delivery",
-      ],
-      videoTitle: "Production, Assembly & Pre-Shipment Testing",
-      videoDescription: "The video shows mast operation, assembly and testing. Final specifications follow the confirmed customer configuration.",
-      videoFallback: "Your browser does not support video playback.",
-      qualityHeading: "Supplier Trust Capabilities",
-      qualityItems: [
+    productShowcase: {
+      title: "Choose the Right Mobile Light Tower",
+      items: [
         {
-          title: "OEM / ODM Capability",
-          description: "Support customized lighting solutions based on different project requirements.",
+          title: "Diesel Mobile Light Tower",
+          models: "LF955 / LF968",
+          description: "Reliable lighting solutions for construction, mining and long-term outdoor projects.",
+          image: "/images/products/lf955/hero/lf955-hero.jpg",
+          imageAlt: "LF955 diesel mobile light tower on a white background",
+          linkLabel: "View Configurations",
+          href: "/products/lf955",
         },
         {
-          title: "Quality Management System",
-          description: "Manufacturing processes follow ISO 9001, ISO 14001 and ISO 45001 management systems.",
-        },
-        {
-          title: "Project-Based Configuration",
-          description: "Analyze working conditions and recommend suitable lighting configurations for each project.",
-        },
-        {
-          title: "Factory Manufacturing Capability",
-          description: "Integrated manufacturing process including fabrication, assembly and quality inspection.",
+          title: "Solar Mobile Light Tower",
+          models: "LF971",
+          description: "Low-maintenance solar lighting solutions for remote and off-grid projects.",
+          image: "/images/products/lf971/hero/lf971-hero.webp",
+          imageAlt: "LF971 solar mobile light tower on a white background",
+          linkLabel: "View Configurations",
+          href: "/products/lf971",
         },
       ],
-      statement: "Each unit is assembled, function-tested and inspected according to the confirmed project configuration before shipment.",
-      ctaLabel: "View Manufacturing Capabilities",
-      ctaHref: "/en/manufacturing",
     },
     productCategories: {
       title: "Mobile Light Tower Product Categories",
@@ -468,12 +485,12 @@ export const homepageDictionary: Record<HomeLanguage, HomeDictionary> = {
     },
     cta: {
       eyebrow: "START YOUR PROJECT",
-      title: "Tell Us About Your Mobile Lighting Project",
+      title: "Get the Right Mobile Light Tower Configuration for Your Project",
       description:
-        "Share the project location, operating environment, daily working hours and lighting requirements. We will review the information and discuss a suitable power system and product configuration with you.",
+        "Tell us your project location, operating environment, working hours and lighting requirements. We will recommend a suitable mobile light tower configuration.",
       hint: "Useful details: country or city, project type, daily operating hours, quantity, noise limits and surveillance requirements.",
-      buttonLabel: "Discuss My Project",
-      href: "/en/contact/request-a-quote",
+      buttonLabel: "Request a Quote",
+      href: "/contact",
     },
   },
   zh: {
@@ -490,19 +507,19 @@ export const homepageDictionary: Record<HomeLanguage, HomeDictionary> = {
     },
     hero: {
       eyebrow: "移动照明灯塔制造商",
-      title: "移动照明灯塔制造商\n为建筑、矿山和工业项目提供可靠照明方案",
+      title: "建筑、矿山及应急项目的移动照明灯塔解决方案",
       subtitle:
-        "无论是新项目采购，还是现有设备故障频繁、维修需求较多，LFADJ 都会结合真实使用工况，为您匹配更可靠的移动照明方案。",
+        "提供柴油和太阳能移动照明灯塔，根据项目环境和照明需求提供配置方案。",
       description:
-        "为建筑施工、矿山、石油天然气、设备租赁、应急和城市项目提供柴油、太阳能、储能及混合动力移动照明方案。",
-      primaryCta: "沟通我的项目",
-      secondaryCta: "查看移动照明产品",
-      primaryHref: "/zh/contact/request-a-quote",
-      secondaryHref: "/zh/products",
-      heroImageAlt: "移动照明灯塔在夜间工程现场提供可靠照明",
+        "为建筑施工、矿山、石油天然气、设备租赁、应急和城市项目提供柴油及太阳能移动照明方案。",
+      primaryCta: "获取项目报价",
+      secondaryCta: "查看产品",
+      primaryHref: "/contact",
+      secondaryHref: "/products",
+      heroImageAlt: "建筑施工现场使用的移动照明灯塔",
       trustItems: [
         "根据项目工况配置",
-        "柴油、太阳能与储能方案",
+        "柴油与太阳能方案",
         "支持 OEM / ODM 制造",
       ],
     },
@@ -628,85 +645,91 @@ export const homepageDictionary: Record<HomeLanguage, HomeDictionary> = {
       ctaLabel: "查看全部移动照明产品",
       ctaHref: "/zh/products",
     },
-    productShowcase: {
-      title: "移动照明产品方案",
-      items: [
+    selectionGuide: {
+      title: "如何选择适合您的移动照明灯塔？",
+      subtitle:
+        "不同项目环境、运行时间和照明需求，需要不同的移动照明解决方案。LFADJ 根据项目条件提供合适的灯塔配置建议。",
+      cards: [
         {
-          title: "柴油移动照明灯塔",
-          description: "为高强度作业现场和长时间运行项目提供可靠移动照明。",
-          image: "/images/products/lf955/hero/lf955-hero.jpg",
-          imageAlt: "白色背景上的 LF955 柴油移动照明灯塔",
-          linkLabel: "查看产品",
-          href: "/zh/products/lf955",
+          title: "项目应用场景",
+          items: ["建筑施工项目", "矿山连续作业", "油气及能源项目", "应急照明"],
+          linkLabel: "查看应用场景",
+          href: "/applications",
         },
         {
-          title: "太阳能移动照明灯塔",
-          description: "适用于日照条件良好且需要低噪音长期部署的项目。",
-          image: "/images/products/lf6130.png",
-          imageAlt: "白色背景上的黄色 LFADJ 移动照明灯塔",
-          linkLabel: "查看产品",
-          href: "/zh/products/lf971",
+          title: "运行环境",
+          items: ["无电或偏远区域", "高温及沙漠环境", "城市施工环境", "恶劣户外环境"],
         },
         {
-          title: "混合动力移动照明灯塔",
-          description: "为需要延长运行时间和备用供电的项目提供灵活动力选择。",
-          image: "/images/products/lf6130.png",
-          imageAlt: "白色背景上的黄色 LFADJ 移动照明灯塔",
-          linkLabel: "查看产品",
-          href: "/zh/products/hybrid-energy-solutions",
+          title: "使用需求",
+          items: ["长时间连续运行", "高频移动部署", "夜间临时照明", "外接设备供电"],
         },
         {
-          title: "太阳能监控拖车",
-          description: "为偏远和无人值守项目提供移动现场照明与监控选择。",
-          image: "/images/products/lf6130.png",
-          imageAlt: "白色背景上的黄色 LFADJ 移动照明灯塔",
-          linkLabel: "查看产品",
-          href: "/zh/products/solar-surveillance-trailers",
+          title: "动力方案选择",
+          items: [
+            "柴油方案：高功率，适合长期连续运行",
+            "太阳能方案：低维护，适合无电区域和静音环境",
+            "项目配置方案：根据照明需求、运行时间和环境条件选择合适配置",
+          ],
+        },
+      ],
+      solutionsLabel: "查看解决方案",
+      solutionsHref: "/solutions",
+      ctaText: "不确定哪种灯塔适合您的项目？",
+      ctaLabel: "获取项目配置建议",
+      ctaHref: "/contact",
+    },
+    solutionsResources: {
+      title: "探索 LFADJ 解决方案与资源",
+      cards: [
+        {
+          title: "移动照明解决方案",
+          items: ["如何选择移动照明灯塔", "柴油与太阳能灯塔比较", "灯塔功率配置指南"],
+          linkLabel: "查看解决方案",
+          href: "/solutions",
+        },
+        {
+          title: "技术资料与采购指南",
+          items: ["产品目录", "技术资料", "常见问题", "视频资料"],
+          linkLabel: "访问资源中心",
+          href: "/resources",
+        },
+        {
+          title: "获取项目配置建议",
+          items: ["项目类型", "使用环境", "照明需求", "运行时间"],
+          linkLabel: "获取项目报价",
+          href: "/contact",
+        },
+        {
+          title: "关于 LFADJ",
+          items: ["移动照明行业经验、OEM/ODM项目支持、项目配置能力和质量管理体系。"],
+          linkLabel: "了解 LFADJ",
+          href: "/about",
         },
       ],
     },
-    trustSignals: {
-      eyebrow: "制造与质量",
-      title: "从项目配置到可靠制造",
-      description:
-        "作为移动照明灯塔制造商和 OEM 定制供应商，LFADJ 将确认后的项目配置转化为规范的制造与质量管理流程。",
-      processHeading: "移动照明灯塔生产流程",
-      process: [
-        "切割",
-        "折弯",
-        "焊接",
-        "打磨",
-        "喷塑",
-        "接线",
-        "装配",
-        "检测",
-        "出货",
-      ],
-      videoTitle: "生产、装配与出货前检测视频",
-      videoDescription: "视频展示灯塔升降、装配及检测过程，具体配置以客户确认方案为准。",
-      videoFallback: "您的浏览器不支持视频播放。",
-      qualityHeading: "供应商信任能力",
-      qualityItems: [
+    productShowcase: {
+      title: "选择适合您的移动照明灯塔",
+      items: [
         {
-          title: "OEM / ODM 定制能力",
-          description: "根据不同项目需求提供定制化移动照明方案。",
+          title: "柴油移动照明灯塔",
+          models: "LF955 / LF968",
+          description: "适用于建筑施工、矿山作业和长期户外项目的可靠照明方案。",
+          image: "/images/products/lf955/hero/lf955-hero.jpg",
+          imageAlt: "白色背景上的 LF955 柴油移动照明灯塔",
+          linkLabel: "查看配置方案",
+          href: "/products/lf955",
         },
         {
-          title: "质量管理体系",
-          description: "生产过程符合 ISO 9001、ISO 14001 和 ISO 45001 管理体系要求。",
-        },
-        {
-          title: "项目化配置能力",
-          description: "根据项目使用环境分析需求，匹配合适的移动照明配置。",
-        },
-        {
-          title: "工厂制造能力",
-          description: "具备结构制造、装配和质量检测的一体化生产能力。",
+          title: "太阳能移动照明灯塔",
+          models: "LF971",
+          description: "适用于偏远地区和无电项目的低维护太阳能照明方案。",
+          image: "/images/products/lf971/hero/lf971-hero.webp",
+          imageAlt: "白色背景上的LF971太阳能移动照明灯塔",
+          linkLabel: "查看配置方案",
+          href: "/products/lf971",
         },
       ],
-      statement: "每台设备均按照客户确认的项目配置完成装配、功能检查和出货前检测。",
-      ctaLabel: "查看制造能力",
-      ctaHref: "/zh/manufacturing",
     },
     productCategories: {
       title: "移动照明灯塔产品分类",
@@ -801,12 +824,12 @@ export const homepageDictionary: Record<HomeLanguage, HomeDictionary> = {
     },
     cta: {
       eyebrow: "开始项目咨询",
-      title: "告诉我们您的移动照明项目需求",
+      title: "获取适合您项目的移动照明配置方案",
       description:
-        "请提供项目所在地、使用环境、每天工作时间和照明需求，我们将根据这些信息与您沟通合适的动力方式和产品配置。",
+        "请提供项目所在地、使用环境、运行时间和照明需求，我们将根据项目条件推荐合适的移动照明方案。",
       hint: "建议提供：国家或城市、项目类型、每天运行时间、数量及是否有噪音或监控要求。",
-      buttonLabel: "提交项目需求",
-      href: "/zh/contact/request-a-quote",
+      buttonLabel: "获取项目报价",
+      href: "/contact",
     },
   },
 };
