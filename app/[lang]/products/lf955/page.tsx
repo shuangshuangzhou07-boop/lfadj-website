@@ -1,24 +1,284 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
-
-import {
-  HeroSection,
-  LF955ConfigurationManufacturingSection,
-  ProductApplicationsSection,
-  ProductConfigurationSection,
-  ProductFaqSection,
-  ProjectCostLossSection,
-  TechnicalSpecsSection,
-  TrustStrip,
-  WhyLf955Section,
-} from "@/components/lf955/Lf955LandingSections";
-import { LF955ProjectInquirySection } from "@/components/lf955/LF955ProjectInquirySection";
-import { SiteNav } from "../../../site-nav";
 
 type Lang = "en" | "zh";
 
 function isLang(value: string): value is Lang {
   return value === "en" || value === "zh";
+}
+
+function LF955Hero({ zh }: { zh: boolean }) {
+  const advantages = zh
+    ? [
+        {
+          title: "高效LED照明覆盖",
+          description: "标配4×400W LED灯具，可根据项目需求定制。通过优化灯具配置和配光设计，在相同功率下实现更大的照明覆盖范围。",
+        },
+        {
+          title: "可靠柴油动力系统",
+          description: "支持 Kubota、Yanmar 等国际品牌柴油动力方案，也可根据项目需求选择经济型动力配置，在可靠性、维护便利性和使用成本之间实现平衡。",
+        },
+        {
+          title: "120L大容量油箱",
+          description: "≥120L油箱容量，支持长时间户外照明运行，并可根据项目需求提供定制配置。",
+        },
+      ]
+    : [
+        {
+          title: "Efficient LED Lighting Coverage",
+          description: "Equipped with 4×400W LED lights with customizable lighting options. Optimized light configuration and beam design help achieve wider illumination coverage.",
+        },
+        {
+          title: "Reliable Diesel Power System",
+          description: "Supports Kubota, Yanmar and other diesel engine options, balancing reliability, maintenance convenience and operating cost requirements.",
+        },
+        {
+          title: "120L Large Fuel Tank",
+          description: "≥120L fuel tank capacity supports extended outdoor lighting operation with customized options available.",
+        },
+      ];
+
+  return (
+    <section className="border-b border-slate-200 bg-slate-50 text-slate-950">
+      <div className="mx-auto max-w-[1440px] px-6 py-14 sm:px-8 lg:px-12 lg:py-20">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-[56px]">
+              {zh ? (
+                <>
+                  LF955柴油移动照明<span className="whitespace-nowrap">灯塔</span>
+                </>
+              ) : (
+                "LF955 Diesel Mobile Light Tower"
+              )}
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl">
+              {zh
+                ? "高效LED照明系统，结合可靠柴油动力，为建筑施工、矿山及工业项目提供稳定照明。"
+                : "High-efficiency LED lighting combined with reliable diesel power for stable illumination in construction, mining and industrial projects."}
+            </p>
+
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <Link
+                href={zh ? "/zh/contact/request-a-quote" : "/en/contact/request-a-quote"}
+                className="inline-flex min-h-14 items-center justify-center rounded-md bg-amber-500 px-8 text-base font-semibold text-slate-950 shadow-sm transition-colors hover:bg-amber-400"
+              >
+                {zh ? "获取报价" : "Request a Quote"}
+              </Link>
+              <a
+                href="#technical-specifications"
+                className="inline-flex min-h-14 items-center justify-center rounded-md border border-slate-300 bg-white px-8 text-base font-semibold text-slate-900 transition-colors hover:border-slate-500 hover:bg-slate-100"
+              >
+                {zh ? "下载技术参数表" : "Download Datasheet"}
+              </a>
+            </div>
+          </div>
+
+          <div className="relative min-h-[340px] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm sm:min-h-[460px] lg:min-h-[540px]">
+            <Image
+              src="/images/products/lf955/hero/lf955-hero.jpg"
+              alt={zh ? "LF955柴油移动照明灯塔用于建筑施工、矿山及工业项目" : "LF955 diesel mobile light tower for construction, mining and industrial projects"}
+              fill
+              priority
+              sizes="(min-width: 1440px) 720px, (min-width: 1024px) 55vw, 100vw"
+              className="object-contain"
+            />
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {advantages.map((advantage, index) => (
+            <article key={advantage.title} className="h-full border-t-2 border-amber-500 bg-white p-6 shadow-sm">
+              <span className="text-sm font-bold tabular-nums text-amber-700">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h2 className="mt-4 text-xl font-bold leading-7 text-slate-950">{advantage.title}</h2>
+              <p className="mt-3 text-base leading-7 text-slate-600">{advantage.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LF955Overview({ zh }: { zh: boolean }) {
+  const technicalInformation = zh
+    ? [
+        { label: "照明系统", value: "4×400W LED" },
+        { label: "最大光通量", value: "272,000 lm" },
+        { label: "灯杆高度", value: "7.5m" },
+        { label: "升降方式", value: "电动升降" },
+        { label: "发动机", value: "Kubota / Yanmar柴油发动机" },
+        { label: "油箱容量", value: "≥120L（油箱容量可根据项目需求定制）" },
+        { label: "旋转角度", value: "0–350°" },
+        { label: "重量", value: "≤750kg" },
+      ]
+    : [
+        { label: "Lighting System", value: "4×400W LED" },
+        { label: "Maximum Luminous Flux", value: "272,000 lm" },
+        { label: "Mast Height", value: "7.5m" },
+        { label: "Lifting Method", value: "Electric mast operation" },
+        { label: "Engine", value: "Kubota / Yanmar diesel engine" },
+        { label: "Fuel Tank Capacity", value: "≥120L (customizable)" },
+        { label: "Rotation Angle", value: "0–350°" },
+        { label: "Weight", value: "≤750kg" },
+      ];
+
+  return (
+    <section aria-labelledby="lf955-overview-title" className="bg-white py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-[1200px] px-6 sm:px-8 lg:px-12">
+        <div className="max-w-3xl">
+          <h2
+            id="lf955-overview-title"
+            className="text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl"
+          >
+            {zh ? "LF955柴油移动照明灯塔" : "LF955 Diesel Mobile Light Tower"}
+          </h2>
+          <div className="mt-6 space-y-4 text-lg leading-8 text-slate-600">
+            <p>
+              {zh
+                ? "LF955柴油移动照明灯塔专为建筑施工、矿山作业、道路建设及设备租赁项目设计。"
+                : "The LF955 Diesel Mobile Light Tower is designed for construction lighting, mining lighting, road construction and rental lighting projects."}
+            </p>
+            <p>
+              {zh
+                ? "采用高效LED照明系统和可靠柴油动力平台，在提供高亮度照明覆盖的同时，兼顾长期运行稳定性和维护便利性。"
+                : "Its high-efficiency LED lighting system and reliable diesel power platform deliver high-output illumination while supporting long-term operating stability and convenient maintenance."}
+            </p>
+            <p>
+              {zh
+                ? "支持 Kubota、Yanmar 及经济型动力方案选择，可根据不同项目需求匹配合适配置。"
+                : "Kubota, Yanmar and cost-effective power options are available to match different project requirements."}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 sm:mt-14">
+          <h3 className="text-2xl font-bold tracking-tight text-slate-950">
+            {zh ? "技术信息" : "Technical Information"}
+          </h3>
+          <div className="mt-6 overflow-hidden rounded-lg border border-slate-200">
+            <table className="w-full border-collapse text-left text-sm sm:text-base">
+              <tbody>
+                {technicalInformation.map((item, index) => (
+                  <tr key={item.label} className={index % 2 === 0 ? "bg-slate-50" : "bg-white"}>
+                    <th
+                      scope="row"
+                      className="w-[45%] border-r border-slate-200 px-4 py-4 font-semibold text-slate-700 sm:w-1/3 sm:px-6"
+                    >
+                      {item.label}
+                    </th>
+                    <td className="px-4 py-4 font-medium text-slate-950 sm:px-6">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LF955ProductResources({ zh }: { zh: boolean }) {
+  const applications = zh
+    ? [
+        { label: "建筑施工照明", href: "/applications/construction" },
+        { label: "矿山照明", href: "/applications/mining" },
+        { label: "道路建设照明", href: "/applications/road-infrastructure" },
+        { label: "设备租赁照明", href: "/applications/rental-lighting" },
+        { label: "应急照明", href: "/applications/emergency" },
+      ]
+    : [
+        { label: "Construction Lighting", href: "/applications/construction" },
+        { label: "Mining Lighting", href: "/applications/mining" },
+        { label: "Road Construction Lighting", href: "/applications/road-infrastructure" },
+        { label: "Equipment Rental Lighting", href: "/applications/rental-lighting" },
+        { label: "Emergency Lighting", href: "/applications/emergency" },
+      ];
+  const solutions = zh
+    ? [
+        { label: "如何选择适合项目需求的移动照明灯塔升降系统", href: "/zh/solutions/how-to-choose-light-tower-mast-system" },
+        { label: "如何选择适合项目需求的灯塔动力系统", href: "/zh/solutions/how-to-choose-right-light-tower-power-system" },
+        { label: "如何降低柴油移动照明灯塔运营成本" },
+      ]
+    : [
+        { label: "How to Choose the Right Light Tower Mast System", href: "/en/solutions/how-to-choose-light-tower-mast-system" },
+        { label: "How to Choose the Right Light Tower Power System", href: "/en/solutions/how-to-choose-right-light-tower-power-system" },
+        { label: "How to Reduce Diesel Mobile Light Tower Operating Costs" },
+      ];
+
+  return (
+    <section aria-labelledby="lf955-resources-title" className="border-t border-slate-200 bg-slate-50 py-16 sm:py-20">
+      <div className="mx-auto max-w-[1200px] px-6 sm:px-8 lg:px-12">
+        <h2 id="lf955-resources-title" className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          {zh ? "相关信息" : "Related Information"}
+        </h2>
+
+        <div className="mt-10 grid gap-10 border-y border-slate-200 py-10 lg:grid-cols-3 lg:gap-14">
+          <div>
+            <h3 className="text-lg font-bold text-slate-950">{zh ? "相关应用" : "Related Applications"}</h3>
+            <ul className="mt-5 space-y-3">
+              {applications.map((application) => (
+                <li key={application.href}>
+                  <Link className="font-medium text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700" href={application.href}>
+                    {application.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-bold text-slate-950">{zh ? "相关解决方案" : "Related Solutions"}</h3>
+            <ul className="mt-5 space-y-3">
+              {solutions.map((solution) => (
+                <li key={solution.label}>
+                  {solution.href ? (
+                    <Link className="font-medium leading-7 text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700" href={solution.href}>
+                      {solution.label}
+                    </Link>
+                  ) : (
+                    <span className="font-medium leading-7 text-slate-500">{solution.label}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-bold text-slate-950">{zh ? "产品资料" : "Downloads"}</h3>
+            <div className="mt-5 flex flex-col items-start gap-3">
+              <button type="button" disabled className="cursor-not-allowed font-medium text-slate-500" title={zh ? "文件待提供" : "File not yet available"}>
+                {zh ? "LF955技术参数表" : "LF955 Technical Datasheet"}
+              </button>
+              <button type="button" disabled className="cursor-not-allowed font-medium text-slate-500" title={zh ? "文件待提供" : "File not yet available"}>
+                {zh ? "LF955产品宣传册" : "LF955 Brochure"}
+              </button>
+              <button type="button" disabled className="cursor-not-allowed font-medium text-slate-500" title={zh ? "文件待提供" : "File not yet available"}>
+                {zh ? "LF955使用说明书" : "LF955 User Manual"}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col items-start justify-between gap-6 rounded-lg bg-slate-950 px-6 py-8 text-white sm:px-8 lg:flex-row lg:items-center">
+          <h3 className="max-w-2xl text-2xl font-bold leading-tight">
+            {zh ? "需要选择适合您项目的移动照明灯塔？" : "Need help choosing the right mobile light tower for your project?"}
+          </h3>
+          <Link
+            href={zh ? "/zh/contact/request-a-quote" : "/en/contact/request-a-quote"}
+            className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md bg-amber-500 px-6 font-semibold text-slate-950 hover:bg-amber-400"
+          >
+            {zh ? "获取项目配置建议" : "Get Project Configuration Advice"}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export function generateStaticParams() {
@@ -170,36 +430,6 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
       },
     ],
   };
-
-  const heroV7 = zh
-    ? {
-        eyebrow: "移动照明项目解决方案提供商",
-        title: "LF955柴油移动照明灯塔",
-        headlineSupport: "围绕真实项目需求配置照明方案",
-        productName: undefined,
-        subtitle: "不只是提供标准灯塔，我们根据不同项目环境和使用需求，为客户匹配更可靠、更适合长期运行的移动照明解决方案。",
-        summary: undefined,
-        primary: "获取我的项目配置方案",
-        secondary: undefined,
-        applicationLabel: "适用行业",
-        applications: ["基建施工", "矿山作业", "油气项目", "应急救援"],
-        advantageLabel: "核心优势",
-        advantages: ["复杂环境适配", "多种升降配置", "项目定制方案"],
-      }
-    : {
-        eyebrow: "Mobile Lighting Solution Provider",
-        title: "LF955 Diesel Mobile Light Tower",
-        headlineSupport: "Lighting Configured Around Real Project Needs",
-        productName: undefined,
-        subtitle: "More than a standard light tower, we configure reliable mobile lighting solutions around real project conditions and operating requirements for long-term project operation.",
-        summary: undefined,
-        primary: "Get My Project Configuration",
-        secondary: undefined,
-        applicationLabel: "Applications",
-        applications: ["Infrastructure", "Mining", "Oil & Gas", "Emergency Response"],
-        advantageLabel: "Core Advantages",
-        advantages: ["Harsh Environment Ready", "Multiple Mast Options", "Project-Specific Configuration"],
-      };
 
   const whyLf955 = zh
     ? {
@@ -658,25 +888,6 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
 
   return (
     <>
-      <SiteNav
-        items={
-          zh
-            ? [
-                { label: "解决方案", href: "/zh/solutions" },
-                { label: "应用行业", href: "/zh/applications" },
-                { label: "产品中心", href: "/zh/products" },
-                { label: "工程案例", href: "/zh/案例" },
-                { label: "技术资料", href: "/zh/resources" },
-                { label: "博客", href: "/zh/blog" },
-                { label: "关于我们", href: "/zh/about" },
-                { label: "联系我们", href: "/zh/contact" },
-              ]
-            : undefined
-        }
-        quoteLabel={zh ? "获取报价" : "Get a Quote"}
-        quoteHref={zh ? "/zh/contact" : "/contact"}
-        mobileMenuLabel={zh ? "菜单" : undefined}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -689,110 +900,10 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
-        }}
-      />
       <main className="bg-white text-slate-950">
-        <HeroSection
-          eyebrow={heroV7.eyebrow}
-          title={heroV7.title}
-          headlineSupport={heroV7.headlineSupport}
-          productName={heroV7.productName}
-          subtitle={heroV7.subtitle}
-          summary={heroV7.summary}
-          primaryCta={heroV7.primary}
-          primaryHref="#project-environment-inquiry"
-          applicationLabel={heroV7.applicationLabel}
-          applications={heroV7.applications}
-          advantageLabel={heroV7.advantageLabel}
-          advantages={heroV7.advantages}
-          imageSrc="/images/products/lf955/hero/lf955-hero.jpg"
-          imageAlt={zh ? "LF955柴油移动照明灯塔用于夜间工程项目照明" : "LF955 diesel mobile light tower illuminating a night project site"}
-          imageObjectPosition="center 58%"
-          featuredMedia={false}
-        />
-
-        {!zh ? (
-          <TrustStrip
-            items={[
-              "ISO Certified Manufacturer",
-              "OEM / ODM Available",
-              "Export Project Support",
-              "Factory Direct Supply",
-            ]}
-          />
-        ) : null}
-
-        <WhyLf955Section
-          title={whyLf955.title}
-          description={whyLf955.description}
-          items={whyLf955.items}
-        />
-
-        <ProductApplicationsSection
-          title={zh ? "LF955柴油移动照明灯塔应用场景" : "Applications of LF955 Diesel Mobile Light Tower"}
-          items={scenarioCards}
-        />
-
-        <ProjectCostLossSection
-          title={costLossSection.title}
-          subtitle={costLossSection.subtitle}
-          cards={costLossSection.cards}
-          problemLabel={zh ? "项目挑战" : "Project Challenge"}
-          solutionLabel="LFADJ Solution"
-          emphasisText={costLossSection.emphasisText}
-        />
-
-        <TechnicalSpecsSection
-          eyebrow={zh ? "技术参数" : "Technical Specifications"}
-          title={zh ? "LF955柴油移动照明灯塔技术参数" : "Technical Specifications of LF955 Diesel Mobile Light Tower"}
-          subtitle={
-            zh
-              ? "查看LF955柴油移动照明灯塔已确认的LED照明、液压灯杆、柴油发电系统和拖车结构参数。"
-              : "Review the verified LED lighting, hydraulic mast, diesel generator and trailer structure specifications for the LF955 diesel mobile light tower."
-          }
-          groups={specificationGroups}
-        />
-
-        <ProductConfigurationSection
-          eyebrow={zh ? "产品配置" : "Product Configuration"}
-          title={zh ? "LF955 配置选项" : "Configuration Options for LF955"}
-          subtitle={
-            zh
-              ? "根据项目需求，LF955柴油移动照明灯塔支持不同动力、灯杆和照明配置选择。"
-              : "Configure LF955 diesel mobile light tower based on project requirements with different power, mast and lighting options."
-          }
-          groups={configGroups}
-          ctaLabel={null}
-          optionLabel={zh ? "配置选择" : "Configuration Option"}
-        />
-
-        <LF955ConfigurationManufacturingSection
-          title={zh ? "LF955 产品演示与制造流程" : "LF955 Product Demonstration and Manufacturing Process"}
-          subtitle={
-            zh
-              ? "查看LF955实际运行演示和完整生产流程。"
-              : "Review the LF955 in operation and its complete manufacturing process."
-          }
-          videoTitle={zh ? "LF955 产品运行与功能演示" : "LF955 Operation and Function Demonstration"}
-          videoLabel={zh ? "LF955 液压升降与照明测试视频" : "LF955 hydraulic mast lifting and lighting test"}
-          videoSrc="/videos/products/lf955/factory-testing.mp4"
-          videoPoster="/images/products/lf955/hero/lf955-hero.jpg"
-          videoFallback={zh ? "视频暂时无法加载，请稍后重试。" : "The video could not be loaded. Please try again later."}
-          processTitle={zh ? "从原材料到整机交付的制造流程" : "Manufacturing Process from Raw Material to Final Delivery"}
-          processSteps={manufacturingProcess}
-        />
-
-        <ProductFaqSection
-          title={zh ? "LF955柴油移动照明灯塔常见问题" : "Frequently Asked Questions About LF955 Diesel Mobile Light Tower"}
-          items={faqItems}
-        />
-
-        <LF955ProjectInquirySection language={zh ? "zh" : "en"} />
-
+        <LF955Hero zh={zh} />
+        <LF955Overview zh={zh} />
+        <LF955ProductResources zh={zh} />
       </main>
     </>
   );
