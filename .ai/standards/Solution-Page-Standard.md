@@ -1,6 +1,6 @@
 # LFADJ Solution Page Standard
 
-## 1. Page Purpose
+## 1. Purpose
 
 Solution 页面用于回答客户的项目选择问题。
 
@@ -29,7 +29,7 @@ Solution 页面负责：
 
 ## 2. Recommended Structure
 
-### 2.1 Hero
+### 2.1 Hero Section
 
 内容：
 
@@ -78,7 +78,7 @@ CTA 的目标是获取项目配置建议。
 
 示例：`Request a Project Lighting Recommendation`
 
-## 3. SEO Principles
+## 3. Google SEO Principles
 
 Solution 页面的关键词目标包括：
 
@@ -121,7 +121,7 @@ Solution 页面必须连接：
 
 Solutions Hub 是全部 Solution 页面的导航中心，用于帮助客户根据采购问题进入对应的解决方案，并向 Solution 详情页传递内部链接。Solutions Hub 不承担完整回答单一选型问题或介绍具体产品的职责。
 
-### 6.1 Standard Structure
+### 6.1 Standard Page Structure
 
 所有 Solutions 首页默认采用以下三个主要 Section：
 
@@ -131,7 +131,7 @@ Solutions Hub 是全部 Solution 页面的导航中心，用于帮助客户根�
 
 不得新增没有明确用户价值、SEO 职责或采购导航目的的主要 Section。
 
-### 6.2 Hero
+### 6.2 Hero Section
 
 Hero 包含：
 
@@ -141,7 +141,7 @@ Hero 包含：
 
 Hero 用于说明 Solutions Hub 的页面职责和用户价值，不展开各 Solution 的完整正文，不添加产品型号或多余 CTA。
 
-### 6.3 Solution Navigation
+### 6.3 Solution Navigation Section
 
 Section 标题应以客户采购选择为导向：
 
@@ -157,7 +157,7 @@ Solutions Hub Standard V1 包含以下四个已确认的 Solution 入口：
 
 每个入口采用简洁卡片，只包含 Solution 标题、一句简短说明和真实可访问的详情页链接。不得新增占位卡片、失效链接或未完成 Solution。
 
-### 6.4 Related Products + CTA
+### 6.4 Related Products + CTA Section
 
 Related Products 与 CTA 必须位于同一个主要 Section。
 
