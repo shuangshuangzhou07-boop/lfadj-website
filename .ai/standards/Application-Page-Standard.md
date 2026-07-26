@@ -138,3 +138,24 @@ Related Information
 ↓
 
 CTA
+
+### 3. Rental Lighting Applications
+
+Approved structure:
+
+Hero
+
+↓
+Rental Lighting Applications
+
+↓
+Rental Lighting Requirements
+
+↓
+Recommended Mobile Lighting Products for Rental
+
+↓
+Related Information
+
+↓
+CTA
