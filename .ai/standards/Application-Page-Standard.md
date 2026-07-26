@@ -93,9 +93,9 @@ Every Applications Page must:
 
 ## 6. Current Approved Example
 
-The current approved reference is:
+The current approved examples are:
 
-**Mining Lighting Applications**
+### 1. Mining Lighting Applications
 
 Approved structure:
 
@@ -112,3 +112,29 @@ Mining Lighting Requirements
 ↓
 
 Recommended Products & Related Information
+
+### 2. Construction Lighting Applications
+
+Approved structure:
+
+Hero
+
+↓
+
+Construction Lighting Applications
+
+↓
+
+Construction Lighting Requirements
+
+↓
+
+Recommended Mobile Lighting Products for Construction
+
+↓
+
+Related Information
+
+↓
+
+CTA
