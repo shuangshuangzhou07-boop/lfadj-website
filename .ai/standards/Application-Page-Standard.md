@@ -159,3 +159,24 @@ Related Information
 
 ↓
 CTA
+
+### 4. Emergency Lighting Applications
+
+Approved structure:
+
+Hero
+
+↓
+Emergency Lighting Applications
+
+↓
+Emergency Lighting Requirements
+
+↓
+Recommended Mobile Lighting Products for Emergency
+
+↓
+Related Information
+
+↓
+CTA
