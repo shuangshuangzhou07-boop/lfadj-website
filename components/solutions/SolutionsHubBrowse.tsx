@@ -70,12 +70,14 @@ export function SolutionsHubBrowse({ lang }: SolutionsHubBrowseProps) {
         <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
           {lang === "zh" ? "根据您的项目选择合适的解决方案" : "Choose the Right Solution for Your Project"}
         </h2>
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {entries.map((entry) => (
+        <div className="mt-10 grid gap-5 md:grid-cols-4">
+          {entries.map((entry, index) => (
             <Link
               key={entry.href}
               href={entry.href}
-              className="group rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-slate-400 hover:shadow-md sm:p-7"
+              className={`group rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-slate-400 hover:shadow-md sm:p-7 md:col-span-2 ${
+                entries.length % 2 === 1 && index === entries.length - 1 ? "md:col-start-2" : ""
+              }`}
             >
               <h3 className="text-xl font-bold leading-7 text-slate-950 underline decoration-slate-300 underline-offset-4 group-hover:decoration-amber-500">
                 {entry.title}

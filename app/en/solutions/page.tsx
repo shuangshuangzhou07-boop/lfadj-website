@@ -1,79 +1,46 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { SolutionsHubBrowse } from "@/components/solutions/SolutionsHubBrowse";
+import { SolutionsHubRelated } from "@/components/solutions/SolutionsHubRelated";
 
 export const metadata: Metadata = {
-  title: "Mobile Lighting Tower Solutions | LFADJ",
+  title: "Mobile Light Tower Solutions and Selection Guides | LFADJ",
   description:
-    "LFADJ provides diesel mobile light tower solutions for construction, mining, emergency and rental customers.",
+    "Explore LFADJ mobile light tower solutions and learn how to choose suitable equipment based on project needs, power systems, mast configurations and harsh operating environments.",
   alternates: {
     canonical: "https://lfadj.com/en/solutions",
     languages: {
       en: "/en/solutions",
-      zh: "/zh/解决方案",
+      "zh-CN": "/zh/solutions",
     },
   },
 };
-
-const solutions = [
-  "Diesel mobile lighting solution for long-shift outdoor projects",
-  "Construction lighting tower OEM solution for branded equipment programs",
-  "Rental fleet configuration for contractors and equipment distributors",
-];
 
 export default function EnglishSolutionsPage() {
   return (
     <main className='max-w-7xl mx-auto'>
       <section className="px-6 py-20 lg:py-28">
         <div className="mx-auto max-w-[1200px]">
+          <nav aria-label="Breadcrumb" className="mb-10 text-sm text-gray-500">
+            <ol className="flex flex-wrap items-center gap-2">
+              <li><Link href="/en" className="hover:text-blue-700">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" className="text-gray-900">Solutions</li>
+            </ol>
+          </nav>
           <p className="text-sm font-bold uppercase tracking-[0.24em] text-gray-500">
             Solutions
           </p>
           <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-black sm:text-5xl lg:text-6xl">
-            Mobile Lighting Tower Solutions for Industrial Projects
+            Mobile Light Tower Solutions
           </h1>
           <p className="mt-6 max-w-4xl text-lg leading-8 text-gray-600">
-            LFADJ builds mobile lighting tower solutions for buyers who need
-            practical equipment, dependable supply and export-ready support. A
-            light tower solution is more than a product specification; it
-            includes lamp power, mast height, runtime, trailer design, weather
-            protection, spare parts planning and OEM branding requirements. For
-            construction contractors, mining companies and rental businesses,
-            the right diesel light tower supplier must understand how machines
-            are used in real outdoor conditions. LF6130 is positioned as a core
-            diesel lighting tower for demanding worksites, with hydraulic mast
-            operation, Kubota engine power and IP65 outdoor protection.
+            Whether your project involves construction, mining, equipment rental or emergency response, LFADJ helps you choose a suitable mobile lighting solution based on lighting requirements, power systems, mast configurations and operating conditions.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/en/products" className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white">Products</a>
-            <a href="/en/products/lf6130" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">LF6130</a>
-            <a href="/en/applications" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Applications</a>
-            <a href="/en/faq" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">FAQ</a>
-          </div>
         </div>
       </section>
-      <section className="bg-gray-50 px-6 py-20">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight text-black">Solution Modules</h2>
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {solutions.map((item) => (
-              <article key={item} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-bold text-black">{item}</h3>
-                <p className="mt-4 text-sm leading-6 text-gray-600">
-                  LFADJ supports specification review, product matching and project communication for international B2B customers.
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="bg-black px-6 py-16 text-white">
-        <div className="mx-auto max-w-[1200px] text-center">
-          <h2 className="text-3xl font-bold">Build Your Lighting Solution</h2>
-          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <a href="/en/contact" className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white">Contact Us</a>
-            <a href="/en/products/lf6130" className="rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white">View LF6130</a>
-          </div>
-        </div>
-      </section>
+      <SolutionsHubBrowse lang="en" />
+      <SolutionsHubRelated lang="en" />
     </main>
   );
 }

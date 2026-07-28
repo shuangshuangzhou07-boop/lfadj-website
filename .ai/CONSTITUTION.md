@@ -1,209 +1,53 @@
-Article 1
+# LFADJ Website Constitution
 
-Supreme Principle
+> This Constitution is the highest authority for the LFADJ website. No website development, content, design, SEO decision, implementation standard, or temporary request may violate it.
 
-Business Goal
+## Mission
 
-Success Metric
+LFADJ website exists to build lasting search visibility, strengthen relevant keyword rankings, attract qualified organic traffic, help real users make informed project decisions, and generate authentic project inquiries across all current and future product categories.
 
-# 多语言页面最高规则
+## Principle 1 — SEO First
 
-> **强制执行规则：本规则属于 LFADJ 网站最高宪法，必须执行。**
+All website development, content, structure, design, and technical decisions must support sustainable Google SEO, relevant keyword rankings, organic search traffic, and authentic inquiry conversion.
 
-LFADJ 网站使用 `/en` 和 `/zh` 两套语言路由。
+SEO must never be sacrificed for purely visual effects, unnecessary complexity, or short-term convenience. Website performance, semantic structure, crawlability, indexability, mobile experience, search-intent alignment, and truthful structured information must remain protected.
 
-## 1. 英文页面
+## Principle 2 — User First
 
-所有 `/en` 路由页面必须只向用户展示英文内容。
+Every page must first provide clear, useful, accessible, and truthful value to real users, then help search engines understand that value.
 
-包括但不限于：
+Users must be able to understand what a page is about, whether it is relevant to their needs, and what meaningful next step is available. Neither SEO nor design may justify confusing, repetitive, low-value, or misleading experiences.
 
-- 导航
-- 标题
-- 正文
-- 按钮
-- 表单字段
-- 错误提示
-- 图片说明
-- 面包屑
-- 页脚
-- 弹窗
-- 空状态
-- 成功提示
-- SEO Metadata
-- JSON-LD 中面向用户的文本
+## Principle 3 — Topical Authority
 
-英文页面不得出现中文营销文案、中文按钮或中文说明。
+The website must continuously build durable topical authority across all current and future product categories.
 
-## 2. 中文页面
+Clear information architecture, unique page responsibilities, logical internal linking, and complete topic coverage must work together as one coherent knowledge system. No individual page may weaken that system through conflicting ownership, fragmented coverage, or unnecessary duplication.
 
-所有 `/zh` 路由页面必须只向用户展示中文内容。
+## Principle 4 — One Page, One Purpose
 
-包括但不限于：
+Every page must have one core topic, one primary search intent, and a clearly defined responsibility within the website.
 
-- 导航
-- 标题
-- 正文
-- 按钮
-- 表单字段
-- 错误提示
-- 图片说明
-- 面包屑
-- 页脚
-- 弹窗
-- 空状态
-- 成功提示
-- SEO Metadata
-- JSON-LD 中面向用户的文本
+Pages must not compete for the same primary keyword intent, assume another page's full responsibility, or reproduce substantial content without a distinct user and search purpose. Each important topic must have a clear primary page.
 
-中文页面不得出现未翻译的英文营销文案、英文按钮或英文说明。
+## Principle 5 — Language Integrity
 
-## 3. 允许保留的国际通用内容
+Chinese pages must present user-facing content in Chinese, and English pages must present user-facing content in English. Language mixing that compromises clarity, trust, localization, or search intent is prohibited.
 
-以下内容可以根据行业习惯保留英文或缩写：
+Corresponding language versions must preserve consistent core information, page purpose, and user value while using natural expression appropriate to each language.
 
-- LFADJ
-- LF955、LF968、LF971、LF981 等产品型号
-- OEM
-- ODM
-- ISO 9001
-- ISO 14001
-- ISO 45001
-- LED
-- WhatsApp
-- Email
-- Kubota
-- Yanmar
-- Perkins
-- kW、V、Hz、lm 等技术单位
-- 客户明确要求保留的品牌名、型号名和国际通用缩写
+## Principle 6 — Authenticity
 
-即使保留英文缩写，中文页面周围的解释文字仍必须使用中文。
+All website claims, product information, specifications, certifications, capabilities, cases, performance statements, structured data, and business representations must be truthful, verifiable, and consistent with visible content. Exaggeration, fabrication, unsupported assumptions, and misleading presentation are prohibited.
 
-例如：
+Missing or unconfirmed information must remain explicitly unconfirmed rather than being inferred or invented.
 
-正确：
-支持 OEM / ODM 定制
+Unless supported by clear evidence, LFADJ must be represented as a mobile-lighting solutions and product-integration operator that delivers through its supply chain and partner factories, not as the independent in-house manufacturer of every product.
 
-错误：
-OEM / ODM Customization
+## Principle 7 — Standards
 
-## 4. 中英文结构同步
+This Constitution defines only the highest and non-negotiable website principles. It does not replace implementation standards or development procedures.
 
-英文和中文页面必须保持：
+All implementation details must follow the applicable Standards, while development workflow and task execution must follow AGENTS.md. All AI tools, developers, and future maintainers must comply with this Constitution, AGENTS.md, and all relevant existing Standards.
 
-- 页面模块顺序一致
-- 标题层级一致
-- CTA 数量一致
-- 内部链接目标一致
-- 图片和视频内容对应
-- 表单字段一致
-- SEO 页面意图一致
-
-允许中英文文案长度不同，但不允许一边新增模块、另一边缺失。
-
-## 5. 禁止直接复制英文占位内容到中文页面
-
-创建中文页面时，不得为了占位直接复制英文正文。
-
-如果中文内容尚未完成：
-
-- 使用简短中文占位说明；
-- 添加 TODO 注释；
-- 不得让正式页面向用户显示英文占位营销内容。
-
-英文页面同理，不得显示中文占位内容。
-
-## 6. 语言切换规则
-
-语言切换应尽量进入当前页面对应的另一语言版本。
-
-例如：
-
-`/en/products/lf955`
-
-切换后应进入：
-
-`/zh/products/lf955`
-
-不得无理由跳回语言首页。
-
-如果对应语言页面尚不存在，应使用明确、安全的回退逻辑，不得产生 404。
-
-## 7. 每次开发任务的强制检查
-
-任何页面新增或修改完成后，都必须检查：
-
-1. `/en` 页面是否只显示英文。
-2. `/zh` 页面是否只显示中文。
-3. 中英文页面结构是否同步。
-4. 是否存在未翻译按钮、标题、表单或提示。
-5. 是否存在英文页面混入中文内容。
-6. 是否存在中文页面混入英文营销文案。
-7. 语言切换是否进入对应页面。
-8. 中英文内部链接是否指向正确语言路由。
-
-## 8. 与网站最高目标的关系
-
-多语言一致性必须服务于：
-
-1. Google SEO 自然排名；
-2. 清晰的页面语言信号；
-3. 正确的 hreflang 和搜索意图；
-4. 海外采购客户的阅读体验；
-5. 真实询盘转化。
-
-禁止为了开发方便，让不同语言内容混用。
-
-该规则属于 LFADJ 网站最高宪法，优先级高于普通页面设计和临时开发要求。
-
-# 页面职责原则（Page Responsibility）
-
-> **强制执行规则：网站中的每一个页面，都只能承担一个核心 SEO 主题。**
-
-禁止多个页面竞争同一关键词。
-
-首页负责：
-
-- 品牌词
-- Manufacturer
-- 行业入口
-
-Products 分类页负责：
-
-- 产品大类关键词
-
-产品详情页负责：
-
-- 型号关键词
-
-Solutions 页面负责：
-
-- 行业解决方案关键词
-
-Manufacturing 页面负责：
-
-- 制造能力关键词
-
-Resources 页面负责：
-
-- 长尾问题关键词
-
-任何页面新增内容之前，必须先判断：
-
-> “这个内容应该属于哪个页面？”
-
-而不是：
-
-> “哪里有空就放哪里。”
-
-# 页面重复内容原则
-
-> **强制执行规则：所有页面必须各自解决不同的问题。**
-
-- 首页不能复制产品详情页。
-- 产品详情页不能复制 Solutions。
-- Solutions 不能复制 Manufacturing。
-- Resources 不能复制 FAQ。
-
-如果两个页面有超过 40% 内容重复，必须重新设计页面职责。
+No Standard, workflow, implementation decision, or temporary instruction may weaken or override this Constitution.

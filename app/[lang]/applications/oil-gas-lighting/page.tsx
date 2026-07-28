@@ -1,79 +1,72 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { headers } from "next/headers";
 
-export const metadata: Metadata = {
-  title: "Mining Lighting Solutions | Mobile Light Towers for Mine Sites | LFADJ",
-  description:
-    "Reliable mobile lighting for open-pit mines, remote mining sites, transportation areas and temporary night work zones.",
-  alternates: {
-    canonical: "https://lfadj.com/applications/mining-lighting",
-  },
-};
+type Lang = "en" | "zh";
 
 const copy = {
   en: {
-    title: "Mining Lighting Applications",
+    title: "Oil & Gas Lighting Applications",
     subtitle:
-      "Reliable mobile lighting equipment designed for open-pit mining, mining operations, remote sites and temporary working areas.",
-    cta: "Request Your Mining Lighting Recommendation",
-    imageAlt:
-      "Mobile light tower illuminating excavators and haul equipment at an open-pit mine at night",
-    applicationsTitle: "Mining Lighting Applications",
+      "Reliable mobile lighting equipment designed for oil and gas sites, remote operations and temporary work areas, supporting safe and efficient night operations.",
+    cta: "Request Your Oil & Gas Lighting Recommendation",
+    ctaDescription:
+      "Share your project type, working environment, operation time and lighting requirements. LFADJ will help you find suitable mobile lighting equipment.",
+    imageAlt: "Mobile light tower supporting outdoor night operations",
+    applicationsTitle: "Oil & Gas Lighting Applications",
     applications: [
       {
-        title: "Open Pit Mining Areas",
+        title: "Remote Oil & Gas Sites",
         description:
-          "Lighting for mining areas, excavation zones and loading operations during night shifts.",
+          "Providing lighting support for oil and gas operations in remote locations without stable infrastructure.",
       },
       {
-        title: "Mining Roads",
+        title: "Drilling & Work Areas",
         description:
-          "Providing reliable lighting for mining roads and transportation areas.",
+          "Supporting night operations, equipment inspection and temporary working areas.",
       },
       {
-        title: "Equipment Maintenance Areas",
+        title: "Maintenance Areas",
         description:
-          "Supporting equipment inspection, maintenance and temporary working areas.",
+          "Providing temporary lighting during maintenance and repair operations.",
       },
       {
-        title: "Temporary Mining Facilities",
+        title: "Temporary Facilities",
         description:
           "Lighting for temporary camps, storage areas and supporting facilities.",
       },
     ],
-    requirementsTitle: "Mining Lighting Requirements",
+    requirementsTitle: "Oil & Gas Lighting Requirements",
     requirements: [
+      {
+        title: "Reliable Operation",
+        description:
+          "Oil and gas operations require dependable lighting equipment for continuous field work.",
+      },
+      {
+        title: "Remote Deployment",
+        description:
+          "Remote sites require mobile lighting solutions that can operate independently.",
+      },
       {
         title: "Long Operation Time",
         description:
-          "Mining operations at night typically require stable and reliable lighting support.",
-      },
-      {
-        title: "Large Lighting Coverage",
-        description:
-          "Mining work areas are extensive and require illumination across a broad operating area.",
-      },
-      {
-        title: "Remote Mining Locations",
-        description:
-          "Some mining sites are far from urban power infrastructure and require independent lighting equipment.",
+          "Extended operations require stable lighting performance throughout working periods.",
       },
       {
         title: "Easy Relocation",
         description:
-          "As mining areas change, lighting equipment needs to be easy to relocate.",
+          "Mobile equipment needs to be relocated as project areas change.",
       },
     ],
-    productsTitle: "Recommended Mobile Lighting Products for Mining",
+    productsTitle: "Recommended Mobile Lighting Products for Oil & Gas",
     suitableLabel: "Suitable for:",
     products: [
       {
         slug: "lf955",
         title: "LF955 Diesel Mobile Light Tower",
         applications: [
-          "Continuous mining operations",
+          "Long operation oil and gas projects",
           "Large working areas",
           "Remote sites without stable power supply",
         ],
@@ -82,113 +75,193 @@ const copy = {
         slug: "lf971",
         title: "LF971 Solar Mobile Light Tower",
         applications: [
-          "Remote mining locations",
-          "Long-term deployment",
-          "Low maintenance applications",
+          "Remote oil and gas locations",
+          "Long-term temporary deployment",
+          "Low maintenance requirements",
         ],
       },
     ],
     relatedInformationTitle: "Related Information",
     relatedProductsTitle: "Related Products",
     relatedSolutionsTitle: "Related Solutions",
-    relatedSolutionLabel: "How to Choose the Right Light Tower",
+    relatedSolutions: [
+      {
+        slug: "how-to-choose-the-right-light-tower",
+        label: "How to Choose the Right Light Tower",
+      },
+      {
+        slug: "how-to-choose-the-right-light-tower-for-harsh-environments",
+        label: "Extreme Environment Configuration",
+      },
+    ],
     relatedApplicationsTitle: "Related Applications",
     relatedApplications: [
+      { slug: "mining-lighting", label: "Mining Lighting" },
       { slug: "construction-lighting", label: "Construction Lighting" },
       { slug: "rental-lighting", label: "Rental Lighting" },
       { slug: "emergency-lighting", label: "Emergency Lighting" },
-      { slug: "oil-gas-lighting", label: "Oil & Gas Lighting" },
     ],
   },
   zh: {
-    title: "矿山照明应用",
+    title: "油气照明应用",
     subtitle:
-      "为露天矿山、采矿现场和偏远作业区域提供可靠的移动照明设备，支持夜间运输、设备作业和临时工作区域照明需求。",
-    cta: "获取矿山照明配置建议",
-    imageAlt: "移动照明灯塔在夜间露天矿区为挖掘设备和运输作业提供照明",
-    applicationsTitle: "矿山照明应用场景",
+      "为油气现场、偏远作业区域和临时工作区域提供可靠的移动照明设备，支持安全高效的夜间作业。",
+    cta: "获取油气照明配置建议",
+    ctaDescription:
+      "请提供您的项目类型、工作环境、运行时间和照明需求，LFADJ 将帮助您匹配合适的移动照明设备。",
+    imageAlt: "为户外夜间作业提供照明的移动照明灯塔",
+    applicationsTitle: "油气照明应用场景",
     applications: [
       {
-        title: "露天采矿区域",
-        description: "用于采矿作业区域、挖掘区域和装载区域的夜间照明。",
+        title: "偏远油气现场",
+        description: "为缺少稳定基础设施的偏远油气作业区域提供照明支持。",
       },
       {
-        title: "矿区运输道路",
-        description: "为矿区运输道路和车辆通行区域提供持续照明支持。",
+        title: "钻井与作业区域",
+        description: "支持夜间作业、设备检查和临时工作区域照明。",
       },
       {
-        title: "设备维护区域",
-        description: "用于大型矿山设备检查、维修和临时维护区域照明。",
+        title: "维护检修区域",
+        description: "为维护和检修工作提供临时照明。",
       },
       {
-        title: "临时矿区设施",
-        description: "适用于临时营地、仓储区域和辅助作业区域。",
+        title: "临时设施区域",
+        description: "用于临时营地、储存区域和辅助设施照明。",
       },
     ],
-    requirementsTitle: "矿山作业照明需求",
+    requirementsTitle: "油气照明需求",
     requirements: [
       {
+        title: "可靠运行",
+        description: "油气作业需要可靠的照明设备，以支持持续的现场工作。",
+      },
+      {
+        title: "偏远部署",
+        description: "偏远现场需要能够独立运行的移动照明解决方案。",
+      },
+      {
         title: "长时间运行",
-        description: "矿山夜间作业通常需要稳定可靠的照明支持。",
+        description: "长时间作业需要在整个工作期间保持稳定的照明性能。",
       },
       {
-        title: "大范围照明覆盖",
-        description: "矿区工作区域广，需要覆盖较大范围的照明能力。",
-      },
-      {
-        title: "偏远作业环境",
-        description: "部分矿区远离城市电力设施，需要独立照明设备。",
-      },
-      {
-        title: "移动部署需求",
-        description: "随着采矿区域变化，照明设备需要方便移动部署。",
+        title: "快速转移",
+        description: "随着项目区域变化，移动设备需要能够快速转移。",
       },
     ],
-    productsTitle: "推荐移动照明产品",
-    suitableLabel: "适用：",
+    productsTitle: "适用于油气照明的移动照明产品",
+    suitableLabel: "适用于：",
     products: [
       {
         slug: "lf955",
         title: "LF955 柴油移动照明灯塔",
         applications: [
-          "长时间连续运行",
-          "大面积矿区照明",
-          "无稳定电源环境",
+          "长时间油气项目",
+          "大面积作业区域",
+          "无稳定电源区域",
         ],
       },
       {
         slug: "lf971",
         title: "LF971 太阳能移动照明灯塔",
         applications: [
-          "偏远矿区",
-          "长期部署区域",
-          "低维护需求场景",
+          "偏远油气区域",
+          "长期临时部署",
+          "低维护需求",
         ],
       },
     ],
     relatedInformationTitle: "相关信息",
     relatedProductsTitle: "相关产品",
     relatedSolutionsTitle: "相关解决方案",
-    relatedSolutionLabel: "如何选择合适的移动照明灯塔",
+    relatedSolutions: [
+      {
+        slug: "how-to-choose-the-right-light-tower",
+        label: "如何选择合适的移动照明灯塔",
+      },
+      {
+        slug: "how-to-choose-the-right-light-tower-for-harsh-environments",
+        label: "极端环境配置",
+      },
+    ],
     relatedApplicationsTitle: "相关应用",
     relatedApplications: [
+      { slug: "mining-lighting", label: "矿山照明" },
       { slug: "construction-lighting", label: "工程施工照明" },
       { slug: "rental-lighting", label: "租赁照明" },
       { slug: "emergency-lighting", label: "应急照明" },
-      { slug: "oil-gas-lighting", label: "油气行业照明" },
     ],
   },
 } as const;
 
-export default function MiningLightingPage() {
-  const locale = headers().get("x-lfadj-locale") === "zh" ? "zh" : "en";
+function isLang(value: string): value is Lang {
+  return value === "en" || value === "zh";
+}
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return [{ lang: "en" }, { lang: "zh" }];
+}
+
+export function generateMetadata({
+  params,
+}: {
+  params: { lang: string };
+}): Metadata {
+  const locale: Lang = isLang(params.lang) ? params.lang : "en";
+  const zh = locale === "zh";
+  const url = `https://lfadj.com/${locale}/applications/oil-gas-lighting`;
+  const title = zh
+    ? "油气照明应用 | 移动照明灯塔 | LFADJ"
+    : "Oil & Gas Lighting Applications | Mobile Light Towers | LFADJ";
+  const description = zh
+    ? "了解移动照明设备在偏远油气现场、钻井作业区域、维护检修区域和临时设施中的应用与照明需求。"
+    : "Explore mobile lighting applications and lighting requirements for remote oil and gas sites, drilling work areas, maintenance areas and temporary facilities.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: "https://lfadj.com/en/applications/oil-gas-lighting",
+        "zh-CN": "https://lfadj.com/zh/applications/oil-gas-lighting",
+        "x-default": "https://lfadj.com/en/applications/oil-gas-lighting",
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+      siteName: "LFADJ",
+      locale: zh ? "zh_CN" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
+export default function OilGasLightingPage({
+  params,
+}: {
+  params: { lang: string };
+}) {
+  const locale: Lang = isLang(params.lang) ? params.lang : "en";
   const content = copy[locale];
 
   return (
     <main className="bg-slate-950">
       <section className="relative isolate flex min-h-[680px] items-center overflow-hidden px-6 py-24 sm:min-h-[720px] sm:px-8 lg:px-10">
         <Image
-          src="/images/applications/mining-lighting/mining-lighting-night-operations.png"
+          src="/images/hero/construction-mobile-light-tower.webp"
           alt={content.imageAlt}
           fill
           priority
@@ -348,15 +421,17 @@ export default function MiningLightingPage() {
                 <h4 className="text-base font-bold text-slate-950">
                   {content.relatedSolutionsTitle}
                 </h4>
-                <ul className="mt-5">
-                  <li>
-                    <Link
-                      href={`/${locale}/solutions/how-to-choose-the-right-light-tower`}
-                      className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
-                    >
-                      {content.relatedSolutionLabel}
-                    </Link>
-                  </li>
+                <ul className="mt-5 space-y-3">
+                  {content.relatedSolutions.map((solution) => (
+                    <li key={solution.slug}>
+                      <Link
+                        href={`/${locale}/solutions/${solution.slug}`}
+                        className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
+                      >
+                        {solution.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -368,11 +443,7 @@ export default function MiningLightingPage() {
                   {content.relatedApplications.map((application) => (
                     <li key={application.slug}>
                       <Link
-                        href={
-                          application.slug === "oil-gas-lighting"
-                            ? `/${locale}/applications`
-                            : `/applications/${application.slug}`
-                        }
+                        href={`/${locale}/applications/${application.slug}`}
                         className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
                       >
                         {application.label}
@@ -385,9 +456,14 @@ export default function MiningLightingPage() {
           </div>
 
           <div className="mt-12 flex flex-col items-start justify-between gap-6 bg-slate-950 px-6 py-8 sm:px-8 lg:flex-row lg:items-center">
-            <p className="max-w-2xl text-xl font-bold leading-8 text-white sm:text-2xl">
-              {content.cta}
-            </p>
+            <div className="max-w-2xl">
+              <h3 className="text-xl font-bold leading-8 text-white sm:text-2xl">
+                {content.cta}
+              </h3>
+              <p className="mt-3 text-base leading-7 text-slate-300">
+                {content.ctaDescription}
+              </p>
+            </div>
             <Link
               href={`/${locale}/contact/request-a-quote`}
               className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"

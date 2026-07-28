@@ -3,6 +3,11 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 
 const LF955_PRODUCT = "LF955 Diesel Mobile Light Tower";
+const LF971_PRODUCT = "LF971 Solar Mobile Light Tower";
+const SUPPORTED_PRODUCTS = {
+  [LF955_PRODUCT]: { heading: "New LF955 product inquiry", subject: "New LF955 inquiry" },
+  [LF971_PRODUCT]: { heading: "New LF971 solar project inquiry", subject: "New LF971 solar inquiry" },
+} as const;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type InquiryPayload = {
@@ -47,14 +52,20 @@ export async function POST(request: Request) {
   const quantityText = singleLine(readText(payload.quantity, 12));
   const quantity = Number(quantityText);
 
+  const productConfig = SUPPORTED_PRODUCTS[product as keyof typeof SUPPORTED_PRODUCTS];
+
+  if (!productConfig) {
+    return NextResponse.json({ error: "Unsupported product inquiry." }, { status: 400 });
+  }
+
   const missingFields = [
     ["name", name],
     ["email", email],
     ["country", country],
     ["projectType", projectType],
-    ["quantity", quantityText],
     ["requirements", requirements],
     ["product", product],
+    ...(product === LF955_PRODUCT ? [["quantity", quantityText]] : []),
   ].filter(([, value]) => !value).map(([field]) => field);
 
   if (missingFields.length > 0) {
@@ -68,12 +79,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "A valid email address is required." }, { status: 400 });
   }
 
-  if (!Number.isInteger(quantity) || quantity < 1 || quantity > 100000) {
+  if (quantityText && (!Number.isInteger(quantity) || quantity < 1 || quantity > 100000)) {
     return NextResponse.json({ error: "Quantity must be a positive whole number." }, { status: 400 });
-  }
-
-  if (product !== LF955_PRODUCT) {
-    return NextResponse.json({ error: "Unsupported product inquiry." }, { status: 400 });
   }
 
   const resendApiKey = process.env.RESEND_API_KEY;
@@ -93,7 +100,7 @@ export async function POST(request: Request) {
   }
 
   const emailText = [
-    "New LF955 product inquiry",
+    productConfig.heading,
     "",
     `Product: ${product}`,
     `Name: ${name}`,
@@ -101,7 +108,7 @@ export async function POST(request: Request) {
     `Email: ${email}`,
     `Country: ${country}`,
     `Project type: ${projectType}`,
-    `Quantity: ${quantity}`,
+    `Quantity: ${quantityText || "Not provided"}`,
     "",
     "Requirements:",
     requirements,
@@ -118,7 +125,7 @@ export async function POST(request: Request) {
         from: fromEmail,
         to: recipients,
         reply_to: email,
-        subject: `New LF955 inquiry from ${name} (${country})`,
+        subject: `${productConfig.subject} from ${name} (${country})`,
         text: emailText,
       }),
       cache: "no-store",

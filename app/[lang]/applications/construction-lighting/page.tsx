@@ -1,90 +1,84 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { headers } from "next/headers";
 
-export const metadata: Metadata = {
-  title: "Mining Lighting Solutions | Mobile Light Towers for Mine Sites | LFADJ",
-  description:
-    "Reliable mobile lighting for open-pit mines, remote mining sites, transportation areas and temporary night work zones.",
-  alternates: {
-    canonical: "https://lfadj.com/applications/mining-lighting",
-  },
-};
+type Lang = "en" | "zh";
 
 const copy = {
   en: {
-    title: "Mining Lighting Applications",
+    title: "Construction Lighting Applications",
     subtitle:
-      "Reliable mobile lighting equipment designed for open-pit mining, mining operations, remote sites and temporary working areas.",
-    cta: "Request Your Mining Lighting Recommendation",
+      "Reliable mobile lighting equipment designed for construction sites, infrastructure projects and temporary working areas, supporting night operations and continuous project progress.",
+    cta: "Request Your Construction Lighting Recommendation",
+    ctaDescription:
+      "Share your project type, working environment, operation time and lighting requirements. LFADJ will help you find suitable mobile lighting equipment.",
     imageAlt:
-      "Mobile light tower illuminating excavators and haul equipment at an open-pit mine at night",
-    applicationsTitle: "Mining Lighting Applications",
+      "Mobile light tower illuminating construction machinery and tower cranes at a construction site at night",
+    applicationsTitle: "Construction Lighting Applications",
     applications: [
       {
-        title: "Open Pit Mining Areas",
+        title: "Building Construction Sites",
         description:
-          "Lighting for mining areas, excavation zones and loading operations during night shifts.",
+          "Lighting for building construction areas, outdoor work zones and night construction activities.",
       },
       {
-        title: "Mining Roads",
+        title: "Road & Infrastructure Projects",
         description:
-          "Providing reliable lighting for mining roads and transportation areas.",
+          "Providing reliable lighting for road construction, bridge projects and infrastructure development areas.",
       },
       {
-        title: "Equipment Maintenance Areas",
+        title: "Temporary Working Areas",
         description:
-          "Supporting equipment inspection, maintenance and temporary working areas.",
+          "Supporting temporary work zones, material storage areas and construction support areas.",
       },
       {
-        title: "Temporary Mining Facilities",
+        title: "Equipment Operation Areas",
         description:
-          "Lighting for temporary camps, storage areas and supporting facilities.",
+          "Lighting for construction machinery operation areas and heavy equipment working zones.",
       },
     ],
-    requirementsTitle: "Mining Lighting Requirements",
+    requirementsTitle: "Construction Lighting Requirements",
     requirements: [
       {
-        title: "Long Operation Time",
+        title: "Flexible Deployment",
         description:
-          "Mining operations at night typically require stable and reliable lighting support.",
+          "Construction sites change throughout project stages and require mobile lighting equipment that can be relocated easily.",
       },
       {
-        title: "Large Lighting Coverage",
+        title: "Wide Area Coverage",
         description:
-          "Mining work areas are extensive and require illumination across a broad operating area.",
+          "Large construction areas require reliable lighting coverage for multiple working zones.",
       },
       {
-        title: "Remote Mining Locations",
+        title: "Night Work Support",
         description:
-          "Some mining sites are far from urban power infrastructure and require independent lighting equipment.",
+          "Supporting continuous construction schedules and night operations.",
       },
       {
-        title: "Easy Relocation",
+        title: "Reliable Operation",
         description:
-          "As mining areas change, lighting equipment needs to be easy to relocate.",
+          "Construction environments require durable and reliable lighting equipment.",
       },
     ],
-    productsTitle: "Recommended Mobile Lighting Products for Mining",
+    productsTitle: "Recommended Mobile Lighting Products for Construction",
     suitableLabel: "Suitable for:",
     products: [
       {
         slug: "lf955",
         title: "LF955 Diesel Mobile Light Tower",
         applications: [
-          "Continuous mining operations",
+          "Large construction projects",
+          "Long night operations",
           "Large working areas",
-          "Remote sites without stable power supply",
         ],
       },
       {
         slug: "lf971",
         title: "LF971 Solar Mobile Light Tower",
         applications: [
-          "Remote mining locations",
-          "Long-term deployment",
-          "Low maintenance applications",
+          "Long-term construction areas",
+          "Remote construction locations",
+          "Low maintenance projects",
         ],
       },
     ],
@@ -94,75 +88,77 @@ const copy = {
     relatedSolutionLabel: "How to Choose the Right Light Tower",
     relatedApplicationsTitle: "Related Applications",
     relatedApplications: [
-      { slug: "construction-lighting", label: "Construction Lighting" },
+      { slug: "mining-lighting", label: "Mining Lighting" },
       { slug: "rental-lighting", label: "Rental Lighting" },
       { slug: "emergency-lighting", label: "Emergency Lighting" },
       { slug: "oil-gas-lighting", label: "Oil & Gas Lighting" },
     ],
   },
   zh: {
-    title: "矿山照明应用",
+    title: "工程施工照明应用",
     subtitle:
-      "为露天矿山、采矿现场和偏远作业区域提供可靠的移动照明设备，支持夜间运输、设备作业和临时工作区域照明需求。",
-    cta: "获取矿山照明配置建议",
-    imageAlt: "移动照明灯塔在夜间露天矿区为挖掘设备和运输作业提供照明",
-    applicationsTitle: "矿山照明应用场景",
+      "为建筑工地、基础设施建设和临时施工区域提供可靠的移动照明设备，支持夜间施工、现场作业和项目进度需求。",
+    cta: "获取工程施工照明配置建议",
+    ctaDescription:
+      "请提供您的项目类型、工作环境、运行时间和照明需求，LFADJ 将帮助您匹配合适的移动照明设备。",
+    imageAlt: "移动照明灯塔在夜间建筑工地为工程机械和塔吊作业提供照明",
+    applicationsTitle: "工程施工照明应用场景",
     applications: [
       {
-        title: "露天采矿区域",
-        description: "用于采矿作业区域、挖掘区域和装载区域的夜间照明。",
+        title: "建筑施工现场",
+        description: "用于建筑主体施工区域、室外作业区域和夜间施工活动照明。",
       },
       {
-        title: "矿区运输道路",
-        description: "为矿区运输道路和车辆通行区域提供持续照明支持。",
+        title: "道路与基础设施工程",
+        description: "为道路建设、桥梁施工和基础设施项目提供可靠照明。",
       },
       {
-        title: "设备维护区域",
-        description: "用于大型矿山设备检查、维修和临时维护区域照明。",
+        title: "临时施工区域",
+        description: "适用于临时作业区域、材料堆放区域和施工辅助区域。",
       },
       {
-        title: "临时矿区设施",
-        description: "适用于临时营地、仓储区域和辅助作业区域。",
+        title: "设备作业区域",
+        description: "用于施工机械操作区域和大型设备作业区域。",
       },
     ],
-    requirementsTitle: "矿山作业照明需求",
+    requirementsTitle: "工程施工照明需求",
     requirements: [
       {
-        title: "长时间运行",
-        description: "矿山夜间作业通常需要稳定可靠的照明支持。",
+        title: "灵活部署",
+        description: "施工现场会随着项目阶段变化，需要方便移动部署的照明设备。",
       },
       {
         title: "大范围照明覆盖",
-        description: "矿区工作区域广，需要覆盖较大范围的照明能力。",
+        description: "大型施工区域需要覆盖多个工作区域的可靠照明。",
       },
       {
-        title: "偏远作业环境",
-        description: "部分矿区远离城市电力设施，需要独立照明设备。",
+        title: "夜间施工支持",
+        description: "支持连续施工计划和夜间作业。",
       },
       {
-        title: "移动部署需求",
-        description: "随着采矿区域变化，照明设备需要方便移动部署。",
+        title: "稳定运行",
+        description: "施工环境需要耐用可靠的照明设备。",
       },
     ],
-    productsTitle: "推荐移动照明产品",
-    suitableLabel: "适用：",
+    productsTitle: "适用于工程施工的移动照明产品",
+    suitableLabel: "适用于：",
     products: [
       {
         slug: "lf955",
         title: "LF955 柴油移动照明灯塔",
         applications: [
-          "长时间连续运行",
-          "大面积矿区照明",
-          "无稳定电源环境",
+          "大型施工项目",
+          "长时间夜间施工",
+          "大面积施工区域",
         ],
       },
       {
         slug: "lf971",
         title: "LF971 太阳能移动照明灯塔",
         applications: [
-          "偏远矿区",
-          "长期部署区域",
-          "低维护需求场景",
+          "长期施工区域",
+          "偏远施工地点",
+          "低维护需求项目",
         ],
       },
     ],
@@ -172,7 +168,7 @@ const copy = {
     relatedSolutionLabel: "如何选择合适的移动照明灯塔",
     relatedApplicationsTitle: "相关应用",
     relatedApplications: [
-      { slug: "construction-lighting", label: "工程施工照明" },
+      { slug: "mining-lighting", label: "矿山照明" },
       { slug: "rental-lighting", label: "租赁照明" },
       { slug: "emergency-lighting", label: "应急照明" },
       { slug: "oil-gas-lighting", label: "油气行业照明" },
@@ -180,15 +176,87 @@ const copy = {
   },
 } as const;
 
-export default function MiningLightingPage() {
-  const locale = headers().get("x-lfadj-locale") === "zh" ? "zh" : "en";
+function isLang(value: string): value is Lang {
+  return value === "en" || value === "zh";
+}
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return [{ lang: "en" }, { lang: "zh" }];
+}
+
+export function generateMetadata({
+  params,
+}: {
+  params: { lang: string };
+}): Metadata {
+  const lang: Lang = isLang(params.lang) ? params.lang : "en";
+  const zh = lang === "zh";
+  const url = `https://lfadj.com/${lang}/applications/construction-lighting`;
+  const title = zh
+    ? "工程施工照明应用 | 移动照明灯塔 | LFADJ"
+    : "Construction Lighting Applications | Mobile Light Towers | LFADJ";
+  const description = zh
+    ? "了解移动照明设备在建筑工地、基础设施建设和临时施工区域中的夜间照明应用。"
+    : "Explore mobile lighting applications for construction sites, infrastructure projects and temporary night work areas.";
+  const image =
+    "https://lfadj.com/images/hero/construction-mobile-light-tower.webp";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: "https://lfadj.com/en/applications/construction-lighting",
+        "zh-CN": "https://lfadj.com/zh/applications/construction-lighting",
+        "x-default":
+          "https://lfadj.com/en/applications/construction-lighting",
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+      siteName: "LFADJ",
+      locale: zh ? "zh_CN" : "en_US",
+      images: [
+        {
+          url: image,
+          alt: zh
+            ? "移动照明灯塔为夜间工程施工提供照明"
+            : "Mobile light tower illuminating a construction site at night",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
+  };
+}
+
+export default function ConstructionLightingPage({
+  params,
+}: {
+  params: { lang: string };
+}) {
+  const locale: Lang = isLang(params.lang) ? params.lang : "en";
   const content = copy[locale];
 
   return (
     <main className="bg-slate-950">
       <section className="relative isolate flex min-h-[680px] items-center overflow-hidden px-6 py-24 sm:min-h-[720px] sm:px-8 lg:px-10">
         <Image
-          src="/images/applications/mining-lighting/mining-lighting-night-operations.png"
+          src="/images/hero/construction-mobile-light-tower.webp"
           alt={content.imageAlt}
           fill
           priority
@@ -365,29 +433,39 @@ export default function MiningLightingPage() {
                   {content.relatedApplicationsTitle}
                 </h4>
                 <ul className="mt-5 space-y-3">
-                  {content.relatedApplications.map((application) => (
-                    <li key={application.slug}>
-                      <Link
-                        href={
-                          application.slug === "oil-gas-lighting"
-                            ? `/${locale}/applications`
-                            : `/applications/${application.slug}`
-                        }
-                        className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
-                      >
-                        {application.label}
-                      </Link>
-                    </li>
-                  ))}
+                  {content.relatedApplications.map((application) => {
+                    const href =
+                      application.slug === "mining-lighting"
+                        ? `/${locale}/applications/mining-lighting`
+                        : application.slug === "oil-gas-lighting"
+                          ? `/${locale}/applications`
+                          : `/applications/${application.slug}`;
+
+                    return (
+                      <li key={application.slug}>
+                        <Link
+                          href={href}
+                          className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
+                        >
+                          {application.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
           </div>
 
           <div className="mt-12 flex flex-col items-start justify-between gap-6 bg-slate-950 px-6 py-8 sm:px-8 lg:flex-row lg:items-center">
-            <p className="max-w-2xl text-xl font-bold leading-8 text-white sm:text-2xl">
-              {content.cta}
-            </p>
+            <div className="max-w-2xl">
+              <h3 className="text-xl font-bold leading-8 text-white sm:text-2xl">
+                {content.cta}
+              </h3>
+              <p className="mt-3 text-base leading-7 text-slate-300">
+                {content.ctaDescription}
+              </p>
+            </div>
             <Link
               href={`/${locale}/contact/request-a-quote`}
               className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"

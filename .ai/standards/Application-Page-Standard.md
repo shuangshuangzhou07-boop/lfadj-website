@@ -180,3 +180,53 @@ Related Information
 
 ↓
 CTA
+
+### 5. Oil & Gas Lighting Applications
+
+#### Page Purpose
+
+Show where mobile lighting equipment is used in oil and gas operations, including remote sites, drilling and work areas, maintenance areas, and temporary facilities, together with the lighting requirements created by those environments.
+
+The page must remain focused on industry applications and operating requirements. Product-selection logic, comparisons, cost calculations, and configuration advice belong to Solution Pages.
+
+#### Recommended Structure
+
+Hero
+
+↓
+
+Oil & Gas Lighting Applications
+
+↓
+
+Oil & Gas Lighting Requirements
+
+↓
+
+Recommended Mobile Lighting Products for Oil & Gas
+
+↓
+
+Related Information
+
+↓
+
+CTA
+
+#### Internal Linking
+
+Related Products:
+
+- LF955 Diesel Mobile Light Tower
+- LF971 Solar Mobile Light Tower
+
+Related Solutions:
+
+- How to Choose the Right Light Tower
+
+Related Applications:
+
+- Mining Lighting
+- Construction Lighting
+- Rental Lighting
+- Emergency Lighting

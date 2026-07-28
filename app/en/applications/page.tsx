@@ -32,19 +32,19 @@ const applications = [
   },
   {
     name: "Oil & Gas",
-    title: "Oil Field Lighting",
+    title: "Oil & Gas Lighting Applications",
     description:
       "Oil and gas lighting equipment supports remote oil field projects and work areas that need reliable illumination during continuous operations.",
   },
   {
     name: "Rental",
-    title: "Light Tower Rental",
+    title: "Rental Lighting Applications",
     description:
       "Rental companies evaluate mobile light towers around reliability, maintenance costs and service life across repeated deployments for different customers.",
   },
   {
     name: "Emergency",
-    title: "Emergency Lighting Equipment",
+    title: "Emergency Lighting Applications",
     description:
       "Emergency lighting equipment supports disaster response, temporary power situations and projects that require rapid deployment of mobile illumination.",
   },
