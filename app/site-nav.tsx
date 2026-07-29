@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Locale = "en" | "zh";
 
@@ -84,6 +84,25 @@ export function SiteNav(_props: {
   const [activeResource, setActiveResource] = useState(0);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [mobileResourceOpen, setMobileResourceOpen] = useState<number | null>(null);
+  const resourceTriggerRef = useRef<HTMLAnchorElement>(null);
+  const desktopOpenTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const desktopCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearDesktopTimers = () => {
+    if (desktopOpenTimer.current) clearTimeout(desktopOpenTimer.current);
+    if (desktopCloseTimer.current) clearTimeout(desktopCloseTimer.current);
+  };
+
+  const openDesktopResources = (delay = 250) => {
+    clearDesktopTimers();
+    if (desktopResourcesOpen) return;
+    desktopOpenTimer.current = setTimeout(() => setDesktopResourcesOpen(true), delay);
+  };
+
+  const closeDesktopResources = (delay = 200) => {
+    clearDesktopTimers();
+    desktopCloseTimer.current = setTimeout(() => setDesktopResourcesOpen(false), delay);
+  };
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -91,14 +110,16 @@ export function SiteNav(_props: {
       if (event.key === "Escape") {
         setMobileOpen(false);
         setDesktopResourcesOpen(false);
+        if (desktopResourcesOpen) resourceTriggerRef.current?.focus();
       }
     };
     document.addEventListener("keydown", closeOnEscape);
     return () => {
       document.body.style.overflow = "";
+      clearDesktopTimers();
       document.removeEventListener("keydown", closeOnEscape);
     };
-  }, [mobileOpen]);
+  }, [desktopResourcesOpen, mobileOpen]);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -112,7 +133,13 @@ export function SiteNav(_props: {
     : pathname.replace(/^\/zh(?=\/|$)/, "/en") || "/en";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white" onMouseLeave={() => setDesktopResourcesOpen(false)}>
+    <header
+      className="sticky top-0 z-50 border-b border-gray-200 bg-white"
+      onMouseLeave={() => closeDesktopResources()}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) closeDesktopResources();
+      }}
+    >
       <div className="mx-auto flex min-h-20 max-w-[1280px] items-center justify-between gap-4 px-6">
         <Link href={`/${locale}`} className="text-2xl font-bold tracking-tight text-black">LFADJ</Link>
 
@@ -123,19 +150,21 @@ export function SiteNav(_props: {
                 key={item.href}
                 className="relative"
                 onMouseEnter={() => {
-                  if (item.href.endsWith("/resources")) setDesktopResourcesOpen(true);
-                  else setDesktopResourcesOpen(false);
+                  if (item.href.endsWith("/resources")) openDesktopResources();
+                  else closeDesktopResources();
                 }}
               >
                 <Link
+                  ref={item.href.endsWith("/resources") ? resourceTriggerRef : undefined}
                   href={item.href}
+                  tabIndex={desktopResourcesOpen && !item.href.endsWith("/resources") ? -1 : undefined}
                   aria-current={pathname === item.href ? "page" : undefined}
                   aria-haspopup={item.href.endsWith("/resources") ? "menu" : undefined}
                   aria-expanded={item.href.endsWith("/resources") ? desktopResourcesOpen : undefined}
                   onFocus={() => {
-                    if (item.href.endsWith("/resources")) setDesktopResourcesOpen(true);
+                    if (item.href.endsWith("/resources")) openDesktopResources(0);
                   }}
-                  className={`block rounded-lg px-3 py-3 transition hover:bg-gray-50 hover:text-black ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : ""}`}
+                  className={`block rounded-lg px-3 py-3 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 hover:bg-gray-50 hover:text-black ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : ""}`}
                 >
                   {item.label}
                 </Link>
@@ -145,19 +174,21 @@ export function SiteNav(_props: {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href={languageHref} hrefLang={locale === "en" ? "zh" : "en"} className="hidden rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 sm:inline-flex">{copy[locale].language}</Link>
-          <Link href={`/${locale}/contact/request-a-quote`} className="hidden rounded-lg bg-blue-600 px-4 py-3 text-sm font-bold text-white hover:bg-blue-700 xl:inline-flex">{copy[locale].quote}</Link>
+          <Link tabIndex={desktopResourcesOpen ? -1 : undefined} href={languageHref} hrefLang={locale === "en" ? "zh" : "en"} className="hidden rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 sm:inline-flex">{copy[locale].language}</Link>
+          <Link tabIndex={desktopResourcesOpen ? -1 : undefined} href={`/${locale}/contact/request-a-quote`} className="hidden rounded-lg bg-blue-600 px-4 py-3 text-sm font-bold text-white hover:bg-blue-700 xl:inline-flex">{copy[locale].quote}</Link>
           <button type="button" aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(true)} className="inline-flex h-10 items-center rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700 lg:hidden">{copy[locale].menu}</button>
         </div>
       </div>
 
       <div
         className={`absolute left-0 right-0 top-full z-[70] hidden border-t border-gray-200 bg-white shadow-xl transition duration-200 lg:block ${desktopResourcesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
-        onMouseEnter={() => setDesktopResourcesOpen(true)}
+        aria-hidden={!desktopResourcesOpen}
+        inert={!desktopResourcesOpen}
+        onMouseEnter={() => openDesktopResources(0)}
       >
-        <div className="mx-auto grid max-w-[1280px] grid-cols-[minmax(260px,0.85fr)_minmax(0,1.6fr)] gap-6 px-6 py-6">
+        <div className="mx-auto grid max-w-[1040px] grid-cols-[230px_minmax(0,1fr)] gap-6 px-6 py-6">
           <div className="rounded-xl border border-gray-200 bg-gray-50 p-3">
-            <Link href={`/${locale}/resources`} className="mb-2 block rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-orange-600">
+            <Link href={`/${locale}/resources`} className="mb-2 block rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
               {locale === "zh" ? "资源中心" : "Resources"}
             </Link>
             <ul className="grid gap-1">
@@ -167,17 +198,17 @@ export function SiteNav(_props: {
                     href={item.href}
                     onMouseEnter={() => setActiveResource(index)}
                     onFocus={() => setActiveResource(index)}
-                    className={`flex items-center justify-between rounded-lg px-3 py-3 font-semibold transition ${activeResource === index ? "bg-white text-gray-950 shadow-sm" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
+                    className={`flex min-h-11 items-center justify-between rounded-lg px-3 py-3 font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeResource === index ? "bg-blue-50 text-blue-700 shadow-sm" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
                   >
                     <span>{item.label}</span>
-                    <span aria-hidden="true" className="text-orange-600">›</span>
+                    <span aria-hidden="true" className={`text-blue-700 transition-transform duration-200 ${activeResource === index ? "translate-x-1" : ""}`}>›</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
           <div className="rounded-xl border border-gray-200 bg-white p-6">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-600">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-700">
               {locale === "zh" ? "资源分类" : "Resource category"}
             </p>
             <h2 className="mt-3 text-2xl font-bold text-slate-950">{resourceNavigation[activeResource].label}</h2>
@@ -195,7 +226,7 @@ export function SiteNav(_props: {
           <div id="mobile-navigation" className="absolute right-0 top-0 h-full w-[min(92vw,390px)] overflow-y-auto bg-white p-5 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-4">
               <span className="text-xl font-bold text-black">LFADJ</span>
-              <button type="button" onClick={() => setMobileOpen(false)} className="rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700">{copy[locale].close}</button>
+              <button type="button" onClick={() => setMobileOpen(false)} className="min-h-11 rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700">{copy[locale].close}</button>
             </div>
             <nav aria-label={locale === "zh" ? "手机导航" : "Mobile navigation"} className="mt-4">
               <ul className="grid gap-2">
@@ -221,7 +252,7 @@ export function SiteNav(_props: {
                               {resourceNavigation.map((resource, index) => (
                                 <li key={resource.href} className="overflow-hidden rounded-lg">
                                   <div className="flex items-center">
-                                    <Link onClick={() => setMobileOpen(false)} href={resource.href} className="min-w-0 flex-1 px-3 py-3 text-sm font-semibold text-gray-700">{resource.label}</Link>
+                                    <Link onClick={() => setMobileOpen(false)} href={resource.href} className="flex min-h-11 min-w-0 flex-1 items-center px-3 py-3 text-sm font-semibold text-gray-700">{resource.label}</Link>
                                     <button
                                       type="button"
                                       aria-label={`${resource.label} ${locale === "zh" ? "选项" : "options"}`}
