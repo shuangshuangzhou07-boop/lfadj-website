@@ -11,9 +11,15 @@ type NavItem = {
   href: string;
 };
 
+type ResourceItem = {
+  label: string;
+  href: string;
+  description: string;
+};
+
 const copy = {
-  en: { menu: "Menu", close: "Close menu", language: "中文", quote: "Request a Quote" },
-  zh: { menu: "菜单", close: "关闭菜单", language: "EN", quote: "获取报价" },
+  en: { menu: "Menu", close: "Close menu", language: "中文", quote: "Request a Quote", view: "Open resource" },
+  zh: { menu: "菜单", close: "关闭菜单", language: "EN", quote: "获取报价", view: "打开资源" },
 };
 
 function buildNavigation(locale: Locale): NavItem[] {
@@ -31,6 +37,34 @@ function buildNavigation(locale: Locale): NavItem[] {
   ];
 }
 
+function buildResourceNavigation(locale: Locale): ResourceItem[] {
+  const prefix = `/${locale}/resources`;
+  const zh = locale === "zh";
+
+  return [
+    {
+      label: zh ? "知识中心" : "Knowledge Center",
+      href: `${prefix}/knowledge-center`,
+      description: zh ? "移动照明灯塔基础知识与技术参考" : "Mobile light tower fundamentals and technical references",
+    },
+    {
+      label: zh ? "选型指南" : "Selection Guides",
+      href: `${prefix}/selection-guides`,
+      description: zh ? "根据项目需求评估灯塔配置" : "Evaluate light tower configurations for project requirements",
+    },
+    {
+      label: zh ? "应用指南" : "Application Guides",
+      href: `${prefix}/application-guides`,
+      description: zh ? "了解不同行业和现场的照明需求" : "Explore lighting requirements across industries and work sites",
+    },
+    {
+      label: zh ? "技术文档" : "Technical Documents",
+      href: `${prefix}/technical-documents`,
+      description: zh ? "查找移动照明技术资料" : "Find technical information for mobile lighting",
+    },
+  ];
+}
+
 function isActive(pathname: string, href: string) {
   return pathname === href || (href.split("/").length > 2 && pathname.startsWith(`${href}/`));
 }
@@ -44,12 +78,20 @@ export function SiteNav(_props: {
   const pathname = usePathname();
   const locale: Locale = pathname === "/zh" || pathname.startsWith("/zh/") ? "zh" : "en";
   const navigation = buildNavigation(locale);
+  const resourceNavigation = buildResourceNavigation(locale);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false);
+  const [activeResource, setActiveResource] = useState(0);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+  const [mobileResourceOpen, setMobileResourceOpen] = useState<number | null>(null);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMobileOpen(false);
+      if (event.key === "Escape") {
+        setMobileOpen(false);
+        setDesktopResourcesOpen(false);
+      }
     };
     document.addEventListener("keydown", closeOnEscape);
     return () => {
@@ -58,22 +100,45 @@ export function SiteNav(_props: {
     };
   }, [mobileOpen]);
 
-  useEffect(() => setMobileOpen(false), [pathname]);
+  useEffect(() => {
+    setMobileOpen(false);
+    setDesktopResourcesOpen(false);
+    setMobileResourcesOpen(false);
+    setMobileResourceOpen(null);
+  }, [pathname]);
 
   const languageHref = locale === "en"
     ? pathname.replace(/^\/en(?=\/|$)/, "/zh") || "/zh"
     : pathname.replace(/^\/zh(?=\/|$)/, "/en") || "/en";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white" onMouseLeave={() => setDesktopResourcesOpen(false)}>
       <div className="mx-auto flex min-h-20 max-w-[1280px] items-center justify-between gap-4 px-6">
         <Link href={`/${locale}`} className="text-2xl font-bold tracking-tight text-black">LFADJ</Link>
 
         <nav aria-label={locale === "zh" ? "主导航" : "Primary navigation"} className="hidden lg:block">
           <ul className="flex items-center gap-2 text-sm font-semibold text-gray-700 xl:gap-3">
             {navigation.map((item) => (
-              <li key={item.href} className="relative">
-                <Link href={item.href} aria-current={pathname === item.href ? "page" : undefined} className={`block rounded-lg px-3 py-3 transition hover:bg-gray-50 hover:text-black ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : ""}`}>{item.label}</Link>
+              <li
+                key={item.href}
+                className="relative"
+                onMouseEnter={() => {
+                  if (item.href.endsWith("/resources")) setDesktopResourcesOpen(true);
+                  else setDesktopResourcesOpen(false);
+                }}
+              >
+                <Link
+                  href={item.href}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  aria-haspopup={item.href.endsWith("/resources") ? "menu" : undefined}
+                  aria-expanded={item.href.endsWith("/resources") ? desktopResourcesOpen : undefined}
+                  onFocus={() => {
+                    if (item.href.endsWith("/resources")) setDesktopResourcesOpen(true);
+                  }}
+                  className={`block rounded-lg px-3 py-3 transition hover:bg-gray-50 hover:text-black ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : ""}`}
+                >
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -83,6 +148,44 @@ export function SiteNav(_props: {
           <Link href={languageHref} hrefLang={locale === "en" ? "zh" : "en"} className="hidden rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 sm:inline-flex">{copy[locale].language}</Link>
           <Link href={`/${locale}/contact/request-a-quote`} className="hidden rounded-lg bg-blue-600 px-4 py-3 text-sm font-bold text-white hover:bg-blue-700 xl:inline-flex">{copy[locale].quote}</Link>
           <button type="button" aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(true)} className="inline-flex h-10 items-center rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700 lg:hidden">{copy[locale].menu}</button>
+        </div>
+      </div>
+
+      <div
+        className={`absolute left-0 right-0 top-full z-[70] hidden border-t border-gray-200 bg-white shadow-xl transition duration-200 lg:block ${desktopResourcesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
+        onMouseEnter={() => setDesktopResourcesOpen(true)}
+      >
+        <div className="mx-auto grid max-w-[1280px] grid-cols-[minmax(260px,0.85fr)_minmax(0,1.6fr)] gap-6 px-6 py-6">
+          <div className="rounded-xl border border-gray-200 bg-gray-50 p-3">
+            <Link href={`/${locale}/resources`} className="mb-2 block rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-orange-600">
+              {locale === "zh" ? "资源中心" : "Resources"}
+            </Link>
+            <ul className="grid gap-1">
+              {resourceNavigation.map((item, index) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onMouseEnter={() => setActiveResource(index)}
+                    onFocus={() => setActiveResource(index)}
+                    className={`flex items-center justify-between rounded-lg px-3 py-3 font-semibold transition ${activeResource === index ? "bg-white text-gray-950 shadow-sm" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
+                  >
+                    <span>{item.label}</span>
+                    <span aria-hidden="true" className="text-orange-600">›</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-6">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-600">
+              {locale === "zh" ? "资源分类" : "Resource category"}
+            </p>
+            <h2 className="mt-3 text-2xl font-bold text-slate-950">{resourceNavigation[activeResource].label}</h2>
+            <p className="mt-3 max-w-xl leading-7 text-slate-600">{resourceNavigation[activeResource].description}</p>
+            <Link href={resourceNavigation[activeResource].href} className="mt-6 inline-flex items-center rounded-lg border border-orange-200 bg-orange-50 px-4 py-3 font-bold text-orange-700 transition hover:border-orange-300 hover:bg-orange-100">
+              {copy[locale].view}: {resourceNavigation[activeResource].label} →
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -98,7 +201,53 @@ export function SiteNav(_props: {
               <ul className="grid gap-2">
                 {navigation.map((item) => (
                   <li key={item.href}>
-                    <Link onClick={() => setMobileOpen(false)} href={item.href} className={`block rounded-lg px-4 py-3 font-semibold ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : "text-gray-800"}`}>{item.label}</Link>
+                    {item.href.endsWith("/resources") ? (
+                      <div className="overflow-hidden rounded-lg">
+                        <div className={`flex items-center ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : "text-gray-800"}`}>
+                          <Link onClick={() => setMobileOpen(false)} href={item.href} className="min-w-0 flex-1 px-4 py-3 font-semibold">{item.label}</Link>
+                          <button
+                            type="button"
+                            aria-label={locale === "zh" ? "展开资源导航" : "Toggle resources navigation"}
+                            aria-expanded={mobileResourcesOpen}
+                            onClick={() => setMobileResourcesOpen((open) => !open)}
+                            className="flex min-h-12 min-w-12 items-center justify-center text-xl font-semibold"
+                          >
+                            <span className={`transition-transform duration-200 ${mobileResourcesOpen ? "rotate-45" : ""}`} aria-hidden="true">+</span>
+                          </button>
+                        </div>
+                        <div className={`grid transition-[grid-template-rows] duration-200 ${mobileResourcesOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+                          <div className="min-h-0 overflow-hidden">
+                            <ul className="ml-3 grid gap-1 border-l border-gray-200 py-2 pl-3">
+                              {resourceNavigation.map((resource, index) => (
+                                <li key={resource.href} className="overflow-hidden rounded-lg">
+                                  <div className="flex items-center">
+                                    <Link onClick={() => setMobileOpen(false)} href={resource.href} className="min-w-0 flex-1 px-3 py-3 text-sm font-semibold text-gray-700">{resource.label}</Link>
+                                    <button
+                                      type="button"
+                                      aria-label={`${resource.label} ${locale === "zh" ? "选项" : "options"}`}
+                                      aria-expanded={mobileResourceOpen === index}
+                                      onClick={() => setMobileResourceOpen((open) => open === index ? null : index)}
+                                      className="flex min-h-11 min-w-11 items-center justify-center text-lg text-gray-600"
+                                    >
+                                      <span className={`transition-transform duration-200 ${mobileResourceOpen === index ? "rotate-45" : ""}`} aria-hidden="true">+</span>
+                                    </button>
+                                  </div>
+                                  <div className={`grid transition-[grid-template-rows] duration-200 ${mobileResourceOpen === index ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+                                    <div className="min-h-0 overflow-hidden">
+                                      <Link onClick={() => setMobileOpen(false)} href={resource.href} className="mx-3 mb-2 block rounded-lg bg-gray-50 px-3 py-2.5 text-sm font-semibold text-orange-700">
+                                        {copy[locale].view}: {resource.label}
+                                      </Link>
+                                    </div>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Link onClick={() => setMobileOpen(false)} href={item.href} className={`block rounded-lg px-4 py-3 font-semibold ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : "text-gray-800"}`}>{item.label}</Link>
+                    )}
                   </li>
                 ))}
               </ul>
