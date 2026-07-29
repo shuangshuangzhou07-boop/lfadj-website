@@ -15,11 +15,33 @@ type ResourceItem = {
   label: string;
   href: string;
   description: string;
+  pages: {
+    label: string;
+    href?: string;
+  }[];
 };
 
 const copy = {
-  en: { menu: "Menu", close: "Close menu", language: "中文", quote: "Request a Quote", view: "Open resource" },
-  zh: { menu: "菜单", close: "关闭菜单", language: "EN", quote: "获取报价", view: "打开资源" },
+  en: {
+    menu: "Menu",
+    close: "Close menu",
+    language: "中文",
+    quote: "Request a Quote",
+    related: "Related Pages",
+    featured: "Featured Knowledge",
+    comingSoon: "Coming Soon",
+    readMore: "Read More",
+  },
+  zh: {
+    menu: "菜单",
+    close: "关闭菜单",
+    language: "EN",
+    quote: "获取报价",
+    related: "相关页面",
+    featured: "精选知识",
+    comingSoon: "即将发布",
+    readMore: "阅读更多",
+  },
 };
 
 function buildNavigation(locale: Locale): NavItem[] {
@@ -46,21 +68,43 @@ function buildResourceNavigation(locale: Locale): ResourceItem[] {
       label: zh ? "知识中心" : "Knowledge Center",
       href: `${prefix}/knowledge-center`,
       description: zh ? "移动照明灯塔基础知识与技术参考" : "Mobile light tower fundamentals and technical references",
+      pages: [
+        { label: zh ? "什么是移动照明灯塔？" : "What Is A Mobile Light Tower?", href: `${prefix}/what-is-mobile-light-tower` },
+        { label: zh ? "移动照明灯塔如何工作？" : "How Does A Mobile Light Tower Work?" },
+        { label: zh ? "移动照明灯塔基础知识" : "Mobile Light Tower Basics" },
+      ],
     },
     {
       label: zh ? "选型指南" : "Selection Guides",
       href: `${prefix}/selection-guides`,
       description: zh ? "根据项目需求评估灯塔配置" : "Evaluate light tower configurations for project requirements",
+      pages: [
+        { label: zh ? "如何选择合适的照明灯塔" : "How To Choose The Right Light Tower", href: `/${locale}/solutions/how-to-choose-the-right-light-tower` },
+        { label: zh ? "柴油与太阳能选型" : "Diesel vs Solar Selection" },
+        { label: zh ? "照明覆盖指南" : "Lighting Coverage Guide" },
+      ],
     },
     {
       label: zh ? "应用指南" : "Application Guides",
       href: `${prefix}/application-guides`,
       description: zh ? "了解不同行业和现场的照明需求" : "Explore lighting requirements across industries and work sites",
+      pages: [
+        { label: zh ? "矿山照明" : "Mining Lighting", href: `/${locale}/applications/mining-lighting` },
+        { label: zh ? "建筑照明" : "Construction Lighting", href: `/${locale}/applications/construction-lighting` },
+        { label: zh ? "租赁照明" : "Rental Lighting", href: `/${locale}/applications/rental-lighting` },
+        { label: zh ? "应急照明" : "Emergency Lighting", href: `/${locale}/applications/emergency-lighting` },
+        { label: zh ? "油气行业照明" : "Oil & Gas Lighting", href: `/${locale}/applications/oil-gas-lighting` },
+      ],
     },
     {
       label: zh ? "技术文档" : "Technical Documents",
       href: `${prefix}/technical-documents`,
       description: zh ? "查找移动照明技术资料" : "Find technical information for mobile lighting",
+      pages: [
+        { label: zh ? "产品手册" : "Product Manuals" },
+        { label: zh ? "技术规格" : "Specifications" },
+        { label: zh ? "安装指南" : "Installation Guides" },
+      ],
     },
   ];
 }
@@ -186,7 +230,7 @@ export function SiteNav(_props: {
         inert={!desktopResourcesOpen}
         onMouseEnter={() => openDesktopResources(0)}
       >
-        <div className="mx-auto grid max-w-[1040px] grid-cols-[230px_minmax(0,1fr)] gap-6 px-6 py-6">
+        <div className="mx-auto grid max-w-[1160px] grid-cols-[220px_350px_minmax(0,1fr)] gap-5 px-6 py-6">
           <div className="rounded-xl border border-gray-200 bg-gray-50 p-3">
             <Link href={`/${locale}/resources`} className="mb-2 block rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
               {locale === "zh" ? "资源中心" : "Resources"}
@@ -209,12 +253,38 @@ export function SiteNav(_props: {
           </div>
           <div className="rounded-xl border border-gray-200 bg-white p-6">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-700">
-              {locale === "zh" ? "资源分类" : "Resource category"}
+              {copy[locale].related}
             </p>
-            <h2 className="mt-3 text-2xl font-bold text-slate-950">{resourceNavigation[activeResource].label}</h2>
-            <p className="mt-3 max-w-xl leading-7 text-slate-600">{resourceNavigation[activeResource].description}</p>
-            <Link href={resourceNavigation[activeResource].href} className="mt-6 inline-flex items-center rounded-lg border border-orange-200 bg-orange-50 px-4 py-3 font-bold text-orange-700 transition hover:border-orange-300 hover:bg-orange-100">
-              {copy[locale].view}: {resourceNavigation[activeResource].label} →
+            <h2 className="mt-3 text-xl font-bold text-slate-950">{resourceNavigation[activeResource].label}</h2>
+            <ul className="mt-4 grid gap-2">
+              {resourceNavigation[activeResource].pages.map((page) => (
+                <li key={page.label}>
+                  {page.href ? (
+                    <Link href={page.href} className="flex min-h-11 items-center rounded-lg px-3 py-2.5 font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+                      {page.label}
+                    </Link>
+                  ) : (
+                    <div className="flex min-h-11 items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-slate-500">
+                      <span>{page.label}</span>
+                      <span className="shrink-0 text-xs font-semibold">{copy[locale].comingSoon}</span>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-700">{copy[locale].featured}</p>
+            <h2 className="mt-4 text-2xl font-bold text-slate-950">
+              {locale === "zh" ? "什么是移动照明灯塔？" : "What Is A Mobile Light Tower?"}
+            </h2>
+            <p className="mt-3 leading-7 text-slate-600">
+              {locale === "zh"
+                ? "了解移动照明灯塔的工作原理、主要组成和应用场景。"
+                : "Understand operating principles, components and applications."}
+            </p>
+            <Link href={`/${locale}/resources/what-is-mobile-light-tower`} className="mt-6 inline-flex min-h-11 items-center rounded-lg border border-orange-200 bg-orange-50 px-4 py-2.5 font-bold text-orange-700 transition hover:border-orange-300 hover:bg-orange-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500">
+              {copy[locale].readMore} →
             </Link>
           </div>
         </div>
@@ -265,9 +335,22 @@ export function SiteNav(_props: {
                                   </div>
                                   <div className={`grid transition-[grid-template-rows] duration-200 ${mobileResourceOpen === index ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
                                     <div className="min-h-0 overflow-hidden">
-                                      <Link onClick={() => setMobileOpen(false)} href={resource.href} className="mx-3 mb-2 block rounded-lg bg-gray-50 px-3 py-2.5 text-sm font-semibold text-orange-700">
-                                        {copy[locale].view}: {resource.label}
-                                      </Link>
+                                      <ul className="mx-3 mb-2 grid gap-1 rounded-lg bg-gray-50 p-2">
+                                        {resource.pages.map((page) => (
+                                          <li key={page.label}>
+                                            {page.href ? (
+                                              <Link onClick={() => setMobileOpen(false)} href={page.href} className="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-gray-700">
+                                                {page.label}
+                                              </Link>
+                                            ) : (
+                                              <div className="flex min-h-11 items-center justify-between gap-2 px-3 py-2 text-sm text-gray-500">
+                                                <span>{page.label}</span>
+                                                <span className="shrink-0 text-xs">{copy[locale].comingSoon}</span>
+                                              </div>
+                                            )}
+                                          </li>
+                                        ))}
+                                      </ul>
                                     </div>
                                   </div>
                                 </li>
