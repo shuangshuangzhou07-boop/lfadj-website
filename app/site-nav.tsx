@@ -14,7 +14,6 @@ type NavItem = {
 type ResourceItem = {
   label: string;
   href: string;
-  description: string;
   pages: {
     label: string;
     href?: string;
@@ -27,20 +26,16 @@ const copy = {
     close: "Close menu",
     language: "中文",
     quote: "Request a Quote",
-    related: "Related Pages",
-    featured: "Featured Knowledge",
+    childPages: "Direct Child Pages",
     comingSoon: "Coming Soon",
-    readMore: "Read More",
   },
   zh: {
     menu: "菜单",
     close: "关闭菜单",
     language: "EN",
     quote: "获取报价",
-    related: "相关页面",
-    featured: "精选知识",
+    childPages: "直属页面",
     comingSoon: "即将发布",
-    readMore: "阅读更多",
   },
 };
 
@@ -67,7 +62,6 @@ function buildResourceNavigation(locale: Locale): ResourceItem[] {
     {
       label: zh ? "知识中心" : "Knowledge Center",
       href: `${prefix}/knowledge-center`,
-      description: zh ? "移动照明灯塔基础知识与技术参考" : "Mobile light tower fundamentals and technical references",
       pages: [
         { label: zh ? "什么是移动照明灯塔？" : "What Is A Mobile Light Tower?", href: `${prefix}/what-is-mobile-light-tower` },
         { label: zh ? "移动照明灯塔如何工作？" : "How Does A Mobile Light Tower Work?" },
@@ -77,17 +71,15 @@ function buildResourceNavigation(locale: Locale): ResourceItem[] {
     {
       label: zh ? "选型指南" : "Selection Guides",
       href: `${prefix}/selection-guides`,
-      description: zh ? "根据项目需求评估灯塔配置" : "Evaluate light tower configurations for project requirements",
       pages: [
         { label: zh ? "如何选择合适的照明灯塔" : "How To Choose The Right Light Tower", href: `/${locale}/solutions/how-to-choose-the-right-light-tower` },
-        { label: zh ? "柴油与太阳能选型" : "Diesel vs Solar Selection" },
+        { label: zh ? "柴油与太阳能移动照明灯塔" : "Diesel vs Solar Mobile Light Tower" },
         { label: zh ? "照明覆盖指南" : "Lighting Coverage Guide" },
       ],
     },
     {
       label: zh ? "应用指南" : "Application Guides",
       href: `${prefix}/application-guides`,
-      description: zh ? "了解不同行业和现场的照明需求" : "Explore lighting requirements across industries and work sites",
       pages: [
         { label: zh ? "矿山照明" : "Mining Lighting", href: `/${locale}/applications/mining-lighting` },
         { label: zh ? "建筑照明" : "Construction Lighting", href: `/${locale}/applications/construction-lighting` },
@@ -99,10 +91,9 @@ function buildResourceNavigation(locale: Locale): ResourceItem[] {
     {
       label: zh ? "技术文档" : "Technical Documents",
       href: `${prefix}/technical-documents`,
-      description: zh ? "查找移动照明技术资料" : "Find technical information for mobile lighting",
       pages: [
+        { label: zh ? "产品技术规格" : "Product Specifications" },
         { label: zh ? "产品手册" : "Product Manuals" },
-        { label: zh ? "技术规格" : "Specifications" },
         { label: zh ? "安装指南" : "Installation Guides" },
       ],
     },
@@ -230,8 +221,8 @@ export function SiteNav(_props: {
         inert={!desktopResourcesOpen}
         onMouseEnter={() => openDesktopResources(0)}
       >
-        <div className="mx-auto grid max-w-[1160px] grid-cols-[220px_350px_minmax(0,1fr)] gap-5 px-6 py-6">
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-3">
+        <div className="mx-auto grid max-w-[760px] grid-cols-[220px_minmax(400px,1fr)] gap-0 px-6 py-6">
+          <div className="border border-gray-200 bg-gray-50 p-3">
             <Link href={`/${locale}/resources`} className="mb-2 block rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
               {locale === "zh" ? "资源中心" : "Resources"}
             </Link>
@@ -242,7 +233,7 @@ export function SiteNav(_props: {
                     href={item.href}
                     onMouseEnter={() => setActiveResource(index)}
                     onFocus={() => setActiveResource(index)}
-                    className={`flex min-h-11 items-center justify-between rounded-lg px-3 py-3 font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeResource === index ? "bg-blue-50 text-blue-700 shadow-sm" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
+                    className={`flex min-h-11 items-center justify-between rounded-md px-3 py-3 font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeResource === index ? "bg-blue-50 text-blue-700" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
                   >
                     <span>{item.label}</span>
                     <span aria-hidden="true" className={`text-blue-700 transition-transform duration-200 ${activeResource === index ? "translate-x-1" : ""}`}>›</span>
@@ -251,12 +242,11 @@ export function SiteNav(_props: {
               ))}
             </ul>
           </div>
-          <div className="rounded-xl border border-gray-200 bg-white p-6">
+          <div className="border border-l-0 border-gray-200 bg-white p-6">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-700">
-              {copy[locale].related}
+              {copy[locale].childPages}
             </p>
-            <h2 className="mt-3 text-xl font-bold text-slate-950">{resourceNavigation[activeResource].label}</h2>
-            <ul className="mt-4 grid gap-2">
+            <ul className="mt-3 grid gap-2">
               {resourceNavigation[activeResource].pages.map((page) => (
                 <li key={page.label}>
                   {page.href ? (
@@ -272,20 +262,6 @@ export function SiteNav(_props: {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-700">{copy[locale].featured}</p>
-            <h2 className="mt-4 text-2xl font-bold text-slate-950">
-              {locale === "zh" ? "什么是移动照明灯塔？" : "What Is A Mobile Light Tower?"}
-            </h2>
-            <p className="mt-3 leading-7 text-slate-600">
-              {locale === "zh"
-                ? "了解移动照明灯塔的工作原理、主要组成和应用场景。"
-                : "Understand operating principles, components and applications."}
-            </p>
-            <Link href={`/${locale}/resources/what-is-mobile-light-tower`} className="mt-6 inline-flex min-h-11 items-center rounded-lg border border-orange-200 bg-orange-50 px-4 py-2.5 font-bold text-orange-700 transition hover:border-orange-300 hover:bg-orange-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500">
-              {copy[locale].readMore} →
-            </Link>
           </div>
         </div>
       </div>
