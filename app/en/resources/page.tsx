@@ -35,7 +35,25 @@ const resourceCategories = [
   },
 ];
 
-const recommendedSolutions = [
+const recommendedApplications = [
+  {
+    title: "Mining Lighting",
+    description: "Explore mobile lighting solutions for remote sites, night operations, and demanding mining environments.",
+    href: "/en/applications/mining-lighting",
+  },
+  {
+    title: "Construction Lighting",
+    description: "Review mobile lighting options for construction sites, infrastructure work, and changing project conditions.",
+    href: "/en/applications/construction-lighting",
+  },
+  {
+    title: "Emergency Lighting",
+    description: "Understand rapidly deployable mobile lighting solutions for emergency response and temporary operations.",
+    href: "/en/applications/emergency-lighting",
+  },
+];
+
+const recommendedProducts = [
   {
     title: "Diesel Mobile Light Tower",
     model: "LF955",
@@ -98,14 +116,14 @@ export default function EnglishResourcesPage() {
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Featured Resources</h2>
           <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
             <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 p-3 shadow-sm md:p-4 lg:p-6">
+              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[180px]">
                 <div className="relative h-full w-full">
                   <Image
                     src="/images/resources/mining-mobile-light-tower-application-guide.webp"
                     alt="Mining mobile light tower application guide"
                     fill
                     sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-contain"
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -125,14 +143,14 @@ export default function EnglishResourcesPage() {
             </article>
 
             <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 p-3 shadow-sm md:p-4 lg:p-6">
+              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[180px]">
                 <div className="relative h-full w-full">
                   <Image
                     src="/images/resources/how-to-choose-right-light-tower.webp"
                     alt="How to choose the right mobile light tower"
                     fill
                     sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-contain"
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -152,14 +170,14 @@ export default function EnglishResourcesPage() {
             </article>
 
             <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 p-3 shadow-sm md:p-4 lg:p-6">
+              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[180px]">
                 <div className="relative h-full w-full">
                   <Image
                     src="/images/resources/featured-light-tower-mining.webp"
                     alt="Diesel vs solar mobile light tower comparison"
                     fill
                     sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-contain"
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -183,41 +201,47 @@ export default function EnglishResourcesPage() {
 
       <section className="px-6 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Why Explore LFADJ Resources</h2>
-          <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
-            <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold">Project Selection Knowledge</h3>
-              <p className="mt-3 leading-7 text-slate-600">
-                Learn how to choose the right mobile light tower based on project conditions and lighting requirements.
-              </p>
-            </article>
-            <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold">Configuration Guidance</h3>
-              <p className="mt-3 leading-7 text-slate-600">
-                Understand power options, lighting configurations, and mast solutions for different applications.
-              </p>
-            </article>
-            <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold">Application Experience</h3>
-              <p className="mt-3 leading-7 text-slate-600">
-                Explore mobile lighting solutions for mining, construction, rental, and emergency projects.
-              </p>
-            </article>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Recommended Applications</h2>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {recommendedApplications.map((application) => (
+              <article key={application.href} className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                <h3 className="text-xl font-bold">{application.title}</h3>
+                <p className="mt-3 flex-1 leading-7 text-slate-600">{application.description}</p>
+                <Link href={application.href} className="mt-6 font-semibold text-amber-700 hover:text-amber-800">
+                  View Application →
+                </Link>
+              </article>
+            ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 px-6 py-16 sm:px-8 lg:py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Recommended Solution</h2>
+          <article className="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 className="text-xl font-bold">How to Choose the Right Light Tower</h3>
+            <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+              Compare project conditions, lighting requirements, operating time, and power options before selecting a mobile lighting solution.
+            </p>
+            <Link href="/en/solutions/how-to-choose-the-right-light-tower" className="mt-6 inline-flex font-semibold text-amber-700 hover:text-amber-800">
+              View Selection Solution →
+            </Link>
+          </article>
         </div>
       </section>
 
       <section className="px-6 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1200px]">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Recommended Mobile Lighting Solutions
+            Recommended Products
           </h2>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
             LFADJ provides diesel and solar mobile lighting solutions based on project conditions, operation
             requirements, and maintenance needs.
           </p>
           <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {recommendedSolutions.map((solution) => (
+            {recommendedProducts.map((solution) => (
               <article
                 key={solution.href}
                 className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm"

@@ -34,7 +34,25 @@ const resourceCategories = [
   },
 ];
 
-const recommendedSolutions = [
+const recommendedApplications = [
+  {
+    title: "矿山照明",
+    description: "了解适用于偏远矿区、夜间作业和复杂项目环境的移动照明解决方案。",
+    href: "/zh/applications/mining-lighting",
+  },
+  {
+    title: "建筑照明",
+    description: "了解适用于建筑工地、基础设施施工和多变项目条件的移动照明方案。",
+    href: "/zh/applications/construction-lighting",
+  },
+  {
+    title: "应急照明",
+    description: "了解适用于应急响应和临时作业需求的快速部署移动照明解决方案。",
+    href: "/zh/applications/emergency-lighting",
+  },
+];
+
+const recommendedProducts = [
   {
     title: "柴油移动照明灯塔",
     model: "LF955",
@@ -96,14 +114,14 @@ export default function ChineseResourcesPage() {
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">精选资源</h2>
           <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
             <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 p-3 shadow-sm md:p-4 lg:p-6">
+              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[180px]">
                 <div className="relative h-full w-full">
                   <Image
                     src="/images/resources/mining-mobile-light-tower-application-guide.webp"
                     alt="矿山移动照明灯塔应用指南"
                     fill
                     sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-contain"
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -122,14 +140,14 @@ export default function ChineseResourcesPage() {
             </article>
 
             <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 p-3 shadow-sm md:p-4 lg:p-6">
+              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[180px]">
                 <div className="relative h-full w-full">
                   <Image
                     src="/images/resources/how-to-choose-right-light-tower.webp"
                     alt="如何选择合适的移动照明灯塔"
                     fill
                     sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-contain"
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -148,14 +166,14 @@ export default function ChineseResourcesPage() {
             </article>
 
             <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 p-3 shadow-sm md:p-4 lg:p-6">
+              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[180px]">
                 <div className="relative h-full w-full">
                   <Image
                     src="/images/resources/featured-light-tower-mining.webp"
                     alt="柴油与太阳能移动照明灯塔对比"
                     fill
                     sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-contain"
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -178,38 +196,44 @@ export default function ChineseResourcesPage() {
 
       <section className="px-6 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">为什么探索 LFADJ 资源中心</h2>
-          <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
-            <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold">项目选型知识</h3>
-              <p className="mt-3 leading-7 text-slate-600">
-                根据项目环境和照明需求选择合适的移动照明灯塔。
-              </p>
-            </article>
-            <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold">配置指导</h3>
-              <p className="mt-3 leading-7 text-slate-600">
-                了解动力、照明系统和灯杆方案配置方法。
-              </p>
-            </article>
-            <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold">应用经验</h3>
-              <p className="mt-3 leading-7 text-slate-600">
-                了解矿山、建筑、租赁和应急项目中的移动照明应用。
-              </p>
-            </article>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">推荐应用场景</h2>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {recommendedApplications.map((application) => (
+              <article key={application.href} className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                <h3 className="text-xl font-bold">{application.title}</h3>
+                <p className="mt-3 flex-1 leading-7 text-slate-600">{application.description}</p>
+                <Link href={application.href} className="mt-6 font-semibold text-amber-700 hover:text-amber-800">
+                  查看应用 →
+                </Link>
+              </article>
+            ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 px-6 py-16 sm:px-8 lg:py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">推荐解决方案</h2>
+          <article className="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 className="text-xl font-bold">如何选择合适的照明灯塔</h3>
+            <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+              根据项目环境、照明需求、运行时间和动力方式选择合适的移动照明解决方案。
+            </p>
+            <Link href="/zh/solutions/how-to-choose-the-right-light-tower" className="mt-6 inline-flex font-semibold text-amber-700 hover:text-amber-800">
+              查看选型方案 →
+            </Link>
+          </article>
         </div>
       </section>
 
       <section className="px-6 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">推荐移动照明解决方案</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">推荐产品</h2>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
             LFADJ 根据不同项目环境、运行时间和维护要求，提供柴油和太阳能移动照明解决方案。
           </p>
           <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {recommendedSolutions.map((solution) => (
+            {recommendedProducts.map((solution) => (
               <article
                 key={solution.href}
                 className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
