@@ -65,6 +65,7 @@ function buildProductNavigation(locale: Locale): CascadingItem[] {
       href: `${prefix}/diesel-light-towers`,
       pages: [
         { label: zh ? "LF955 柴油移动照明灯塔" : "LF955 Diesel Mobile Light Tower", href: `${prefix}/lf955` },
+        { label: zh ? "LF968 柴油移动照明灯塔" : "LF968 Diesel Mobile Light Tower", href: `${prefix}/lf968` },
       ],
     },
     {
