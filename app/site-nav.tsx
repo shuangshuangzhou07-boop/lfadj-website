@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 type Locale = "en" | "zh";
+type CascadingSection = "products" | "applications" | "solutions" | "resources";
 
 type NavItem = {
   label: string;
@@ -81,6 +82,72 @@ function buildProductNavigation(locale: Locale): CascadingItem[] {
   ];
 }
 
+function buildApplicationNavigation(locale: Locale): CascadingItem[] {
+  const prefix = `/${locale}/applications`;
+  const zh = locale === "zh";
+  const applications = [
+    { slug: "mining-lighting", en: "Mining Lighting", zh: "矿山照明" },
+    { slug: "construction-lighting", en: "Construction Lighting", zh: "建筑照明" },
+    { slug: "oil-gas-lighting", en: "Oil & Gas Lighting", zh: "油气照明" },
+    { slug: "rental-lighting", en: "Rental Lighting", zh: "租赁照明" },
+    { slug: "emergency-lighting", en: "Emergency Lighting", zh: "应急照明" },
+  ];
+
+  return applications.map((application) => {
+    const label = zh ? application.zh : application.en;
+    const href = `${prefix}/${application.slug}`;
+    return { label, href, pages: [{ label, href }] };
+  });
+}
+
+function buildSolutionNavigation(locale: Locale): CascadingItem[] {
+  const prefix = `/${locale}/solutions`;
+  const zh = locale === "zh";
+
+  return [
+    {
+      label: zh ? "照明灯塔选型指南" : "Light Tower Selection Guide",
+      href: `${prefix}/how-to-choose-the-right-light-tower`,
+      pages: [
+        {
+          label: zh ? "如何选择合适的照明灯塔" : "How to Choose the Right Light Tower",
+          href: `${prefix}/how-to-choose-the-right-light-tower`,
+        },
+      ],
+    },
+    {
+      label: zh ? "极端环境照明" : "Extreme Environment Lighting",
+      href: `${prefix}/how-to-choose-the-right-light-tower-for-harsh-environments`,
+      pages: [
+        {
+          label: zh ? "极端环境照明" : "Extreme Environment Lighting",
+          href: `${prefix}/how-to-choose-the-right-light-tower-for-harsh-environments`,
+        },
+      ],
+    },
+    {
+      label: zh ? "升降系统解决方案" : "Mast System Solutions",
+      href: `${prefix}/how-to-choose-light-tower-mast-system`,
+      pages: [
+        {
+          label: zh ? "升降系统解决方案" : "Mast System Solutions",
+          href: `${prefix}/how-to-choose-light-tower-mast-system`,
+        },
+      ],
+    },
+    {
+      label: zh ? "临时现场照明" : "Temporary Site Lighting",
+      href: `${prefix}/temporary-site-lighting`,
+      pages: [
+        {
+          label: zh ? "临时现场照明" : "Temporary Site Lighting",
+          href: `${prefix}/temporary-site-lighting`,
+        },
+      ],
+    },
+  ];
+}
+
 function buildResourceNavigation(locale: Locale): CascadingItem[] {
   const prefix = `/${locale}/resources`;
   const zh = locale === "zh";
@@ -143,16 +210,26 @@ export function SiteNav(_props: {
   const locale: Locale = pathname === "/zh" || pathname.startsWith("/zh/") ? "zh" : "en";
   const navigation = buildNavigation(locale);
   const productNavigation = buildProductNavigation(locale);
+  const applicationNavigation = buildApplicationNavigation(locale);
+  const solutionNavigation = buildSolutionNavigation(locale);
   const resourceNavigation = buildResourceNavigation(locale);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [desktopMenuOpen, setDesktopMenuOpen] = useState<"products" | "resources" | null>(null);
+  const [desktopMenuOpen, setDesktopMenuOpen] = useState<CascadingSection | null>(null);
   const [activeProduct, setActiveProduct] = useState(0);
+  const [activeApplication, setActiveApplication] = useState(0);
+  const [activeSolution, setActiveSolution] = useState(0);
   const [activeResource, setActiveResource] = useState(0);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [mobileProductOpen, setMobileProductOpen] = useState<number | null>(null);
+  const [mobileApplicationsOpen, setMobileApplicationsOpen] = useState(false);
+  const [mobileApplicationOpen, setMobileApplicationOpen] = useState<number | null>(null);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+  const [mobileSolutionOpen, setMobileSolutionOpen] = useState<number | null>(null);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [mobileResourceOpen, setMobileResourceOpen] = useState<number | null>(null);
   const productTriggerRef = useRef<HTMLAnchorElement>(null);
+  const applicationTriggerRef = useRef<HTMLAnchorElement>(null);
+  const solutionTriggerRef = useRef<HTMLAnchorElement>(null);
   const resourceTriggerRef = useRef<HTMLAnchorElement>(null);
   const desktopOpenTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const desktopCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -162,7 +239,7 @@ export function SiteNav(_props: {
     if (desktopCloseTimer.current) clearTimeout(desktopCloseTimer.current);
   };
 
-  const openDesktopMenu = (menu: "products" | "resources", delay = 250) => {
+  const openDesktopMenu = (menu: CascadingSection, delay = 250) => {
     clearDesktopTimers();
     if (desktopMenuOpen === menu) return;
     desktopOpenTimer.current = setTimeout(() => setDesktopMenuOpen(menu), delay);
@@ -180,6 +257,8 @@ export function SiteNav(_props: {
         setMobileOpen(false);
         setDesktopMenuOpen(null);
         if (desktopMenuOpen === "products") productTriggerRef.current?.focus();
+        if (desktopMenuOpen === "applications") applicationTriggerRef.current?.focus();
+        if (desktopMenuOpen === "solutions") solutionTriggerRef.current?.focus();
         if (desktopMenuOpen === "resources") resourceTriggerRef.current?.focus();
       }
     };
@@ -196,6 +275,10 @@ export function SiteNav(_props: {
     setDesktopMenuOpen(null);
     setMobileProductsOpen(false);
     setMobileProductOpen(null);
+    setMobileApplicationsOpen(false);
+    setMobileApplicationOpen(null);
+    setMobileSolutionsOpen(false);
+    setMobileSolutionOpen(null);
     setMobileResourcesOpen(false);
     setMobileResourceOpen(null);
   }, [pathname]);
@@ -203,13 +286,45 @@ export function SiteNav(_props: {
   const languageHref = locale === "en"
     ? pathname.replace(/^\/en(?=\/|$)/, "/zh") || "/zh"
     : pathname.replace(/^\/zh(?=\/|$)/, "/en") || "/en";
-  const desktopNavigation = desktopMenuOpen === "products" ? productNavigation : resourceNavigation;
-  const activeDesktopIndex = desktopMenuOpen === "products" ? activeProduct : activeResource;
-  const renderMobileCascade = (section: "products" | "resources", item: NavItem) => {
+  const desktopNavigation = desktopMenuOpen === "products"
+    ? productNavigation
+    : desktopMenuOpen === "applications"
+      ? applicationNavigation
+      : desktopMenuOpen === "solutions"
+        ? solutionNavigation
+        : resourceNavigation;
+  const activeDesktopIndex = desktopMenuOpen === "products"
+    ? activeProduct
+    : desktopMenuOpen === "applications"
+      ? activeApplication
+      : desktopMenuOpen === "solutions"
+        ? activeSolution
+        : activeResource;
+  const renderMobileCascade = (section: CascadingSection, item: NavItem) => {
     const isProducts = section === "products";
-    const categories = isProducts ? productNavigation : resourceNavigation;
-    const sectionOpen = isProducts ? mobileProductsOpen : mobileResourcesOpen;
-    const categoryOpen = isProducts ? mobileProductOpen : mobileResourceOpen;
+    const isApplications = section === "applications";
+    const isSolutions = section === "solutions";
+    const categories = isProducts
+      ? productNavigation
+      : isApplications
+        ? applicationNavigation
+        : isSolutions
+          ? solutionNavigation
+          : resourceNavigation;
+    const sectionOpen = isProducts
+      ? mobileProductsOpen
+      : isApplications
+        ? mobileApplicationsOpen
+        : isSolutions
+          ? mobileSolutionsOpen
+          : mobileResourcesOpen;
+    const categoryOpen = isProducts
+      ? mobileProductOpen
+      : isApplications
+        ? mobileApplicationOpen
+        : isSolutions
+          ? mobileSolutionOpen
+          : mobileResourceOpen;
 
     return (
       <div className="overflow-hidden rounded-lg">
@@ -217,9 +332,14 @@ export function SiteNav(_props: {
           <Link onClick={() => setMobileOpen(false)} href={item.href} className="min-w-0 flex-1 px-4 py-3 font-semibold">{item.label}</Link>
           <button
             type="button"
-            aria-label={locale === "zh" ? `展开${isProducts ? "产品" : "资源"}导航` : `Toggle ${section} navigation`}
+            aria-label={locale === "zh" ? `展开${isProducts ? "产品" : isApplications ? "应用" : isSolutions ? "解决方案" : "资源"}导航` : `Toggle ${section} navigation`}
             aria-expanded={sectionOpen}
-            onClick={() => isProducts ? setMobileProductsOpen((open) => !open) : setMobileResourcesOpen((open) => !open)}
+            onClick={() => {
+              if (isProducts) setMobileProductsOpen((open) => !open);
+              else if (isApplications) setMobileApplicationsOpen((open) => !open);
+              else if (isSolutions) setMobileSolutionsOpen((open) => !open);
+              else setMobileResourcesOpen((open) => !open);
+            }}
             className="flex min-h-12 min-w-12 items-center justify-center text-xl font-semibold"
           >
             <span className={`transition-transform duration-200 ${sectionOpen ? "rotate-45" : ""}`} aria-hidden="true">+</span>
@@ -237,9 +357,12 @@ export function SiteNav(_props: {
                         type="button"
                         aria-label={`${category.label} ${locale === "zh" ? "选项" : "options"}`}
                         aria-expanded={categoryOpen === index}
-                        onClick={() => isProducts
-                          ? setMobileProductOpen((open) => open === index ? null : index)
-                          : setMobileResourceOpen((open) => open === index ? null : index)}
+                        onClick={() => {
+                          if (isProducts) setMobileProductOpen((open) => open === index ? null : index);
+                          else if (isApplications) setMobileApplicationOpen((open) => open === index ? null : index);
+                          else if (isSolutions) setMobileSolutionOpen((open) => open === index ? null : index);
+                          else setMobileResourceOpen((open) => open === index ? null : index);
+                        }}
                         className="flex min-h-11 min-w-11 items-center justify-center text-lg text-gray-600"
                       >
                         <span className={`transition-transform duration-200 ${categoryOpen === index ? "rotate-45" : ""}`} aria-hidden="true">+</span>
@@ -296,19 +419,39 @@ export function SiteNav(_props: {
                 className="relative"
                 onMouseEnter={() => {
                   if (item.href.endsWith("/products")) openDesktopMenu("products");
+                  else if (item.href.endsWith("/applications")) openDesktopMenu("applications");
+                  else if (item.href.endsWith("/solutions")) openDesktopMenu("solutions");
                   else if (item.href.endsWith("/resources")) openDesktopMenu("resources");
                   else closeDesktopMenu();
                 }}
               >
                 <Link
-                  ref={item.href.endsWith("/products") ? productTriggerRef : item.href.endsWith("/resources") ? resourceTriggerRef : undefined}
+                  ref={item.href.endsWith("/products")
+                    ? productTriggerRef
+                    : item.href.endsWith("/applications")
+                      ? applicationTriggerRef
+                      : item.href.endsWith("/solutions")
+                        ? solutionTriggerRef
+                      : item.href.endsWith("/resources")
+                        ? resourceTriggerRef
+                        : undefined}
                   href={item.href}
                   tabIndex={desktopMenuOpen && !item.href.endsWith(`/${desktopMenuOpen}`) ? -1 : undefined}
                   aria-current={pathname === item.href ? "page" : undefined}
-                  aria-haspopup={item.href.endsWith("/products") || item.href.endsWith("/resources") ? "menu" : undefined}
-                  aria-expanded={item.href.endsWith("/products") ? desktopMenuOpen === "products" : item.href.endsWith("/resources") ? desktopMenuOpen === "resources" : undefined}
+                  aria-haspopup={item.href.endsWith("/products") || item.href.endsWith("/applications") || item.href.endsWith("/solutions") || item.href.endsWith("/resources") ? "menu" : undefined}
+                  aria-expanded={item.href.endsWith("/products")
+                    ? desktopMenuOpen === "products"
+                    : item.href.endsWith("/applications")
+                      ? desktopMenuOpen === "applications"
+                      : item.href.endsWith("/solutions")
+                        ? desktopMenuOpen === "solutions"
+                      : item.href.endsWith("/resources")
+                        ? desktopMenuOpen === "resources"
+                        : undefined}
                   onFocus={() => {
                     if (item.href.endsWith("/products")) openDesktopMenu("products", 0);
+                    if (item.href.endsWith("/applications")) openDesktopMenu("applications", 0);
+                    if (item.href.endsWith("/solutions")) openDesktopMenu("solutions", 0);
                     if (item.href.endsWith("/resources")) openDesktopMenu("resources", 0);
                   }}
                   className={`block rounded-lg px-3 py-3 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 hover:bg-gray-50 hover:text-black ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : ""}`}
@@ -342,8 +485,18 @@ export function SiteNav(_props: {
                 <li key={item.href} className="min-w-0 max-w-full">
                   <Link
                     href={item.href}
-                    onMouseEnter={() => desktopMenuOpen === "products" ? setActiveProduct(index) : setActiveResource(index)}
-                    onFocus={() => desktopMenuOpen === "products" ? setActiveProduct(index) : setActiveResource(index)}
+                    onMouseEnter={() => {
+                      if (desktopMenuOpen === "products") setActiveProduct(index);
+                      else if (desktopMenuOpen === "applications") setActiveApplication(index);
+                      else if (desktopMenuOpen === "solutions") setActiveSolution(index);
+                      else setActiveResource(index);
+                    }}
+                    onFocus={() => {
+                      if (desktopMenuOpen === "products") setActiveProduct(index);
+                      else if (desktopMenuOpen === "applications") setActiveApplication(index);
+                      else if (desktopMenuOpen === "solutions") setActiveSolution(index);
+                      else setActiveResource(index);
+                    }}
                     className={`relative flex min-h-10 min-w-0 max-w-full items-center justify-between gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeDesktopIndex === index ? "bg-blue-50 text-blue-700 before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:rounded-full before:bg-blue-600" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
                   >
                     <span className="min-w-0 break-words">{item.label}</span>
@@ -392,6 +545,10 @@ export function SiteNav(_props: {
                   <li key={item.href}>
                     {item.href.endsWith("/products") ? (
                       renderMobileCascade("products", item)
+                    ) : item.href.endsWith("/applications") ? (
+                      renderMobileCascade("applications", item)
+                    ) : item.href.endsWith("/solutions") ? (
+                      renderMobileCascade("solutions", item)
                     ) : item.href.endsWith("/resources") ? (
                       <div className="overflow-hidden rounded-lg">
                         <div className={`flex items-center ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : "text-gray-800"}`}>
