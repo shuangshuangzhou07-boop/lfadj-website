@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 type Locale = "en" | "zh";
-type CascadingSection = "products" | "applications" | "solutions" | "resources";
+type CascadingSection = "products" | "applications" | "solutions" | "resources" | "about";
 
 type NavItem = {
   label: string;
@@ -148,6 +148,34 @@ function buildSolutionNavigation(locale: Locale): CascadingItem[] {
   ];
 }
 
+function buildAboutNavigation(locale: Locale): CascadingItem[] {
+  const prefix = `/${locale}/about`;
+  const zh = locale === "zh";
+
+  return [
+    {
+      label: zh ? "制造与质量" : "Manufacturing & Quality",
+      href: `${prefix}/manufacturing`,
+      pages: [
+        {
+          label: zh ? "制造与质量" : "Manufacturing & Quality",
+          href: `${prefix}/manufacturing`,
+        },
+      ],
+    },
+    {
+      label: zh ? "公司信息" : "Company Information",
+      href: prefix,
+      pages: [
+        {
+          label: zh ? "关于 LFADJ" : "About LFADJ",
+          href: prefix,
+        },
+      ],
+    },
+  ];
+}
+
 function buildResourceNavigation(locale: Locale): CascadingItem[] {
   const prefix = `/${locale}/resources`;
   const zh = locale === "zh";
@@ -213,12 +241,14 @@ export function SiteNav(_props: {
   const applicationNavigation = buildApplicationNavigation(locale);
   const solutionNavigation = buildSolutionNavigation(locale);
   const resourceNavigation = buildResourceNavigation(locale);
+  const aboutNavigation = buildAboutNavigation(locale);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [desktopMenuOpen, setDesktopMenuOpen] = useState<CascadingSection | null>(null);
   const [activeProduct, setActiveProduct] = useState(0);
   const [activeApplication, setActiveApplication] = useState(0);
   const [activeSolution, setActiveSolution] = useState(0);
   const [activeResource, setActiveResource] = useState(0);
+  const [activeAbout, setActiveAbout] = useState(0);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [mobileProductOpen, setMobileProductOpen] = useState<number | null>(null);
   const [mobileApplicationsOpen, setMobileApplicationsOpen] = useState(false);
@@ -227,10 +257,13 @@ export function SiteNav(_props: {
   const [mobileSolutionOpen, setMobileSolutionOpen] = useState<number | null>(null);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [mobileResourceOpen, setMobileResourceOpen] = useState<number | null>(null);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [mobileAboutCategoryOpen, setMobileAboutCategoryOpen] = useState<number | null>(null);
   const productTriggerRef = useRef<HTMLAnchorElement>(null);
   const applicationTriggerRef = useRef<HTMLAnchorElement>(null);
   const solutionTriggerRef = useRef<HTMLAnchorElement>(null);
   const resourceTriggerRef = useRef<HTMLAnchorElement>(null);
+  const aboutTriggerRef = useRef<HTMLAnchorElement>(null);
   const desktopOpenTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const desktopCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -260,6 +293,7 @@ export function SiteNav(_props: {
         if (desktopMenuOpen === "applications") applicationTriggerRef.current?.focus();
         if (desktopMenuOpen === "solutions") solutionTriggerRef.current?.focus();
         if (desktopMenuOpen === "resources") resourceTriggerRef.current?.focus();
+        if (desktopMenuOpen === "about") aboutTriggerRef.current?.focus();
       }
     };
     document.addEventListener("keydown", closeOnEscape);
@@ -281,6 +315,8 @@ export function SiteNav(_props: {
     setMobileSolutionOpen(null);
     setMobileResourcesOpen(false);
     setMobileResourceOpen(null);
+    setMobileAboutOpen(false);
+    setMobileAboutCategoryOpen(null);
   }, [pathname]);
 
   const languageHref = locale === "en"
@@ -292,39 +328,50 @@ export function SiteNav(_props: {
       ? applicationNavigation
       : desktopMenuOpen === "solutions"
         ? solutionNavigation
-        : resourceNavigation;
+        : desktopMenuOpen === "about"
+          ? aboutNavigation
+          : resourceNavigation;
   const activeDesktopIndex = desktopMenuOpen === "products"
     ? activeProduct
     : desktopMenuOpen === "applications"
       ? activeApplication
       : desktopMenuOpen === "solutions"
         ? activeSolution
-        : activeResource;
+        : desktopMenuOpen === "about"
+          ? activeAbout
+          : activeResource;
   const renderMobileCascade = (section: CascadingSection, item: NavItem) => {
     const isProducts = section === "products";
     const isApplications = section === "applications";
     const isSolutions = section === "solutions";
+    const isAbout = section === "about";
     const categories = isProducts
       ? productNavigation
       : isApplications
         ? applicationNavigation
         : isSolutions
           ? solutionNavigation
-          : resourceNavigation;
+          : isAbout
+            ? aboutNavigation
+            : resourceNavigation;
     const sectionOpen = isProducts
       ? mobileProductsOpen
       : isApplications
         ? mobileApplicationsOpen
         : isSolutions
           ? mobileSolutionsOpen
-          : mobileResourcesOpen;
+          : isAbout
+            ? mobileAboutOpen
+            : mobileResourcesOpen;
     const categoryOpen = isProducts
       ? mobileProductOpen
       : isApplications
         ? mobileApplicationOpen
         : isSolutions
           ? mobileSolutionOpen
-          : mobileResourceOpen;
+          : isAbout
+            ? mobileAboutCategoryOpen
+            : mobileResourceOpen;
 
     return (
       <div className="overflow-hidden rounded-lg">
@@ -332,12 +379,13 @@ export function SiteNav(_props: {
           <Link onClick={() => setMobileOpen(false)} href={item.href} className="min-w-0 flex-1 px-4 py-3 font-semibold">{item.label}</Link>
           <button
             type="button"
-            aria-label={locale === "zh" ? `展开${isProducts ? "产品" : isApplications ? "应用" : isSolutions ? "解决方案" : "资源"}导航` : `Toggle ${section} navigation`}
+            aria-label={locale === "zh" ? `展开${isProducts ? "产品" : isApplications ? "应用" : isSolutions ? "解决方案" : isAbout ? "关于" : "资源"}导航` : `Toggle ${section} navigation`}
             aria-expanded={sectionOpen}
             onClick={() => {
               if (isProducts) setMobileProductsOpen((open) => !open);
               else if (isApplications) setMobileApplicationsOpen((open) => !open);
               else if (isSolutions) setMobileSolutionsOpen((open) => !open);
+              else if (isAbout) setMobileAboutOpen((open) => !open);
               else setMobileResourcesOpen((open) => !open);
             }}
             className="flex min-h-12 min-w-12 items-center justify-center text-xl font-semibold"
@@ -361,6 +409,7 @@ export function SiteNav(_props: {
                           if (isProducts) setMobileProductOpen((open) => open === index ? null : index);
                           else if (isApplications) setMobileApplicationOpen((open) => open === index ? null : index);
                           else if (isSolutions) setMobileSolutionOpen((open) => open === index ? null : index);
+                          else if (isAbout) setMobileAboutCategoryOpen((open) => open === index ? null : index);
                           else setMobileResourceOpen((open) => open === index ? null : index);
                         }}
                         className="flex min-h-11 min-w-11 items-center justify-center text-lg text-gray-600"
@@ -422,6 +471,7 @@ export function SiteNav(_props: {
                   else if (item.href.endsWith("/applications")) openDesktopMenu("applications");
                   else if (item.href.endsWith("/solutions")) openDesktopMenu("solutions");
                   else if (item.href.endsWith("/resources")) openDesktopMenu("resources");
+                  else if (item.href.endsWith("/about")) openDesktopMenu("about");
                   else closeDesktopMenu();
                 }}
               >
@@ -432,27 +482,32 @@ export function SiteNav(_props: {
                       ? applicationTriggerRef
                       : item.href.endsWith("/solutions")
                         ? solutionTriggerRef
-                      : item.href.endsWith("/resources")
-                        ? resourceTriggerRef
-                        : undefined}
+                        : item.href.endsWith("/resources")
+                          ? resourceTriggerRef
+                          : item.href.endsWith("/about")
+                            ? aboutTriggerRef
+                            : undefined}
                   href={item.href}
                   tabIndex={desktopMenuOpen && !item.href.endsWith(`/${desktopMenuOpen}`) ? -1 : undefined}
                   aria-current={pathname === item.href ? "page" : undefined}
-                  aria-haspopup={item.href.endsWith("/products") || item.href.endsWith("/applications") || item.href.endsWith("/solutions") || item.href.endsWith("/resources") ? "menu" : undefined}
+                  aria-haspopup={item.href.endsWith("/products") || item.href.endsWith("/applications") || item.href.endsWith("/solutions") || item.href.endsWith("/resources") || item.href.endsWith("/about") ? "menu" : undefined}
                   aria-expanded={item.href.endsWith("/products")
                     ? desktopMenuOpen === "products"
                     : item.href.endsWith("/applications")
                       ? desktopMenuOpen === "applications"
                       : item.href.endsWith("/solutions")
                         ? desktopMenuOpen === "solutions"
-                      : item.href.endsWith("/resources")
-                        ? desktopMenuOpen === "resources"
-                        : undefined}
+                        : item.href.endsWith("/resources")
+                          ? desktopMenuOpen === "resources"
+                          : item.href.endsWith("/about")
+                            ? desktopMenuOpen === "about"
+                            : undefined}
                   onFocus={() => {
                     if (item.href.endsWith("/products")) openDesktopMenu("products", 0);
                     if (item.href.endsWith("/applications")) openDesktopMenu("applications", 0);
                     if (item.href.endsWith("/solutions")) openDesktopMenu("solutions", 0);
                     if (item.href.endsWith("/resources")) openDesktopMenu("resources", 0);
+                    if (item.href.endsWith("/about")) openDesktopMenu("about", 0);
                   }}
                   className={`block rounded-lg px-3 py-3 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 hover:bg-gray-50 hover:text-black ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : ""}`}
                 >
@@ -489,12 +544,14 @@ export function SiteNav(_props: {
                       if (desktopMenuOpen === "products") setActiveProduct(index);
                       else if (desktopMenuOpen === "applications") setActiveApplication(index);
                       else if (desktopMenuOpen === "solutions") setActiveSolution(index);
+                      else if (desktopMenuOpen === "about") setActiveAbout(index);
                       else setActiveResource(index);
                     }}
                     onFocus={() => {
                       if (desktopMenuOpen === "products") setActiveProduct(index);
                       else if (desktopMenuOpen === "applications") setActiveApplication(index);
                       else if (desktopMenuOpen === "solutions") setActiveSolution(index);
+                      else if (desktopMenuOpen === "about") setActiveAbout(index);
                       else setActiveResource(index);
                     }}
                     className={`relative flex min-h-10 min-w-0 max-w-full items-center justify-between gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeDesktopIndex === index ? "bg-blue-50 text-blue-700 before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:rounded-full before:bg-blue-600" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
@@ -549,6 +606,8 @@ export function SiteNav(_props: {
                       renderMobileCascade("applications", item)
                     ) : item.href.endsWith("/solutions") ? (
                       renderMobileCascade("solutions", item)
+                    ) : item.href.endsWith("/about") ? (
+                      renderMobileCascade("about", item)
                     ) : item.href.endsWith("/resources") ? (
                       <div className="overflow-hidden rounded-lg">
                         <div className={`flex items-center ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : "text-gray-800"}`}>
