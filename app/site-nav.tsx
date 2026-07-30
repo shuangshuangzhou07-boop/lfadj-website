@@ -11,7 +11,7 @@ type NavItem = {
   href: string;
 };
 
-type ResourceItem = {
+type CascadingItem = {
   label: string;
   href: string;
   pages: {
@@ -54,7 +54,34 @@ function buildNavigation(locale: Locale): NavItem[] {
   ];
 }
 
-function buildResourceNavigation(locale: Locale): ResourceItem[] {
+function buildProductNavigation(locale: Locale): CascadingItem[] {
+  const prefix = `/${locale}/products`;
+  const zh = locale === "zh";
+
+  return [
+    {
+      label: zh ? "柴油移动照明灯塔" : "Diesel Mobile Light Tower",
+      href: `${prefix}/diesel-light-towers`,
+      pages: [
+        { label: zh ? "LF955 柴油移动照明灯塔" : "LF955 Diesel Mobile Light Tower", href: `${prefix}/lf955` },
+      ],
+    },
+    {
+      label: zh ? "太阳能移动照明灯塔" : "Solar Mobile Light Tower",
+      href: `${prefix}/solar-light-towers`,
+      pages: [
+        { label: zh ? "LF971 太阳能移动照明灯塔" : "LF971 Solar Mobile Light Tower", href: `${prefix}/lf971` },
+      ],
+    },
+    {
+      label: zh ? "混合动力移动照明灯塔" : "Hybrid Mobile Light Tower",
+      href: `${prefix}/hybrid-energy-solutions`,
+      pages: [],
+    },
+  ];
+}
+
+function buildResourceNavigation(locale: Locale): CascadingItem[] {
   const prefix = `/${locale}/resources`;
   const zh = locale === "zh";
 
@@ -115,12 +142,17 @@ export function SiteNav(_props: {
   const pathname = usePathname();
   const locale: Locale = pathname === "/zh" || pathname.startsWith("/zh/") ? "zh" : "en";
   const navigation = buildNavigation(locale);
+  const productNavigation = buildProductNavigation(locale);
   const resourceNavigation = buildResourceNavigation(locale);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [desktopResourcesOpen, setDesktopResourcesOpen] = useState(false);
+  const [desktopMenuOpen, setDesktopMenuOpen] = useState<"products" | "resources" | null>(null);
+  const [activeProduct, setActiveProduct] = useState(0);
   const [activeResource, setActiveResource] = useState(0);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileProductOpen, setMobileProductOpen] = useState<number | null>(null);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [mobileResourceOpen, setMobileResourceOpen] = useState<number | null>(null);
+  const productTriggerRef = useRef<HTMLAnchorElement>(null);
   const resourceTriggerRef = useRef<HTMLAnchorElement>(null);
   const desktopOpenTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const desktopCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -130,15 +162,15 @@ export function SiteNav(_props: {
     if (desktopCloseTimer.current) clearTimeout(desktopCloseTimer.current);
   };
 
-  const openDesktopResources = (delay = 250) => {
+  const openDesktopMenu = (menu: "products" | "resources", delay = 250) => {
     clearDesktopTimers();
-    if (desktopResourcesOpen) return;
-    desktopOpenTimer.current = setTimeout(() => setDesktopResourcesOpen(true), delay);
+    if (desktopMenuOpen === menu) return;
+    desktopOpenTimer.current = setTimeout(() => setDesktopMenuOpen(menu), delay);
   };
 
-  const closeDesktopResources = (delay = 200) => {
+  const closeDesktopMenu = (delay = 200) => {
     clearDesktopTimers();
-    desktopCloseTimer.current = setTimeout(() => setDesktopResourcesOpen(false), delay);
+    desktopCloseTimer.current = setTimeout(() => setDesktopMenuOpen(null), delay);
   };
 
   useEffect(() => {
@@ -146,8 +178,9 @@ export function SiteNav(_props: {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setMobileOpen(false);
-        setDesktopResourcesOpen(false);
-        if (desktopResourcesOpen) resourceTriggerRef.current?.focus();
+        setDesktopMenuOpen(null);
+        if (desktopMenuOpen === "products") productTriggerRef.current?.focus();
+        if (desktopMenuOpen === "resources") resourceTriggerRef.current?.focus();
       }
     };
     document.addEventListener("keydown", closeOnEscape);
@@ -156,11 +189,13 @@ export function SiteNav(_props: {
       clearDesktopTimers();
       document.removeEventListener("keydown", closeOnEscape);
     };
-  }, [desktopResourcesOpen, mobileOpen]);
+  }, [desktopMenuOpen, mobileOpen]);
 
   useEffect(() => {
     setMobileOpen(false);
-    setDesktopResourcesOpen(false);
+    setDesktopMenuOpen(null);
+    setMobileProductsOpen(false);
+    setMobileProductOpen(null);
     setMobileResourcesOpen(false);
     setMobileResourceOpen(null);
   }, [pathname]);
@@ -168,13 +203,86 @@ export function SiteNav(_props: {
   const languageHref = locale === "en"
     ? pathname.replace(/^\/en(?=\/|$)/, "/zh") || "/zh"
     : pathname.replace(/^\/zh(?=\/|$)/, "/en") || "/en";
+  const desktopNavigation = desktopMenuOpen === "products" ? productNavigation : resourceNavigation;
+  const activeDesktopIndex = desktopMenuOpen === "products" ? activeProduct : activeResource;
+  const renderMobileCascade = (section: "products" | "resources", item: NavItem) => {
+    const isProducts = section === "products";
+    const categories = isProducts ? productNavigation : resourceNavigation;
+    const sectionOpen = isProducts ? mobileProductsOpen : mobileResourcesOpen;
+    const categoryOpen = isProducts ? mobileProductOpen : mobileResourceOpen;
+
+    return (
+      <div className="overflow-hidden rounded-lg">
+        <div className={`flex items-center ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : "text-gray-800"}`}>
+          <Link onClick={() => setMobileOpen(false)} href={item.href} className="min-w-0 flex-1 px-4 py-3 font-semibold">{item.label}</Link>
+          <button
+            type="button"
+            aria-label={locale === "zh" ? `展开${isProducts ? "产品" : "资源"}导航` : `Toggle ${section} navigation`}
+            aria-expanded={sectionOpen}
+            onClick={() => isProducts ? setMobileProductsOpen((open) => !open) : setMobileResourcesOpen((open) => !open)}
+            className="flex min-h-12 min-w-12 items-center justify-center text-xl font-semibold"
+          >
+            <span className={`transition-transform duration-200 ${sectionOpen ? "rotate-45" : ""}`} aria-hidden="true">+</span>
+          </button>
+        </div>
+        <div className={`grid transition-[grid-template-rows] duration-200 ${sectionOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+          <div className="min-h-0 overflow-hidden">
+            <ul className="ml-3 grid gap-1 border-l border-gray-200 py-2 pl-3">
+              {categories.map((category, index) => (
+                <li key={category.href} className="overflow-hidden rounded-lg">
+                  <div className="flex items-center">
+                    <Link onClick={() => setMobileOpen(false)} href={category.href} className="flex min-h-11 min-w-0 flex-1 items-center px-3 py-3 text-sm font-semibold text-gray-700">{category.label}</Link>
+                    {category.pages.length ? (
+                      <button
+                        type="button"
+                        aria-label={`${category.label} ${locale === "zh" ? "选项" : "options"}`}
+                        aria-expanded={categoryOpen === index}
+                        onClick={() => isProducts
+                          ? setMobileProductOpen((open) => open === index ? null : index)
+                          : setMobileResourceOpen((open) => open === index ? null : index)}
+                        className="flex min-h-11 min-w-11 items-center justify-center text-lg text-gray-600"
+                      >
+                        <span className={`transition-transform duration-200 ${categoryOpen === index ? "rotate-45" : ""}`} aria-hidden="true">+</span>
+                      </button>
+                    ) : null}
+                  </div>
+                  {category.pages.length ? (
+                    <div className={`grid transition-[grid-template-rows] duration-200 ${categoryOpen === index ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+                      <div className="min-h-0 overflow-hidden">
+                        <ul className="mx-3 mb-2 grid gap-1 rounded-lg bg-gray-50 p-2">
+                          {category.pages.map((page) => (
+                            <li key={page.label}>
+                              {page.href ? (
+                                <Link onClick={() => setMobileOpen(false)} href={page.href} className="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-semibold text-gray-700">
+                                  {page.label}
+                                </Link>
+                              ) : (
+                                <div className="flex min-h-11 items-center justify-between gap-2 px-3 py-2 text-sm text-gray-500">
+                                  <span>{page.label}</span>
+                                  <span className="shrink-0 text-xs">{copy[locale].comingSoon}</span>
+                                </div>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <header
       className="sticky top-0 z-50 border-b border-gray-200 bg-white"
-      onMouseLeave={() => closeDesktopResources()}
+      onMouseLeave={() => closeDesktopMenu()}
       onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) closeDesktopResources();
+        if (!event.currentTarget.contains(event.relatedTarget)) closeDesktopMenu();
       }}
     >
       <div className="mx-auto flex min-h-20 max-w-[1280px] items-center justify-between gap-4 px-6">
@@ -187,19 +295,21 @@ export function SiteNav(_props: {
                 key={item.href}
                 className="relative"
                 onMouseEnter={() => {
-                  if (item.href.endsWith("/resources")) openDesktopResources();
-                  else closeDesktopResources();
+                  if (item.href.endsWith("/products")) openDesktopMenu("products");
+                  else if (item.href.endsWith("/resources")) openDesktopMenu("resources");
+                  else closeDesktopMenu();
                 }}
               >
                 <Link
-                  ref={item.href.endsWith("/resources") ? resourceTriggerRef : undefined}
+                  ref={item.href.endsWith("/products") ? productTriggerRef : item.href.endsWith("/resources") ? resourceTriggerRef : undefined}
                   href={item.href}
-                  tabIndex={desktopResourcesOpen && !item.href.endsWith("/resources") ? -1 : undefined}
+                  tabIndex={desktopMenuOpen && !item.href.endsWith(`/${desktopMenuOpen}`) ? -1 : undefined}
                   aria-current={pathname === item.href ? "page" : undefined}
-                  aria-haspopup={item.href.endsWith("/resources") ? "menu" : undefined}
-                  aria-expanded={item.href.endsWith("/resources") ? desktopResourcesOpen : undefined}
+                  aria-haspopup={item.href.endsWith("/products") || item.href.endsWith("/resources") ? "menu" : undefined}
+                  aria-expanded={item.href.endsWith("/products") ? desktopMenuOpen === "products" : item.href.endsWith("/resources") ? desktopMenuOpen === "resources" : undefined}
                   onFocus={() => {
-                    if (item.href.endsWith("/resources")) openDesktopResources(0);
+                    if (item.href.endsWith("/products")) openDesktopMenu("products", 0);
+                    if (item.href.endsWith("/resources")) openDesktopMenu("resources", 0);
                   }}
                   className={`block rounded-lg px-3 py-3 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 hover:bg-gray-50 hover:text-black ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : ""}`}
                 >
@@ -211,31 +321,33 @@ export function SiteNav(_props: {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link tabIndex={desktopResourcesOpen ? -1 : undefined} href={languageHref} hrefLang={locale === "en" ? "zh" : "en"} className="hidden rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 sm:inline-flex">{copy[locale].language}</Link>
-          <Link tabIndex={desktopResourcesOpen ? -1 : undefined} href={`/${locale}/contact/request-a-quote`} className="hidden rounded-lg bg-blue-600 px-4 py-3 text-sm font-bold text-white hover:bg-blue-700 xl:inline-flex">{copy[locale].quote}</Link>
+          <Link tabIndex={desktopMenuOpen ? -1 : undefined} href={languageHref} hrefLang={locale === "en" ? "zh" : "en"} className="hidden rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 sm:inline-flex">{copy[locale].language}</Link>
+          <Link tabIndex={desktopMenuOpen ? -1 : undefined} href={`/${locale}/contact/request-a-quote`} className="hidden rounded-lg bg-blue-600 px-4 py-3 text-sm font-bold text-white hover:bg-blue-700 xl:inline-flex">{copy[locale].quote}</Link>
           <button type="button" aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(true)} className="inline-flex h-10 items-center rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700 lg:hidden">{copy[locale].menu}</button>
         </div>
       </div>
 
       <div
-        className={`absolute left-0 right-0 top-full z-[70] hidden border-t border-gray-200 bg-white shadow-xl transition duration-200 lg:block ${desktopResourcesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
-        aria-hidden={!desktopResourcesOpen}
-        inert={!desktopResourcesOpen}
-        onMouseEnter={() => openDesktopResources(0)}
+        className={`absolute left-0 right-0 top-full z-[70] hidden border-t border-gray-200 bg-white shadow-xl transition duration-200 lg:block ${desktopMenuOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
+        aria-hidden={!desktopMenuOpen}
+        inert={!desktopMenuOpen}
+        onMouseEnter={() => {
+          if (desktopMenuOpen) openDesktopMenu(desktopMenuOpen, 0);
+        }}
       >
         <div className="mx-auto box-border grid max-h-[calc(100dvh-7rem)] w-[480px] max-w-[calc(100vw-48px)] grid-cols-[45%_minmax(0,1fr)] overflow-x-clip overflow-y-auto overscroll-contain rounded-md border border-gray-200 bg-white shadow-lg">
             <div className="min-w-0 max-w-full rounded-l-md border-r border-gray-200 bg-gray-50 p-1.5">
             <ul className="grid min-w-0 max-w-full gap-1">
-              {resourceNavigation.map((item, index) => (
+              {desktopNavigation.map((item, index) => (
                 <li key={item.href} className="min-w-0 max-w-full">
                   <Link
                     href={item.href}
-                    onMouseEnter={() => setActiveResource(index)}
-                    onFocus={() => setActiveResource(index)}
-                    className={`relative flex min-h-10 min-w-0 max-w-full items-center justify-between gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeResource === index ? "bg-blue-50 text-blue-700 before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:rounded-full before:bg-blue-600" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
+                    onMouseEnter={() => desktopMenuOpen === "products" ? setActiveProduct(index) : setActiveResource(index)}
+                    onFocus={() => desktopMenuOpen === "products" ? setActiveProduct(index) : setActiveResource(index)}
+                    className={`relative flex min-h-10 min-w-0 max-w-full items-center justify-between gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeDesktopIndex === index ? "bg-blue-50 text-blue-700 before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:rounded-full before:bg-blue-600" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
                   >
                     <span className="min-w-0 break-words">{item.label}</span>
-                    <span aria-hidden="true" className={`shrink-0 text-blue-700 transition-transform duration-200 ${activeResource === index ? "translate-x-1" : ""}`}>&gt;</span>
+                    <span aria-hidden="true" className={`shrink-0 text-blue-700 transition-transform duration-200 ${activeDesktopIndex === index ? "translate-x-1" : ""}`}>&gt;</span>
                   </Link>
                 </li>
               ))}
@@ -243,7 +355,7 @@ export function SiteNav(_props: {
             </div>
             <div className="min-w-0 max-w-full rounded-r-md bg-white p-1.5">
               <ul className="grid w-full min-w-0 max-w-full">
-              {resourceNavigation[activeResource].pages.map((page) => (
+              {desktopNavigation[activeDesktopIndex].pages.map((page) => (
                 <li key={page.label} className="min-w-0 max-w-full border-b border-slate-100 last:border-b-0">
                   {page.href ? (
                     <Link href={page.href} className="group grid min-h-10 w-full min-w-0 max-w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-x-1.5 px-2 py-1.5 text-xs text-slate-700 transition-colors hover:bg-blue-50/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600">
@@ -278,7 +390,9 @@ export function SiteNav(_props: {
               <ul className="grid gap-2">
                 {navigation.map((item) => (
                   <li key={item.href}>
-                    {item.href.endsWith("/resources") ? (
+                    {item.href.endsWith("/products") ? (
+                      renderMobileCascade("products", item)
+                    ) : item.href.endsWith("/resources") ? (
                       <div className="overflow-hidden rounded-lg">
                         <div className={`flex items-center ${isActive(pathname, item.href) ? "bg-blue-50 text-blue-700" : "text-gray-800"}`}>
                           <Link onClick={() => setMobileOpen(false)} href={item.href} className="min-w-0 flex-1 px-4 py-3 font-semibold">{item.label}</Link>
