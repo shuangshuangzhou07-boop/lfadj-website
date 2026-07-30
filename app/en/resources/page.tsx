@@ -40,16 +40,71 @@ const recommendedApplications = [
     title: "Mining Lighting",
     description: "Explore mobile lighting solutions for remote sites, night operations, and demanding mining environments.",
     href: "/en/applications/mining-lighting",
+    relatedProducts: [
+      { label: "LF955", href: "/en/products/lf955" },
+      { label: "LF971", href: "/en/products/lf971" },
+    ],
   },
   {
     title: "Construction Lighting",
     description: "Review mobile lighting options for construction sites, infrastructure work, and changing project conditions.",
     href: "/en/applications/construction-lighting",
+    relatedProducts: [{ label: "LF955", href: "/en/products/lf955" }],
   },
   {
     title: "Emergency Lighting",
     description: "Understand rapidly deployable mobile lighting solutions for emergency response and temporary operations.",
     href: "/en/applications/emergency-lighting",
+    relatedProducts: [
+      { label: "LF955", href: "/en/products/lf955" },
+      { label: "LF971", href: "/en/products/lf971" },
+    ],
+  },
+  {
+    title: "Rental Lighting",
+    description: "Explore durable, easy-to-deploy mobile lighting options for rental fleets and changing project needs.",
+    href: "/en/applications/rental-lighting",
+    relatedProducts: [
+      { label: "LF955", href: "/en/products/lf955" },
+      { label: "LF971", href: "/en/products/lf971" },
+    ],
+  },
+  {
+    title: "Oil & Gas Lighting",
+    description: "Review mobile lighting solutions for remote oil and gas sites, temporary work areas, and night operations.",
+    href: "/en/applications/oil-gas-lighting",
+    relatedProducts: [{ label: "LF955", href: "/en/products/lf955" }],
+  },
+];
+
+const recommendedSolutions = [
+  {
+    title: "How to Choose the Right Light Tower",
+    description: "Compare project conditions, lighting requirements, operating time, and power options.",
+    href: "/en/solutions/how-to-choose-the-right-light-tower",
+    relatedApplications: [
+      { label: "Mining Lighting", href: "/en/applications/mining-lighting" },
+      { label: "Construction Lighting", href: "/en/applications/construction-lighting" },
+      { label: "Rental Lighting", href: "/en/applications/rental-lighting" },
+    ],
+  },
+  {
+    title: "Extreme Environment Configuration",
+    description: "Review configuration priorities for dust, wind, temperature, terrain, and weather exposure.",
+    href: "/en/solutions/how-to-choose-the-right-light-tower-for-harsh-environments",
+    relatedApplications: [
+      { label: "Mining Lighting", href: "/en/applications/mining-lighting" },
+      { label: "Oil & Gas Lighting", href: "/en/applications/oil-gas-lighting" },
+    ],
+  },
+  {
+    title: "Mast System Selection",
+    description: "Compare mast systems based on project duration, movement frequency, operating height, and budget.",
+    href: "/en/solutions/how-to-choose-light-tower-mast-system",
+    relatedApplications: [
+      { label: "Construction Lighting", href: "/en/applications/construction-lighting" },
+      { label: "Mining Lighting", href: "/en/applications/mining-lighting" },
+    ],
   },
 ];
 
@@ -71,15 +126,14 @@ const recommendedProducts = [
 export default function EnglishResourcesPage() {
   return (
     <main className="bg-white text-slate-950">
-      <section className="border-b border-slate-200 bg-slate-50 px-6 py-20 sm:px-8 lg:py-28">
+      <section className="flex border-b border-slate-200 bg-slate-50 px-6 py-20 sm:px-8 lg:min-h-[460px] lg:items-center lg:py-20">
         <div className="mx-auto max-w-[1200px]">
           <p className="mb-5 text-sm font-bold uppercase tracking-[0.18em] text-amber-700">LFADJ Resource Library</p>
           <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             Mobile Light Tower Resources
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">
-            Explore mobile light tower knowledge, project selection guides, application insights, and technical
-            resources to help you choose the right lighting solution.
+            Explore mobile light tower knowledge, selection guides, application insights, and technical resources.
           </p>
         </div>
       </section>
@@ -116,7 +170,7 @@ export default function EnglishResourcesPage() {
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Featured Resources</h2>
           <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
             <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[180px]">
+              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[240px]">
                 <div className="relative h-full w-full">
                   <Image
                     src="/images/resources/mining-mobile-light-tower-application-guide.webp"
@@ -139,11 +193,25 @@ export default function EnglishResourcesPage() {
                 >
                   Read More →
                 </Link>
+                <div className="mt-6 border-t border-slate-200 pt-5">
+                  <p className="text-sm font-semibold text-slate-500">Related:</p>
+                  <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+                    <Link href="/en/applications/mining-lighting" className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                      Mining Lighting
+                    </Link>
+                    <Link href="/en/products/lf955" className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                      LF955
+                    </Link>
+                    <Link href="/en/solutions/how-to-choose-the-right-light-tower" className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                      How to Choose the Right Light Tower
+                    </Link>
+                  </div>
+                </div>
               </div>
             </article>
 
             <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[180px]">
+              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[240px]">
                 <div className="relative h-full w-full">
                   <Image
                     src="/images/resources/how-to-choose-right-light-tower.webp"
@@ -166,11 +234,25 @@ export default function EnglishResourcesPage() {
                 >
                   Read More →
                 </Link>
+                <div className="mt-6 border-t border-slate-200 pt-5">
+                  <p className="text-sm font-semibold text-slate-500">Related:</p>
+                  <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+                    <Link href="/en/applications/construction-lighting" className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                      Construction Lighting
+                    </Link>
+                    <Link href="/en/products/lf955" className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                      LF955
+                    </Link>
+                    <Link href="/en/resources/selection-guides" className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                      Mobile Light Tower Selection Guides
+                    </Link>
+                  </div>
+                </div>
               </div>
             </article>
 
             <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[180px]">
+              <div className="aspect-video overflow-hidden rounded-lg bg-gray-50 shadow-sm lg:h-[240px]">
                 <div className="relative h-full w-full">
                   <Image
                     src="/images/resources/featured-light-tower-mining.webp"
@@ -193,6 +275,20 @@ export default function EnglishResourcesPage() {
                 >
                   Read More →
                 </Link>
+                <div className="mt-6 border-t border-slate-200 pt-5">
+                  <p className="text-sm font-semibold text-slate-500">Related:</p>
+                  <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+                    <Link href="/en/products/lf955" className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                      LF955 Diesel Mobile Light Tower
+                    </Link>
+                    <Link href="/en/products/lf971" className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                      LF971 Solar Mobile Light Tower
+                    </Link>
+                    <Link href="/en/resources/selection-guides" className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                      Selection Guides
+                    </Link>
+                  </div>
+                </div>
               </div>
             </article>
           </div>
@@ -201,33 +297,58 @@ export default function EnglishResourcesPage() {
 
       <section className="px-6 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Recommended Applications</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {recommendedApplications.map((application) => (
-              <article key={application.href} className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-xl font-bold">{application.title}</h3>
-                <p className="mt-3 flex-1 leading-7 text-slate-600">{application.description}</p>
-                <Link href={application.href} className="mt-6 font-semibold text-amber-700 hover:text-amber-800">
-                  View Application →
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Explore Mobile Lighting Solutions</h2>
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+            <div>
+              <h3 className="text-2xl font-bold tracking-tight">Recommended Applications</h3>
+              <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {recommendedApplications.map((application) => (
+                  <article key={application.href} className="flex min-h-[320px] h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                    <h4 className="text-xl font-bold">{application.title}</h4>
+                    <p className="mt-3 flex-1 leading-7 text-slate-600">{application.description}</p>
+                    <Link href={application.href} className="mt-6 font-semibold text-amber-700 hover:text-amber-800">
+                      View Application →
+                    </Link>
+                    <div className="mt-5 border-t border-slate-200 pt-4">
+                      <p className="text-sm font-semibold text-slate-500">Recommended Products:</p>
+                      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+                        {application.relatedProducts.map((product) => (
+                          <Link key={product.href} href={product.href} className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                            {product.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
 
-      <section className="bg-slate-50 px-6 py-16 sm:px-8 lg:py-20">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Recommended Solution</h2>
-          <article className="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="text-xl font-bold">How to Choose the Right Light Tower</h3>
-            <p className="mt-3 max-w-3xl leading-7 text-slate-600">
-              Compare project conditions, lighting requirements, operating time, and power options before selecting a mobile lighting solution.
-            </p>
-            <Link href="/en/solutions/how-to-choose-the-right-light-tower" className="mt-6 inline-flex font-semibold text-amber-700 hover:text-amber-800">
-              View Selection Solution →
-            </Link>
-          </article>
+            <div>
+              <h3 className="text-2xl font-bold tracking-tight">Recommended Solutions</h3>
+              <div className="mt-6 grid gap-5">
+                {recommendedSolutions.map((solution) => (
+                  <article key={solution.href} className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                    <h4 className="text-xl font-bold">{solution.title}</h4>
+                    <p className="mt-3 flex-1 leading-7 text-slate-600">{solution.description}</p>
+                    <Link href={solution.href} className="mt-6 font-semibold text-amber-700 hover:text-amber-800">
+                      View Solution →
+                    </Link>
+                    <div className="mt-5 border-t border-slate-200 pt-4">
+                      <p className="text-sm font-semibold text-slate-500">Related Applications:</p>
+                      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+                        {solution.relatedApplications.map((application) => (
+                          <Link key={application.href} href={application.href} className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-amber-700">
+                            {application.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

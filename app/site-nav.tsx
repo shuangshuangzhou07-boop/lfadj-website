@@ -26,7 +26,7 @@ const copy = {
     close: "Close menu",
     language: "中文",
     quote: "Request a Quote",
-    childPages: "Direct Child Pages",
+    childPages: "DIRECT PAGES",
     comingSoon: "Coming Soon",
   },
   zh: {
@@ -66,35 +66,37 @@ function buildResourceNavigation(locale: Locale): ResourceItem[] {
         { label: zh ? "什么是移动照明灯塔？" : "What Is A Mobile Light Tower?", href: `${prefix}/what-is-mobile-light-tower` },
         { label: zh ? "移动照明灯塔如何工作？" : "How Does A Mobile Light Tower Work?" },
         { label: zh ? "移动照明灯塔基础知识" : "Mobile Light Tower Basics" },
+        { label: zh ? "移动照明灯塔组成结构" : "Mobile Light Tower Components" },
       ],
     },
     {
-      label: zh ? "选型指南" : "Selection Guides",
+      label: zh ? "选择指南" : "Selection Guides",
       href: `${prefix}/selection-guides`,
       pages: [
-        { label: zh ? "如何选择合适的照明灯塔" : "How To Choose The Right Light Tower", href: `/${locale}/solutions/how-to-choose-the-right-light-tower` },
-        { label: zh ? "柴油与太阳能移动照明灯塔" : "Diesel vs Solar Mobile Light Tower" },
-        { label: zh ? "照明覆盖指南" : "Lighting Coverage Guide" },
+        { label: zh ? "如何选择合适的照明灯塔？" : "How To Choose The Right Light Tower", href: `/${locale}/solutions/how-to-choose-light-tower-mast-system` },
+        { label: zh ? "柴油与太阳能移动照明灯塔比较" : "Diesel vs Solar Mobile Light Tower" },
+        { label: zh ? "项目需要多大的照明覆盖范围？" : "How Much Lighting Coverage Do You Need?" },
       ],
     },
     {
       label: zh ? "应用指南" : "Application Guides",
       href: `${prefix}/application-guides`,
       pages: [
-        { label: zh ? "矿山照明" : "Mining Lighting", href: `/${locale}/applications/mining-lighting` },
-        { label: zh ? "建筑照明" : "Construction Lighting", href: `/${locale}/applications/construction-lighting` },
-        { label: zh ? "租赁照明" : "Rental Lighting", href: `/${locale}/applications/rental-lighting` },
-        { label: zh ? "应急照明" : "Emergency Lighting", href: `/${locale}/applications/emergency-lighting` },
-        { label: zh ? "油气行业照明" : "Oil & Gas Lighting", href: `/${locale}/applications/oil-gas-lighting` },
+        { label: zh ? "矿山照明指南" : "Mining Lighting Guide" },
+        { label: zh ? "建筑照明指南" : "Construction Lighting Guide" },
+        { label: zh ? "油气照明指南" : "Oil & Gas Lighting Guide", href: `/${locale}/applications/oil-gas-lighting` },
+        { label: zh ? "租赁照明指南" : "Rental Lighting Guide" },
+        { label: zh ? "应急照明指南" : "Emergency Lighting Guide" },
       ],
     },
     {
       label: zh ? "技术文档" : "Technical Documents",
       href: `${prefix}/technical-documents`,
       pages: [
-        { label: zh ? "产品技术规格" : "Product Specifications" },
         { label: zh ? "产品手册" : "Product Manuals" },
         { label: zh ? "安装指南" : "Installation Guides" },
+        { label: zh ? "维护指南" : "Maintenance Guides" },
+        { label: zh ? "技术规格" : "Technical Specifications" },
       ],
     },
   ];
@@ -221,49 +223,47 @@ export function SiteNav(_props: {
         inert={!desktopResourcesOpen}
         onMouseEnter={() => openDesktopResources(0)}
       >
-        <div className="mx-auto grid max-w-[760px] grid-cols-[220px_minmax(400px,1fr)] gap-0 px-6 py-6">
-          <div className="border border-gray-200 bg-gray-50 p-3">
-            <Link href={`/${locale}/resources`} className="mb-2 block rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-              {locale === "zh" ? "资源中心" : "Resources"}
-            </Link>
-            <ul className="grid gap-1">
+        <div className="mx-auto box-border grid max-h-[calc(100dvh-7rem)] w-[480px] max-w-[calc(100vw-48px)] grid-cols-[45%_minmax(0,1fr)] overflow-x-clip overflow-y-auto overscroll-contain rounded-md border border-gray-200 bg-white shadow-lg">
+            <div className="min-w-0 max-w-full rounded-l-md border-r border-gray-200 bg-gray-50 p-1.5">
+            <ul className="grid min-w-0 max-w-full gap-1">
               {resourceNavigation.map((item, index) => (
-                <li key={item.href}>
+                <li key={item.href} className="min-w-0 max-w-full">
                   <Link
                     href={item.href}
                     onMouseEnter={() => setActiveResource(index)}
                     onFocus={() => setActiveResource(index)}
-                    className={`flex min-h-11 items-center justify-between rounded-md px-3 py-3 font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeResource === index ? "bg-blue-50 text-blue-700" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
+                    className={`relative flex min-h-10 min-w-0 max-w-full items-center justify-between gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeResource === index ? "bg-blue-50 text-blue-700 before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:rounded-full before:bg-blue-600" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
                   >
-                    <span>{item.label}</span>
-                    <span aria-hidden="true" className={`text-blue-700 transition-transform duration-200 ${activeResource === index ? "translate-x-1" : ""}`}>›</span>
+                    <span className="min-w-0 break-words">{item.label}</span>
+                    <span aria-hidden="true" className={`shrink-0 text-blue-700 transition-transform duration-200 ${activeResource === index ? "translate-x-1" : ""}`}>&gt;</span>
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="border border-l-0 border-gray-200 bg-white p-6">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-700">
-              {copy[locale].childPages}
-            </p>
-            <ul className="mt-3 grid gap-2">
+            </div>
+            <div className="min-w-0 max-w-full rounded-r-md bg-white p-1.5">
+              <ul className="grid w-full min-w-0 max-w-full">
               {resourceNavigation[activeResource].pages.map((page) => (
-                <li key={page.label}>
+                <li key={page.label} className="min-w-0 max-w-full border-b border-slate-100 last:border-b-0">
                   {page.href ? (
-                    <Link href={page.href} className="flex min-h-11 items-center rounded-lg px-3 py-2.5 font-semibold text-slate-700 transition hover:bg-blue-50 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-                      {page.label}
+                    <Link href={page.href} className="group grid min-h-10 w-full min-w-0 max-w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-x-1.5 px-2 py-1.5 text-xs text-slate-700 transition-colors hover:bg-blue-50/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600">
+                      <span className="min-w-0 break-words font-medium transition-colors group-hover:text-blue-700">
+                        {page.label}
+                      </span>
                     </Link>
                   ) : (
-                    <div className="flex min-h-11 items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-slate-500">
-                      <span>{page.label}</span>
-                      <span className="shrink-0 text-xs font-semibold">{copy[locale].comingSoon}</span>
+                    <div className="grid min-h-10 w-full min-w-0 max-w-full cursor-default grid-cols-[minmax(0,1fr)_auto] items-center gap-x-1.5 px-2 py-1.5 text-xs text-slate-600">
+                      <span className="min-w-0 break-words font-medium">{page.label}</span>
+                      <span className="whitespace-nowrap rounded-full border border-slate-200 bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium leading-none text-slate-500">
+                        {copy[locale].comingSoon}
+                      </span>
                     </div>
                   )}
                 </li>
               ))}
-            </ul>
+              </ul>
+            </div>
           </div>
-        </div>
       </div>
 
       {mobileOpen ? (
