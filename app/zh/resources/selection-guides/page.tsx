@@ -45,6 +45,12 @@ const featuredSelectionGuides = [
     ],
   },
   {
+    title: "移动照明灯塔总拥有成本",
+    status: "已发布",
+    description: "按计划使用周期计算采购、能源、维护、运输、停机和残值等成本输入。",
+    href: "/zh/resources/light-tower-total-cost-of-ownership",
+  },
+  {
     title: "柴油与太阳能移动照明灯塔",
     status: "即将发布",
     description: "根据运行时间、维护需求和项目条件，对比柴油与太阳能移动照明方案。",
@@ -164,7 +170,7 @@ export default function ChineseSelectionGuidesPage() {
       <section className="px-6 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1200px]">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">精选选型指南</h2>
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
             {featuredSelectionGuides.map((guide) => (
               <article
                 key={guide.title}
@@ -187,6 +193,14 @@ export default function ChineseSelectionGuidesPage() {
                 ) : (
                   <p className="mt-4 font-semibold text-slate-500">即将发布</p>
                 )}
+                {guide.href ? (
+                  <Link
+                    href={guide.href}
+                    className="mt-6 rounded-sm font-semibold text-amber-700 transition hover:text-amber-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+                  >
+                    阅读总拥有成本指南
+                  </Link>
+                ) : null}
                 {guide.relatedSolution ? (
                   <div className="mt-6 border-t border-slate-200 pt-5">
                     <p className="text-sm font-bold text-slate-500">关联解决方案</p>

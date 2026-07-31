@@ -47,6 +47,13 @@ const featuredSelectionGuides = [
     ],
   },
   {
+    title: "Light Tower Total Cost of Ownership",
+    status: "Published",
+    description:
+      "Calculate purchase, energy, maintenance, transport, downtime and residual-value inputs over a planned operating period.",
+    href: "/en/resources/light-tower-total-cost-of-ownership",
+  },
+  {
     title: "Diesel vs Solar Mobile Light Tower",
     status: "Coming Soon",
     description:
@@ -174,7 +181,7 @@ export default function EnglishSelectionGuidesPage() {
       <section className="px-6 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1200px]">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Featured Selection Guides</h2>
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
             {featuredSelectionGuides.map((guide) => (
               <article
                 key={guide.title}
@@ -197,6 +204,14 @@ export default function EnglishSelectionGuidesPage() {
                 ) : (
                   <p className="mt-4 font-semibold text-slate-500">Coming Soon</p>
                 )}
+                {guide.href ? (
+                  <Link
+                    href={guide.href}
+                    className="mt-6 rounded-sm font-semibold text-amber-700 transition hover:text-amber-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+                  >
+                    Read the total cost of ownership guide
+                  </Link>
+                ) : null}
                 {guide.relatedSolution ? (
                   <div className="mt-6 border-t border-slate-200 pt-5">
                     <p className="text-sm font-bold text-slate-500">Related Solution</p>
