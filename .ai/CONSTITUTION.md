@@ -51,3 +51,197 @@ This Constitution defines only the highest and non-negotiable website principles
 All implementation details must follow the applicable Standards, while development workflow and task execution must follow AGENTS.md. All AI tools, developers, and future maintainers must comply with this Constitution, AGENTS.md, and all relevant existing Standards.
 
 No Standard, workflow, implementation decision, or temporary instruction may weaken or override this Constitution.
+
+## Principle 8 — Unique Value, Complete Delivery & Conversion First
+
+> 页面唯一价值、完整交付与转化优先
+
+### 8.1 No Low-Value Duplication
+
+Every page must provide independent, explicit, and irreplaceable user value.
+
+The following are prohibited:
+
+1. Reusing the same substantial body copy across different pages.
+2. Creating "reskinned pages" that only replace an industry name, product name, or title.
+3. Allowing multiple pages to compete for the same primary keyword and search intent.
+4. Repeating the same selling points, cards, FAQs, CTAs, and Related Links across multiple pages.
+5. Repeating information already expressed merely to increase page length.
+6. Confusing the responsibilities of Applications, Solutions, Products, and Resources pages.
+7. Publishing mechanical translations, mixed-language content, or inconsistent content scope between Chinese and English pages.
+8. Repeating the same conclusion across multiple sections of one page.
+9. Forcing every page to use exactly the same section structure for the sake of visual consistency.
+10. Creating pages without genuine content value, search demand, or conversion purpose.
+
+The number of sections and H2 headings must follow the page's search intent and genuine user needs; pages must not add headings or content merely to appear longer or more comprehensive.
+
+Reasonable reuse is permitted for:
+
+- Header, Footer, and sitewide navigation.
+- Brand names and confirmed company information.
+- Truthful product specifications and certification information.
+- Necessary legal, privacy, and contact information.
+- The unified design system and foundational components.
+- The core direction of a sitewide CTA.
+
+Even when a CTA is reused, its context, supporting copy, and reason for entering the inquiry path must be adapted to the current page intent.
+
+### 8.2 One Page, One Search Intent
+
+Every page must define in advance:
+
+- Page Purpose.
+- Primary Search Intent.
+- Primary Keyword.
+- Supporting Keywords.
+- Target Buyer.
+- Buyer Stage.
+- Main Conversion Action.
+- Its content boundary relative to other pages.
+
+If an existing page already covers the same search intent, priority must be given to:
+
+- Merging content.
+- Changing the page responsibility.
+- Establishing hierarchical internal links.
+- Removing low-value duplicate content.
+
+Competing pages must not continue to be created.
+
+Page responsibilities must remain strictly distinct:
+
+- **Products:** Specific products, specifications, configurations, and applicable conditions.
+- **Applications:** Lighting scenarios, risks, and requirements within a specific industry.
+- **Solutions:** Purchasing decisions, selection questions, and project solution methods.
+- **Resources:** Education, knowledge, guides, and informational support.
+- **About:** Company positioning, capabilities, processes, quality, and trust.
+- **Contact:** Inquiry submission, project-condition collection, and conversion.
+
+### 8.3 Every Page Must Meet the 10-Point Delivery Standard
+
+"10-point delivery" is not a verbal rating. It requires completion of every acceptance condition below:
+
+1. Search intent is clear and does not conflict with other pages.
+2. The H1 is unique and the heading hierarchy is correct.
+3. The Title and Description are independent, natural, and click-worthy.
+4. The first screen quickly explains the page value and target audience.
+5. Content is truthful and does not fabricate factories, cases, customers, certifications, or data.
+6. Content contains no low-value duplication.
+7. Page structure is designed for the content purpose and does not mechanically apply a template.
+8. English pages contain only English and Chinese pages contain only Chinese.
+9. Internal links support both Google crawling and the buyer's next decision.
+10. The CTA matches the current page and buyer stage.
+11. The page is fully usable on desktop, tablet, and mobile.
+12. There are no broken links, empty links, fake buttons, or meaningless placeholder content.
+13. TypeScript, ESLint, and build checks pass.
+14. Existing pages, navigation, responsive layouts, and SEO are not harmed.
+15. A self-review is completed and identified issues are fixed instead of delegating small, autonomously solvable fixes to the user.
+
+If any condition above remains incomplete, the page must not be described as a 10-point delivery.
+
+### 8.4 Complete Delivery in One Task
+
+When executing a page task, the same task cycle must complete:
+
+- Reading the existing rules.
+- Inspecting the existing page and relevant pages.
+- Identifying duplicate content and keyword conflicts.
+- Defining the page's independent content boundary.
+- Completing synchronized Chinese and English versions.
+- Completing SEO metadata.
+- Completing internal links.
+- Completing the inquiry CTA.
+- Completing responsive checks.
+- Completing code checks.
+- Fixing issues found within the current task scope.
+- Reporting the final acceptance result.
+
+The following are prohibited:
+
+- Knowingly leaving obvious problems for a later task.
+- Deliberately splitting a page that can be completed once into many small tasks.
+- Requiring another user instruction after each small section is completed.
+- Completing only the visual presentation while omitting SEO, internal links, mobile behavior, or the inquiry path.
+- Assigning a high score before basic problems have been checked and then continually discovering them afterward.
+- Adding duplicate content without first inspecting relevant pages.
+
+Work may pause for user input only when:
+
+- Truthful product specifications are missing.
+- Commercial information requiring a user decision is missing.
+- Important pages would need to be deleted.
+- Core brand positioning would need to change.
+- Content authenticity cannot be judged safely.
+
+Ordinary layout, copy, SEO, internal-linking, and responsive issues must be completed autonomously without repeatedly asking the user to allocate separate tasks.
+
+### 8.5 Google SEO First
+
+Every page modification must help Google understand the website structure and page topic through:
+
+- Independent search intent.
+- Avoidance of keyword cannibalization.
+- Natural use of the primary keyword and related entities.
+- A clear H1–H3 hierarchy.
+- Independent metadata.
+- Meaningful anchor text.
+- Relevant internal links among Products, Applications, Solutions, and Resources.
+- Priority on answering genuine buyer questions.
+- No keyword stuffing.
+- No thin content.
+- No copying of competitor content.
+- No low-value pages published for SEO.
+- Structured data appropriate to the page content when necessary.
+- Semantically consistent Chinese and English pages with correct multilingual relationships.
+
+Google optimization must be built on truthful, clear, useful, and verifiable content.
+
+### 8.6 Inquiry Conversion First
+
+Every page must create a reasonable next-step path for the buyer without mechanically stacking CTAs.
+
+The conversion method must match the buyer stage:
+
+- **Educational pages:** Guide users to further selection content or a relevant solution.
+- **Application pages:** Guide users to obtain industry lighting recommendations.
+- **Solution pages:** Guide users to submit project conditions.
+- **Product pages:** Guide users to request a configuration or quotation.
+- **About pages:** Establish trust before guiding users to project consultation.
+- **Contact pages:** Reduce form-filling friction and complete the inquiry.
+
+Every CTA must:
+
+- Explain what the user will receive after submitting.
+- Relate directly to the current page topic.
+- Avoid generic wording such as "Contact Us."
+- Avoid exaggerated promises.
+- Avoid repeating identical copy throughout the same page.
+- Prioritize qualified B2B project inquiries rather than clicks alone.
+
+### 8.7 Execution Priority
+
+When rules conflict, apply them in this order:
+
+1. Information authenticity.
+2. Search intent and page uniqueness.
+3. User experience.
+4. Inquiry conversion.
+5. Google SEO.
+6. Language integrity.
+7. Visual design.
+8. Development convenience.
+
+Page-specific value must not be sacrificed for visual uniformity, and natural content must not be sacrificed for keyword density.
+
+### 8.8 Task Completion Report
+
+After completing a task governed by this Principle, report only:
+
+1. Modified files.
+2. The section containing the new provisions.
+3. A summary of page-uniqueness rules.
+4. A summary of the 10-point acceptance conditions.
+5. A summary of complete-delivery rules.
+6. A summary of SEO and inquiry rules.
+7. Whether any other files were modified.
+8. Whether commit or push was performed.
