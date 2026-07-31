@@ -8,11 +8,11 @@ const copy = {
   en: {
     title: "Rental Lighting Applications",
     subtitle:
-      "Reliable mobile lighting equipment designed for rental companies, temporary projects and short-term lighting requirements, supporting fast deployment and flexible operation.",
+      "Mobile lighting equipment for rental companies, temporary projects and short-term lighting requirements, with deployment and operating needs that vary by site.",
     cta: "Request Your Rental Lighting Recommendation",
     imageAlt:
-      "Mobile light tower providing temporary lighting at a nighttime work site",
-    applicationsTitle: "Rental Lighting Applications",
+      "Mobile light tower fleet prepared for rental deployment at a construction site",
+    applicationsTitle: "Rental Lighting Use Cases",
     applications: [
       {
         title: "Construction Equipment Rental",
@@ -55,15 +55,57 @@ const copy = {
       {
         title: "Low Maintenance",
         description:
-          "Reliable equipment reduces maintenance requirements during rental operations.",
+          "Rental operators should evaluate inspection, service and parts requirements across different assignments.",
       },
     ],
+    procurementTitle: "Rental Fleet Procurement Considerations",
+    procurementConsiderations: [
+      {
+        title: "Fleet Utilization",
+        description:
+          "Rental companies should compare expected job types, turnaround time and idle periods so fleet managers can plan which units need to be ready for the next assignment.",
+      },
+      {
+        title: "Fuel Efficiency",
+        description:
+          "Buyers should evaluate fuel use under the expected load, operating hours and site conditions to support refueling plans and equipment scheduling.",
+      },
+      {
+        title: "Maintenance Access",
+        description:
+          "Access to inspection points, service tasks, technicians and suitable tools affects maintenance planning and how quickly a unit can return to the rental fleet.",
+      },
+      {
+        title: "Common Spare Parts",
+        description:
+          "Fleet managers should identify commonly required parts for each equipment configuration so stocking, compatibility checks and parts allocation can be managed clearly.",
+      },
+      {
+        title: "Transport Dimensions",
+        description:
+          "Buyers should compare stowed dimensions, equipment weight and towing requirements against available transport capacity and typical deployment sites.",
+      },
+      {
+        title: "Downtime Risk",
+        description:
+          "Rental fleets may need to evaluate how an unavailable unit would affect customer commitments, replacement-equipment planning and access to onsite service.",
+      },
+      {
+        title: "Configuration Consistency",
+        description:
+          "Consistent controls, components and documentation across a batch can simplify operator handover, training and spare-parts planning while still reflecting project requirements.",
+      },
+    ],
+    procurementResourceLabel: "Calculate Light Tower Total Cost of Ownership",
+    relatedBuyingGuidesTitle: "Related Buying Guides",
     productsTitle: "Recommended Mobile Lighting Products for Rental",
     suitableLabel: "Suitable for:",
     products: [
       {
         slug: "lf955",
         title: "LF955 Diesel Mobile Light Tower",
+        positioning:
+          "Designed for rental projects with longer operating hours and established fuel supply conditions.",
         applications: [
           "Long-term rental projects",
           "Large construction sites",
@@ -73,6 +115,8 @@ const copy = {
       {
         slug: "lf971",
         title: "LF971 Solar Mobile Light Tower",
+        positioning:
+          "Suitable for remote or long-term rental projects where solar conditions and lower routine maintenance requirements can be evaluated.",
         applications: [
           "Remote rental projects",
           "Long-term deployment",
@@ -81,9 +125,8 @@ const copy = {
       },
     ],
     relatedInformationTitle: "Related Information",
-    relatedProductsTitle: "Related Products",
     relatedSolutionsTitle: "Related Solutions",
-    relatedSolutionLabel: "How to Choose the Right Light Tower",
+    relatedSolutionLabel: "Mobile Light Tower Selection Guide",
     relatedApplicationsTitle: "Related Applications",
     relatedApplications: [
       { slug: "mining-lighting", label: "Mining Lighting" },
@@ -91,15 +134,17 @@ const copy = {
       { slug: "emergency-lighting", label: "Emergency Lighting" },
       { slug: "oil-gas-lighting", label: "Oil & Gas Lighting" },
     ],
+    bottomCtaTitle: "Discuss Your Rental Fleet Requirements",
     ctaDescription:
-      "Share your project type, working environment, operation time and lighting requirements. LFADJ will help you find suitable mobile lighting equipment.",
+      "Share your fleet size, typical applications, operating hours, transport conditions and maintenance requirements. The team will review these project conditions to help evaluate a suitable lighting configuration.",
+    bottomCtaLabel: "Request a Rental Fleet Review",
   },
   zh: {
     title: "租赁照明应用",
     subtitle:
-      "为设备租赁公司、临时项目和短期照明需求提供可靠的移动照明设备，支持快速部署和灵活使用。",
+      "面向设备租赁公司、临时项目和短期照明需求，说明不同现场条件下移动照明设备的部署与运行要求。",
     cta: "获取租赁照明配置建议",
-    imageAlt: "移动照明灯塔为夜间临时作业现场提供照明",
+    imageAlt: "建筑项目现场准备部署的移动照明灯塔租赁车队",
     applicationsTitle: "租赁照明应用场景",
     applications: [
       {
@@ -135,27 +180,69 @@ const copy = {
       },
       {
         title: "低维护需求",
-        description: "可靠设备可以减少租赁运营过程中的维护工作。",
+        description: "租赁运营方应结合不同项目评估设备检查、保养和配件需求。",
       },
     ],
+    procurementTitle: "租赁车队采购关注点",
+    procurementConsiderations: [
+      {
+        title: "设备周转率",
+        description:
+          "租赁公司应结合预计项目类型、回场周转时间和设备闲置情况进行比较，帮助车队管理人员规划下一项租赁任务所需的可用设备。",
+      },
+      {
+        title: "燃油效率",
+        description:
+          "采购方应结合预期负载、运行时间和现场工况评估燃油使用情况，为补给计划和设备调度提供依据。",
+      },
+      {
+        title: "维护便利性",
+        description:
+          "检查位置、保养操作、维修人员和适用工具的可达性会影响维护计划，以及设备完成维护后重新投入车队的效率。",
+      },
+      {
+        title: "常用备件",
+        description:
+          "车队管理人员应按不同设备配置确认常用备件，以便清晰管理库存、兼容性检查和配件分配。",
+      },
+      {
+        title: "运输尺寸",
+        description:
+          "采购方应将设备收起尺寸、重量和拖运要求，与现有运输能力及常见部署场地进行比较。",
+      },
+      {
+        title: "停机风险",
+        description:
+          "租赁车队需要评估设备无法使用时对客户履约、替代设备安排和现场维修可达性的影响。",
+      },
+      {
+        title: "批量设备配置一致性",
+        description:
+          "在满足项目要求的前提下，批量设备采用一致的控制方式、部件和文件，有助于简化操作交接、培训和备件规划。",
+      },
+    ],
+    procurementResourceLabel: "了解移动照明灯塔总拥有成本",
+    relatedBuyingGuidesTitle: "相关采购指南",
     productsTitle: "适用于租赁的移动照明产品",
     suitableLabel: "适用于：",
     products: [
       {
         slug: "lf955",
         title: "LF955 柴油移动照明灯塔",
+        positioning: "适合运行时间较长、燃油补给条件明确的租赁项目。",
         applications: ["长期租赁项目", "大型建筑工地", "连续运行需求"],
       },
       {
         slug: "lf971",
         title: "LF971 太阳能移动照明灯塔",
+        positioning:
+          "适合偏远或长期租赁项目，并需结合当地太阳能条件和维护要求评估配置。",
         applications: ["偏远地区租赁项目", "长期部署", "低维护需求"],
       },
     ],
     relatedInformationTitle: "相关信息",
-    relatedProductsTitle: "相关产品",
     relatedSolutionsTitle: "相关解决方案",
-    relatedSolutionLabel: "如何选择合适的移动照明灯塔",
+    relatedSolutionLabel: "移动照明灯塔选型指南",
     relatedApplicationsTitle: "相关应用",
     relatedApplications: [
       { slug: "mining-lighting", label: "矿山照明" },
@@ -163,8 +250,10 @@ const copy = {
       { slug: "emergency-lighting", label: "应急照明" },
       { slug: "oil-gas-lighting", label: "油气行业照明" },
     ],
+    bottomCtaTitle: "沟通您的租赁车队需求",
     ctaDescription:
-      "请提供您的项目类型、工作环境、运行时间和照明需求，LFADJ 将帮助您匹配合适的移动照明设备。",
+      "请提供车队规模、使用场景、运行时间、运输条件和维护要求，团队将结合这些项目条件评估合适的照明配置。",
+    bottomCtaLabel: "获取租赁车队配置评估",
   },
 } as const;
 
@@ -191,7 +280,7 @@ export function generateMetadata({
     : "Rental Lighting Applications | Mobile Lighting Equipment | LFADJ";
   const description = copy[lang].subtitle;
   const image =
-    "https://lfadj.com/images/hero/construction-mobile-light-tower.webp";
+    "https://lfadj.com/images/applications/rental-lighting/rental-lighting-fleet-hero.png";
 
   return {
     title,
@@ -241,20 +330,22 @@ export default function RentalLightingPage({
 
   return (
     <main className="bg-slate-950">
-      <section className="relative isolate flex min-h-[680px] items-center overflow-hidden px-6 py-24 sm:min-h-[720px] sm:px-8 lg:px-10">
-        <Image
-          src="/images/hero/construction-mobile-light-tower.webp"
-          alt={content.imageAlt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/10" />
+      <section className="relative isolate flex min-h-[600px] items-center overflow-hidden px-6 py-20 sm:min-h-[720px] sm:px-8 sm:py-24 lg:px-10">
+        <div className="absolute bottom-5 right-[-8%] top-[29%] w-[170%] opacity-70 sm:inset-y-8 sm:right-[-4%] sm:w-[115%] sm:opacity-80 lg:inset-y-12 lg:right-6 lg:w-[64%] lg:opacity-100">
+          <Image
+            src="/images/applications/rental-lighting/rental-lighting-fleet-hero.png"
+            alt={content.imageAlt}
+            fill
+            priority
+            sizes="(min-width: 1024px) 64vw, (min-width: 640px) 115vw, 170vw"
+            className="object-contain object-right"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/15 sm:via-slate-950/75 sm:to-slate-950/5 lg:via-slate-950/65 lg:to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-slate-950/20" />
 
         <div className="relative mx-auto w-full max-w-[1280px]">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl lg:max-w-[48%]">
             <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
               {content.title}
             </h1>
@@ -262,12 +353,45 @@ export default function RentalLightingPage({
               {content.subtitle}
             </p>
             <Link
-              href={`/${locale}/contact/request-a-quote`}
+              href="#rental-fleet-review"
               className="mt-9 inline-flex min-h-12 items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {content.cta}
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-slate-200 bg-white px-6 py-16 text-slate-950 sm:px-8 sm:py-20 lg:px-10">
+        <div className="mx-auto max-w-[1280px]">
+          <h2 className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
+            {content.procurementTitle}
+          </h2>
+
+          <ol className="mt-10 grid gap-x-12 md:grid-cols-2">
+            {content.procurementConsiderations.map((consideration, index) => (
+              <li
+                key={consideration.title}
+                className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4 border-t border-slate-200 py-5"
+              >
+                <span
+                  aria-hidden="true"
+                  className="font-mono text-sm font-bold leading-7 text-blue-700"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold tracking-tight sm:text-xl">
+                    {consideration.title}
+                  </h3>
+                  <p className="mt-2 text-base leading-7 text-slate-600">
+                    {consideration.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
         </div>
       </section>
 
@@ -302,9 +426,9 @@ export default function RentalLightingPage({
         </div>
       </section>
 
-      <section className="bg-slate-100 px-6 py-20 text-slate-950 sm:px-8 sm:py-24 lg:px-10">
-        <div className="mx-auto grid max-w-[1280px] gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
-          <h2 className="max-w-xl text-3xl font-bold tracking-tight sm:text-4xl">
+      <section className="bg-slate-100 px-6 py-20 text-slate-950 sm:px-8 sm:py-24 lg:px-10 lg:py-16">
+        <div className="mx-auto grid max-w-[1280px] gap-12 lg:grid-cols-[minmax(0,0.52fr)_minmax(0,1fr)] lg:gap-16">
+          <h2 className="max-w-xl text-3xl font-bold tracking-tight sm:text-4xl lg:pt-6">
             {content.requirementsTitle}
           </h2>
 
@@ -312,7 +436,7 @@ export default function RentalLightingPage({
             {content.requirements.map((requirement, index) => (
               <article
                 key={requirement.title}
-                className="grid gap-3 border-b border-slate-300 py-7 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-5"
+                className="grid gap-3 border-b border-slate-300 py-7 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-5 lg:py-5"
               >
                 <p className="text-sm font-bold tabular-nums text-blue-700">
                   {String(index + 1).padStart(2, "0")}
@@ -354,7 +478,10 @@ export default function RentalLightingPage({
                 >
                   {product.title}
                 </Link>
-                <p className="mt-7 text-sm font-bold uppercase tracking-[0.16em] text-slate-500">
+                <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
+                  {product.positioning}
+                </p>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[0.16em] text-slate-500">
                   {content.suitableLabel}
                 </p>
                 <ul className="mt-4 space-y-3">
@@ -383,33 +510,31 @@ export default function RentalLightingPage({
             <div className="mt-8 grid border-y border-slate-200 lg:grid-cols-3">
               <div className="border-b border-slate-200 py-7 lg:border-b-0 lg:border-r lg:pr-8">
                 <h4 className="text-base font-bold text-slate-950">
-                  {content.relatedProductsTitle}
-                </h4>
-                <ul className="mt-5 space-y-3">
-                  {content.products.map((product) => (
-                    <li key={product.slug}>
-                      <Link
-                        href={`/${locale}/products/${product.slug}`}
-                        className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
-                      >
-                        {product.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="border-b border-slate-200 py-7 lg:border-b-0 lg:border-r lg:px-8">
-                <h4 className="text-base font-bold text-slate-950">
                   {content.relatedSolutionsTitle}
                 </h4>
                 <ul className="mt-5">
                   <li>
                     <Link
-                      href={`/${locale}/solutions/how-to-choose-the-right-light-tower`}
+                      href={`/${locale}/resources/selection-guides`}
                       className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
                     >
                       {content.relatedSolutionLabel}
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="border-b border-slate-200 py-7 lg:border-b-0 lg:border-r lg:px-8">
+                <h4 className="text-base font-bold text-slate-950">
+                  {content.relatedBuyingGuidesTitle}
+                </h4>
+                <ul className="mt-5">
+                  <li>
+                    <Link
+                      href={`/${locale}/resources/light-tower-total-cost-of-ownership`}
+                      className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
+                    >
+                      {content.procurementResourceLabel}
                     </Link>
                   </li>
                 </ul>
@@ -421,13 +546,7 @@ export default function RentalLightingPage({
                 </h4>
                 <ul className="mt-5 space-y-3">
                   {content.relatedApplications.map((application) => {
-                    const href =
-                      application.slug === "mining-lighting" ||
-                      application.slug === "construction-lighting"
-                        ? `/${locale}/applications/${application.slug}`
-                        : application.slug === "oil-gas-lighting"
-                          ? `/${locale}/applications`
-                          : `/applications/${application.slug}`;
+                    const href = `/${locale}/applications/${application.slug}`;
 
                     return (
                       <li key={application.slug}>
@@ -445,10 +564,13 @@ export default function RentalLightingPage({
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col items-start justify-between gap-6 bg-slate-950 px-6 py-8 sm:px-8 lg:flex-row lg:items-center">
+          <div
+            id="rental-fleet-review"
+            className="mt-12 flex scroll-mt-24 flex-col items-start justify-between gap-6 bg-slate-950 px-6 py-8 sm:px-8 lg:flex-row lg:items-center"
+          >
             <div className="max-w-2xl">
               <h3 className="text-xl font-bold leading-8 text-white sm:text-2xl">
-                {content.cta}
+                {content.bottomCtaTitle}
               </h3>
               <p className="mt-3 text-base leading-7 text-slate-300">
                 {content.ctaDescription}
@@ -458,7 +580,7 @@ export default function RentalLightingPage({
               href={`/${locale}/contact/request-a-quote`}
               className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
-              {content.cta}
+              {content.bottomCtaLabel}
             </Link>
           </div>
         </div>
