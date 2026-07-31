@@ -3,86 +3,119 @@ import Image from "next/image";
 import Link from "next/link";
 
 const processSteps = [
-  "Project Requirement",
-  "Product Configuration",
-  "Manufacturing Coordination",
-  "Quality Inspection",
-  "Delivery",
+  {
+    title: "Project Requirements",
+    description:
+      "We assess site conditions, operating hours, lighting coverage, power availability, and any supporting equipment needs.",
+  },
+  {
+    title: "Configuration Proposal",
+    description:
+      "We define a diesel or solar solution and specify power, lighting, mast, trailer, and control configurations.",
+  },
+  {
+    title: "Prototype or Sample",
+    description:
+      "Where required for suitable custom projects, a prototype or sample can validate the proposed configuration.",
+  },
+  {
+    title: "Small-Batch Validation",
+    description:
+      "For suitable projects, a small batch can be coordinated to verify assembly, performance, and configuration suitability.",
+  },
+  {
+    title: "Production and Delivery",
+    description:
+      "After approval, production proceeds with final inspection, packing, and export delivery preparation based on confirmed requirements.",
+  },
 ];
 
 const qualityChecks = [
-  "Material Inspection",
-  "Structural Quality Check",
-  "Electrical Testing",
-  "Final Inspection Before Shipment",
+  {
+    title: "Incoming Component Requirements",
+    description: "Component specifications and condition are checked against the confirmed supply requirements.",
+  },
+  {
+    title: "Assembly and Functional Checks",
+    description: "Assembly and core functions are checked against the approved configuration.",
+  },
+  {
+    title: "Electrical System Checks",
+    description: "Electrical connections and system functions are checked against the agreed requirements.",
+  },
+  {
+    title: "Final Configuration Verification",
+    description: "The finished configuration is verified against the confirmed project specification.",
+  },
+  {
+    title: "Packing and Shipment Preparation",
+    description: "Packing and shipment preparation follow the agreed delivery and protection requirements.",
+  },
 ];
 
-const configurationCategories = [
+const coreCapabilities = [
   {
-    title: "Power Options",
-    items: ["Kubota", "Yanmar", "Perkins", "Alternative engine options"],
+    title: "Project Configuration",
+    description:
+      "Based on site conditions, runtime, and lighting coverage, we recommend diesel or solar solutions and key power, lighting, mast, trailer, and control configurations.",
   },
   {
-    title: "Lighting Configuration",
-    items: ["LED output options", "Beam configuration", "Lighting coverage"],
+    title: "Quality Requirement Management",
+    description:
+      "Confirmed technical, functional, and inspection requirements are applied throughout production, inspection, and final verification.",
   },
   {
-    title: "Mast System",
-    items: ["Manual mast", "Electric mast"],
+    title: "OEM / ODM Support",
+    description:
+      "For suitable projects, we support configuration adjustments, prototype validation, and small-batch verification.",
+  },
+  {
+    title: "Production & Delivery Support",
+    description:
+      "Production, final inspection, packing, and export delivery preparation proceed according to the confirmed project requirements.",
   },
 ];
-
-const qualityStandards = ["ISO9001", "ISO14001", "ISO45001"];
 
 const experienceVisuals = [
   {
-    title: "Manufacturing Process",
-    subject: "Component processing and welding operations for mobile lighting equipment.",
+    title: "Mobile Light Tower Production",
+    subject:
+      "Production proceeds according to the confirmed mobile lighting configuration and technical requirements.",
     imageSrc: "/images/about/manufacturing/mobile-light-tower-manufacturing-process.webp",
-    imageAlt: "Mobile light tower manufacturing process including welding",
+    imageAlt: "Mobile light tower production process",
   },
   {
     title: "Quality Inspection",
-    subject: "Electrical inspection and system testing before delivery.",
+    subject: "Configuration and system checks completed against the agreed quality requirements.",
     imageSrc: "/images/about/manufacturing/mobile-light-tower-quality-inspection.webp",
-    imageAlt: "Mobile light tower quality inspection and electrical testing",
+    imageAlt: "Quality inspection of a mobile light tower",
   },
   {
-    title: "Finished Product Preparation",
-    subject: "Finished mobile lighting equipment prepared for inspection and delivery.",
+    title: "Finished Product & Shipment Preparation",
+    subject: "Completed equipment prepared for final verification, packing, and shipment.",
     imageSrc: "/images/about/manufacturing/mobile-light-tower-finished-product-preparation.webp",
-    imageAlt: "Mobile light tower finished product preparation for delivery",
+    imageAlt: "Finished mobile light tower prepared for shipment",
   },
-];
-
-const manufacturingExperience = [
-  "Structural fabrication",
-  "Component assembly",
-  "Electrical testing",
-  "Final inspection",
-  "Shipment preparation",
-];
-
-const reasonsToChoose = [
-  "Project-Based Lighting Solutions",
-  "Reliable Supply Chain Management",
-  "Flexible Product Configuration",
-  "Quality-Controlled Delivery",
 ];
 
 const relatedLinks = [
-  { href: "/en/applications/mining-lighting", label: "Mining Lighting" },
-  { href: "/en/applications/construction-lighting", label: "Construction Lighting" },
-  { href: "/en/applications/oil-gas-lighting", label: "Oil and Gas Lighting" },
-  { href: "/en/applications/rental-lighting", label: "Rental Lighting" },
-  { href: "/en/applications/emergency-lighting", label: "Emergency Lighting" },
-  { href: "/en/resources/what-is-mobile-light-tower", label: "What Is a Mobile Light Tower?" },
+  { href: "/en/products", label: "Products" },
+  { href: "/en/solutions", label: "Solutions" },
+  { href: "/en/resources", label: "Resources" },
+  { href: "/en/contact/request-a-quote", label: "Request a Quote" },
 ];
 
 export const metadata: Metadata = {
-  title: "Mobile Light Tower Manufacturing & Quality Control | LFADJ",
+  title: "Mobile Light Tower Project Configuration & Quality Management | LFADJ",
   description:
-    "Learn how LFADJ supports reliable mobile lighting solutions through professional manufacturing partners, project-based configuration, and strict quality control.",
+    "Explore LFADJ project configuration, quality requirement management, OEM/ODM support, production follow-up, and export delivery preparation for mobile light towers.",
+  alternates: {
+    canonical: "https://lfadj.com/en/about/manufacturing",
+    languages: {
+      en: "/en/about/manufacturing",
+      "zh-CN": "/zh/about/manufacturing",
+    },
+  },
 };
 
 export default function EnglishManufacturingPage() {
@@ -100,15 +133,14 @@ export default function EnglishManufacturingPage() {
         <div className="mx-auto w-full max-w-[1200px]">
           <div className="max-w-[600px]">
             <h1 className="max-w-[650px] text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[40px] xl:text-[44px]">
-              <span className="block">Mobile Light Tower Manufacturing</span>
-              <span className="block">&amp; Quality Management</span>
+              Mobile Light Tower Project Configuration &amp; Quality Management
             </h1>
             <p className="mt-5 text-base leading-7 text-slate-100 sm:mt-6 sm:text-lg sm:leading-8 lg:text-xl">
-              LFADJ provides reliable mobile lighting solutions through professional manufacturing partners,
-              project-based configuration, and strict quality control.
+              LFADJ provides mobile lighting configuration support based on project conditions, with production
+              follow-up, quality inspection, and export delivery preparation aligned to confirmed requirements.
             </p>
             <Link
-              href="/en/contact"
+              href="/en/contact/request-a-quote"
               className="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-amber-500 px-6 py-3 text-center text-base font-bold text-slate-950 transition hover:bg-amber-400 sm:mt-8"
             >
               Get Your Project Lighting Recommendation
@@ -120,59 +152,52 @@ export default function EnglishManufacturingPage() {
       <section className="px-6 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1200px]">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Manufacturing Approach &amp; Quality Control
+            Project Configuration &amp; Delivery Support
           </h2>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-            LFADJ translates project requirements into product configurations, coordinates manufacturing with
-            professional partners, and manages quality inspections before delivery.
-          </p>
-          <p className="mt-4 max-w-3xl leading-7 text-slate-600">
-            LFADJ works with qualified manufacturing partners specializing in mobile lighting equipment production. We
-            focus on project requirements, product configuration, quality management, and delivery coordination to
-            provide reliable lighting solutions for different applications.
+            LFADJ first evaluates the project application, site conditions, expected runtime, lighting coverage, and
+            auxiliary equipment requirements. Based on these factors, we recommend a suitable mobile lighting
+            configuration. Once confirmed, production, inspection, and delivery preparation are carried out according
+            to the agreed technical and quality requirements.
           </p>
 
-          <div className="mt-10 flex flex-col gap-3 lg:flex-row lg:items-stretch">
-            {processSteps.map((step, index) => (
-              <div key={step} className="flex flex-col items-center gap-3 lg:min-w-0 lg:flex-1 lg:flex-row">
-                <article className="flex min-h-24 w-full items-center justify-center rounded-xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm">
-                  <h3 className="font-bold text-slate-950">{step}</h3>
-                </article>
-                {index < processSteps.length - 1 && (
-                  <>
-                    <span aria-hidden="true" className="font-bold text-amber-600 lg:hidden">
-                      ↓
-                    </span>
-                    <span aria-hidden="true" className="hidden font-bold text-amber-600 lg:inline">
-                      →
-                    </span>
-                  </>
-                )}
-              </div>
-            ))}
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold tracking-tight text-slate-950">OEM / ODM Project Process</h3>
+            <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+              Prototype development and small-batch validation are coordinated where required for suitable custom
+              projects.
+            </p>
           </div>
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {qualityChecks.map((check) => (
-              <article key={check} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-bold text-slate-950">{check}</h3>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+            {processSteps.map((step, index) => (
+              <article key={step.title} className="rounded-xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
+                <p className="text-sm font-bold text-amber-700">{String(index + 1).padStart(2, "0")}</p>
+                <h4 className="mt-3 font-bold text-slate-950">{step.title}</h4>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{step.description}</p>
               </article>
             ))}
           </div>
 
           <div className="mt-12">
-            <h3 className="text-2xl font-bold tracking-tight text-slate-950">Manufacturing Experience</h3>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              {manufacturingExperience.map((item) => (
-                <li
-                  key={item}
-                  className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 grid gap-5 md:grid-cols-3">
+            <h3 className="text-2xl font-bold tracking-tight text-slate-950">
+              Production Process &amp; Quality Control
+            </h3>
+            <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+              From component requirements and functional checks to final configuration and packing preparation, each
+              stage is reviewed against the confirmed project specifications and quality requirements.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+            {qualityChecks.map((check) => (
+              <article key={check.title} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <h4 className="font-bold text-slate-950">{check.title}</h4>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{check.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <div className="grid gap-5 md:grid-cols-3">
               {experienceVisuals.map((visual) => (
                 <article key={visual.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
                   <div className="relative aspect-[4/3] bg-slate-100">
@@ -203,82 +228,23 @@ export default function EnglishManufacturingPage() {
 
       <section className="bg-slate-50 px-6 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Project Configuration Capability</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Project Configuration &amp; Delivery Capabilities</h2>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-            Configuration is defined around site conditions, operating needs, and the selected product platform.
-            Available options vary by model and project.
+            Four connected capabilities support configuration decisions, quality follow-up, suitable custom work, and
+            delivery preparation.
           </p>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {configurationCategories.map((category) => (
-              <article key={category.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-slate-950">{category.title}</h3>
-                <ul className="mt-5 space-y-3 text-slate-600">
-                  {category.items.map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span aria-hidden="true" className="font-bold text-amber-600">
-                        •
-                      </span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-
-            <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-950">Quality Standards</h3>
-              <ul className="mt-5 space-y-3">
-                {qualityStandards.map((standard) => (
-                  <li key={standard} className="flex gap-3 text-slate-600">
-                    <span aria-hidden="true" className="font-bold text-amber-600">
-                      •
-                    </span>
-                    <span>{standard}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 text-sm leading-6 text-slate-600">
-                LFADJ follows internationally recognized quality management practices and works with qualified
-                manufacturing partners to ensure reliable product delivery.
-              </p>
-              <p className="mt-3 text-sm leading-6 text-slate-500">
-                The standards listed are reference frameworks; applicable certification documents and issuing entities
-                are reviewed for each project and supply scope.
-              </p>
-            </article>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/en/products/lf955"
-              className="rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:border-amber-500"
-            >
-              Explore LF955 Diesel Mobile Light Tower
-            </Link>
-            <Link
-              href="/en/products/lf971"
-              className="rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:border-amber-500"
-            >
-              Explore LF971 Solar Mobile Light Tower
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-16 sm:px-8 lg:py-20">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Why Choose LFADJ</h2>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {reasonsToChoose.map((reason) => (
-              <article key={reason} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-bold text-slate-950">{reason}</h3>
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {coreCapabilities.map((capability) => (
+              <article key={capability.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                <h3 className="text-lg font-bold text-slate-950">{capability.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{capability.description}</p>
               </article>
             ))}
           </div>
 
-          <div className="mt-12 border-t border-slate-200 pt-8">
-            <h3 className="text-xl font-bold text-slate-950">Related Applications and Resources</h3>
+          <div className="mt-10 border-t border-slate-200 pt-8">
+            <h3 className="text-xl font-bold text-slate-950">Explore Products, Solutions, and Project Support</h3>
             <div className="mt-5 flex flex-wrap gap-3">
               {relatedLinks.map((item) => (
                 <Link
@@ -297,16 +263,17 @@ export default function EnglishManufacturingPage() {
       <section className="bg-slate-950 px-6 py-16 text-white sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1200px] text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Need a customized mobile lighting solution?
+            Need a Mobile Lighting Configuration for Your Project?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-300">
-            Tell us about your project conditions and lighting requirements.
+            Share your operating conditions, expected runtime, lighting area, and configuration requirements. We will
+            review the proposed product configuration, manufacturing requirements, and delivery plan.
           </p>
           <Link
-            href="/en/contact"
+            href="/en/contact/request-a-quote"
             className="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-amber-500 px-6 py-3 text-base font-bold text-slate-950 transition hover:bg-amber-400"
           >
-            Get Your Project Lighting Recommendation
+            Request a Project Quote
           </Link>
         </div>
       </section>
