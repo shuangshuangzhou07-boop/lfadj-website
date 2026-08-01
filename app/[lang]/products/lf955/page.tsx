@@ -42,7 +42,7 @@ function LF955Hero({ zh }: { zh: boolean }) {
 
   return (
     <section className="border-b border-slate-200 bg-slate-50 text-slate-950">
-      <div className="mx-auto max-w-[1440px] px-6 py-14 sm:px-8 lg:px-12 lg:py-20">
+      <div className="relative mx-auto max-w-[1120px] px-6 py-14 sm:px-8 lg:px-12 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
           <div className="max-w-2xl">
             <h1 className="text-4xl font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-[56px]">
@@ -129,8 +129,8 @@ function LF955Overview({ zh }: { zh: boolean }) {
 
   return (
     <section aria-labelledby="lf955-overview-title" className="bg-white py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-[1200px] px-6 sm:px-8 lg:px-12">
-        <div className="max-w-3xl">
+      <div className="mx-auto max-w-[800px] px-6 sm:px-8 lg:px-12">
+        <div>
           <h2
             id="lf955-overview-title"
             className="text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl"
@@ -213,7 +213,7 @@ function LF955ProductResources({ zh }: { zh: boolean }) {
 
   return (
     <section aria-labelledby="lf955-resources-title" className="border-t border-slate-200 bg-slate-50 py-16 sm:py-20">
-      <div className="mx-auto max-w-[1200px] px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-[800px] px-6 sm:px-8 lg:px-12">
         <h2 id="lf955-resources-title" className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
           {zh ? "相关信息" : "Related Information"}
         </h2>
