@@ -242,6 +242,7 @@ export function SiteNav(_props: {
   quoteHref?: string;
   mobileMenuLabel?: string;
 } = {}) {
+  void _props;
   const pathname = usePathname();
   const locale: Locale = pathname === "/zh" || pathname.startsWith("/zh/") ? "zh" : "en";
   const navigation = buildNavigation(locale);
@@ -283,7 +284,10 @@ export function SiteNav(_props: {
   const openDesktopMenu = (menu: CascadingSection, delay = 250) => {
     clearDesktopTimers();
     if (desktopMenuOpen === menu) return;
-    desktopOpenTimer.current = setTimeout(() => setDesktopMenuOpen(menu), delay);
+    desktopOpenTimer.current = setTimeout(
+      () => setDesktopMenuOpen(menu),
+      desktopMenuOpen ? 0 : delay,
+    );
   };
 
   const closeDesktopMenu = (delay = 200) => {
@@ -468,21 +472,28 @@ export function SiteNav(_props: {
       <div className="mx-auto flex min-h-20 max-w-[1280px] items-center justify-between gap-4 px-6">
         <Link href={`/${locale}`} className="text-2xl font-bold tracking-tight text-black">LFADJ</Link>
 
-        <nav aria-label={locale === "zh" ? "主导航" : "Primary navigation"} className="hidden lg:block">
-          <ul className="flex items-center gap-2 text-sm font-semibold text-gray-700 xl:gap-3">
-            {navigation.map((item) => (
-              <li
-                key={item.href}
-                className="relative"
-                onMouseEnter={() => {
-                  if (item.href.endsWith("/products")) openDesktopMenu("products");
-                  else if (item.href.endsWith("/applications")) openDesktopMenu("applications");
-                  else if (item.href.endsWith("/solutions")) openDesktopMenu("solutions");
-                  else if (item.href.endsWith("/resources")) openDesktopMenu("resources");
-                  else if (item.href.endsWith("/about")) openDesktopMenu("about");
-                  else closeDesktopMenu();
-                }}
-              >
+        <nav aria-label={locale === "zh" ? "主导航" : "Primary navigation"} className="hidden self-stretch lg:block">
+          <ul className="flex h-full items-center gap-2 text-sm font-semibold text-gray-700 xl:gap-3">
+            {navigation.map((item) => {
+              const menuSection: CascadingSection | null = item.href.endsWith("/products")
+                ? "products"
+                : item.href.endsWith("/applications")
+                  ? "applications"
+                  : item.href.endsWith("/solutions")
+                    ? "solutions"
+                    : item.href.endsWith("/resources")
+                      ? "resources"
+                      : item.href.endsWith("/about")
+                        ? "about"
+                        : null;
+              const menuIsOpen = desktopMenuOpen === menuSection;
+
+              return (
+                <li
+                  key={item.href}
+                  className="relative flex h-full items-center"
+                  onMouseEnter={() => menuSection ? openDesktopMenu(menuSection) : closeDesktopMenu()}
+                >
                 <Link
                   ref={item.href.endsWith("/products")
                     ? productTriggerRef
@@ -521,8 +532,68 @@ export function SiteNav(_props: {
                 >
                   {item.label}
                 </Link>
-              </li>
-            ))}
+
+                {menuSection && menuIsOpen ? (
+                  <div
+                    className={`absolute top-full z-[70] hidden max-h-[calc(100dvh-7rem)] w-[480px] max-w-[calc(100vw-48px)] grid-cols-[45%_minmax(0,1fr)] overflow-x-clip overflow-y-auto overscroll-contain rounded-md border border-gray-200 bg-white shadow-xl lg:grid ${menuSection === "about" ? "right-0" : "left-0"}`}
+                    aria-hidden={false}
+                  >
+                    <div className="min-w-0 max-w-full rounded-l-md border-r border-gray-200 bg-gray-50 p-1.5">
+                      <ul className="grid min-w-0 max-w-full gap-1">
+                        {desktopNavigation.map((navigationItem, index) => (
+                          <li key={navigationItem.href} className="min-w-0 max-w-full">
+                            <Link
+                              href={navigationItem.href}
+                              onMouseEnter={() => {
+                                if (desktopMenuOpen === "products") setActiveProduct(index);
+                                else if (desktopMenuOpen === "applications") setActiveApplication(index);
+                                else if (desktopMenuOpen === "solutions") setActiveSolution(index);
+                                else if (desktopMenuOpen === "about") setActiveAbout(index);
+                                else setActiveResource(index);
+                              }}
+                              onFocus={() => {
+                                if (desktopMenuOpen === "products") setActiveProduct(index);
+                                else if (desktopMenuOpen === "applications") setActiveApplication(index);
+                                else if (desktopMenuOpen === "solutions") setActiveSolution(index);
+                                else if (desktopMenuOpen === "about") setActiveAbout(index);
+                                else setActiveResource(index);
+                              }}
+                              className={`relative flex min-h-10 min-w-0 max-w-full items-center justify-between gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeDesktopIndex === index ? "bg-blue-50 text-blue-700 before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:rounded-full before:bg-blue-600" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
+                            >
+                              <span className="min-w-0 break-words">{navigationItem.label}</span>
+                              <span aria-hidden="true" className={`shrink-0 text-blue-700 transition-transform duration-200 ${activeDesktopIndex === index ? "translate-x-1" : ""}`}>&gt;</span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="min-w-0 max-w-full rounded-r-md bg-white p-1.5">
+                      <ul className="grid w-full min-w-0 max-w-full">
+                        {desktopNavigation[activeDesktopIndex].pages.map((page) => (
+                          <li key={page.label} className="min-w-0 max-w-full border-b border-slate-100 last:border-b-0">
+                            {page.href ? (
+                              <Link href={page.href} className="group grid min-h-10 w-full min-w-0 max-w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-x-1.5 px-2 py-1.5 text-xs text-slate-700 transition-colors hover:bg-blue-50/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600">
+                                <span className="min-w-0 break-words font-medium transition-colors group-hover:text-blue-700">
+                                  {page.label}
+                                </span>
+                              </Link>
+                            ) : (
+                              <div className="grid min-h-10 w-full min-w-0 max-w-full cursor-default grid-cols-[minmax(0,1fr)_auto] items-center gap-x-1.5 px-2 py-1.5 text-xs text-slate-600">
+                                <span className="min-w-0 break-words font-medium">{page.label}</span>
+                                <span className="whitespace-nowrap rounded-full border border-slate-200 bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium leading-none text-slate-500">
+                                  {copy[locale].comingSoon}
+                                </span>
+                              </div>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ) : null}
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -531,69 +602,6 @@ export function SiteNav(_props: {
           <Link tabIndex={desktopMenuOpen ? -1 : undefined} href={`/${locale}/contact/request-a-quote`} className="hidden rounded-lg bg-blue-600 px-4 py-3 text-sm font-bold text-white hover:bg-blue-700 xl:inline-flex">{copy[locale].quote}</Link>
           <button type="button" aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(true)} className="inline-flex h-10 items-center rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700 lg:hidden">{copy[locale].menu}</button>
         </div>
-      </div>
-
-      <div
-        className={`absolute left-0 right-0 top-full z-[70] hidden border-t border-gray-200 bg-white shadow-xl transition duration-200 lg:block ${desktopMenuOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
-        aria-hidden={!desktopMenuOpen}
-        inert={!desktopMenuOpen}
-        onMouseEnter={() => {
-          if (desktopMenuOpen) openDesktopMenu(desktopMenuOpen, 0);
-        }}
-      >
-        <div className="mx-auto box-border grid max-h-[calc(100dvh-7rem)] w-[480px] max-w-[calc(100vw-48px)] grid-cols-[45%_minmax(0,1fr)] overflow-x-clip overflow-y-auto overscroll-contain rounded-md border border-gray-200 bg-white shadow-lg">
-            <div className="min-w-0 max-w-full rounded-l-md border-r border-gray-200 bg-gray-50 p-1.5">
-            <ul className="grid min-w-0 max-w-full gap-1">
-              {desktopNavigation.map((item, index) => (
-                <li key={item.href} className="min-w-0 max-w-full">
-                  <Link
-                    href={item.href}
-                    onMouseEnter={() => {
-                      if (desktopMenuOpen === "products") setActiveProduct(index);
-                      else if (desktopMenuOpen === "applications") setActiveApplication(index);
-                      else if (desktopMenuOpen === "solutions") setActiveSolution(index);
-                      else if (desktopMenuOpen === "about") setActiveAbout(index);
-                      else setActiveResource(index);
-                    }}
-                    onFocus={() => {
-                      if (desktopMenuOpen === "products") setActiveProduct(index);
-                      else if (desktopMenuOpen === "applications") setActiveApplication(index);
-                      else if (desktopMenuOpen === "solutions") setActiveSolution(index);
-                      else if (desktopMenuOpen === "about") setActiveAbout(index);
-                      else setActiveResource(index);
-                    }}
-                    className={`relative flex min-h-10 min-w-0 max-w-full items-center justify-between gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${activeDesktopIndex === index ? "bg-blue-50 text-blue-700 before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:rounded-full before:bg-blue-600" : "text-gray-700 hover:bg-white hover:text-gray-950"}`}
-                  >
-                    <span className="min-w-0 break-words">{item.label}</span>
-                    <span aria-hidden="true" className={`shrink-0 text-blue-700 transition-transform duration-200 ${activeDesktopIndex === index ? "translate-x-1" : ""}`}>&gt;</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            </div>
-            <div className="min-w-0 max-w-full rounded-r-md bg-white p-1.5">
-              <ul className="grid w-full min-w-0 max-w-full">
-              {desktopNavigation[activeDesktopIndex].pages.map((page) => (
-                <li key={page.label} className="min-w-0 max-w-full border-b border-slate-100 last:border-b-0">
-                  {page.href ? (
-                    <Link href={page.href} className="group grid min-h-10 w-full min-w-0 max-w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-x-1.5 px-2 py-1.5 text-xs text-slate-700 transition-colors hover:bg-blue-50/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600">
-                      <span className="min-w-0 break-words font-medium transition-colors group-hover:text-blue-700">
-                        {page.label}
-                      </span>
-                    </Link>
-                  ) : (
-                    <div className="grid min-h-10 w-full min-w-0 max-w-full cursor-default grid-cols-[minmax(0,1fr)_auto] items-center gap-x-1.5 px-2 py-1.5 text-xs text-slate-600">
-                      <span className="min-w-0 break-words font-medium">{page.label}</span>
-                      <span className="whitespace-nowrap rounded-full border border-slate-200 bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium leading-none text-slate-500">
-                        {copy[locale].comingSoon}
-                      </span>
-                    </div>
-                  )}
-                </li>
-              ))}
-              </ul>
-            </div>
-          </div>
       </div>
 
       {mobileOpen ? (
