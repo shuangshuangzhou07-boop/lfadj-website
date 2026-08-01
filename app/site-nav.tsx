@@ -61,6 +61,13 @@ function buildProductNavigation(locale: Locale): CascadingItem[] {
 
   return [
     {
+      label: zh ? "便携式移动照明灯塔" : "Portable Mobile Light Tower",
+      href: prefix,
+      pages: [
+        { label: zh ? "LF951 手推式移动照明灯塔" : "LF951 Portable Light Tower", href: `${prefix}/lf951` },
+      ],
+    },
+    {
       label: zh ? "柴油移动照明灯塔" : "Diesel Mobile Light Tower",
       href: `${prefix}/diesel-light-towers`,
       pages: [

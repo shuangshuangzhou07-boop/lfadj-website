@@ -8,6 +8,11 @@ export const metadata: Metadata = {
 
 const mobileLightTowers = [
   {
+    model: "LF951",
+    title: "LF951 手推式移动照明灯塔",
+    href: "/zh/products/lf951",
+  },
+  {
     model: "LF955",
     title: "LF955 7.5 米液压柴油移动照明灯塔",
     href: "/zh/products/lf955",
