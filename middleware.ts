@@ -1,7 +1,28 @@
 import { NextResponse, type NextRequest } from "next/server";
 
+const productionOnlyInternalPaths = [
+  "/admin/pricing",
+  "/pdf-catalog-generator",
+  "/quote/result",
+  "/select",
+  "/translate",
+  "/seo-dashboard",
+  "/seo/backlink-strategy",
+] as const;
+
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  if (
+    process.env.NODE_ENV === "production" &&
+    productionOnlyInternalPaths.some(
+      (internalPath) =>
+        pathname === internalPath || pathname.startsWith(`${internalPath}/`),
+    )
+  ) {
+    return new NextResponse(null, { status: 404 });
+  }
+
   const legacyApplicationsPath = pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
 
   if (
@@ -26,5 +47,15 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/en/:path*", "/zh/:path*"],
+  matcher: [
+    "/en/:path*",
+    "/zh/:path*",
+    "/admin/pricing/:path*",
+    "/pdf-catalog-generator/:path*",
+    "/quote/result/:path*",
+    "/select/:path*",
+    "/translate/:path*",
+    "/seo-dashboard/:path*",
+    "/seo/backlink-strategy/:path*",
+  ],
 };
