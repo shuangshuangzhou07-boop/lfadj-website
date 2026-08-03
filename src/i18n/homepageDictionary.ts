@@ -303,7 +303,7 @@ export const homepageDictionary: Record<HomeLanguage, HomeDictionary> = {
       ctaHref: "/en/products",
     },
     selectionGuide: {
-      title: "What Shapes a Mobile Lighting Decision?",
+      title: "What Should You Consider When Choosing the Right Mobile Light Tower?",
       subtitle:
         "A practical direction starts with a few project conditions. The detailed comparison and configuration guidance belongs in our Solutions section.",
       cards: [
@@ -638,7 +638,7 @@ export const homepageDictionary: Record<HomeLanguage, HomeDictionary> = {
       ctaHref: "/zh/products",
     },
     selectionGuide: {
-      title: "哪些条件影响移动照明判断？",
+      title: "选择适合的移动照明灯塔，需要考虑什么？",
       subtitle:
         "实际方向通常从少数关键项目条件开始判断，更完整的比较与配置方法由解决方案页面继续说明。",
       cards: [
