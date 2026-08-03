@@ -4,22 +4,41 @@
 @source "../components/**/*.{ts,tsx}";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-navy-950: #061525;
+  --brand-navy-900: #0a1f33;
+  --brand-navy-800: #102a43;
+  --brand-blue-700: #1d4ed8;
+  --brand-blue-600: #2563eb;
+  --brand-blue-500: #3b82f6;
+  --brand-blue-100: #dbeafe;
+  --brand-blue-50: #eff6ff;
+  --surface-white: #ffffff;
+  --surface-soft: #f6f8fb;
+  --border-soft: #d9e2ec;
+  --text-primary: #081828;
+  --text-secondary: #52657a;
+  --background: var(--surface-white);
+  --foreground: var(--text-primary);
 }
 
 @theme inline {
+  --color-brand-navy-950: var(--brand-navy-950);
+  --color-brand-navy-900: var(--brand-navy-900);
+  --color-brand-navy-800: var(--brand-navy-800);
+  --color-brand-blue-700: var(--brand-blue-700);
+  --color-brand-blue-600: var(--brand-blue-600);
+  --color-brand-blue-500: var(--brand-blue-500);
+  --color-brand-blue-100: var(--brand-blue-100);
+  --color-brand-blue-50: var(--brand-blue-50);
+  --color-surface-white: var(--surface-white);
+  --color-surface-soft: var(--surface-soft);
+  --color-border-soft: var(--border-soft);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {

@@ -245,3 +245,38 @@ After completing a task governed by this Principle, report only:
 6. A summary of SEO and inquiry rules.
 7. Whether any other files were modified.
 8. Whether commit or push was performed.
+
+## Principle 9 — Permanent Brand Color System
+
+LFADJ's permanent website brand system is Navy and Industrial Blue. This palette is a long-term website standard, not a temporary homepage treatment.
+
+### 9.1 Official Palette
+
+| Token | Value | Primary use |
+| --- | --- | --- |
+| Navy 950 | `#061525` | Deepest backgrounds, Footer, and final CTA |
+| Navy 900 | `#0A1F33` | Primary dark sections |
+| Navy 800 | `#102A43` | Dark cards, dark hover states, and secondary dark elements |
+| Blue 700 | `#1D4ED8` | Primary-button hover and strong interaction emphasis |
+| Blue 600 | `#2563EB` | Primary CTA, active states, and key interactions |
+| Blue 500 | `#3B82F6` | Focus rings, restrained emphasis, and small interface details |
+| Blue 100 | `#DBEAFE` | Light active backgrounds and labels |
+| Blue 50 | `#EFF6FF` | Very light brand backgrounds |
+| Surface White | `#FFFFFF` | Primary page and card surfaces |
+| Surface Soft | `#F6F8FB` | Cold, softly differentiated page sections |
+| Border Soft | `#D9E2EC` | Low-contrast cool blue-gray borders |
+| Text Primary | `#081828` | Primary headings and body emphasis |
+| Text Secondary | `#52657A` | Supporting body copy |
+
+### 9.2 Mandatory Usage Rules
+
+1. Navy expresses LFADJ's professional, industrial, reliable, and high-value project positioning and must be used for primary dark brand surfaces.
+2. Industrial Blue is an interaction accent only. It is used for CTA, links, active states, focus states, and limited emphasis; it must not cover pages with large areas of highly saturated blue.
+3. Cold white and soft blue-gray are the standard page, card, and content-layer surfaces. Primary text uses blue-black and supporting text uses blue-gray; pure black is not the default body color.
+4. Green is not an LFADJ brand color. It is allowed only for genuine success states or colors naturally present in authentic product photography.
+5. Yellow, orange, and red are allowed only for warnings, errors, or another explicit semantic state. They must not become competing page accents.
+6. A single page, reference website, or temporary visual preference must not replace or compete with the approved brand system.
+7. All new pages must reuse the shared semantic brand tokens and must not create a separate or approximate color system.
+8. Existing pages must migrate to this system when they are next revised; migration must preserve truthful product-image colors and semantic status colors.
+9. Changing the sitewide primary brand color requires explicit user approval for a new full-site brand upgrade.
+10. Body text, buttons, links, active states, and focus indicators must meet WCAG AA contrast requirements. Links and focus states must not rely on color alone when an additional visible treatment is needed.

@@ -322,3 +322,15 @@ Approved
 Date:
 
 2026-07-21
+
+---
+
+# 6. Brand Color Usage
+
+Homepage colors must follow `Principle 9 — Permanent Brand Color System` in `.ai/CONSTITUTION.md`.
+
+- Use the shared `brand`, `surface`, `border`, and `text` tokens defined by the global design foundation.
+- Navy is the primary industrial brand color; Industrial Blue is reserved for CTA, links, active states, focus states, and limited emphasis.
+- Homepage content areas use cold white and soft blue-gray surfaces. The final CTA uses Navy rather than green or pure black.
+- Green is not a homepage brand color and is allowed only for a genuine success state or colors naturally present in an authentic product image.
+- Do not create homepage-specific replacement colors or introduce a competing accent system.
