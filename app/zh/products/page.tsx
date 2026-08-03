@@ -102,7 +102,7 @@ export default function ChineseProductsPage() {
                 <Link href="#product-range" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-700 px-6 font-bold text-white transition hover:bg-blue-800">
                   浏览产品
                 </Link>
-                <Link href="/zh/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 bg-white px-6 font-bold text-slate-900 transition hover:border-blue-500 hover:text-blue-700">
+                <Link href="/zh/contact" className="inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 bg-white px-6 font-bold text-slate-900 transition hover:border-blue-500 hover:text-blue-700">
                   获取选型建议
                 </Link>
               </div>
@@ -184,7 +184,7 @@ export default function ChineseProductsPage() {
                 ))}
               </ul>
               <div className="mt-8 grid gap-3">
-                <Link href="/zh/contact/request-a-quote" className="inline-flex min-h-14 items-center justify-center rounded-md bg-blue-700 px-6 py-3 text-center text-base font-bold text-white transition hover:bg-blue-800">获取项目照明配置建议</Link>
+                <Link href="/zh/contact" className="inline-flex min-h-14 items-center justify-center rounded-md bg-blue-700 px-6 py-3 text-center text-base font-bold text-white transition hover:bg-blue-800">获取项目照明配置建议</Link>
                 <Link href="/zh/solutions/how-to-choose-the-right-light-tower" className="inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 px-5 py-3 text-center text-sm font-bold text-slate-800 transition hover:border-blue-500 hover:text-blue-700">查看移动照明灯塔选型指南</Link>
               </div>
             </aside>

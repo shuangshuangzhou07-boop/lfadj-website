@@ -577,7 +577,7 @@ export default function RentalLightingPage({
               </p>
             </div>
             <Link
-              href={`/${locale}/contact/request-a-quote`}
+              href={`/${locale}/contact`}
               className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {content.bottomCtaLabel}

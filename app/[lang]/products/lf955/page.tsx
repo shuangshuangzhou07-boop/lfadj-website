@@ -62,7 +62,7 @@ function LF955Hero({ zh }: { zh: boolean }) {
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <Link
-                href={zh ? "/zh/contact/request-a-quote" : "/en/contact/request-a-quote"}
+                href={zh ? "/zh/contact" : "/en/contact"}
                 className="inline-flex min-h-14 items-center justify-center rounded-md bg-amber-500 px-8 text-base font-semibold text-slate-950 shadow-sm transition-colors hover:bg-amber-400"
               >
                 {zh ? "获取报价" : "Request a Quote"}
@@ -270,7 +270,7 @@ function LF955ProductResources({ zh }: { zh: boolean }) {
             {zh ? "需要选择适合您项目的移动照明灯塔？" : "Need help choosing the right mobile light tower for your project?"}
           </h3>
           <Link
-            href={zh ? "/zh/contact/request-a-quote" : "/en/contact/request-a-quote"}
+            href={zh ? "/zh/contact" : "/en/contact"}
             className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md bg-amber-500 px-6 font-semibold text-slate-950 hover:bg-amber-400"
           >
             {zh ? "获取项目配置建议" : "Get Project Configuration Advice"}
@@ -885,6 +885,19 @@ export default function LF955Page({ params }: { params: { lang: string } }) {
       },
     })),
   };
+
+  void whyLf955;
+  void costLossSection;
+  void specificationGroups;
+  void manufacturingProcess;
+  void riskCards;
+  void scenarioCards;
+  void manufacturingSteps;
+  void configGroups;
+  void comparisonRows;
+  void failureCostCards;
+  void cases;
+  void faqSchema;
 
   return (
     <>

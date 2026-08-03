@@ -130,7 +130,7 @@ export default function Page() {
               <p className="mt-4 max-w-3xl leading-7 text-slate-300">提交应用场景、工作区域、照明需求、运行时间和现场环境，LFADJ 将为您的项目提供适合的产品与配置建议。</p>
             </div>
             <div className="min-w-0">
-              <Link href="/zh/contact/request-a-quote" className="inline-flex min-h-12 w-full items-center justify-center rounded-md bg-blue-600 px-7 py-3.5 text-center text-base font-bold leading-6 text-white transition-colors hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-400/50">获取项目配置建议</Link>
+              <Link href="/zh/contact" className="inline-flex min-h-12 w-full items-center justify-center rounded-md bg-blue-600 px-7 py-3.5 text-center text-base font-bold leading-6 text-white transition-colors hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-400/50">获取项目配置建议</Link>
               <p className="mt-4 text-base leading-6 text-slate-300">只需提供基本项目条件，无需提前准备完整规格。</p>
             </div>
           </div>

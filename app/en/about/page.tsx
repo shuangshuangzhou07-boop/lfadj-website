@@ -39,7 +39,7 @@ export default function EnglishAboutPage() {
               LFADJ helps equipment buyers evaluate mobile lighting options around application, runtime, site conditions, deployment requirements, and project priorities. We coordinate product configuration, manufacturing requirements, quality checkpoints, OEM or ODM details, and export documentation.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link href="/en/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-700 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">Discuss Your Project</Link>
+              <Link href="/en/contact" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-700 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">Discuss Your Project</Link>
               <Link href="/en/about/manufacturing" className="inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 bg-white px-6 py-3 text-center text-sm font-bold text-slate-900 transition hover:border-blue-600 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">See How We Manage Quality</Link>
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function EnglishAboutPage() {
               <p className="mt-4 leading-7 text-slate-300">Share the application, quantity, operating conditions, and preferred delivery schedule. We will help organize the next configuration discussion.</p>
             </div>
             <div className="mt-7 flex shrink-0 flex-col items-start gap-4 sm:flex-row sm:items-center lg:mt-0 lg:flex-col lg:items-stretch xl:flex-row xl:items-center">
-              <Link href="/en/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">Request a Project Recommendation</Link>
+              <Link href="/en/contact" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">Request a Project Recommendation</Link>
               <Link href="/en/about/manufacturing" className="inline-flex rounded-sm font-bold text-blue-200 underline decoration-blue-400 underline-offset-4 transition hover:text-white hover:decoration-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-slate-950">View Manufacturing &amp; Quality →</Link>
             </div>
           </div>

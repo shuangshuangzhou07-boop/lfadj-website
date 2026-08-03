@@ -14,7 +14,7 @@ export default function CustomProjectsPage() {
       title="Custom Light Tower Projects"
       description="Custom project route for buyers planning mobile light tower specifications and project requirements."
       links={[
-        { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "/en/contact" },
         { label: "OEM Solutions", href: "/oem/oem-solutions" },
         { label: "Applications", href: "/applications" },
       ]}

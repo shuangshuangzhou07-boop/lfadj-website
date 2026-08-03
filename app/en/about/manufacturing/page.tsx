@@ -102,7 +102,7 @@ const relatedLinks = [
   { href: "/en/products", label: "Products" },
   { href: "/en/solutions", label: "Solutions" },
   { href: "/en/resources", label: "Resources" },
-  { href: "/en/contact/request-a-quote", label: "Request a Quote" },
+  { href: "/en/contact", label: "Request a Quote" },
 ];
 
 export const metadata: Metadata = {
@@ -140,7 +140,7 @@ export default function EnglishManufacturingPage() {
               follow-up, quality inspection, and export delivery preparation aligned to confirmed requirements.
             </p>
             <Link
-              href="/en/contact/request-a-quote"
+              href="/en/contact"
               className="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-amber-500 px-6 py-3 text-center text-base font-bold text-slate-950 transition hover:bg-amber-400 sm:mt-8"
             >
               Get Your Project Lighting Recommendation
@@ -270,7 +270,7 @@ export default function EnglishManufacturingPage() {
             review the proposed product configuration, manufacturing requirements, and delivery plan.
           </p>
           <Link
-            href="/en/contact/request-a-quote"
+            href="/en/contact"
             className="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-amber-500 px-6 py-3 text-base font-bold text-slate-950 transition hover:bg-amber-400"
           >
             Request a Project Quote

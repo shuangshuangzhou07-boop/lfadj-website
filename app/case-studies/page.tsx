@@ -19,7 +19,7 @@ const links = [
   { label: "Applications", href: "/applications" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/en/contact" },
 ];
 
 export default function CaseStudiesPage() {

@@ -599,7 +599,7 @@ export function SiteNav(_props: {
 
         <div className="flex items-center gap-2">
           <Link tabIndex={desktopMenuOpen ? -1 : undefined} href={languageHref} hrefLang={locale === "en" ? "zh" : "en"} className="hidden rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 sm:inline-flex">{copy[locale].language}</Link>
-          <Link tabIndex={desktopMenuOpen ? -1 : undefined} href={`/${locale}/contact/request-a-quote`} className="hidden rounded-lg bg-blue-600 px-4 py-3 text-sm font-bold text-white hover:bg-blue-700 xl:inline-flex">{copy[locale].quote}</Link>
+          <Link tabIndex={desktopMenuOpen ? -1 : undefined} href={`/${locale}/contact`} className="hidden rounded-lg bg-blue-600 px-4 py-3 text-sm font-bold text-white hover:bg-blue-700 xl:inline-flex">{copy[locale].quote}</Link>
           <button type="button" aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(true)} className="inline-flex h-10 items-center rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700 lg:hidden">{copy[locale].menu}</button>
         </div>
       </div>
@@ -689,7 +689,7 @@ export function SiteNav(_props: {
               </ul>
               <div className="mt-5 grid gap-3 border-t border-gray-200 pt-5">
                 <Link onClick={() => setMobileOpen(false)} href={languageHref} className="rounded-lg border border-gray-300 px-4 py-3 text-center text-sm font-semibold text-gray-700">{copy[locale].language}</Link>
-                <Link onClick={() => setMobileOpen(false)} href={`/${locale}/contact/request-a-quote`} className="rounded-lg bg-blue-600 px-4 py-3 text-center text-sm font-bold text-white">{copy[locale].quote}</Link>
+                <Link onClick={() => setMobileOpen(false)} href={`/${locale}/contact`} className="rounded-lg bg-blue-600 px-4 py-3 text-center text-sm font-bold text-white">{copy[locale].quote}</Link>
               </div>
             </nav>
           </div>

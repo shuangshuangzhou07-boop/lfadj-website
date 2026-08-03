@@ -29,7 +29,7 @@ export function ProductCTA({ product }: { product: ProductData }) {
         <p className="mt-5 max-w-3xl text-base leading-7 text-gray-600">
           {product.cta.description}
         </p>
-        <form action="/contact" method="get" className="mt-10">
+        <form action="/en/contact" method="get" className="mt-10">
           <div className="grid gap-5 md:grid-cols-2">
             <div>
               <label
@@ -159,13 +159,13 @@ export function ProductCTA({ product }: { product: ProductData }) {
               Request RFQ Quote
             </button>
             <a
-              href="/contact"
+              href="/en/contact"
               className="inline-flex h-12 items-center justify-center rounded-lg border border-blue-200 bg-blue-50 px-6 text-sm font-semibold text-blue-700"
             >
               Contact Sales Engineer
             </a>
             <a
-              href="/contact"
+              href="/en/contact"
               className="inline-flex h-12 items-center justify-center rounded-lg border border-gray-300 bg-white px-6 text-sm font-semibold text-gray-900"
             >
               Download Technical Catalog (PDF)

@@ -18,7 +18,7 @@ export default function ConstructionLightingGuidePage() {
         { label: "Diesel Light Tower", href: "/products/diesel-light-tower" },
         { label: "Products", href: "/products" },
         { label: "LF6130", href: "/products/lf6130" },
-        { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "/en/contact" },
       ]}
     />
   );

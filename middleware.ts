@@ -10,7 +10,7 @@ const productionOnlyInternalPaths = [
   "/seo/backlink-strategy",
 ] as const;
 
-const legacyEnglishRouteMap: Readonly<Record<string, string>> = {
+const permanentRedirectMap: Readonly<Record<string, string>> = {
   "/": "/en",
   "/about": "/en/about",
   "/about/manufacturing": "/en/about/manufacturing",
@@ -20,6 +20,7 @@ const legacyEnglishRouteMap: Readonly<Record<string, string>> = {
   "/applications/mining-lighting": "/en/applications/mining-lighting",
   "/applications/rental-lighting": "/en/applications/rental-lighting",
   "/case-studies": "/en/case-studies",
+  "/contact": "/en/contact",
   "/faq": "/en/faq",
   "/oem": "/en/oem",
   "/products": "/en/products",
@@ -27,6 +28,10 @@ const legacyEnglishRouteMap: Readonly<Record<string, string>> = {
   "/products/lf955": "/en/products/lf955",
   "/resources": "/en/resources",
   "/solutions": "/en/solutions",
+  "/en/contact/request-a-quote": "/en/contact",
+  "/zh/contact/request-a-quote": "/zh/contact",
+  "/zh/联系我们": "/zh/contact",
+  "/zh/%e8%81%94%e7%b3%bb%e6%88%91%e4%bb%ac": "/zh/contact",
 };
 
 export function middleware(request: NextRequest) {
@@ -44,7 +49,9 @@ export function middleware(request: NextRequest) {
 
   const legacyEnglishPathname =
     pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
-  const englishDestinationPathname = legacyEnglishRouteMap[legacyEnglishPathname];
+  const englishDestinationPathname =
+    permanentRedirectMap[legacyEnglishPathname] ??
+    permanentRedirectMap[legacyEnglishPathname.toLowerCase()];
 
   if (englishDestinationPathname) {
     const destination = new URL(request.url);
@@ -87,6 +94,7 @@ export const config = {
     "/about/:path*",
     "/applications/:path*",
     "/case-studies/:path*",
+    "/contact",
     "/en/:path*",
     "/faq/:path*",
     "/oem/:path*",

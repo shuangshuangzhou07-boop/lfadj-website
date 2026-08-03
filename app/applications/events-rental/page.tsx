@@ -16,7 +16,7 @@ export default function EventsRentalPage() {
       links={[
         { label: "Portable Light Tower", href: "/products/portable-light-tower" },
         { label: "Rental Company Cases", href: "/case-studies/rental-company-cases" },
-        { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "/en/contact" },
       ]}
     />
   );

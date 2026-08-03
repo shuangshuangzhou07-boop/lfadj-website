@@ -16,7 +16,7 @@ const solutionLinks = [
   { label: "Diesel Light Tower", href: "/products/lf6130" },
   { label: "Applications", href: "/applications" },
   { label: "Lighting Tower Manufacturer", href: "/oem" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/en/contact" },
 ];
 
 export default function SolutionsPage() {

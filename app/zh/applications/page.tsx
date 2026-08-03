@@ -123,7 +123,7 @@ export default function ChineseApplicationsPage() {
                 了解建筑施工、矿山作业、油气项目、设备租赁与应急响应中的移动照明需求，并结合项目运行环境进行初步的照明配置判断。
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-                <Link href="/zh/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-blue-700 px-6 py-3 text-center text-sm font-bold leading-5 text-white transition-colors hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2">
+                <Link href="/zh/contact" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-blue-700 px-6 py-3 text-center text-sm font-bold leading-5 text-white transition-colors hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2">
                   获取项目照明配置建议
                 </Link>
                 <Link href="#application-guides" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-center text-sm font-bold leading-5 text-slate-900 transition-colors hover:border-blue-500 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2">
@@ -236,7 +236,7 @@ export default function ChineseApplicationsPage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/zh/contact/request-a-quote" className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-blue-700 px-4 py-3 text-center text-sm font-bold leading-5 text-white transition-colors hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 xl:text-base">
+              <Link href="/zh/contact" className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-blue-700 px-4 py-3 text-center text-sm font-bold leading-5 text-white transition-colors hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 xl:text-base">
                 获取项目照明配置建议
               </Link>
               <Link href="/zh/products" className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-blue-300 bg-white px-4 py-2 text-center text-sm font-bold text-blue-800 transition-colors hover:border-blue-600 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">

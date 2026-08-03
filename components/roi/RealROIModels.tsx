@@ -270,7 +270,7 @@ export default function RealROIModels({ locale = "en" }: RealROIModelsProps) {
             {t.decisionButtons.map((button, index) => (
               <a
                 key={button}
-                href={index === 0 ? "#inquiry" : index === 1 ? "/downloads/LF955-ROI-Report.pdf" : "/contact"}
+                href={index === 0 ? "#inquiry" : index === 1 ? "/downloads/LF955-ROI-Report.pdf" : "/en/contact"}
                 className={`inline-flex h-12 items-center justify-center rounded-full px-5 text-sm font-semibold transition duration-300 ${
                   index === 0
                     ? "bg-orange-500 text-slate-950 hover:bg-orange-400"

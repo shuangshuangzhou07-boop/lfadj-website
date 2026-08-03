@@ -104,7 +104,7 @@ export default function EnglishProductsPage() {
                 <Link href="#product-range" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-700 px-6 font-bold text-white transition hover:bg-blue-800">
                   Explore Products
                 </Link>
-                <Link href="/en/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 bg-white px-6 font-bold text-slate-900 transition hover:border-blue-500 hover:text-blue-700">
+                <Link href="/en/contact" className="inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 bg-white px-6 font-bold text-slate-900 transition hover:border-blue-500 hover:text-blue-700">
                   Get a Product Recommendation
                 </Link>
               </div>
@@ -186,7 +186,7 @@ export default function EnglishProductsPage() {
                 ))}
               </ul>
               <div className="mt-8 grid gap-3">
-                <Link href="/en/contact/request-a-quote" className="inline-flex min-h-14 items-center justify-center rounded-md bg-blue-700 px-6 py-3 text-center text-base font-bold text-white transition hover:bg-blue-800">Get a Project Lighting Configuration Recommendation</Link>
+                <Link href="/en/contact" className="inline-flex min-h-14 items-center justify-center rounded-md bg-blue-700 px-6 py-3 text-center text-base font-bold text-white transition hover:bg-blue-800">Get a Project Lighting Configuration Recommendation</Link>
                 <Link href="/en/solutions/how-to-choose-the-right-light-tower" className="inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 px-5 py-3 text-center text-sm font-bold text-slate-800 transition hover:border-blue-500 hover:text-blue-700">Read the Light Tower Selection Guide</Link>
               </div>
             </aside>

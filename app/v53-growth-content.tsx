@@ -44,7 +44,7 @@ const coreLinks: GrowthLink[] = [
   { label: "Construction Lighting Application", href: "/applications/construction-site-lighting" },
   { label: "Mining Lighting Application", href: "/applications/mining-site-lighting" },
   { label: "Emergency Lighting Application", href: "/applications/emergency-rescue-lighting" },
-  { label: "Contact Sales", href: "/contact" },
+  { label: "Contact Sales", href: "/en/contact" },
 ];
 
 export const blogCluster: Record<GrowthBlogSlug, GrowthPageData> = {
@@ -625,7 +625,7 @@ export function BlogGrowthPage({
             <a href="/products/lf6130" className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white">
               LF6130 Product Page
             </a>
-            <a href="/contact" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">
+            <a href="/en/contact" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">
               Request Quote
             </a>
           </div>
@@ -691,7 +691,7 @@ export function ApplicationGrowthPage({ data }: { data: GrowthPageData }) {
             <a href="/products/lf6130" className="inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white">
               Request Quote
             </a>
-            <a href="/contact" className="inline-flex h-12 items-center justify-center rounded-lg border border-gray-300 bg-white px-6 text-sm font-semibold text-black">
+            <a href="/en/contact" className="inline-flex h-12 items-center justify-center rounded-lg border border-gray-300 bg-white px-6 text-sm font-semibold text-black">
               Contact Sales
             </a>
           </div>

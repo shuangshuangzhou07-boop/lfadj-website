@@ -92,7 +92,7 @@ const relatedLinks = [
   { href: "/zh/products", label: "产品中心" },
   { href: "/zh/solutions", label: "解决方案" },
   { href: "/zh/resources", label: "资源中心" },
-  { href: "/zh/contact/request-a-quote", label: "获取项目报价" },
+  { href: "/zh/contact", label: "获取项目报价" },
 ];
 
 export const metadata: Metadata = {
@@ -128,7 +128,7 @@ export default function ChineseManufacturingPage() {
               LFADJ根据项目环境和运行需求提供移动照明设备配置建议，并按照确认的要求跟进生产、质量检查与出口交付准备。
             </p>
             <Link
-              href="/zh/contact/request-a-quote"
+              href="/zh/contact"
               className="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-amber-500 px-6 py-3 text-center text-base font-bold text-slate-950 transition hover:bg-amber-400 sm:mt-8"
             >
               获取项目照明配置建议
@@ -245,7 +245,7 @@ export default function ChineseManufacturingPage() {
             请提供使用环境、运行时间、照明范围和目标配置，我们将协助评估产品配置、制造要求与交付方案。
           </p>
           <Link
-            href="/zh/contact/request-a-quote"
+            href="/zh/contact"
             className="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-amber-500 px-6 py-3 text-base font-bold text-slate-950 transition hover:bg-amber-400"
           >
             获取项目报价

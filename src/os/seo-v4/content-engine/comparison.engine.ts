@@ -27,6 +27,6 @@ export function generateComparisonPages(): ComparisonPage[] {
     ],
     lfadjAdvantage:
       "LFADJ products are positioned for industrial B2B buyers who need manufacturer support, OEM capability and stable project supply.",
-    internalLinks: ["/products/lf6130", "/products", "/contact"],
+    internalLinks: ["/products/lf6130", "/products", "/en/contact"],
   }));
 }

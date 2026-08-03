@@ -290,7 +290,7 @@ function LF971ProductResources({ zh }: { zh: boolean }) {
             {zh ? "需要选择适合您项目的太阳能移动照明灯塔？" : "Need the right solar mobile light tower for your project?"}
           </h3>
           <Link
-            href="/contact"
+            href={zh ? "/zh/contact" : "/en/contact"}
             className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md bg-amber-500 px-6 font-semibold text-slate-950 hover:bg-amber-400"
           >
             {zh ? "获取项目配置建议" : "Get Project Configuration Advice"}
@@ -897,6 +897,13 @@ function SolarApplicationsSection({ zh }: { zh: boolean }) {
   );
 }
 
+void SolarBenefitsSection;
+void SolarSuitabilitySection;
+void SolarConfigurationProcessSection;
+void ConfigurationOptionsSection;
+void KeyPerformanceSection;
+void SolarApplicationsSection;
+
 export function generateStaticParams() {
   return [{ lang: "en" }, { lang: "zh" }];
 }
@@ -1033,7 +1040,7 @@ export default function LF971Page({ params }: { params: { lang: string } }) {
         body: "高效太阳能移动照明系统，结合储能技术，为建筑施工、矿山及无电力项目提供可靠照明。",
         trustLabels: ["离网照明", "日常无需柴油", "低噪音运行", "根据项目配置"],
         primaryCta: "配置我的太阳能灯塔",
-        primaryCtaHref: "/zh/contact/request-a-quote",
+        primaryCtaHref: "/zh/contact",
         secondaryCta: "查看核心优势",
         placeholderLabel: "LF971 太阳能灯塔图片待补充",
         imageAlt: "LF971太阳能移动照明灯塔在夜间施工现场提供离网照明",
@@ -1044,7 +1051,7 @@ export default function LF971Page({ params }: { params: { lang: string } }) {
         body: "High-efficiency solar mobile lighting system with energy storage technology, providing reliable illumination for construction, mining and off-grid projects.",
         trustLabels: ["Off-Grid Lighting", "No Daily Fuel Consumption", "Low-Noise Operation", "Project-Based Configuration"],
         primaryCta: "Configure My Solar Light Tower",
-        primaryCtaHref: "/en/contact/request-a-quote",
+        primaryCtaHref: "/en/contact",
         secondaryCta: "View Key Benefits",
         placeholderLabel: "LF971 solar light tower image pending",
         imageAlt: "LF971 solar mobile light tower providing off-grid lighting at a nighttime construction site",
@@ -1371,6 +1378,18 @@ export default function LF971Page({ params }: { params: { lang: string } }) {
         { q: "Do you support OEM?", a: "OEM branding and project customization are supported." },
         { q: "Is LF971 suitable for hot and dusty environments?", a: "LF971 is optimized for 45C+ heat and dust-heavy environments." },
       ];
+
+  void costLossSection;
+  void coreConfiguration;
+  void manufacturingProcess;
+  void riskCards;
+  void scenarioCards;
+  void manufacturingSteps;
+  void configGroups;
+  void comparisonRows;
+  void failureCostCards;
+  void cases;
+  void faqItems;
 
   return (
     <>

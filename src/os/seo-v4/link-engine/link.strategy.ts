@@ -7,7 +7,7 @@ export type LinkStrategyRule = {
 export const linkStrategyRules: LinkStrategyRule[] = [
   {
     pageType: "product",
-    requiredLinks: ["/contact"],
+    requiredLinks: ["/en/contact"],
     rule: "Product pages must link to the contact page for inquiry conversion.",
   },
   {

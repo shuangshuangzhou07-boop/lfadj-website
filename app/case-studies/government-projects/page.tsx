@@ -16,7 +16,7 @@ export default function GovernmentProjectsPage() {
       links={[
         { label: "Emergency Lighting Tower", href: "/applications/emergency" },
         { label: "Road Infrastructure", href: "/applications/road-infrastructure" },
-        { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "/en/contact" },
       ]}
     />
   );

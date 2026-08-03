@@ -12,6 +12,6 @@ export function auditSeoStructure(routes: string[]): SeoStructureAudit {
     hasApplications: routes.some((route) => route.startsWith("/applications")),
     hasOem: routes.some((route) => route.startsWith("/oem")),
     hasBlog: routes.some((route) => route.startsWith("/blog")),
-    hasContact: routes.includes("/contact"),
+    hasContact: routes.includes("/en/contact") || routes.includes("/zh/contact"),
   };
 }

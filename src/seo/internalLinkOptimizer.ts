@@ -17,7 +17,7 @@ export function autoLinkPages(): LinkOptimizationReport {
   const rulesApplied: InternalLinkRule[] = [
     {
       pagePattern: "all pages",
-      requiredLinks: [lf6130, applications, "/contact"],
+      requiredLinks: [lf6130, applications, "/en/contact"],
     },
     {
       pagePattern: "blog pages",

@@ -33,7 +33,7 @@ export default function ChineseAboutPage() {
               <h1 className="mt-5 max-w-[660px] text-[38px] font-bold leading-[1.12] tracking-tight text-slate-950 sm:text-[42px] lg:text-[56px]">围绕真实项目条件，帮助买家判断移动照明方案</h1>
               <p className="mt-6 max-w-[650px] text-lg leading-8 text-slate-600">LFADJ 根据应用场景、运行时间、现场环境、部署要求和项目重点，帮助设备买家判断移动照明方向，并协调产品配置、制造要求、质量检查、OEM/ODM 细节及出口资料。</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link href="/zh/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-700 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">沟通您的项目</Link>
+                <Link href="/zh/contact" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-700 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">沟通您的项目</Link>
                 <Link href="/zh/about/manufacturing" className="inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 bg-white px-6 py-3 text-center text-sm font-bold text-slate-900 transition hover:border-blue-600 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">了解质量管理方式</Link>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function ChineseAboutPage() {
               <p className="mt-4 leading-7 text-slate-300">告诉我们应用场景、预计数量、运行条件和期望交付时间，我们将帮助您整理下一步配置沟通。</p>
             </div>
             <div className="mt-7 flex shrink-0 flex-col items-start gap-4 sm:flex-row sm:items-center lg:mt-0 lg:flex-col lg:items-stretch xl:flex-row xl:items-center">
-              <Link href="/zh/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">获取项目配置建议</Link>
+              <Link href="/zh/contact" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">获取项目配置建议</Link>
               <Link href="/zh/about/manufacturing" className="inline-flex rounded-sm font-bold text-blue-200 underline decoration-blue-400 underline-offset-4 transition hover:text-white hover:decoration-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-slate-950">查看制造与质量管理 →</Link>
             </div>
           </div>

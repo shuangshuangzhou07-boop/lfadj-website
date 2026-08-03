@@ -19,6 +19,6 @@ export function generateIndustryApplicationPages(): IndustryApplicationPage[] {
     keyword: item.keyword,
     industry: item.industry,
     structure: ["problem", "solution", "product-path", "cta"],
-    internalLinks: ["/products", "/products/lf6130", "/contact"],
+    internalLinks: ["/products", "/products/lf6130", "/en/contact"],
   }));
 }

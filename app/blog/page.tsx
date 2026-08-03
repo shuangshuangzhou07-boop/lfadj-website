@@ -35,7 +35,7 @@ const links = [
   { label: "Applications", href: "/applications" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/en/contact" },
 ];
 
 export default function BlogPage() {

@@ -60,7 +60,7 @@ const solutionsResources = [
   {
     title: "Project Configuration",
     items: ["Project Type", "Operating Environment", "Lighting Requirements", "Operating Hours"],
-    href: "/contact",
+    href: "/en/contact",
     linkLabel: "Request a Quote",
   },
   {
@@ -93,7 +93,7 @@ export default function HomePage() {
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
-                href="/contact"
+                href="/en/contact"
                 className="inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-700"
               >
                 Request a Quote
@@ -167,7 +167,7 @@ export default function HomePage() {
           </div>
           <div className="mt-10 flex flex-col gap-6 border-t border-gray-200 pt-8 sm:flex-row sm:items-center sm:justify-between">
             <a href="/solutions" className="inline-flex text-sm font-bold text-blue-700 hover:underline">View Solutions →</a>
-            <a href="/contact" className="inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-700">Get Project Configuration</a>
+            <a href="/en/contact" className="inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-700">Get Project Configuration</a>
           </div>
         </div>
         </section>
@@ -221,7 +221,7 @@ export default function HomePage() {
           <p className="mt-5 max-w-3xl text-base leading-7 text-gray-600">
             Tell us your project location, operating environment, working hours and lighting requirements. We will recommend a suitable mobile light tower configuration.
           </p>
-          <a href="/contact" className="mt-8 inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-700">
+          <a href="/en/contact" className="mt-8 inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-700">
             Request a Quote
           </a>
         </div>

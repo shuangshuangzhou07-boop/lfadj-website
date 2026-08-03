@@ -41,7 +41,7 @@ export default function OEMPage() {
             lighting tower manufacturer focused on practical B2B deployment.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
-            <a href="/contact" className="inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-700">
+            <a href="/en/contact" className="inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-700">
               Contact
             </a>
             <a href="/oem/light-tower-manufacturer" className="inline-flex h-12 items-center justify-center rounded-lg border border-gray-300 bg-white px-6 text-sm font-semibold text-black hover:bg-gray-50">

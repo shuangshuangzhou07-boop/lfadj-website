@@ -58,7 +58,7 @@ export default function ProductsPage() {
             <a href="/case-studies" className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-gray-700">
               Case Studies
             </a>
-            <a href="/contact" className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-gray-700">
+            <a href="/en/contact" className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-gray-700">
               Contact
             </a>
           </div>

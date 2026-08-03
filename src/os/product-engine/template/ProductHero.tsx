@@ -24,19 +24,19 @@ export function ProductHero({ product }: { product: ProductData }) {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="/contact"
+              href="/en/contact"
               className="inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white"
             >
               {product.hero.primaryCta}
             </a>
             <a
-              href="/contact"
+              href="/en/contact"
               className="inline-flex h-12 items-center justify-center rounded-lg border border-gray-300 bg-white px-6 text-sm font-semibold text-gray-900"
             >
               {product.hero.secondaryCta}
             </a>
             <a
-              href="/contact"
+              href="/en/contact"
               className="inline-flex h-12 items-center justify-center rounded-lg border border-blue-200 bg-blue-50 px-6 text-sm font-semibold text-blue-700"
             >
               Send Inquiry

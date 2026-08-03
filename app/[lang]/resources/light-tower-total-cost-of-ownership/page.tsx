@@ -197,7 +197,7 @@ const content = {
     ctaDescription:
       "Share your operating schedule, location, energy conditions, transport needs and maintenance resources. The review is based on the project information you provide; it is not an automatic quotation or a guarantee of cost savings.",
     ctaLabel: "Request a Project Lighting Cost Review",
-    ctaHref: "/en/contact/request-a-quote",
+    ctaHref: "/en/contact",
     breadcrumbAria: "Breadcrumb",
   },
   zh: {
@@ -389,7 +389,7 @@ const content = {
     ctaDescription:
       "请提供运行计划、项目地点、能源条件、运输需求和维护资源。评估以您提交的项目资料为基础，不是自动报价，也不构成成本节省保证。",
     ctaLabel: "获取项目照明成本评估",
-    ctaHref: "/zh/contact/request-a-quote",
+    ctaHref: "/zh/contact",
     breadcrumbAria: "面包屑",
   },
 } satisfies Record<

@@ -1,7 +1,7 @@
 const conversionLinks = [
-  { label: "Get Quote", href: "/contact" },
-  { label: "Send Inquiry", href: "/contact" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Get Quote", href: "/en/contact" },
+  { label: "Send Inquiry", href: "/en/contact" },
+  { label: "Contact Us", href: "/en/contact" },
 ];
 
 export function ConversionFlow() {

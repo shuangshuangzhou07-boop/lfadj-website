@@ -125,7 +125,7 @@ export default function EnglishApplicationsPage() {
                 Explore how construction, mining, oil and gas, equipment rental and emergency response projects shape operating-environment requirements and the initial mobile lighting configuration assessment.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-                <Link href="/en/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-blue-700 px-6 py-3 text-center text-sm font-bold leading-5 text-white transition-colors hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2">
+                <Link href="/en/contact" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-blue-700 px-6 py-3 text-center text-sm font-bold leading-5 text-white transition-colors hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2">
                   Get a Project Lighting Recommendation
                 </Link>
                 <Link href="#application-guides" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-center text-sm font-bold leading-5 text-slate-900 transition-colors hover:border-blue-500 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2">
@@ -238,7 +238,7 @@ export default function EnglishApplicationsPage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/en/contact/request-a-quote" className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-blue-700 px-4 py-3 text-center text-sm font-bold leading-5 text-white transition-colors hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 xl:text-base">
+              <Link href="/en/contact" className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-blue-700 px-4 py-3 text-center text-sm font-bold leading-5 text-white transition-colors hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 xl:text-base">
                 Get a Project Lighting Recommendation
               </Link>
               <Link href="/en/products" className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-blue-300 bg-white px-4 py-2 text-center text-sm font-bold text-blue-800 transition-colors hover:border-blue-600 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">

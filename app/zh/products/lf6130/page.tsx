@@ -143,7 +143,7 @@ export default function ChineseLF6130Page() {
               LF6130 是面向全球买家的工业移动照明灯塔，适合需要移动照明灯塔制造商、柴油照明灯塔供应商和便携式照明灯塔 OEM 合作伙伴的客户。该产品结合 4×400W LED 灯具、9m hydraulic mast、Kubota Z482 柴油动力和 IP65 户外防护，可满足建筑施工照明解决方案、矿山照明设备和应急照明系统需求。
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a href="/en/contact" className="inline-flex h-[52px] items-center justify-center rounded-xl bg-black px-8 text-sm font-bold text-white">
+              <a href="/zh/contact" className="inline-flex h-[52px] items-center justify-center rounded-xl bg-black px-8 text-sm font-bold text-white">
                 获取报价
               </a>
               <a href="#specifications" className="inline-flex h-[52px] items-center justify-center rounded-xl border border-gray-300 bg-white px-8 text-sm font-bold text-black">
@@ -155,7 +155,7 @@ export default function ChineseLF6130Page() {
               <a href="/en/case-studies" className="text-blue-600 hover:text-blue-700">案例研究</a>
               <a href="/en/faq" className="text-blue-600 hover:text-blue-700">常见问题</a>
               <a href="/en/blog" className="text-blue-600 hover:text-blue-700">博客</a>
-              <a href="/en/contact" className="text-blue-600 hover:text-blue-700">联系</a>
+              <a href="/zh/contact" className="text-blue-600 hover:text-blue-700">联系</a>
             </div>
           </div>
           <div className="rounded-3xl border border-gray-200 bg-gray-50 p-6">
@@ -353,10 +353,10 @@ export default function ChineseLF6130Page() {
             联系 LFADJ，获取技术规格、价格和移动照明灯塔项目支持。
           </p>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <a href="/en/contact" className="inline-flex h-12 items-center justify-center rounded-xl bg-blue-600 px-7 text-sm font-bold text-white">
+            <a href="/zh/contact" className="inline-flex h-12 items-center justify-center rounded-xl bg-blue-600 px-7 text-sm font-bold text-white">
               联系我们
             </a>
-            <a href="/en/contact" className="inline-flex h-12 items-center justify-center rounded-xl border border-white/30 px-7 text-sm font-bold text-white">
+            <a href="/zh/contact" className="inline-flex h-12 items-center justify-center rounded-xl border border-white/30 px-7 text-sm font-bold text-white">
               获取报价
             </a>
           </div>

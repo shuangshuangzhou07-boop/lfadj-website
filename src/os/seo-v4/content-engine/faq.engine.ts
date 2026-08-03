@@ -17,13 +17,13 @@ export function generateFaqItems(): FaqItem[] {
       question: "How long does diesel tower run?",
       answerIntent: "short",
       targetKeyword: "diesel light tower runtime",
-      internalLinks: ["/products/lf6130", "/contact"],
+      internalLinks: ["/products/lf6130", "/en/contact"],
     },
     {
       question: "What is OEM lighting tower manufacturer?",
       answerIntent: "trust-building",
       targetKeyword: "OEM lighting tower manufacturer",
-      internalLinks: ["/oem", "/products/lf6130", "/contact"],
+      internalLinks: ["/oem", "/products/lf6130", "/en/contact"],
     },
   ];
 }

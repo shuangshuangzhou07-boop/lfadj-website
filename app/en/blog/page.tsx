@@ -170,7 +170,7 @@ export default function EnglishBlogPage() {
                   <a href="/products/lf955" className="text-sm font-bold text-blue-600">LF955</a>
                   <a href="/applications" className="text-sm font-bold text-blue-600">Applications</a>
                   <a href="/light-towers" className="text-sm font-bold text-blue-600">Light Towers</a>
-                  <a href="/contact" className="text-sm font-bold text-blue-600">Contact</a>
+                  <a href="/en/contact" className="text-sm font-bold text-blue-600">Contact</a>
                 </div>
               </article>
             ))}
@@ -211,7 +211,7 @@ export default function EnglishBlogPage() {
         <div className="mx-auto max-w-[1200px] text-center">
           <h2 className="text-3xl font-bold">Need a Mobile Light Tower Quote?</h2>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <a href="/contact" className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white">Contact Us</a>
+            <a href="/en/contact" className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white">Contact Us</a>
             <a href="/products/lf955" className="rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white">View LF955</a>
           </div>
         </div>

@@ -163,7 +163,7 @@ export default function EnglishSolutionsPage() {
               <p className="mt-4 max-w-3xl leading-7 text-slate-300">Share your application, work area, lighting requirements, operating hours and site environment. LFADJ will recommend a suitable product and configuration for your project.</p>
             </div>
             <div className="min-w-0">
-              <Link href="/en/contact/request-a-quote" className="inline-flex min-h-12 w-full items-center justify-center rounded-md bg-blue-600 px-7 py-3.5 text-center text-base font-bold leading-6 text-white transition-colors hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-400/50">Get a Project Recommendation</Link>
+              <Link href="/en/contact" className="inline-flex min-h-12 w-full items-center justify-center rounded-md bg-blue-600 px-7 py-3.5 text-center text-base font-bold leading-6 text-white transition-colors hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-400/50">Get a Project Recommendation</Link>
               <p className="mt-4 text-base leading-6 text-slate-300">Share your project conditions—no complete specification required.</p>
             </div>
           </div>

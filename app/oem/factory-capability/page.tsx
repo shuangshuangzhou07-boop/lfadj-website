@@ -14,7 +14,7 @@ export default function FactoryCapabilityPage() {
       title="Light Tower Factory Capability"
       description="Factory capability route for manufacturing, documentation and export-ready B2B support."
       links={[
-        { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "/en/contact" },
         { label: "Light Tower Manufacturer", href: "/oem/light-tower-manufacturer" },
         { label: "Products", href: "/products" },
       ]}

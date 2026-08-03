@@ -29,6 +29,6 @@ export function generateBlogTopics(): BlogTopic[] {
       "Buyer education checklist",
       "Recommended product path",
     ],
-    internalLinks: ["/products", "/products/lf6130", "/contact"],
+    internalLinks: ["/products", "/products/lf6130", "/en/contact"],
   }));
 }

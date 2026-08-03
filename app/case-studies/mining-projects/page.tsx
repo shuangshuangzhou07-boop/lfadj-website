@@ -16,7 +16,7 @@ export default function MiningProjectsPage() {
       links={[
         { label: "Mining Application", href: "/applications/mining" },
         { label: "LF6130", href: "/products/lf6130" },
-        { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "/en/contact" },
       ]}
     />
   );

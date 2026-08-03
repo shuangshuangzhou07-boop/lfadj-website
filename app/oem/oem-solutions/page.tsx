@@ -14,7 +14,7 @@ export default function OemSolutionsPage() {
       title="OEM Light Tower Solutions"
       description="OEM route for brand, configuration and export planning around mobile light towers."
       links={[
-        { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "/en/contact" },
         { label: "Custom Projects", href: "/oem/custom-projects" },
         { label: "LF6130", href: "/products/lf6130" },
       ]}

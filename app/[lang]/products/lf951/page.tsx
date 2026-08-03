@@ -237,7 +237,7 @@ export default function LF951Page({ params }: { params: { lang: string } }) {
 
                 <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                   <Link
-                    href={`/${lang}/contact/request-a-quote`}
+                    href={`/${lang}/contact`}
                     className="inline-flex min-h-14 items-center justify-center rounded-md bg-amber-500 px-8 text-center text-base font-semibold text-slate-950 shadow-sm transition-colors hover:bg-amber-400"
                   >
                     {copy.primaryCta}
@@ -364,7 +364,7 @@ export default function LF951Page({ params }: { params: { lang: string } }) {
                 </p>
               </div>
               <Link
-                href={zh ? "/zh/contact/request-a-quote" : "/en/contact/request-a-quote"}
+                href={zh ? "/zh/contact" : "/en/contact"}
                 className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md bg-amber-500 px-6 text-center font-semibold text-slate-950 hover:bg-amber-400"
               >
                 {zh ? "获取项目配置建议" : "Request a Project Recommendation"}

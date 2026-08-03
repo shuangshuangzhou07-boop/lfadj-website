@@ -872,7 +872,7 @@ export default function ManufacturingPage({
               {content.finalCtaDescription}
             </p>
             <Link
-              href={`/${locale}/contact/request-a-quote`}
+              href={`/${locale}/contact`}
               className="mt-8 inline-flex min-h-12 items-center justify-center rounded-lg bg-blue-600 px-7 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {content.finalCtaButton}

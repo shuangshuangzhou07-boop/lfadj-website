@@ -5,7 +5,7 @@ const coreLinks = [
   { label: "Applications", href: "/applications" },
   { label: "Light Tower Manufacturer", href: "/oem/light-tower-manufacturer" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/en/contact" },
 ];
 
 const productLinks = [
