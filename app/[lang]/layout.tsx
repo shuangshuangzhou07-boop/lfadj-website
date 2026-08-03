@@ -19,10 +19,10 @@ export default function LangLayout({ children, params }: LangLayoutProps) {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col bg-white text-black">
+    <div className="flex min-h-screen flex-col bg-surface-white text-text-primary">
       <SiteNav />
       <div className="flex-1">{children}</div>
-      <footer className="border-t border-slate-800 bg-slate-950 px-6 py-10 text-slate-300">
+      <footer className="border-t border-brand-navy-800 bg-brand-navy-950 px-6 py-10 text-slate-300">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <Link href={`/${lang}`} className="text-xl font-bold tracking-tight text-white">
