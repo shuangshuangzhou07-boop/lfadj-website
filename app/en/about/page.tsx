@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About LFADJ | Mobile Lighting Company Information",
   description:
-    "Learn about LFADJ, our mobile lighting focus, the project buyers we serve and how we help organize diesel and solar lighting requirements.",
+    "Learn how LFADJ supports mobile lighting buyers with project configuration, quality coordination, management systems, and delivery preparation.",
   alternates: {
     canonical: "https://lfadj.com/en/about",
     languages: { en: "/en/about", "zh-CN": "/zh/about" },
@@ -13,159 +12,128 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About LFADJ | Mobile Lighting Company Information",
     description:
-      "Company information, mobile lighting focus and project support for contractors, equipment rental companies and industrial buyers.",
+      "LFADJ company information, mobile lighting project configuration, quality coordination, and delivery preparation for equipment buyers.",
     url: "https://lfadj.com/en/about",
     type: "website",
   },
 };
 
 const capabilityItems = [
-  { title: "Project Configuration", body: "Match the power source, lighting output, mast system, runtime and optional equipment to the application and operating conditions." },
-  { title: "OEM / ODM Support", body: "Support practical branding, specification and configuration requirements after technical review." },
-  { title: "Quality Checkpoints", body: "Follow key checks covering incoming components, assembly, electrical functions, final testing and shipment preparation." },
-  { title: "Export Documentation", body: "Help organize specifications, product information and shipment-related documentation for project delivery." },
-];
-
-const exploreItems = [
-  { title: "Mobile Lighting Products", body: "Compare diesel and solar mobile light towers for different operating requirements.", label: "View Products", href: "/en/products" },
-  { title: "Lighting Applications", body: "Explore lighting requirements for construction, mining, oil and gas, rental and emergency projects.", label: "Explore Applications", href: "/en/applications" },
-  { title: "Project Solutions", body: "Review selection, extreme-environment and mast-system guidance before choosing a configuration.", label: "Review Solutions", href: "/en/solutions" },
+  { title: "Mobile Lighting Focus", body: "Product discussions stay centered on mobile lighting applications and operating conditions." },
+  { title: "Buyer Requirement Review", body: "Project information is reviewed before a configuration direction is recommended." },
+  { title: "Manufacturing & Quality Coordination", body: "Coordinate agreed product specifications, production requirements, and quality checkpoints." },
+  { title: "OEM, ODM and Export Support", body: "Branding, configuration details, documentation, and delivery preparation can be coordinated for project needs." },
 ];
 
 export default function EnglishAboutPage() {
   return (
     <main className="mx-auto w-full max-w-7xl overflow-x-hidden bg-white">
-      <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50/70 px-6 py-14 md:min-h-[500px] md:py-16 lg:min-h-[560px] lg:py-20">
-        <div className="mx-auto grid max-w-[1200px] items-center gap-12 lg:min-h-[400px] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-14">
+      <section className="border-b border-slate-200 bg-slate-50 px-6 py-14 sm:py-16 lg:py-20">
+        <div className="mx-auto grid max-w-[1120px] items-center gap-10 lg:min-h-[480px] lg:grid-cols-[minmax(0,56fr)_minmax(0,44fr)] lg:gap-14">
           <div className="min-w-0">
-            <p className="text-sm font-bold uppercase tracking-[0.24em] text-blue-700">About LFADJ</p>
-            <h1 className="mt-5 max-w-[680px] text-4xl font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-[58px]">
-              About LFADJ and Our Mobile Lighting Focus
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-blue-700">ABOUT LFADJ</p>
+            <h1 className="mt-5 max-w-[660px] text-[38px] font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-[42px] lg:text-[56px]">
+              Mobile Lighting Decisions Built Around Real Project Conditions
             </h1>
-            <p className="mt-6 max-w-[620px] text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-              LFADJ focuses on mobile lighting products and project support for contractors, equipment rental companies and industrial buyers. We help customers understand available diesel and solar options, organize project requirements and identify a practical next step.
+            <p className="mt-6 max-w-[650px] text-lg leading-8 text-slate-600">
+              LFADJ helps equipment buyers evaluate mobile lighting options around application, runtime, site conditions, deployment requirements, and project priorities. We coordinate product configuration, manufacturing requirements, quality checkpoints, OEM or ODM details, and export documentation.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link href="/en/products" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">Explore Our Products</Link>
-              <Link href="/en/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-900 transition hover:border-blue-500 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">Discuss Your Project</Link>
-            </div>
-            <p className="mt-6 text-sm font-semibold leading-6 text-slate-600">
-              Mobile Lighting Focus <span className="px-1 text-blue-600" aria-hidden="true">·</span> Project Requirement Support <span className="px-1 text-blue-600" aria-hidden="true">·</span> B2B Buyer Information
-            </p>
-          </div>
-          <div className="min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-xl shadow-slate-900/10">
-            <div className="relative aspect-[16/10] w-full">
-              <Image src="/images/solutions/temporary-site-lighting/hero-temporary-site-lighting.webp" alt="Mobile light tower illuminating an active construction site at night" fill priority sizes="(min-width: 1024px) 42vw, 100vw" className="object-contain" />
+              <Link href="/en/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-700 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">Discuss Your Project</Link>
+              <Link href="/en/about/manufacturing" className="inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 bg-white px-6 py-3 text-center text-sm font-bold text-slate-900 transition hover:border-blue-600 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">See How We Manage Quality</Link>
             </div>
           </div>
+          <aside className="min-w-0 border border-slate-300 bg-white p-6 shadow-sm sm:p-8" aria-labelledby="buyer-clarity-heading">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">PROJECT JUDGMENT FRAMEWORK</p>
+            <h2 id="buyer-clarity-heading" className="mt-3 text-2xl font-bold tracking-tight text-slate-950">What We Help Buyers Clarify</h2>
+            <ol className="mt-7 divide-y divide-slate-200 border-y border-slate-200">
+              {["Application and coverage", "Runtime and power choice", "Environment and deployment", "Configuration and delivery"].map((item, index) => (
+                <li key={item} className="flex items-center gap-5 py-4">
+                  <span className="text-sm font-bold tabular-nums text-blue-700">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="font-semibold leading-6 text-slate-800">{item}</span>
+                </li>
+              ))}
+            </ol>
+          </aside>
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 px-6 py-20 lg:py-24">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="max-w-4xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-700">
-              WHO WE SUPPORT
-            </p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
-              Helping Project Buyers Find the Right Information
+      <section className="border-y border-slate-200 bg-slate-50 px-6 py-16 lg:py-20">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="max-w-3xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-700">HOW WE WORK</p>
+            <h2 className="mt-4 text-[32px] font-bold leading-tight tracking-tight text-slate-950 lg:text-[40px]">
+              From Buyer Requirements to Delivery-Ready Configuration
             </h2>
-            <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
-              Contractors, rental teams and industrial buyers often begin with different levels of project information. LFADJ helps organize the questions, compare relevant lighting directions and connect each buyer with the pages needed for a sound next decision.
+            <p className="mt-5 text-base leading-7 text-slate-600">
+              Our role is to turn project information into clearer equipment decisions and coordinate the details that matter before delivery.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-3 lg:gap-6">
+          <ol className="mt-10 grid border-b border-slate-300 md:grid-cols-2 lg:grid-cols-4">
             {[
-              {
-                title: "Understand the Buyer Context",
-                body: "Start with the application, operating pattern, site environment and the information already available to the project team.",
-              },
-              {
-                title: "Navigate Relevant Options",
-                body: "Use product, application and solution information to compare diesel, solar and project-specific lighting directions.",
-              },
-              {
-                title: "Prepare the Next Discussion",
-                body: "Collect the key questions and requirements that need to be confirmed before a product or configuration decision.",
-              },
-            ].map((item) => (
-              <article
-                key={item.title}
-                className="flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md sm:p-7"
-              >
-                <h3 className="text-xl font-bold leading-7 text-slate-950">{item.title}</h3>
-                <p className="mt-4 leading-7 text-slate-600">{item.body}</p>
-              </article>
+              { title: "Understand the Project", body: "Application, lighting area, operating hours, climate, access, transport, and site limitations." },
+              { title: "Evaluate the Direction", body: "Compare diesel, solar, portable, mast, and optional equipment requirements against actual operating priorities." },
+              { title: "Coordinate the Configuration", body: "Confirm key specifications, OEM or ODM details, quality checkpoints, documentation, and manufacturing coordination." },
+              { title: "Prepare for Delivery", body: "Review the agreed configuration and organize the product and export information required for project handover." },
+            ].map((step, index) => (
+              <li key={step.title} className="relative border-t border-slate-300 py-6 md:px-6 lg:first:pl-0 lg:last:pr-0">
+                <div className="flex items-center gap-3">
+                  <span className="text-sm font-bold tracking-[0.14em] text-blue-700">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="h-px flex-1 bg-slate-300" aria-hidden="true" />
+                </div>
+                <h3 className="mt-5 text-lg font-bold leading-7 text-slate-950">{step.title}</h3>
+                <p className="mt-3 text-base leading-7 text-slate-600">{step.body}</p>
+                {index < 3 && <span className="absolute right-0 top-[18px] hidden translate-x-1/2 bg-slate-50 px-1 text-sm text-blue-700 lg:block" aria-hidden="true">→</span>}
+              </li>
             ))}
-          </div>
+          </ol>
 
-          <Link
-            href="/en/solutions/how-to-choose-the-right-light-tower"
-            className="mt-9 inline-flex rounded-sm font-bold text-blue-700 underline decoration-blue-300 underline-offset-4 transition hover:text-blue-800 hover:decoration-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4"
-          >
-            Learn how to choose the right light tower →
+          <Link href="/en/solutions" className="mt-7 inline-flex rounded-sm font-bold text-blue-700 underline decoration-blue-300 underline-offset-4 transition hover:text-blue-800 hover:decoration-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4">
+            Explore Mobile Lighting Solutions →
           </Link>
         </div>
       </section>
 
-      <section className="px-6 py-20 lg:py-24">
-        <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:items-start lg:gap-16">
-          <div className="min-w-0">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-700">PROJECT CAPABILITIES</p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
-              Configuration, Quality Follow-Up and Export Support
-            </h2>
-            <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
-              LFADJ connects project requirements with practical mobile lighting configurations. We focus on specification clarity, quality checkpoints and the information buyers need before shipment and operation.
-            </p>
-            <div className="mt-8 border-t border-slate-200 pt-6">
-              <h3 className="text-lg font-bold text-slate-950">Management Systems</h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {['ISO 9001', 'ISO 14001', 'ISO 45001'].map((certification) => (
-                  <span key={certification} className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-sm font-bold text-blue-800">{certification}</span>
-                ))}
+      <section className="bg-slate-950 px-6 py-16 text-white lg:py-20">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-14">
+            <div className="min-w-0">
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-300">WHY BUYERS WORK WITH LFADJ</p>
+              <h2 className="mt-4 text-[32px] font-bold leading-tight tracking-tight sm:text-4xl lg:text-[40px]">
+                Clearer Coordination Before Equipment Reaches the Site
+              </h2>
+              <p className="mt-5 text-base leading-8 text-slate-300">
+                A mobile lighting project depends on more than a model number. We focus on requirement clarity, configuration alignment, quality follow-up, and the information buyers need before delivery.
+              </p>
+              <div className="mt-8 border-t border-slate-700 pt-6">
+                <h3 className="text-lg font-bold">Management Systems</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-300">Our management approach is supported by ISO 9001, ISO 14001, and ISO 45001 systems.</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {["ISO 9001", "ISO 14001", "ISO 45001"].map((certification) => (
+                    <span key={certification} className="rounded-full border border-slate-600 bg-slate-900 px-3 py-1.5 text-sm font-bold text-blue-200">{certification}</span>
+                  ))}
+                </div>
               </div>
-              <p className="mt-3 text-sm leading-6 text-slate-600">Management systems supporting quality, environmental and occupational health and safety processes.</p>
             </div>
-            <Link href="/en/about/manufacturing" className="mt-6 inline-flex rounded-sm font-bold text-blue-700 underline decoration-blue-300 underline-offset-4 transition hover:text-blue-800 hover:decoration-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4">
-              Explore Manufacturing &amp; Quality →
-            </Link>
-          </div>
-          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 gap-4 sm:grid-cols-2">
             {capabilityItems.map((item, index) => (
-              <article key={item.title} className="min-w-0 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm sm:p-7">
-                <p className="text-sm font-bold text-blue-700">{String(index + 1).padStart(2, '0')}</p>
-                <h3 className="mt-4 text-lg font-bold leading-7 text-slate-950">{item.title}</h3>
-                <p className="mt-3 text-base leading-7 text-slate-600">{item.body}</p>
+              <article key={item.title} className="min-w-0 border border-slate-700 bg-slate-900/70 p-6 sm:p-7">
+                <p className="text-sm font-bold text-blue-300">{String(index + 1).padStart(2, "0")}</p>
+                <h3 className="mt-4 text-lg font-bold leading-7">{item.title}</h3>
+                <p className="mt-3 text-base leading-7 text-slate-300">{item.body}</p>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-slate-200 bg-slate-50 px-6 py-20 lg:py-24">
-        <div className="mx-auto max-w-[1200px]">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-700">EXPLORE LFADJ</p>
-          <h2 className="mt-4 max-w-4xl text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">Find the Information Relevant to Your Project</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3 lg:gap-6">
-            {exploreItems.map((item) => (
-              <Link key={item.href} href={item.href} className="group flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-400 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4 sm:p-7">
-                <h3 className="text-xl font-bold text-slate-950 group-hover:text-blue-800">{item.title}</h3>
-                <p className="mt-4 flex-1 leading-7 text-slate-600">{item.body}</p>
-                <span className="mt-6 font-bold text-blue-700 underline decoration-blue-300 underline-offset-4 group-hover:decoration-blue-700">{item.label} →</span>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-12 rounded-3xl bg-blue-700 px-6 py-10 text-white sm:px-10 sm:py-12 lg:flex lg:items-center lg:justify-between lg:gap-12 lg:px-12">
-            <div className="max-w-3xl">
-              <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">Tell Us About Your Project Conditions</h2>
-              <p className="mt-5 text-base leading-8 text-blue-50 sm:text-lg">Share the application, quantity, operating environment and preferred power source. We will help organize a practical mobile lighting configuration for further discussion.</p>
-              <p className="mt-4 text-sm leading-6 text-blue-100">No fixed configuration required — tell us what you know about the project.</p>
             </div>
-            <div className="mt-8 flex shrink-0 flex-col gap-3 sm:flex-row lg:mt-0 lg:flex-col xl:flex-row">
-              <Link href="/en/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-white px-6 py-3 text-center text-sm font-bold text-blue-800 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-700">Request a Project Recommendation</Link>
-              <Link href="/en/contact" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-blue-200 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-700">Contact LFADJ</Link>
+          </div>
+          <div className="mt-12 border-t border-slate-700 pt-8 lg:flex lg:items-center lg:justify-between lg:gap-12">
+            <div className="max-w-2xl">
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Planning a Mobile Lighting Project?</h2>
+              <p className="mt-4 leading-7 text-slate-300">Share the application, quantity, operating conditions, and preferred delivery schedule. We will help organize the next configuration discussion.</p>
+            </div>
+            <div className="mt-7 flex shrink-0 flex-col items-start gap-4 sm:flex-row sm:items-center lg:mt-0 lg:flex-col lg:items-stretch xl:flex-row xl:items-center">
+              <Link href="/en/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">Request a Project Recommendation</Link>
+              <Link href="/en/about/manufacturing" className="inline-flex rounded-sm font-bold text-blue-200 underline decoration-blue-400 underline-offset-4 transition hover:text-white hover:decoration-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-slate-950">View Manufacturing &amp; Quality →</Link>
             </div>
           </div>
         </div>

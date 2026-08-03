@@ -1,157 +1,125 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "关于 LFADJ｜移动照明企业信息",
-  description: "了解 LFADJ 的移动照明业务方向、主要服务对象，以及我们如何协助项目买家整理柴油与太阳能照明需求。",
+  description: "了解 LFADJ 如何围绕移动照明项目提供项目配置、质量管理、管理体系支持与交付前协调。",
   alternates: {
     canonical: "https://lfadj.com/zh/about",
     languages: { en: "/en/about", "zh-CN": "/zh/about" },
   },
   openGraph: {
     title: "关于 LFADJ｜移动照明企业信息",
-    description: "了解 LFADJ 的移动照明业务方向，以及面向施工、租赁和工业项目买家的需求沟通支持。",
+    description: "了解 LFADJ 的移动照明定位、项目配置、质量管理与面向设备买家的交付前协调方式。",
     url: "https://lfadj.com/zh/about",
     type: "website",
   },
 };
 
 const capabilityItems = [
-  { title: "项目配置", body: "根据应用场景和运行条件匹配供能方式、照明输出、升降系统、运行时间与选配设备。" },
-  { title: "OEM / ODM 支持", body: "在技术评估后，支持合理的品牌、规格及配置定制需求。" },
-  { title: "质量检查节点", body: "跟进来料、装配、电气功能、出厂测试和发运准备等关键检查环节。" },
-  { title: "出口资料支持", body: "协助整理项目交付所需要的规格、产品资料及发运相关文件。" },
-];
-
-const exploreItems = [
-  { title: "移动照明产品", body: "比较适用于不同运行需求的柴油与太阳能移动照明灯塔。", label: "查看产品", href: "/zh/products" },
-  { title: "照明应用场景", body: "了解施工、矿山、油气、设备租赁和应急项目的照明需求。", label: "查看应用场景", href: "/zh/applications" },
-  { title: "项目解决方案", body: "在选择配置前了解选型、极端环境及升降系统解决方案。", label: "查看解决方案", href: "/zh/solutions" },
+  { title: "专注移动照明", body: "产品沟通始终围绕移动照明应用和实际运行条件展开。" },
+  { title: "买家需求审核", body: "在推荐配置方向前，先检查项目资料和关键使用要求。" },
+  { title: "制造与质量协调", body: "协调双方确认的产品规格、生产要求与质量检查节点。" },
+  { title: "OEM、ODM 与出口支持", body: "根据项目需要协调品牌、配置细节、资料和交付准备。" },
 ];
 
 export default function ChineseAboutPage() {
   return (
     <main className="mx-auto w-full max-w-7xl overflow-x-hidden bg-white">
-        <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50/70 px-6 py-14 md:min-h-[500px] md:py-16 lg:min-h-[560px] lg:py-20">
-          <div className="mx-auto grid max-w-[1200px] items-center gap-12 lg:min-h-[400px] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-14">
+        <section className="border-b border-slate-200 bg-slate-50 px-6 py-14 sm:py-16 lg:py-20">
+          <div className="mx-auto grid max-w-[1120px] items-center gap-10 lg:min-h-[480px] lg:grid-cols-[minmax(0,56fr)_minmax(0,44fr)] lg:gap-14">
             <div className="min-w-0">
               <p className="text-sm font-bold tracking-[0.2em] text-blue-700">关于 LFADJ</p>
-              <h1 className="mt-5 max-w-[680px] text-4xl font-bold leading-[1.12] tracking-tight text-slate-950 sm:text-5xl lg:text-[58px]">了解 LFADJ 与我们的移动照明业务</h1>
-              <p className="mt-6 max-w-[620px] text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">LFADJ 专注移动照明产品与项目支持，服务施工、矿山、市政、应急和设备租赁客户。我们协助买家了解柴油与太阳能方案、整理项目需求并确定合适的下一步沟通方向。</p>
+              <h1 className="mt-5 max-w-[660px] text-[38px] font-bold leading-[1.12] tracking-tight text-slate-950 sm:text-[42px] lg:text-[56px]">围绕真实项目条件，帮助买家判断移动照明方案</h1>
+              <p className="mt-6 max-w-[650px] text-lg leading-8 text-slate-600">LFADJ 根据应用场景、运行时间、现场环境、部署要求和项目重点，帮助设备买家判断移动照明方向，并协调产品配置、制造要求、质量检查、OEM/ODM 细节及出口资料。</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link href="/zh/products" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">查看移动照明产品</Link>
-                <Link href="/zh/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-900 transition hover:border-blue-500 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">提交项目需求</Link>
-              </div>
-              <p className="mt-6 text-sm font-semibold leading-6 text-slate-600">专注移动照明 <span className="px-1 text-blue-600" aria-hidden="true">·</span> 项目需求支持 <span className="px-1 text-blue-600" aria-hidden="true">·</span> 服务企业买家</p>
-            </div>
-            <div className="min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-xl shadow-slate-900/10">
-              <div className="relative aspect-[16/10] w-full">
-                <Image src="/images/solutions/temporary-site-lighting/hero-temporary-site-lighting.webp" alt="移动照明灯塔在夜间施工现场提供照明" fill priority sizes="(min-width: 1024px) 42vw, 100vw" className="object-contain" />
+                <Link href="/zh/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-700 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">沟通您的项目</Link>
+                <Link href="/zh/about/manufacturing" className="inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 bg-white px-6 py-3 text-center text-sm font-bold text-slate-900 transition hover:border-blue-600 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">了解质量管理方式</Link>
               </div>
             </div>
+            <aside className="min-w-0 border border-slate-300 bg-white p-6 shadow-sm sm:p-8" aria-labelledby="buyer-clarity-heading-zh">
+              <p className="text-xs font-bold tracking-[0.2em] text-blue-700">项目判断框架</p>
+              <h2 id="buyer-clarity-heading-zh" className="mt-3 text-2xl font-bold tracking-tight text-slate-950">我们帮助买家明确什么</h2>
+              <ol className="mt-7 divide-y divide-slate-200 border-y border-slate-200">
+                {["应用场景与照明范围", "运行时间与动力选择", "现场环境与部署方式", "产品配置与交付要求"].map((item, index) => (
+                  <li key={item} className="flex items-center gap-5 py-4">
+                    <span className="text-sm font-bold tabular-nums text-blue-700">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="font-semibold leading-6 text-slate-800">{item}</span>
+                  </li>
+                ))}
+              </ol>
+            </aside>
           </div>
         </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 px-6 py-20 lg:py-24">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="max-w-4xl">
-            <p className="text-sm font-bold tracking-[0.2em] text-blue-700">我们的服务对象</p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
-              帮助项目买家找到相关信息
-            </h2>
-            <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
-              施工团队、设备租赁企业和工业项目买家掌握的项目信息往往不同。LFADJ 协助整理关键问题、比较相关移动照明方向，并引导买家找到下一步判断所需的信息。
-            </p>
+      <section className="border-y border-slate-200 bg-slate-50 px-6 py-16 lg:py-20">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="max-w-3xl">
+            <p className="text-sm font-bold tracking-[0.2em] text-blue-700">我们的工作方式</p>
+            <h2 className="mt-4 text-[32px] font-bold leading-tight tracking-tight text-slate-950 lg:text-[40px]">从买家需求到可交付的产品配置</h2>
+            <p className="mt-5 text-base leading-7 text-slate-600">我们的工作是将项目信息转化为更清晰的设备判断，并在交付前协调真正影响使用结果的关键细节。</p>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-3 lg:gap-6">
+          <ol className="mt-10 grid border-b border-slate-300 md:grid-cols-2 lg:grid-cols-4">
             {[
-              {
-                title: "理解买家与项目背景",
-                body: "从应用场景、运行方式、现场环境和项目团队目前掌握的信息开始沟通。",
-              },
-              {
-                title: "查找相关选择方向",
-                body: "通过产品、应用和解决方案信息，比较柴油、太阳能及项目化移动照明方向。",
-              },
-              {
-                title: "准备下一步沟通",
-                body: "整理产品或配置判断前需要进一步确认的项目要求与关键问题。",
-              },
-            ].map((item) => (
-              <article
-                key={item.title}
-                className="flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md sm:p-7"
-              >
-                <h3 className="text-xl font-bold leading-7 text-slate-950">{item.title}</h3>
-                <p className="mt-4 leading-7 text-slate-600">{item.body}</p>
-              </article>
+              { title: "了解项目", body: "明确应用场景、照明范围、运行时间、气候、运输、现场通行及部署限制。" },
+              { title: "判断方向", body: "根据实际运行重点，比较柴油、太阳能、轻便式设备、升降系统及选配需求。" },
+              { title: "协调配置", body: "确认关键参数、OEM/ODM 细节、质量检查节点、项目资料及制造协同要求。" },
+              { title: "准备交付", body: "复核双方确认的配置，并整理项目交接所需的产品和出口资料。" },
+            ].map((step, index) => (
+              <li key={step.title} className="relative border-t border-slate-300 py-6 md:px-6 lg:first:pl-0 lg:last:pr-0">
+                <div className="flex items-center gap-3">
+                  <span className="text-sm font-bold tracking-[0.14em] text-blue-700">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="h-px flex-1 bg-slate-300" aria-hidden="true" />
+                </div>
+                <h3 className="mt-5 text-lg font-bold leading-7 text-slate-950">{step.title}</h3>
+                <p className="mt-3 text-base leading-7 text-slate-600">{step.body}</p>
+                {index < 3 && <span className="absolute right-0 top-[18px] hidden translate-x-1/2 bg-slate-50 px-1 text-sm text-blue-700 lg:block" aria-hidden="true">→</span>}
+              </li>
             ))}
-          </div>
+          </ol>
 
-          <Link
-            href="/zh/solutions/how-to-choose-the-right-light-tower"
-            className="mt-9 inline-flex rounded-sm font-bold text-blue-700 underline decoration-blue-300 underline-offset-4 transition hover:text-blue-800 hover:decoration-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4"
-          >
-            了解如何选择合适的移动照明灯塔 →
+          <Link href="/zh/solutions" className="mt-7 inline-flex rounded-sm font-bold text-blue-700 underline decoration-blue-300 underline-offset-4 transition hover:text-blue-800 hover:decoration-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4">
+            查看移动照明解决方案 →
           </Link>
         </div>
       </section>
 
-      <section className="px-6 py-20 lg:py-24">
-        <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:items-start lg:gap-16">
-          <div className="min-w-0">
-            <p className="text-sm font-bold tracking-[0.2em] text-blue-700">项目服务能力</p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">配置建议、质量跟进与出口支持</h2>
-            <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">LFADJ 将项目需求转化为可执行的移动照明配置，重点关注规格确认、质量检查节点，以及客户在发运和投入使用前所需要的资料。</p>
-            <div className="mt-8 border-t border-slate-200 pt-6">
-              <h3 className="text-lg font-bold text-slate-950">管理体系</h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {['ISO 9001', 'ISO 14001', 'ISO 45001'].map((certification) => (
-                  <span key={certification} className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-sm font-bold text-blue-800">{certification}</span>
-                ))}
+      <section className="bg-slate-950 px-6 py-16 text-white lg:py-20">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-14">
+            <div className="min-w-0">
+              <p className="text-sm font-bold tracking-[0.2em] text-blue-300">为什么买家与 LFADJ 合作</p>
+              <h2 className="mt-4 text-[32px] font-bold leading-tight tracking-tight sm:text-4xl lg:text-[40px]">让设备到达现场之前的协调更清晰</h2>
+              <p className="mt-5 text-base leading-8 text-slate-300">移动照明项目不能只看型号。我们关注需求是否明确、配置是否一致、质量节点是否得到跟进，以及买家在交付前需要获得的信息。</p>
+              <div className="mt-8 border-t border-slate-700 pt-6">
+                <h3 className="text-lg font-bold">管理体系</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-300">我们的管理方式以 ISO 9001、ISO 14001 和 ISO 45001 管理体系为基础。</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {["ISO 9001", "ISO 14001", "ISO 45001"].map((certification) => (
+                    <span key={certification} className="rounded-full border border-slate-600 bg-slate-900 px-3 py-1.5 text-sm font-bold text-blue-200">{certification}</span>
+                  ))}
+                </div>
               </div>
-              <p className="mt-3 text-sm leading-6 text-slate-600">以质量、环境及职业健康安全管理体系支持项目服务与质量管理。</p>
             </div>
-            <Link href="/zh/about/manufacturing" className="mt-6 inline-flex rounded-sm font-bold text-blue-700 underline decoration-blue-300 underline-offset-4 transition hover:text-blue-800 hover:decoration-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4">
-              查看项目配置与质量管理 →
-            </Link>
-          </div>
-          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 gap-4 sm:grid-cols-2">
             {capabilityItems.map((item, index) => (
-              <article key={item.title} className="min-w-0 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm sm:p-7">
-                <p className="text-sm font-bold text-blue-700">{String(index + 1).padStart(2, '0')}</p>
-                <h3 className="mt-4 text-lg font-bold leading-7 text-slate-950">{item.title}</h3>
-                <p className="mt-3 text-base leading-7 text-slate-600">{item.body}</p>
+              <article key={item.title} className="min-w-0 border border-slate-700 bg-slate-900/70 p-6 sm:p-7">
+                <p className="text-sm font-bold text-blue-300">{String(index + 1).padStart(2, "0")}</p>
+                <h3 className="mt-4 text-lg font-bold leading-7">{item.title}</h3>
+                <p className="mt-3 text-base leading-7 text-slate-300">{item.body}</p>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-slate-200 bg-slate-50 px-6 py-20 lg:py-24">
-        <div className="mx-auto max-w-[1200px]">
-          <p className="text-sm font-bold tracking-[0.2em] text-blue-700">进一步了解 LFADJ</p>
-          <h2 className="mt-4 max-w-4xl text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">找到与您的项目相关的信息</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3 lg:gap-6">
-            {exploreItems.map((item) => (
-              <Link key={item.href} href={item.href} className="group flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-400 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4 sm:p-7">
-                <h3 className="text-xl font-bold text-slate-950 group-hover:text-blue-800">{item.title}</h3>
-                <p className="mt-4 flex-1 leading-7 text-slate-600">{item.body}</p>
-                <span className="mt-6 font-bold text-blue-700 underline decoration-blue-300 underline-offset-4 group-hover:decoration-blue-700">{item.label} →</span>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-12 rounded-3xl bg-blue-700 px-6 py-10 text-white sm:px-10 sm:py-12 lg:flex lg:items-center lg:justify-between lg:gap-12 lg:px-12">
-            <div className="max-w-3xl">
-              <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">告诉我们您的项目工况</h2>
-              <p className="mt-5 text-base leading-8 text-blue-50 sm:text-lg">提交应用场景、预计数量、运行环境和供能偏好，我们将协助整理适合进一步沟通的移动照明配置建议。</p>
-              <p className="mt-4 text-sm leading-6 text-blue-100">无需提前确定完整配置，您可以先提供目前已知的项目条件。</p>
             </div>
-            <div className="mt-8 flex shrink-0 flex-col gap-3 sm:flex-row lg:mt-0 lg:flex-col xl:flex-row">
-              <Link href="/zh/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-white px-6 py-3 text-center text-sm font-bold text-blue-800 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-700">获取项目配置建议</Link>
-              <Link href="/zh/contact" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-blue-200 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-700">联系 LFADJ</Link>
+          </div>
+          <div className="mt-12 border-t border-slate-700 pt-8 lg:flex lg:items-center lg:justify-between lg:gap-12">
+            <div className="max-w-2xl">
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">正在规划移动照明项目？</h2>
+              <p className="mt-4 leading-7 text-slate-300">告诉我们应用场景、预计数量、运行条件和期望交付时间，我们将帮助您整理下一步配置沟通。</p>
+            </div>
+            <div className="mt-7 flex shrink-0 flex-col items-start gap-4 sm:flex-row sm:items-center lg:mt-0 lg:flex-col lg:items-stretch xl:flex-row xl:items-center">
+              <Link href="/zh/contact/request-a-quote" className="inline-flex min-h-12 items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">获取项目配置建议</Link>
+              <Link href="/zh/about/manufacturing" className="inline-flex rounded-sm font-bold text-blue-200 underline decoration-blue-400 underline-offset-4 transition hover:text-white hover:decoration-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-slate-950">查看制造与质量管理 →</Link>
             </div>
           </div>
         </div>
