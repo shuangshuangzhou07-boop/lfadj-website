@@ -290,7 +290,13 @@ const copyByLanguage = {
   },
 } as const;
 
-export function ProjectInquiryForm({ language }: { language: Language }) {
+export function ProjectInquiryForm({
+  language,
+  embedded = false,
+}: {
+  language: Language;
+  embedded?: boolean;
+}) {
   const copy = copyByLanguage[language];
   const formId = useId();
   const [formData, setFormData] = useState<ProjectInquiryData>(initialFormData);
@@ -511,16 +517,17 @@ export function ProjectInquiryForm({ language }: { language: Language }) {
     "mt-2 h-12 w-full min-w-0 rounded-xl border border-slate-300 bg-white px-4 text-base text-slate-950 outline-none transition focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10";
   const labelClassName = "text-sm font-semibold text-slate-800";
   const statusClassName = "ml-2 text-xs font-medium text-slate-500";
+  const Wrapper = embedded ? "div" : "section";
 
   return (
     <>
-      <section className="px-6 pb-14 sm:pb-16">
-        <div className="mx-auto max-w-[960px]">
+      <Wrapper className={embedded ? "min-w-0" : "px-6 pb-14 sm:pb-16"}>
+        <div className={embedded ? "min-w-0" : "mx-auto max-w-[960px]"}>
           <form
             noValidate
             onSubmit={handleSubmit}
             aria-busy={isSubmitting}
-            className="min-w-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8"
+            className={`min-w-0 border border-slate-200 bg-white p-5 sm:p-8 ${embedded ? "rounded-lg" : "rounded-2xl shadow-sm"}`}
           >
             <div
               aria-hidden="true"
@@ -1017,7 +1024,7 @@ export function ProjectInquiryForm({ language }: { language: Language }) {
                   <p
                     role="status"
                     aria-live="polite"
-                    className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm font-medium leading-6 text-green-800"
+                    className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-medium leading-6 text-blue-800"
                   >
                     {copy.success}
                   </p>
@@ -1034,7 +1041,7 @@ export function ProjectInquiryForm({ language }: { language: Language }) {
             </div>
           </form>
         </div>
-      </section>
+      </Wrapper>
     </>
   );
 }

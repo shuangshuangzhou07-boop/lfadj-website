@@ -1,115 +1,108 @@
 import type { Metadata } from "next";
-import { getDictionary } from "@/src/i18n/getDictionary";
-
-const t = getDictionary("en");
+import Link from "next/link";
+import { ProjectInquiryForm } from "@/components/contact/ProjectInquiryForm";
 
 export const metadata: Metadata = {
-  title: "LFADJ Mobile Light Tower Manufacturer",
+  title: "Contact LFADJ | Discuss Your Mobile Lighting Project",
   description:
-    "LFADJ is a professional manufacturer of mobile light towers for construction, mining, and emergency applications. OEM/ODM available.",
+    "Contact LFADJ to share your mobile light tower application, operating conditions, configuration requirements, and project procurement plans.",
   alternates: {
     canonical: "https://lfadj.com/en/contact",
+    languages: { en: "/en/contact", "zh-CN": "/zh/contact" },
   },
   openGraph: {
-    title: "LFADJ Mobile Light Tower Manufacturer",
+    title: "Contact LFADJ | Discuss Your Mobile Lighting Project",
     description:
-      "Industrial mobile lighting solutions for construction, mining, and emergency use.",
+      "Share your mobile light tower application, operating conditions, configuration requirements, and project procurement plans with LFADJ.",
     url: "https://lfadj.com/en/contact",
     type: "website",
   },
 };
 
-const useCases = [
-  "Construction site lighting quote",
-  "Mining project lighting support",
-  "Emergency temporary lighting plan",
-  "Rental fleet mobile light tower sourcing",
+const preparationItems = [
+  { title: "Application", body: "Where and how the mobile lighting equipment will be used.", href: "/en/applications" },
+  { title: "Quantity and timeline", body: "Estimated unit quantity and the expected project schedule.", href: "/en/products" },
+  { title: "Operating conditions", body: "Working hours, climate, site access, and special requirements.", href: "/en/solutions" },
 ];
 
-const trustPoints = [
-  "Manufacturer direct communication",
-  "LF6130 product specification support",
-  "OEM / ODM discussion available",
-  "Export market project coordination",
+const processSteps = [
+  {
+    title: "Requirement Review",
+    body: "We review your application, quantity, operating conditions, and project timeline.",
+  },
+  {
+    title: "Configuration Discussion",
+    body: "We may contact you to clarify the lighting output, power source, mast system, or optional equipment.",
+  },
+  {
+    title: "Project Recommendation",
+    body: "We prepare a suitable configuration direction for further commercial discussion.",
+  },
 ];
 
 export default function EnglishContactPage() {
   return (
-    <main className='max-w-7xl mx-auto'>
-      <section className="px-6 py-20 lg:py-28">
-        <div className="mx-auto max-w-[1200px]">
-          <p className="text-sm font-bold uppercase tracking-[0.24em] text-gray-500">
-            {t.contact.eyebrow}
-          </p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-black sm:text-5xl lg:text-6xl">
-            Contact Mobile Light Tower Manufacturer LFADJ
+    <main className="min-w-0 overflow-x-hidden bg-white text-slate-950">
+      <section className="border-b border-slate-200 bg-slate-50 px-6 py-12 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-[1120px]">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-700">CONTACT LFADJ</p>
+          <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-[56px]">
+            Discuss Your Mobile Lighting Project
           </h1>
-          <p className="mt-6 max-w-4xl text-lg leading-8 text-gray-600">
-            Contact LFADJ to discuss mobile light tower specifications, diesel
-            lighting tower pricing, OEM requirements and application support.
-            Buyers can share project country, quantity, worksite environment,
-            preferred engine, mast height and delivery schedule. LFADJ can help
-            compare LF6130 with project needs and guide customers toward the
-            right mobile lighting solution for construction, mining, emergency
-            or rental use.
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
+            Share your application, operating conditions, and procurement requirements. Our team will review the information and help identify a suitable mobile lighting configuration.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/en/products/lf6130" className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-bold text-white">LF6130</a>
-            <a href="/en/products" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Products</a>
-            <a href="/en/applications" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Applications</a>
-            <a href="/en/case-studies" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Case Studies</a>
-            <a href="/en/blog" className="rounded-lg border border-gray-300 px-5 py-3 text-sm font-bold text-black">Blog</a>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 px-6 py-16 lg:py-24">
+        <div className="mx-auto grid max-w-[1120px] gap-10 lg:grid-cols-[minmax(0,0.32fr)_minmax(0,0.68fr)] lg:items-start lg:gap-12">
+          <aside className="min-w-0 lg:sticky lg:top-28" aria-labelledby="prepare-heading">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-700">PROJECT DETAILS</p>
+            <h2 id="prepare-heading" className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-950">
+              What to Prepare
+            </h2>
+            <p className="mt-4 text-base leading-7 text-slate-700">
+              Provide what you already know. Optional operating details can be added when they are available.
+            </p>
+            <ol className="mt-7 divide-y divide-slate-200 border-y border-slate-200">
+              {preparationItems.map((item, index) => (
+                <li key={item.title} className="py-5">
+                  <div className="flex gap-4">
+                    <span className="shrink-0 text-sm font-bold tabular-nums text-blue-700">{String(index + 1).padStart(2, "0")}</span>
+                    <div className="min-w-0">
+                      <h3 className="font-bold leading-6 text-slate-950">
+                        <Link href={item.href} className="transition hover:text-blue-700 hover:underline hover:underline-offset-4">{item.title}</Link>
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-600">{item.body}</p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </aside>
+
+          <div className="min-w-0">
+            <ProjectInquiryForm language="en" embedded />
           </div>
         </div>
       </section>
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight text-black">
-            Request Support by Use Case
+
+      <section className="border-t border-slate-200 bg-white px-6 py-16 lg:py-20">
+        <div className="mx-auto max-w-[1120px]">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-700">AFTER SUBMISSION</p>
+          <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
+            What Happens After You Submit
           </h2>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {useCases.map((item) => (
-              <article key={item} className="rounded-2xl border border-gray-200 bg-white p-6 text-sm font-bold text-gray-800 shadow-sm">
-                {item}
-              </article>
+          <ol className="mt-10 grid border-y border-slate-200 md:grid-cols-3">
+            {processSteps.map((step, index) => (
+              <li key={step.title} className="min-w-0 border-b border-slate-200 py-6 last:border-b-0 md:border-b-0 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0 md:last:pr-0">
+                <p className="text-sm font-bold tabular-nums text-blue-700">{String(index + 1).padStart(2, "0")}</p>
+                <h3 className="mt-4 text-lg font-bold leading-7 text-slate-950">{step.title}</h3>
+                <p className="mt-3 text-base leading-7 text-slate-700">{step.body}</p>
+              </li>
             ))}
-          </div>
-        </div>
-      </section>
-      <section className="bg-gray-50 px-6 py-20">
-        <div className="mx-auto grid max-w-[1200px] gap-6 lg:grid-cols-4">
-          {t.contact.methods.map((item) => (
-            <a
-              key={item}
-              href="#"
-              className="rounded-2xl border border-gray-200 bg-white p-6 text-base font-bold text-black shadow-sm transition-colors hover:border-blue-500"
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-      </section>
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-3xl font-bold tracking-tight text-black">
-            Why Contact LFADJ Manufacturer
-          </h2>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {trustPoints.map((item) => (
-              <article key={item} className="rounded-2xl border border-gray-200 bg-white p-6 text-sm font-bold text-gray-800 shadow-sm">
-                {item}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="bg-black px-6 py-16 text-white">
-        <div className="mx-auto max-w-[1200px] text-center">
-          <h2 className="text-3xl font-bold">Request a Mobile Light Tower Quote</h2>
-          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <a href="/en/contact" className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white">Contact Us</a>
-            <a href="/en/contact" className="rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white">Request Quote</a>
-          </div>
+          </ol>
         </div>
       </section>
     </main>
