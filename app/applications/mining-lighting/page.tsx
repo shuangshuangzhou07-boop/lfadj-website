@@ -16,14 +16,13 @@ const copy = {
   en: {
     title: "Mining Lighting Applications",
     subtitle:
-      "Mobile light towers support night work across open-pit work areas, haul roads, loading zones, maintenance areas and temporary mining tasks where lighting must move with operations.",
+      "Mobile light towers support night work across open-pit mine and quarry work areas, haul roads, loading zones, maintenance areas and temporary mining tasks where lighting must move with operations.",
     heroCta: "Discuss Your Mining Application",
-    bottomCtaTitle: "Share Your Mining Lighting Requirements",
+    bottomCtaTitle: "Discuss Your Mining Lighting Requirements",
     bottomCtaDescription:
-      "Share the work areas, night operating hours, deployment conditions, energy supply and expected quantity for your mining project. LFADJ can use this background to discuss relevant equipment directions for further comparison.",
-    bottomCtaLabel: "Submit Your Mining Application",
-    imageAlt:
-      "Mobile light tower illuminating excavators and haul equipment at an open-pit mine at night",
+      "Share the work areas, operating schedule, site conditions, energy access, expected quantity and deployment requirements so available lighting directions can be reviewed against the project.",
+    bottomCtaLabel: "Submit Your Project Requirements",
+    imageAlt: "Mobile light tower supporting an open-pit mining work area",
     applicationsTitle: "Mining Work Areas and Operating Tasks",
     applications: [
       {
@@ -47,20 +46,20 @@ const copy = {
           "Inspection and maintenance of haul trucks, excavators and site equipment may take place away from established lighting. A mobile source can be deployed near the current maintenance position.",
       },
       {
-        title: "Crushing and Processing Areas",
+        title: "Crushing and Screening Areas",
         description:
-          "Equipment around crushers, conveyors and processing areas may require temporary visibility for inspection, material handling or short maintenance tasks without assuming any special hazardous-area certification.",
+          "Equipment around crushers, screens and conveyors may require temporary visibility for inspection, material handling or short maintenance tasks without assuming any special hazardous-area certification.",
       },
       {
-        title: "Exploration and Temporary Work Zones",
+        title: "Stockpiles and Temporary Work Zones",
         description:
-          "Exploration points and temporary mining work zones can change location or have limited fixed power. Mobile lighting can follow the task while the work area, access route and operating schedule develop.",
+          "Stockpiles, material areas and temporary mining work zones can change boundaries or have limited fixed power. Mobile lighting can follow the task while the work area, access route and operating schedule develop.",
       },
     ],
     requirementsTitle: "Mining-Site Lighting Challenges",
     requirements: [
       {
-        title: "Large and Changing Work Areas",
+        title: "Changing Work Faces",
         description:
           "Benches, loading points, roads and equipment areas can cover large distances and shift as extraction or site work progresses. Lighting placement therefore needs to follow the current work face and access pattern.",
       },
@@ -70,7 +69,7 @@ const copy = {
           "Dust from excavation, traffic and material handling can reduce visibility and change how light is perceived across the work area. Placement and aiming need to reflect the actual site conditions rather than relying on output alone.",
       },
       {
-        title: "Long Nighttime Operating Hours",
+        title: "Long or Variable Operating Schedules",
         description:
           "Night shifts, maintenance windows and extended operating periods create lighting needs that vary by task and schedule. The operating period is one of the conditions to carry into a later solution or configuration review.",
       },
@@ -85,59 +84,81 @@ const copy = {
           "Haul trucks, loaders and other equipment move through shared areas, so lighting needs to consider travel paths, changing sight lines and glare toward operators without claiming to remove operational risk.",
       },
       {
-        title: "Remote Locations and Energy Supply",
+        title: "Remote Power and Refueling Conditions",
         description:
           "Remote locations may have limited grid access, fuel logistics or suitable charging conditions. These factors influence the role a lighting system can perform and belong in a project-specific selection discussion.",
       },
     ],
-    productsTitle: "Equipment Roles in Mining Operations",
+    equipmentRolesTitle: "How Mobile Light Towers Support Mining Operations",
+    equipmentRolesIntro:
+      "Mining work areas do not all require the same lighting role. Work-face changes, energy access, relocation frequency and operating schedules shape the direction that should be reviewed for each task.",
+    equipmentRoles: [
+      {
+        title: "Relocatable Lighting for Changing Work Areas",
+        description:
+          "Open-pit work faces, loading areas, temporary ramps and stockpiles can change with the operating plan. Mobile lighting can be repositioned around the current task after checking ground conditions, support space, access routes and aiming direction.",
+      },
+      {
+        title: "Temporary Lighting for Maintenance and Support Tasks",
+        description:
+          "Mobile equipment maintenance, inspections and temporary repairs may take place outside established lighting. The tower position needs to reflect parked vehicles, personnel work points and equipment obstructions without replacing site-specific work procedures.",
+      },
+      {
+        title: "Independent Lighting for Remote Work Zones",
+        description:
+          "Some mine work areas are distant from fixed power or have changing supply conditions. Diesel and solar mobile towers are directions for further comparison, based on operating periods, sunlight, fuel access, maintenance arrangements and load requirements.",
+      },
+    ],
+    productsTitle: "Equipment Directions to Evaluate",
     suitableLabel: "Typical mining role:",
     products: [
       {
         slug: "lf955",
         title: "LF955 Diesel Mobile Light Tower",
         applications: [
-          "A diesel-powered reference role for extended night work where independent generation support is part of the operating plan.",
-          "May suit open-pit work faces, haul routes, loading areas or maintenance tasks when fuel logistics and deployment conditions support that role.",
-          "The product page provides model facts; project conditions still determine whether this role fits the task.",
+          "Consider LF955 where mining work areas require a diesel-powered mobile lighting direction and the project can confirm operating schedules, fuel access, maintenance planning and repeated relocation.",
+          "Open-pit work faces, haul routes, loading areas or maintenance tasks may be reviewed when those site conditions support a diesel role.",
+          "Operating hours, energy, ground conditions, environment and lighting requirements still need project confirmation.",
         ],
       },
       {
         slug: "lf971",
         title: "LF971 Solar Mobile Light Tower",
         applications: [
-          "A solar-and-battery reference role for temporary or changing mining tasks where usable sunlight and the deployment period support stored-energy operation.",
-          "May suit exploration points, temporary work zones or locations where routine fuel supply is limited and the operating schedule can align with charging conditions.",
-          "The product page provides model facts; solar conditions, load, operating hours and site access still require project review.",
+          "Consider LF971 for remote or temporary mining work zones where solar availability, lighting load, operating schedule, battery capacity and seasonal conditions can be assessed before configuration.",
+          "Locations with limited routine fuel supply may be reviewed when deployment and charging conditions align with the operating plan.",
+          "Sunlight, load, operating hours and site access still require project confirmation; it is not a default direction for every mine.",
         ],
       },
     ],
     relatedInformationTitle: "Related Information",
-    relatedProductsTitle: "Related Products",
+    relatedProductsTitle: "Related Product",
+    relatedProduct: { slug: "lf955", label: "LF955 Diesel Mobile Light Tower" },
     relatedSolutionsTitle: "Related Solutions",
-    relatedSolutionLabel: "How to Choose the Right Light Tower",
+    relatedSolutionDescription:
+      "Review temporary lighting planning for changing work areas and remote site conditions.",
+    relatedSolutionLabel: "Temporary Site Lighting",
     relatedResourceTitle: "Mining Lighting Knowledge",
     relatedResourceDescription:
       "Review how lumens, working-plane illuminance and beam angle affect lighting across changing mine work areas.",
     relatedResourceLabel: "How to Choose Lumens and Beam Angle",
-    relatedApplicationsTitle: "Related Applications",
-    relatedApplications: [
-      { slug: "construction-lighting", label: "Construction Lighting" },
-      { slug: "rental-lighting", label: "Rental Lighting" },
-      { slug: "emergency-lighting", label: "Emergency Lighting" },
-      { slug: "oil-gas-lighting", label: "Oil & Gas Lighting Applications" },
-    ],
+    relatedApplicationsTitle: "Related Application",
+    relatedApplication: { slug: "construction-lighting", label: "Construction Lighting" },
+    selectionTitle: "Need to Compare Diesel and Solar Options?",
+    selectionDescription:
+      "Use the light tower selection guide to compare operating schedules, fuel access, solar conditions, maintenance planning, mobility and project-specific configuration factors.",
+    selectionLinkLabel: "View the Light Tower Selection Guide",
   },
   zh: {
     title: "矿山照明应用",
     subtitle:
-      "移动照明灯塔可用于露天矿作业面、矿区运输道路、装卸区、设备检修区和临时矿山任务，并随作业位置和运行安排变化进行部署。",
+      "移动照明灯塔可用于露天矿山和采石场的作业面、矿区运输道路、装卸区、设备检修区及临时矿山任务，并随作业位置和运行安排变化进行部署。",
     heroCta: "沟通矿山照明需求",
-    bottomCtaTitle: "提交您的矿山照明需求",
+    bottomCtaTitle: "沟通您的矿山照明需求",
     bottomCtaDescription:
-      "请提供作业区域、夜间运行时间、部署条件、供能方式和预计数量等矿山项目背景。LFADJ 可据此沟通适合进一步比较的设备方向。",
-    bottomCtaLabel: "提交矿山应用需求",
-    imageAlt: "移动照明灯塔在夜间露天矿区为挖掘设备和运输作业提供照明",
+      "请提供作业区域、运行时段、现场条件、能源补给、预计数量及部署要求，以便结合项目进一步评估可选照明方向。",
+    bottomCtaLabel: "提交项目需求",
+    imageAlt: "用于露天矿山作业区域的移动照明灯塔",
     applicationsTitle: "矿山作业区域与运行任务",
     applications: [
       {
@@ -157,18 +178,18 @@ const copy = {
         description: "矿用车辆、挖掘设备和现场机械的检查维护可能发生在既有照明范围之外。移动光源可部署到当前检修位置附近。",
       },
       {
-        title: "破碎与处理区域",
-        description: "破碎机、输送设备和处理区域周边可能需要临时照明，用于检查、物料处理或短期检修；本页不对特殊危险区域认证作出假设。",
+        title: "破碎与筛分区域",
+        description: "破碎机、筛分设备和输送设备周边可能需要临时照明，用于检查、物料处理或短期检修；本页不对特殊危险区域认证作出假设。",
       },
       {
-        title: "勘探与临时作业区",
-        description: "勘探点和临时矿山作业区可能快速变化，或缺少固定供电。移动照明可以跟随任务，并适应作业区、通行路线和运行安排的变化。",
+        title: "堆场与临时作业区",
+        description: "矿石堆场、材料区和临时矿山作业区的边界可能变化，或缺少固定供电。移动照明可以跟随任务，并适应作业区、通行路线和运行安排的变化。",
       },
     ],
     requirementsTitle: "矿山现场的照明运行挑战",
     requirements: [
       {
-        title: "大范围且持续变化的作业面",
+        title: "变化中的作业面",
         description: "作业台阶、装卸点、道路和设备区域可能覆盖较大范围，并随采掘或现场任务推进而变化。因此照明位置需要配合作业面和通行模式调整。",
       },
       {
@@ -176,7 +197,7 @@ const copy = {
         description: "采掘、车辆通行和物料处理产生的粉尘可能降低能见度，并改变作业区域对光线的感受。照明位置和方向需要结合现场条件判断，而不能只看输出量。",
       },
       {
-        title: "长时间夜间运行",
+        title: "较长或变化的运行时段",
         description: "夜班、维护窗口和较长运行时段会形成不同的照明需求，具体运行时间应作为后续方案或配置判断的一部分。",
       },
       {
@@ -188,47 +209,69 @@ const copy = {
         description: "运输车辆、装载设备和其他机械会在共同区域移动，照明需要考虑行进路线、变化中的视线和面向操作人员的眩光，不能宣称消除运行风险。",
       },
       {
-        title: "偏远区域与能源补给",
+        title: "偏远区域的供电与燃油条件",
         description: "偏远区域可能面临外部电力有限、燃油运输或充电条件受限等情况。这些因素会影响照明设备承担的应用角色，并应进入项目选型讨论。",
       },
     ],
-    productsTitle: "矿山作业中的设备应用角色",
+    equipmentRolesTitle: "移动照明灯塔在矿山作业中的应用角色",
+    equipmentRolesIntro:
+      "不同矿山区域不一定需要相同的照明角色。作业面变化、能源补给、转场频率和运行安排会影响每项任务需要进一步评估的方向。",
+    equipmentRoles: [
+      {
+        title: "适应作业区域变化的可移动照明",
+        description:
+          "露天矿作业面、装卸区域、临时坡道和堆场可能随运行安排变化。移动照明可围绕当前任务重新部署，但仍需确认地面条件、支撑空间、设备通行路线和照射方向。",
+      },
+      {
+        title: "用于维护与辅助作业的临时照明",
+        description:
+          "移动设备维护、现场检查和临时维修可能发生在既有照明范围之外。灯塔位置需要结合车辆停放、人员作业点和设备遮挡调整，不能替代现场作业程序。",
+      },
+      {
+        title: "偏远作业区域的独立照明",
+        description:
+          "部分矿山作业区距离固定电源较远，或供电条件会随区域变化。柴油和太阳能移动灯塔可作为进一步比较的方向，需结合运行时段、日照、燃油补给、维护安排和负载判断。",
+      },
+    ],
+    productsTitle: "可进一步评估的设备方向",
     suitableLabel: "典型矿山角色：",
     products: [
       {
         slug: "lf955",
         title: "LF955 柴油移动照明灯塔",
         applications: [
-          "作为柴油动力参考角色，用于持续夜间作业，且独立发电支持属于运行安排的一部分。",
-          "当燃油补给和部署条件能够支持该角色时，可用于露天作业面、运输路线、装卸区或设备检修任务。",
-          "产品详情页负责说明型号事实，具体项目仍需判断这一角色是否符合任务条件。",
+          "当矿山作业区域需要柴油动力移动照明，并且能够确认运行时段、燃油补给、维护安排及重复转场条件时，可进一步评估 LF955。",
+          "可结合露天作业面、运输路线、装卸区或设备检修任务继续了解，但这些现场条件仍需项目确认。",
+          "运行时间、能源、地面、环境和照明要求需要进一步核实。",
         ],
       },
       {
         slug: "lf971",
         title: "LF971 太阳能移动照明灯塔",
         applications: [
-          "作为太阳能与电池供电的参考角色，用于日照条件和部署周期能够支持储能运行的临时或变化中的矿山任务。",
-          "可用于勘探点、临时作业区，或日常燃油补给受限且运行安排能够配合充电条件的地点。",
-          "产品详情页负责说明型号事实，日照、负载、运行时间和现场通行条件仍需结合项目确认。",
+          "对于偏远或阶段性矿山作业区域，如果能够在配置前评估日照、照明负载、运行时段、储能容量及季节条件，可进一步评估 LF971。",
+          "日常燃油补给受限的地点也可继续了解，但部署和充电条件必须与运行安排相匹配。",
+          "日照、负载、运行时间和现场通行条件仍需项目确认；不应默认适用于所有矿区。",
         ],
       },
     ],
     relatedInformationTitle: "相关信息",
     relatedProductsTitle: "相关产品",
+    relatedProduct: { slug: "lf955", label: "LF955 柴油移动照明灯塔" },
     relatedSolutionsTitle: "相关解决方案",
-    relatedSolutionLabel: "如何选择合适的移动照明灯塔",
+    relatedSolutionDescription:
+      "了解如何根据不断变化的作业区域和偏远现场条件规划临时照明。",
+    relatedSolutionLabel: "临时工地照明",
     relatedResourceTitle: "矿山照明知识",
     relatedResourceDescription:
       "进一步了解流明、工作面照度和投射角度如何影响不断变化的矿山作业区域照明。",
     relatedResourceLabel: "移动照明灯塔的流明与投射角度怎么选",
     relatedApplicationsTitle: "相关应用",
-    relatedApplications: [
-      { slug: "construction-lighting", label: "工程施工照明" },
-      { slug: "rental-lighting", label: "租赁照明" },
-      { slug: "emergency-lighting", label: "应急照明" },
-      { slug: "oil-gas-lighting", label: "油气行业照明应用" },
-    ],
+    relatedApplication: { slug: "construction-lighting", label: "建筑施工照明" },
+    selectionTitle: "需要比较柴油与太阳能方案？",
+    selectionDescription:
+      "可通过移动照明灯塔选型指南，对比运行时段、燃油补给、日照条件、维护安排、移动需求及项目配置因素。",
+    selectionLinkLabel: "查看移动照明灯塔选型指南",
   },
 } as const;
 
@@ -331,6 +374,41 @@ export default function MiningLightingPage() {
       <section className="bg-white px-6 py-20 text-slate-950 sm:px-8 sm:py-24 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
           <h2 className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
+            {content.equipmentRolesTitle}
+          </h2>
+          <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600">
+            {content.equipmentRolesIntro}
+          </p>
+
+          <div className="mt-12 grid border-y border-slate-200 md:grid-cols-3">
+            {content.equipmentRoles.map((role, index) => (
+              <article
+                key={role.title}
+                className={[
+                  "border-b border-slate-200 py-8 md:border-b-0 md:px-8",
+                  index < content.equipmentRoles.length - 1 ? "md:border-r" : "",
+                  index === 0 ? "md:pl-0" : "",
+                  index === content.equipmentRoles.length - 1 ? "md:pr-0" : "",
+                ].join(" ")}
+              >
+                <p className="text-sm font-bold tabular-nums text-blue-700">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-4 text-xl font-bold tracking-tight sm:text-2xl">
+                  {role.title}
+                </h3>
+                <p className="mt-3 text-base leading-7 text-slate-600">
+                  {role.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-6 py-20 text-slate-950 sm:px-8 sm:py-24 lg:px-10">
+        <div className="mx-auto max-w-[1280px]">
+          <h2 className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
             {content.productsTitle}
           </h2>
 
@@ -372,44 +450,52 @@ export default function MiningLightingPage() {
             ))}
           </div>
 
-          <div className="mt-16">
+          <div className="mt-14 border-y border-slate-200 py-8">
             <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">
-              {content.relatedInformationTitle}
+              {content.selectionTitle}
             </h3>
+            <p className="mt-3 max-w-3xl text-base leading-7 text-slate-600">
+              {content.selectionDescription}
+            </p>
+            <Link
+              href={`/${locale}/solutions/how-to-choose-the-right-light-tower`}
+              className="mt-5 inline-flex text-sm font-semibold leading-6 text-blue-700 underline decoration-blue-300 underline-offset-4 transition-colors hover:text-blue-800"
+            >
+              {content.selectionLinkLabel}
+            </Link>
+          </div>
+
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+              {content.relatedInformationTitle}
+            </h2>
 
             <div className="mt-8 grid border-y border-slate-200 lg:grid-cols-4">
               <div className="border-b border-slate-200 py-7 lg:border-b-0 lg:border-r lg:pr-8">
                 <h4 className="text-base font-bold text-slate-950">
                   {content.relatedProductsTitle}
                 </h4>
-                <ul className="mt-5 space-y-3">
-                  {content.products.map((product) => (
-                    <li key={product.slug}>
-                      <Link
-                        href={`/${locale}/products/${product.slug}`}
-                        className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
-                      >
-                        {product.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <Link
+                  href={`/${locale}/products/${content.relatedProduct.slug}`}
+                  className="mt-5 inline-flex text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
+                >
+                  {content.relatedProduct.label}
+                </Link>
               </div>
 
               <div className="border-b border-slate-200 py-7 lg:border-b-0 lg:border-r lg:px-8">
                 <h4 className="text-base font-bold text-slate-950">
                   {content.relatedSolutionsTitle}
                 </h4>
-                <ul className="mt-5">
-                  <li>
-                    <Link
-                      href={`/${locale}/solutions/how-to-choose-the-right-light-tower`}
-                      className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
-                    >
-                      {content.relatedSolutionLabel}
-                    </Link>
-                  </li>
-                </ul>
+                <p className="mt-4 text-sm leading-6 text-slate-600">
+                  {content.relatedSolutionDescription}
+                </p>
+                <Link
+                  href={`/${locale}/solutions/temporary-site-lighting`}
+                  className="mt-5 inline-flex text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
+                >
+                  {content.relatedSolutionLabel}
+                </Link>
               </div>
 
               <div className="border-b border-slate-200 py-7 lg:border-b-0 lg:border-r lg:px-8">
@@ -431,27 +517,21 @@ export default function MiningLightingPage() {
                 <h4 className="text-base font-bold text-slate-950">
                   {content.relatedApplicationsTitle}
                 </h4>
-                <ul className="mt-5 space-y-3">
-                  {content.relatedApplications.map((application) => (
-                    <li key={application.slug}>
-                      <Link
-                        href={`/${locale}/applications/${application.slug}`}
-                        className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
-                      >
-                        {application.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <Link
+                  href={`/${locale}/applications/${content.relatedApplication.slug}`}
+                  className="mt-5 inline-flex text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
+                >
+                  {content.relatedApplication.label}
+                </Link>
               </div>
             </div>
           </div>
 
           <div className="mt-12 flex flex-col items-start justify-between gap-6 bg-slate-950 px-6 py-8 sm:px-8 lg:flex-row lg:items-center">
             <div className="max-w-2xl">
-              <h3 className="text-xl font-bold leading-8 text-white sm:text-2xl">
+              <h2 className="text-xl font-bold leading-8 text-white sm:text-2xl">
                 {content.bottomCtaTitle}
-              </h3>
+              </h2>
               <p className="mt-3 text-base leading-7 text-slate-300">
                 {content.bottomCtaDescription}
               </p>

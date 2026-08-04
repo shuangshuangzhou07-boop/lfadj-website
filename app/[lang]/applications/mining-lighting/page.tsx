@@ -23,11 +23,11 @@ export function generateMetadata({
   const zh = lang === "zh";
   const url = `https://lfadj.com/${lang}/applications/mining-lighting`;
   const title = zh
-    ? "矿山照明应用 | 矿区移动照明灯塔 | LFADJ"
-    : "Mining Lighting Applications | Mobile Light Towers for Mining | LFADJ";
+    ? "矿山照明应用 | 移动照明灯塔 | LFADJ"
+    : "Mining Lighting Applications | Mobile Light Towers | LFADJ";
   const description = zh
-    ? "了解移动照明灯塔在露天矿作业区、运输道路、装卸与检修区域中的应用，以及矿山夜间运行和移动部署挑战。"
-    : "Explore mobile light tower applications across open-pit work areas, haul roads, loading and maintenance zones, and changing nighttime mining conditions.";
+    ? "了解移动照明灯塔在露天矿山、采石场、运输道路、设备维护区及临时作业区中的应用，并进一步评估柴油与太阳能设备方向。"
+    : "Explore mobile light tower applications for open-pit mines and quarries, including changing work areas, haul roads, maintenance zones, and diesel and solar equipment directions.";
 
   return {
     title,
@@ -55,8 +55,8 @@ export function generateMetadata({
         {
           url: "https://lfadj.com/images/applications/mining-lighting/mining-lighting-application-hero.webp",
           alt: zh
-            ? "移动照明灯塔为夜间矿山作业提供照明"
-            : "Mobile light tower illuminating mining operations at night",
+            ? "用于露天矿山作业区域的移动照明灯塔"
+            : "Mobile light tower supporting an open-pit mining work area",
         },
       ],
     },
