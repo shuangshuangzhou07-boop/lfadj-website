@@ -134,13 +134,6 @@ const copy = {
     bottomCtaButton: "Submit Project Requirements",
     relatedInformationTitle: "Related Information",
     relatedProductsTitle: "Related Products",
-    relatedSolutionsTitle: "Related Solutions",
-    relatedSolutions: [
-      {
-        slug: "how-to-choose-the-right-light-tower",
-        label: "How to Choose the Right Light Tower",
-      },
-    ],
     relatedApplicationsTitle: "Related Applications",
     relatedApplications: [
       { slug: "mining-lighting", label: "Mining Lighting" },
@@ -264,13 +257,6 @@ const copy = {
     bottomCtaButton: "提交项目需求",
     relatedInformationTitle: "相关信息",
     relatedProductsTitle: "相关产品",
-    relatedSolutionsTitle: "相关解决方案",
-    relatedSolutions: [
-      {
-        slug: "how-to-choose-the-right-light-tower",
-        label: "如何选择合适的移动照明灯塔",
-      },
-    ],
     relatedApplicationsTitle: "相关应用",
     relatedApplications: [
       { slug: "mining-lighting", label: "矿山照明" },
@@ -559,41 +545,27 @@ export default function OilGasLightingPage({
             </h2>
 
             <div className="mt-8 grid border-y border-slate-200 lg:grid-cols-2">
-              <div className="border-b border-slate-200 py-7 lg:border-b-0 lg:border-r lg:pr-8">
-                <h4 className="text-base font-bold text-slate-950">
-                  {content.relatedSolutionsTitle}
-                </h4>
-                <ul className="mt-5 space-y-3">
-                  {content.relatedSolutions.map((solution) => (
-                    <li key={solution.slug}>
-                      <Link
-                        href={`/${locale}/solutions/${solution.slug}`}
-                        className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
-                      >
-                        {solution.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="py-7 lg:pl-8">
-                <h4 className="text-base font-bold text-slate-950">
-                  {content.relatedApplicationsTitle}
-                </h4>
-                <ul className="mt-5 space-y-3">
-                  {content.relatedApplications.map((application) => (
-                    <li key={application.slug}>
-                      <Link
-                        href={`/${locale}/applications/${application.slug}`}
-                        className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
-                      >
-                        {application.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {content.relatedApplications.map((application, index) => (
+                <article
+                  key={application.slug}
+                  className={[
+                    "py-7",
+                    index === 0
+                      ? "border-b border-slate-200 lg:border-b-0 lg:border-r lg:pr-8"
+                      : "lg:pl-8",
+                  ].join(" ")}
+                >
+                  <h3 className="text-base font-bold text-slate-950">
+                    {content.relatedApplicationsTitle}
+                  </h3>
+                  <Link
+                    href={`/${locale}/applications/${application.slug}`}
+                    className="mt-5 inline-flex text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
+                  >
+                    {application.label}
+                  </Link>
+                </article>
+              ))}
             </div>
           </div>
 
