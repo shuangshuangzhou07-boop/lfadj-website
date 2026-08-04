@@ -8,43 +8,43 @@ const copy = {
   en: {
     title: "Construction Lighting Applications",
     subtitle:
-      "Mobile light towers support night work across building sites, road and infrastructure projects, and temporary work zones where lighting positions need to move as construction progresses.",
+      "Mobile light towers support temporary illumination across changing construction work areas, including earthworks, concrete operations, equipment zones, access routes, and material handling areas.",
     heroCta: "Discuss Your Construction Application",
     ctaDescription:
       "Share the project type, work areas, expected operating hours, site environment, and available fuel, power, or solar conditions. This background helps identify the relevant product and selection information for the application.",
     imageAlt:
       "Mobile light tower illuminating construction machinery and tower cranes at a construction site at night",
-    applicationsTitle: "Construction Work Areas and Project Stages",
+    applicationsTitle: "Construction Work Areas and Operating Tasks",
     applications: [
       {
-        title: "Building Construction Sites",
+        title: "Earthworks and Excavation",
         description:
-          "Structural work, outdoor work faces, and material or equipment areas may need temporary lighting before permanent power and lighting are available. Mobile units can be repositioned as access routes, structures, and active work areas change between project stages.",
+          "Site grading, excavation and soil loading can continue after dark around excavators and loaders. Mobile lighting provides temporary illumination near changing work faces and equipment areas as earthworks progress.",
       },
       {
-        title: "Road and Infrastructure Work",
+        title: "Concrete Placement and Finishing",
         description:
-          "Road, bridge, utility, and infrastructure work often advances through linear or separated work zones. Temporary lighting can move with crews while accommodating changing traffic controls, barriers, and construction boundaries.",
+          "Concrete placement, pumping, formwork and finishing may continue through night shifts. Temporary lighting can follow the active pour, reinforcement area and finishing work as the task moves across the site.",
       },
       {
-        title: "Concrete Pours and Night Operations",
+        title: "Road and Infrastructure Construction",
         description:
-          "Concrete pours and other time-sensitive activities may continue after dark or across extended shifts. Movable lighting helps crews maintain visibility as the active pour, access route, and finishing area progress across the site.",
+          "Roads, utility corridors, bridges and municipal works often form linear work areas that change with project progress. Mobile lighting can support temporary work faces, access routes and separated infrastructure zones.",
       },
       {
-        title: "Temporary Work Zones",
+        title: "Structural Installation and Assembly",
         description:
-          "Short-term construction, temporary repairs, and changing support areas may not justify permanent lighting. Mobile equipment allows the illuminated area to follow the current task instead of remaining fixed after the work zone moves.",
+          "Steel installation, component assembly and equipment installation may take place before permanent site lighting is available. Mobile lighting can be positioned near the current assembly area and adjusted as the structure develops.",
       },
       {
-        title: "Equipment Staging and Material Handling",
+        title: "Equipment Operation and Maintenance Zones",
         description:
-          "Machinery staging, loading, unloading, and material transfer bring workers, vehicles, and equipment into the same area. Temporary lighting may need to cover movement paths and then relocate when staging or storage areas are reorganized.",
+          "Cranes, excavators, loaders and other construction equipment may operate or require inspection during low-light periods. Mobile lighting can support temporary operating, parking and service areas without replacing site-specific equipment procedures.",
       },
       {
-        title: "Site Inspection and Unplanned Work",
+        title: "Access Routes, Loading Areas and Material Yards",
         description:
-          "Night inspections, temporary repairs, and unplanned construction tasks can occur away from established lighting. A mobile light source can be deployed near the immediate work area and moved again when access or task priorities change.",
+          "Temporary vehicle routes, material loading, component storage and tool-handling areas may shift as deliveries and work fronts change. Mobile lighting can be repositioned around the current access and material-handling task.",
       },
     ],
     requirementsTitle: "Construction-Site Lighting Challenges",
@@ -52,35 +52,53 @@ const copy = {
       {
         title: "Changing Work Areas",
         description:
-          "Work faces, material areas, access routes, and equipment zones shift as the project advances. Lighting equipment may therefore need to be redeployed or repositioned within the site.",
+          "Construction stages, equipment positions and active work faces change as the project advances. Lighting equipment may therefore need to be redeployed around the current task and access route.",
       },
       {
-        title: "Mixed Site Activity",
+        title: "Uneven Ground and Limited Setup Space",
         description:
-          "Workers, vehicles, lifting equipment, and construction machinery may operate at the same time. Lighting placement needs to account for movement paths, temporary obstacles, structures, and visibility from different directions.",
+          "Excavation edges, temporary roads and material areas can limit where equipment is placed, where supports can be deployed and which directions can be illuminated. Available setup space must be considered at the current work stage.",
       },
       {
-        title: "Dust, Weather and Temperature",
+        title: "Shadows, Glare and Obstructions",
         description:
-          "Dust, rain, wind, and changing temperatures form part of outdoor construction conditions. Equipment use and placement need to reflect the conditions present at each site and stage of work.",
+          "Machinery, formwork, stored materials and temporary structures can block or redirect light. Equipment position and fixture direction affect the visibility available across the active work area.",
       },
       {
-        title: "Uneven Ground and Deployment Space",
+        title: "Long or Irregular Operating Hours",
         description:
-          "Temporary work areas may have uneven ground, restricted access, or limited space around machinery and materials. Available deployment space can change as site routes and work zones are reorganized.",
+          "Continuous concrete work, schedule changes and night construction can create different operating periods. The expected hours and site attendance conditions need to be understood before a solution is compared.",
       },
       {
-        title: "Transport and Site Relocation",
+        title: "Power Availability and Fuel Access",
         description:
-          "Lighting equipment may move between projects, work areas, and construction stages. Transport access, unloading, initial deployment, and later repositioning all form part of its construction-site use.",
+          "Some work areas have access to grid power, while others rely on temporary power arrangements or fuel delivery. These conditions affect how temporary lighting can be used without deciding the energy option on this page.",
       },
       {
-        title: "Fuel, Noise and Power Conditions",
+        title: "Dust, Weather and Equipment Movement",
         description:
-          "Fuel access, noise limits, usable sunlight, and external power availability differ between projects. These conditions affect the role a lighting system can perform, while detailed configuration decisions belong in the selection guide.",
+          "Earthworks, vehicle movement and open-air conditions can change dust, weather exposure and available deployment paths. Lighting use and repositioning need to reflect the conditions present at each stage of work.",
       },
     ],
-    productsTitle: "Equipment Roles on Construction Sites",
+    equipmentRolesTitle: "Equipment Roles in Construction Operations",
+    equipmentRoles: [
+      {
+        title: "Primary Work-Area Lighting",
+        description:
+          "Temporary illumination around active work fronts such as excavation areas, concrete operations, structural assembly zones and equipment work areas.",
+      },
+      {
+        title: "Relocatable Lighting Between Work Phases",
+        description:
+          "Mobile units can be repositioned as work fronts, access routes, equipment locations and material handling areas change during the project.",
+      },
+      {
+        title: "Supplementary Lighting for Temporary or Remote Areas",
+        description:
+          "Mobile light towers can supplement fixed or temporary site lighting where permanent lighting is unavailable, incomplete or impractical during a construction phase.",
+      },
+    ],
+    productRolesTitle: "Product Roles for Further Evaluation",
     roleLabel: "Typical construction role",
     conditionsLabel: "Relevant site conditions",
     boundaryLabel: "Next-step check",
@@ -90,30 +108,35 @@ const copy = {
         slug: "lf955",
         title: "LF955 Diesel Mobile Light Tower",
         type: "Diesel-powered mobile lighting equipment",
-        role: "Construction night work that calls for higher-output lighting and operation across longer work periods.",
-        conditions: "Building, road, infrastructure, and industrial work areas where diesel fuel is available and external power is not the planned lighting source.",
-        boundary: "The product page provides model specifications; project conditions still determine whether a diesel-powered role fits the task.",
+        role: "A reference option for construction tasks with longer night operating periods and limited access to planned external power.",
+        conditions: "Earthworks, concrete, road or equipment work areas where fuel access, maintenance arrangements and deployment conditions can support a diesel-powered role.",
+        boundary: "Further review should confirm operating hours, lighting objectives, site conditions and expected quantity; the product page provides the model facts.",
       },
       {
         slug: "lf971",
         title: "LF971 Solar Mobile Light Tower",
         type: "Solar and battery-powered mobile lighting equipment",
-        role: "Temporary, off-grid, or remote construction lighting where the operating schedule can align with solar charging and stored energy.",
-        conditions: "Sites with usable sunlight, limited routine fuel access, or a need for lower-noise battery-powered lighting during operation.",
-        boundary: "Its role depends on solar conditions, lighting load, battery capacity, operating hours, and the site environment; it does not replace diesel equipment for every task.",
+        role: "A reference option for temporary access routes, material areas or phase-specific work faces where sunlight and deployment conditions can support solar and stored-energy operation.",
+        conditions: "Projects that need to review solar resource, daily lighting hours, weather changes, equipment placement and energy-storage needs.",
+        boundary: "It is not a default choice for every construction project; the product page provides model facts for the next project review.",
       },
     ],
     selectionDescription:
-      "This application page explains construction tasks and operating conditions. Use the selection guide to assess diesel, solar, and configuration directions, check each product page for model specifications, and share the actual project background through Contact.",
-    selectionLinkLabel: "Read the Mobile Light Tower Selection Guide",
-    bottomCtaTitle: "Share Your Construction-Site Conditions",
-    bottomCtaLabel: "Submit Your Construction Application",
+      "Diesel and solar lighting conditions depend on operating hours, energy access, deployment conditions, weather, maintenance arrangements and how the work area changes.",
+    selectionLinkLabel: "Compare Diesel and Solar Lighting Conditions",
+    bottomCtaTitle: "Discuss Your Construction Lighting Requirements",
+    bottomCtaDescription:
+      "Share the construction work area, operating schedule, ground conditions, available power or fuel, expected quantity and site-specific deployment constraints.",
+    bottomCtaLabel: "Share Your Construction Requirements",
     relatedInformationTitle: "Related Information",
     relatedResourcesTitle: "Construction Lighting Knowledge",
     resourceDescription:
       "Continue with the lighting concepts that affect how output is distributed across changing construction work areas.",
     resourceLinkLabel: "How to Choose Lumens and Beam Angle",
     relatedSolutionsTitle: "Related Solutions",
+    temporarySolutionLinkLabel: "Temporary Site Lighting",
+    temporarySolutionDescription:
+      "Review planning considerations for temporary lighting across changing work areas and site conditions.",
     relatedApplicationsTitle: "Related Applications",
     relatedApplications: [
       { slug: "mining-lighting", label: "Mining Lighting" },
@@ -123,68 +146,83 @@ const copy = {
     ],
   },
   zh: {
-    title: "工程施工照明应用",
+    title: "建筑施工照明应用",
     subtitle:
-      "移动照明灯塔可用于建筑工地、道路与基础设施工程及临时作业区的夜间施工，并能随施工阶段和作业位置变化进行移动部署。",
-    heroCta: "沟通施工照明需求",
+      "移动照明灯塔可用于不断变化的建筑施工区域，为土方作业、混凝土施工、设备操作、临时通道及物料装卸区域提供临时照明支持。",
+    heroCta: "沟通建筑施工照明需求",
     ctaDescription:
       "请说明项目类型、作业区域、预计运行时间、现场环境，以及可用的燃油、电力或日照条件。这些背景信息有助于进一步确认与应用相关的产品和选型资料。",
     imageAlt: "移动照明灯塔在夜间建筑工地为工程机械和塔吊作业提供照明",
-    applicationsTitle: "施工区域与项目阶段",
+    applicationsTitle: "施工区域与作业任务",
     applications: [
       {
-        title: "建筑施工现场",
-        description: "建筑主体、室外作业面以及材料和设备区域，在永久供电与固定照明投入使用前可能需要临时照明。随着通行路线、建筑结构和作业面在不同阶段发生变化，移动设备可相应调整位置。",
+        title: "土方与基坑作业",
+        description: "场地平整、基坑开挖和土方装运可能在夜间围绕挖掘机、装载机继续进行。移动照明可在作业面和设备区域变化时提供临时照明并调整位置。",
+      },
+      {
+        title: "混凝土浇筑与收面",
+        description: "混凝土浇筑、泵送、模板钢筋和收面作业可能跨越夜间班次。临时照明可跟随当前浇筑、钢筋作业面和收面区域的变化进行部署。",
       },
       {
         title: "道路与基础设施施工",
-        description: "道路、桥梁、管线和基础设施工程通常沿线推进，或分布在相互分隔的作业区。临时照明可随施工班组移动，并适应交通管制、围挡和施工边界的变化。",
+        description: "道路、管线、桥梁和市政工程通常形成随进度变化的线性作业面。移动照明可支持临时工作面、通行路线和分散的基础设施作业区域。",
       },
       {
-        title: "混凝土浇筑与夜间工序",
-        description: "混凝土浇筑等对时间连续性有要求的工序，可能延续至夜间或跨越较长班次。移动照明可随浇筑位置、通行路线和收面区域的推进调整部署。",
+        title: "结构安装与现场装配",
+        description: "钢结构安装、构件装配和设备安装可能发生在固定照明尚未投入使用的阶段。移动照明可部署到当前装配区域，并随结构和作业面发展调整位置。",
       },
       {
-        title: "临时作业区",
-        description: "短期施工、临时检修和不断变化的辅助区域未必具备固定照明条件。移动设备可以跟随当前任务调整照明位置，避免作业区转移后照明仍停留在原处。",
+        title: "施工设备操作与维护区域",
+        description: "起重、挖掘和装载设备可能在低光条件下运行或需要检查维护。移动照明可支持临时操作区、停放区和服务区域，但不替代现场设备作业程序。",
       },
       {
-        title: "机械待命与材料转运区",
-        description: "机械待命、材料装卸和转运会使人员、车辆与设备集中在同一区域。临时照明需要兼顾活动路径，并在待命区或堆放区重新安排后随之转移。",
-      },
-      {
-        title: "现场检查与非计划作业",
-        description: "夜间检查、临时维修和非计划施工任务可能发生在既有照明范围之外。移动光源可部署到当前作业位置，并在通行条件或任务重点变化后再次转移。",
+        title: "临时通道、装卸区与材料堆场",
+        description: "临时车辆通道、物料装卸、构件堆放和工具材料周转区域会随进场安排和作业面变化。移动照明可围绕当前通行和物料处理任务重新部署。",
       },
     ],
     requirementsTitle: "施工现场的照明运行挑战",
     requirements: [
       {
         title: "不断变化的作业区域",
-        description: "作业面、材料区、通行路线和设备区域会随项目推进而改变，因此照明设备可能需要在现场重新部署或调整位置。",
-      },
-      {
-        title: "人员、车辆与机械混合作业",
-        description: "人员、车辆、起重设备和工程机械可能同时活动，照明位置需要考虑移动路径、临时障碍物、建筑结构和不同方向的可视性。",
-      },
-      {
-        title: "粉尘、风雨与温度变化",
-        description: "粉尘、降雨、风和温度变化是户外施工环境的一部分，设备使用与部署需要结合各现场及施工阶段的实际条件。",
+        description: "施工阶段、设备位置和作业面会随项目推进而改变，因此照明设备可能需要围绕当前任务和通行路线重新部署。",
       },
       {
         title: "不平整地面与有限部署空间",
-        description: "临时作业区可能存在不平整地面、受限通道，或机械和材料周边空间有限等情况；随着路线和作业区调整，可用部署位置也会变化。",
+        description: "基坑边缘、临时道路和材料区可能限制设备放置、支撑展开以及照明方向。可用部署空间需要结合当前施工阶段判断。",
       },
       {
-        title: "运输与现场转移",
-        description: "照明设备可能在不同项目、作业区域和施工阶段之间移动，运输通行、卸载、初次部署及后续重新定位都属于施工现场使用的一部分。",
+        title: "阴影、眩光与现场遮挡",
+        description: "机械、模板、堆放材料和临时结构可能遮挡或改变光线分布，设备位置和灯具方向会影响当前作业面的可视条件。",
       },
       {
-        title: "燃油、噪声与供电条件",
-        description: "不同项目的燃油补给、噪声限制、可用日照和外部电力条件并不相同。这些条件会影响照明设备承担的应用角色，具体配置判断应进入选型指南。",
+        title: "长时间或不规律夜间运行",
+        description: "连续浇筑、施工安排变化和夜间作业可能形成不同运行时段，预计运行时间和现场值守条件需要在比较方案前明确。",
+      },
+      {
+        title: "供电条件与燃油补给",
+        description: "部分作业区可使用市电，其他区域可能依赖临时供电安排或燃油补给。这些条件会影响临时照明使用方式，但本页不决定能源选项。",
+      },
+      {
+        title: "粉尘、天气与设备移动",
+        description: "土方作业、车辆移动和露天环境会改变粉尘、天气暴露和可用通行路径。照明使用与重新定位需要结合各施工阶段的实际条件。",
       },
     ],
-    productsTitle: "施工现场中的设备应用角色",
+    equipmentRolesTitle: "施工运行中的设备应用角色",
+    equipmentRoles: [
+      {
+        title: "主要作业面照明",
+        description: "用于土方开挖、混凝土施工、结构装配及设备作业区等当前施工工作面的临时照明。",
+      },
+      {
+        title: "随施工阶段转移的移动照明",
+        description: "随着施工工作面、临时通道、设备位置和物料装卸区域变化，移动设备可按项目阶段重新部署。",
+      },
+      {
+        title: "临时及偏远区域的补充照明",
+        description: "在固定照明尚未投入、临时供电受限或施工阶段不适合设置永久照明的区域，移动灯塔可作为现场照明补充。",
+      },
+    ],
+    productRolesTitle: "可进一步评估的产品应用方向",
     roleLabel: "典型施工角色",
     conditionsLabel: "相关现场条件",
     boundaryLabel: "下一步确认",
@@ -194,30 +232,35 @@ const copy = {
         slug: "lf955",
         title: "LF955 柴油移动照明灯塔",
         type: "柴油动力移动照明设备",
-        role: "用于照明输出要求较高，并需要覆盖较长作业时段的施工夜间任务。",
-        conditions: "具备燃油补给条件，且照明不以外部电力作为计划供电来源的建筑、道路、基础设施和工业作业区。",
-        boundary: "具体型号规格由产品页说明；柴油动力是否符合任务，仍需结合实际项目条件判断。",
+        role: "作为施工任务的参考方向，用于夜间运行时段较长且计划外部供电受限的工作。",
+        conditions: "可结合土方、混凝土、道路或设备作业区评估，但需要具备燃油补给、维护安排和相应部署条件。",
+        boundary: "进一步评估需确认运行时间、照明目标、现场条件和预计数量；型号事实由产品详情页说明。",
       },
       {
         slug: "lf971",
         title: "LF971 太阳能移动照明灯塔",
         type: "太阳能与储能供电的移动照明设备",
-        role: "用于运行周期能够与太阳能充电和储能条件匹配的临时、离网或偏远施工照明任务。",
-        conditions: "具备可用日照、日常燃油补给受限，或运行期间需要较低噪声电池供电照明的现场。",
-        boundary: "其应用角色取决于日照、照明负载、电池容量、运行时间和现场环境，不能替代所有施工任务中的柴油设备。",
+        role: "作为临时通道、材料区或阶段性工作面的参考方向，前提是日照和部署条件能够支持太阳能与储能运行。",
+        conditions: "项目仍需核实太阳能资源、每日照明时长、天气变化、设备摆放和储能需求。",
+        boundary: "不应默认适用于所有施工项目；型号事实由产品详情页说明，最终仍需结合项目条件判断。",
       },
     ],
     selectionDescription:
-      "本应用页说明施工任务与运行条件；柴油、太阳能和具体配置方向由选型指南承接，型号规格由产品详情页说明，实际项目背景可通过 Contact 提交。",
-    selectionLinkLabel: "查看移动照明灯塔选型指南",
-    bottomCtaTitle: "提交施工现场应用背景",
-    bottomCtaLabel: "提交施工应用需求",
+      "柴油与太阳能照明的判断取决于运行时长、能源补给、部署条件、天气变化、维护安排及施工工作面的变化方式。",
+    selectionLinkLabel: "对比柴油与太阳能照明条件",
+    bottomCtaTitle: "沟通您的建筑施工照明需求",
+    bottomCtaDescription:
+      "请提供施工作业区域、运行时间、地面条件、供电或燃油条件、预计数量及现场部署限制。",
+    bottomCtaLabel: "提交建筑施工照明需求",
     relatedInformationTitle: "相关信息",
     relatedResourcesTitle: "施工照明知识",
     resourceDescription:
       "进一步了解流明与投射角度如何影响不断变化的施工作业区域中的光线分布。",
     resourceLinkLabel: "移动照明灯塔的流明与投射角度怎么选",
     relatedSolutionsTitle: "相关解决方案",
+    temporarySolutionLinkLabel: "临时工地照明",
+    temporarySolutionDescription:
+      "了解如何根据不断变化的作业区域和现场条件规划临时照明。",
     relatedApplicationsTitle: "相关应用",
     relatedApplications: [
       { slug: "mining-lighting", label: "矿山照明" },
@@ -247,11 +290,11 @@ export function generateMetadata({
   const zh = lang === "zh";
   const url = `https://lfadj.com/${lang}/applications/construction-lighting`;
   const title = zh
-    ? "工程施工照明应用 | 移动照明灯塔 | LFADJ"
-    : "Construction Lighting Applications | Mobile Light Towers | LFADJ";
+    ? "建筑施工现场照明应用 | LFADJ"
+    : "Construction Site Lighting Applications | LFADJ";
   const description = zh
-    ? "了解移动照明设备在建筑工地、基础设施建设和临时施工区域中的夜间照明应用。"
-    : "Explore mobile lighting applications for construction sites, infrastructure projects and temporary night work areas.";
+    ? "了解移动照明灯塔在土方、混凝土施工、临时通道、设备作业区、材料堆场及阶段性工作面中的应用与运行条件。"
+    : "Explore mobile light tower applications for construction work areas, including earthworks, concrete operations, access routes, equipment zones and temporary work fronts.";
   const image =
     "https://lfadj.com/images/applications/construction-lighting/construction-lighting-application-hero.webp";
 
@@ -401,8 +444,38 @@ export default function ConstructionLightingPage({
       <section className="bg-white px-6 py-20 text-slate-950 sm:px-8 sm:py-24 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
           <h2 className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
-            {content.productsTitle}
+            {content.equipmentRolesTitle}
           </h2>
+
+          <div className="mt-12 grid border-y border-slate-200 md:grid-cols-3">
+            {content.equipmentRoles.map((role, index) => (
+              <article
+                key={role.title}
+                className={[
+                  "border-b border-slate-200 py-8 md:border-b-0 md:px-8",
+                  index < content.equipmentRoles.length - 1
+                    ? "md:border-r"
+                    : "",
+                  index === 0 ? "md:pl-0" : "",
+                  index === content.equipmentRoles.length - 1 ? "md:pr-0" : "",
+                ].join(" ")}
+              >
+                <p className="text-sm font-bold tabular-nums text-blue-700">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-4 text-xl font-bold tracking-tight sm:text-2xl">
+                  {role.title}
+                </h3>
+                <p className="mt-3 text-base leading-7 text-slate-600">
+                  {role.description}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <h3 className="mt-16 max-w-3xl text-2xl font-bold tracking-tight sm:text-3xl">
+            {content.productRolesTitle}
+          </h3>
 
           <div className="mt-12 grid border-y border-slate-200 lg:grid-cols-2">
             {content.products.map((product, index) => (
@@ -443,7 +516,7 @@ export default function ConstructionLightingPage({
                   href={`/${locale}/products/${product.slug}`}
                   className="mt-6 inline-flex text-sm font-semibold leading-6 text-blue-700 underline decoration-blue-300 underline-offset-4 transition-colors hover:text-blue-800"
                 >
-                  {content.productLinkLabel}
+                  {content.productLinkLabel}: {product.title}
                 </Link>
               </article>
             ))}
@@ -477,16 +550,27 @@ export default function ConstructionLightingPage({
                 <p className="mt-4 text-sm leading-6 text-slate-600">
                   {content.selectionDescription}
                 </p>
-                <ul className="mt-5">
-                  <li>
-                    <Link
+                    <ul className="mt-5">
+                      <li>
+                        <Link
                       href={`/${locale}/solutions/how-to-choose-the-right-light-tower`}
                       className="text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
                     >
-                      {content.selectionLinkLabel}
-                    </Link>
-                  </li>
-                </ul>
+                          {content.selectionLinkLabel}
+                        </Link>
+                      </li>
+                      <li className="mt-4">
+                        <p className="text-sm leading-6 text-slate-600">
+                          {content.temporarySolutionDescription}
+                        </p>
+                        <Link
+                          href={`/${locale}/solutions/temporary-site-lighting`}
+                          className="mt-2 inline-flex text-sm font-semibold leading-6 text-slate-700 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-700"
+                        >
+                          {content.temporarySolutionLinkLabel}
+                        </Link>
+                      </li>
+                    </ul>
               </div>
 
               <div className="py-7 lg:pl-8">
@@ -517,7 +601,7 @@ export default function ConstructionLightingPage({
                 {content.bottomCtaTitle}
               </h3>
               <p className="mt-3 text-base leading-7 text-slate-300">
-                {content.ctaDescription}
+                {content.bottomCtaDescription}
               </p>
             </div>
             <Link
