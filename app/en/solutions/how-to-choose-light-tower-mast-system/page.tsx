@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   title: "How to Choose the Right Mast System for a Mobile Light Tower | LFADJ",
   description:
     "Learn how to choose the right mobile light tower mast system based on project duration, mobility requirements, working height and budget.",
+  alternates: {
+    canonical: "https://lfadj.com/en/solutions/how-to-choose-light-tower-mast-system",
+    languages: {
+      en: "https://lfadj.com/en/solutions/how-to-choose-light-tower-mast-system",
+      "zh-CN": "https://lfadj.com/zh/solutions/how-to-choose-light-tower-mast-system",
+      "x-default": "https://lfadj.com/en/solutions/how-to-choose-light-tower-mast-system",
+    },
+  },
 };
 
 export default function LightTowerMastSystemSolutionPage() {

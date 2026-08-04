@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   title: "如何选择合适的移动照明灯塔升降系统 | LFADJ",
   description:
     "根据项目周期、移动频率、使用高度和预算，选择适合工程项目需求的移动照明灯塔升降方案。",
+  alternates: {
+    canonical: "https://lfadj.com/zh/solutions/how-to-choose-light-tower-mast-system",
+    languages: {
+      en: "https://lfadj.com/en/solutions/how-to-choose-light-tower-mast-system",
+      "zh-CN": "https://lfadj.com/zh/solutions/how-to-choose-light-tower-mast-system",
+      "x-default": "https://lfadj.com/en/solutions/how-to-choose-light-tower-mast-system",
+    },
+  },
 };
 
 export default function LightTowerMastSystemSolutionPage() {

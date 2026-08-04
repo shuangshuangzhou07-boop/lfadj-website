@@ -38,6 +38,8 @@ const permanentRedirectMap: Readonly<Record<string, string>> = {
   "/zh/solutions/mining-lighting": "/zh/applications/mining-lighting",
   "/zh/solutions/oil-gas-lighting": "/zh/applications/oil-gas-lighting",
   "/zh/solutions/rental-fleet-solutions": "/zh/applications/rental-lighting",
+  "/en/solutions/light-tower-mast-system": "/en/solutions/how-to-choose-light-tower-mast-system",
+  "/zh/solutions/light-tower-mast-system": "/zh/solutions/how-to-choose-light-tower-mast-system",
   "/en/contact/request-a-quote": "/en/contact",
   "/zh/contact/request-a-quote": "/zh/contact",
   "/zh/联系我们": "/zh/contact",
