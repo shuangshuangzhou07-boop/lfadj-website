@@ -105,11 +105,6 @@ const titles: Record<FrameworkSection, Record<string, FrameworkEntry>> = {
     lf981: { en: "LF981 Solar Camera Trailer", zh: "LF981 太阳能监控拖车" },
   },
   solutions: {
-    "construction-lighting": { en: "Construction Lighting", zh: "建筑施工照明" },
-    "mining-lighting": { en: "Mining Lighting", zh: "矿山照明" },
-    "oil-gas-lighting": { en: "Oil & Gas Lighting", zh: "石油与天然气照明" },
-    "rental-fleet-solutions": { en: "Rental Fleet Solutions", zh: "租赁设备解决方案" },
-    "emergency-lighting": { en: "Emergency Lighting", zh: "应急照明" },
     "temporary-site-lighting": {
       en: "How to Plan Temporary Site Lighting",
       zh: "如何规划项目临时施工照明",
@@ -199,9 +194,9 @@ const titles: Record<FrameworkSection, Record<string, FrameworkEntry>> = {
               {
                 title: "Related Applications",
                 items: [
-                  { label: "Construction Lighting", href: "/en/solutions/construction-lighting" },
-                  { label: "Mining Lighting", href: "/en/solutions/mining-lighting" },
-                  { label: "Oil & Gas Lighting", href: "/en/solutions/oil-gas-lighting" },
+                  { label: "Construction Lighting", href: "/en/applications/construction-lighting" },
+                  { label: "Mining Lighting", href: "/en/applications/mining-lighting" },
+                  { label: "Oil & Gas Lighting", href: "/en/applications/oil-gas-lighting" },
                 ],
               },
               {
@@ -305,9 +300,9 @@ const titles: Record<FrameworkSection, Record<string, FrameworkEntry>> = {
               {
                 title: "相关应用",
                 items: [
-                  { label: "建筑施工照明", href: "/zh/solutions/construction-lighting" },
-                  { label: "矿山照明", href: "/zh/solutions/mining-lighting" },
-                  { label: "油气照明", href: "/zh/solutions/oil-gas-lighting" },
+                  { label: "建筑施工照明", href: "/zh/applications/construction-lighting" },
+                  { label: "矿山照明", href: "/zh/applications/mining-lighting" },
+                  { label: "油气照明", href: "/zh/applications/oil-gas-lighting" },
                 ],
               },
               {
